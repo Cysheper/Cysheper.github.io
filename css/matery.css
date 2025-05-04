@@ -574,6 +574,7 @@ header .go-back i {
 }
 
 .bg-cover .title {
+    color: #0000008e;
     font-size: 4rem;
     line-height: 1.2em;
     margin-bottom: 20px;
@@ -582,9 +583,9 @@ header .go-back i {
 
 .bg-cover .description {
     font-weight: 300;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     line-height: 1.4em;
-    color: #eee;
+    color: #000000a1;
 }
 
 .bg-cover .post-title {
