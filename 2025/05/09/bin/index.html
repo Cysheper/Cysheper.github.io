@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="二进制, blog, technology, life">
-    <meta name="description" content="二进制相关知识算法">
+    <meta name="keywords" content="二进制与位运算, blog, technology, life">
+    <meta name="description" content="二进制与位运算相关知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>二进制 | Cysheper</title>
+    <title>二进制与位运算 | Cysheper</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <style>
@@ -413,7 +413,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">二进制</h1>
+                    <h1 class="description center-align post-title">二进制与位运算</h1>
                 </div>
             </div>
         </div>
@@ -441,12 +441,16 @@
                                 <span class="chip bg-color">ACM</span>
                             </a>
                         
-                            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">算法</span>
-                            </a>
-                        
                             <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/">
                                 <span class="chip bg-color">二进制</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
+                                <span class="chip bg-color">位运算</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                                <span class="chip bg-color">基础知识</span>
                             </a>
                         
                     </div>
@@ -477,14 +481,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-09
+                    2025-05-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    188
+                    792
                 </div>
                 
 
@@ -509,31 +513,67 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="（一）位运算"><a href="#（一）位运算" class="headerlink" title="（一）位运算"></a>（一）位运算</h2><h3 id="（1）-（按位与）"><a href="#（1）-（按位与）" class="headerlink" title="（1）&amp; （按位与）"></a>（1）<code>&amp;</code> （按位与）</h3><h4 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h4><p>二进制相应位都为<code>1</code>则为<code>1</code>，否则为<code>0</code></p>
-<h4 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">111010  &#x2F;&#x2F; 58
+                <h2 id="（一）进制转化"><a href="#（一）进制转化" class="headerlink" title="（一）进制转化"></a>（一）进制转化</h2><h3 id="（1）任意进制转化为十进制"><a href="#（1）任意进制转化为十进制" class="headerlink" title="（1）任意进制转化为十进制"></a>（1）任意进制转化为十进制</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; 二进制转十进制
+string num &#x3D; &quot;10010&quot;; &#x2F;&#x2F; 需要转化的二进制数
+int ans &#x3D; stoi(num, nullptr, 2); &#x2F;&#x2F; 2就是num的进制，ans 就是答案，ans &#x3D; 18 &#x3D; num
+
+&#x2F;&#x2F; 十六进制转十进制
+num &#x3D; &quot;14A&quot;;
+ans &#x3D; stoi(num, nullptr, 16); &#x2F;&#x2F; ans &#x3D; 330 &#x3D; num
+
+&#x2F;&#x2F; 其他进制同理<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="（2）十进制转化为任意进制（2-9进制）"><a href="#（2）十进制转化为任意进制（2-9进制）" class="headerlink" title="（2）十进制转化为任意进制（2~9进制）"></a>（2）十进制转化为任意进制（2~9进制）</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">string calc(int num, int x) &#123; &#x2F;&#x2F; 将十进制数num，转化为x进制数
+    string ans &#x3D; &quot;&quot;; &#x2F;&#x2F; 记录结果
+    while(num) &#123;     &#x2F;&#x2F; 只要num不为0
+        ans +&#x3D; to_string(num % x); &#x2F;&#x2F; 记录余数
+        num &#x2F;&#x3D; x;              
+    &#125;
+    reverse(ans.begin(), ans.end()); &#x2F;&#x2F; 反转ans字符串
+    return ans;  &#x2F;&#x2F; 返回结果字符串
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int num &#x3D; 10; &#x2F;&#x2F; 将10转化为2,8,6进制
+cout &lt;&lt; calc(num, 2); &#x2F;&#x2F; 输出：1010 
+cout &lt;&lt; calc(num, 8); &#x2F;&#x2F; 输出：12
+cout &lt;&lt; calc(num, 6); &#x2F;&#x2F; 输出：14<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>将 <code>num</code> 不断模 <code>x</code> 的结果放入答案， 同时 <code>num</code> 不断除 <code>x</code>, 只要 <code>num</code> 不为 <code>0</code>。结果反转就是答案。证明略。  </p>
+<h2 id="（二）位运算"><a href="#（二）位运算" class="headerlink" title="（二）位运算"></a>（二）位运算</h2><h3 id="（1）-（按位与）"><a href="#（1）-（按位与）" class="headerlink" title="（1）&amp;（按位与）"></a>（1）&amp;（按位与）</h3><h4 id="1、规则"><a href="#1、规则" class="headerlink" title="1、规则"></a>1、规则</h4><p>二进制相应位都为<code>1</code>则为<code>1</code>，否则为<code>0</code></p>
+<p><strong>例如：</strong></p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">111010  &#x2F;&#x2F; 58
 100100  &#x2F;&#x2F; 36
-------  &#x2F;&#x2F; &amp;
+------  &#x2F;&#x2F; &amp; （按位与）
 100000  &#x2F;&#x2F; 32<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><p><strong>（1）判断奇偶</strong></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">if(n &amp; 1) &#123;
+<h4 id="2、判断奇偶"><a href="#2、判断奇偶" class="headerlink" title="2、判断奇偶"></a><strong>2、判断奇偶</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">if(n &amp; 1) &#123;
     cout &lt;&lt; &quot;n为奇数&quot;;
 &#125; else &#123;
     cout &lt;&lt; &quot;n为偶数&quot;;
-&#125;
-
-&#x2F;*
-n &amp; 1 若为真， n 的二进制位最低位为 1， 就是奇数，否则为偶数
-*&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>（2）判断某位是否为 <code>1</code></strong></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">if(x &amp; (1 &lt;&lt; i)) &#123;
-    cout &lt;&lt; &quot;x的二进制位的第i位为1&quot;;
-&#125; else &#123;
-    cout &lt;&lt; &quot;x的二进制位的第i位为0&quot;;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>（3）取出最后一位的 <code>1</code></strong></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int lowbits(int x) &#123;
+<p><code>n &amp; 1</code> 若为真， <code>n</code> 的二进制位最低位为 <code>1</code>， 就是奇数，否则为偶数</p>
+<h4 id="3、取出最后一位的-1"><a href="#3、取出最后一位的-1" class="headerlink" title="3、取出最后一位的 1"></a><strong>3、取出最后一位的 <code>1</code></strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int lowbits(int x) &#123;
     return x &amp; (-x);  &#x2F;&#x2F; 返回x最后一位1对应的数
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>$10_{10}$ 的二进制为 $1010_2$ （下表为2表示二进制数）<br>$lowbits(10_{10}) &#x3D; 10_2 &#x3D; 2_{10}$<br>所以 $lowbits(10) &#x3D; 2$</p>
+<h4 id="4、判断一个数是否为2的幂"><a href="#4、判断一个数是否为2的幂" class="headerlink" title="4、判断一个数是否为2的幂"></a><strong>4、判断一个数是否为2的幂</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int num &#x3D; 16;
+if(!num &amp;&amp; num &#x3D;&#x3D; lowbits(num)) &#123; &#x2F;&#x2F; num不为0 &amp;&amp; num的二进制数只有一位1 
+    cout &lt;&lt; &quot;是2的幂&quot;;
+&#125; else &#123;
+    cout &lt;&lt; &quot;不是2的幂&quot;
+&#125;
+&#x2F;&#x2F; 输出：是2的幂<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>若<code>x == lowbits(x)</code>，说明<code>x</code>的最低为的<code>1</code>对应的十进制数也为<code>x</code>，说明<code>x</code>的二进制位只有一个<code>1</code>，符合2的幂的特点。<code>0</code>除外，因为<code>lowbits(0) = 0</code>，而<code>0</code>不是2的幂。</p>
+<h3 id="（2）-（按位或）"><a href="#（2）-（按位或）" class="headerlink" title="（2）| （按位或）"></a>（2）| （按位或）</h3><h4 id="1、规则-1"><a href="#1、规则-1" class="headerlink" title="1、规则"></a>1、规则</h4><p>二进制相应位只要有一个为<code>1</code>则为<code>1</code>，否则为<code>0</code></p>
+<p><strong>例如：</strong></p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">100101  &#x2F;&#x2F; 37
+101000  &#x2F;&#x2F; 40
+------  &#x2F;&#x2F; | （按位或）
+101101  &#x2F;&#x2F; 45<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2、集合合并"><a href="#2、集合合并" class="headerlink" title="2、集合合并"></a>2、集合合并</h4><p>若使用<code>0</code>表示某元素不存在，<code>1</code>表示存在，那么使用一串<code>01</code>字符串，表示一个集合是否含有某元素。<br>例如，给定一个数组：<code>&#123;1, 2, 3, 4, 5&#125;</code>，使用集合表示，这个集合中是否含有数组中的元素，规定字符串对应位，从左到右，为<code>1</code>则表示有这个数，为<code>0</code>表示没有这个数。<br><code>10010</code> 表示的集合为<code>&#123;1, 4&#125;</code>。</p>
+<p>给定两个集合，合并这两个集合：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">string A &#x3D; &quot;10010&quot;;
+string B &#x3D; &quot;10111&quot;;
+string C &#x3D; to_string(stoi(A) | stoi(B));
+cout &lt;&lt; C;  &#x2F;&#x2F; 输出：10111<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
@@ -601,12 +641,16 @@ n &amp; 1 若为真， n 的二进制位最低位为 1， 就是奇数，否则�
                                     <span class="chip bg-color">ACM</span>
                                 </a>
                             
-                                <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">算法</span>
-                                </a>
-                            
                                 <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/">
                                     <span class="chip bg-color">二进制</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
+                                    <span class="chip bg-color">位运算</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                                    <span class="chip bg-color">基础知识</span>
                                 </a>
                             
                         </div>
@@ -660,15 +704,15 @@ n &amp; 1 若为真， n 的二进制位最低位为 1， 就是奇数，否则�
                 <a href="/2025/05/09/bin/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/0.webp" class="responsive-img" alt="二进制">
+                        <img src="/medias/featureimages/0.webp" class="responsive-img" alt="二进制与位运算">
                         
-                        <span class="card-title">二进制</span>
+                        <span class="card-title">二进制与位运算</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            二进制相关知识算法
+                            二进制与位运算相关知识
                         
                     </div>
                     <div class="publish-info">
@@ -695,12 +739,16 @@ n &amp; 1 若为真， n 的二进制位最低位为 1， 就是奇数，否则�
                         <span class="chip bg-color">ACM</span>
                     </a>
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
-                    </a>
-                    
                     <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/">
                         <span class="chip bg-color">二进制</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
+                        <span class="chip bg-color">位运算</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                        <span class="chip bg-color">基础知识</span>
                     </a>
                     
                 </div>
@@ -885,6 +933,13 @@ n &amp; 1 若为真， n 的二进制位最低位为 1， 就是奇数，否则�
 </main>
 
 
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
+
 
 
     <footer class="page-footer bg-color">
@@ -906,7 +961,7 @@ n &amp; 1 若为真， n 的二进制位最低位为 1， 就是奇数，否则�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">558</span>
+                        class="white-color">1.2k</span>
             
             
             
