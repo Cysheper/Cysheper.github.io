@@ -481,14 +481,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-10
+                    2025-05-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    792
+                    664
                 </div>
                 
 
@@ -567,11 +567,10 @@ if(!num &amp;&amp; num &#x3D;&#x3D; lowbits(num)) &#123; &#x2F;&#x2F; num不为0
 ------  &#x2F;&#x2F; | （按位或）
 101101  &#x2F;&#x2F; 45<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="2、集合合并"><a href="#2、集合合并" class="headerlink" title="2、集合合并"></a>2、集合合并</h4><p>若使用<code>0</code>表示某元素不存在，<code>1</code>表示存在，那么使用一串<code>01</code>字符串，表示一个集合是否含有某元素。<br>例如，给定一个数组：<code>&#123;1, 2, 3, 4, 5&#125;</code>，使用集合表示，这个集合中是否含有数组中的元素，规定字符串对应位，从左到右，为<code>1</code>则表示有这个数，为<code>0</code>表示没有这个数。<br><code>10010</code> 表示的集合为<code>&#123;1, 4&#125;</code>。</p>
-<p>给定两个集合，合并这两个集合：</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">string A &#x3D; &quot;10010&quot;;
-string B &#x3D; &quot;10111&quot;;
-string C &#x3D; to_string(stoi(A) | stoi(B));
+<h4 id="2、集合合并"><a href="#2、集合合并" class="headerlink" title="2、集合合并"></a>2、集合合并</h4><p>给定两个集合，合并这两个集合：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int A &#x3D; 0b10010;
+int B &#x3D; 0b10111;
+int 
 cout &lt;&lt; C;  &#x2F;&#x2F; 输出：10111<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
@@ -696,29 +695,28 @@ cout &lt;&lt; C;  &#x2F;&#x2F; 输出：10111<span aria-hidden="true" class="lin
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/05/09/bin/">
+                <a href="/2025/05/13/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/0.webp" class="responsive-img" alt="二进制与位运算">
+                        <img src="/medias/featureimages/0.webp" class="responsive-img" alt="预处理">
                         
-                        <span class="card-title">二进制与位运算</span>
+                        <span class="card-title">预处理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            二进制与位运算相关知识
+                            基础预处理算法：前缀和，差分，离散化
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-05-09
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-05-13
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -731,7 +729,6 @@ cout &lt;&lt; C;  &#x2F;&#x2F; 输出：10111<span aria-hidden="true" class="lin
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -739,16 +736,12 @@ cout &lt;&lt; C;  &#x2F;&#x2F; 输出：10111<span aria-hidden="true" class="lin
                         <span class="chip bg-color">ACM</span>
                     </a>
                     
-                    <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/">
-                        <span class="chip bg-color">二进制</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
-                        <span class="chip bg-color">位运算</span>
-                    </a>
-                    
                     <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
                         <span class="chip bg-color">基础知识</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%A2%84%E5%A4%84%E7%90%86/">
+                        <span class="chip bg-color">预处理</span>
                     </a>
                     
                 </div>
@@ -961,7 +954,7 @@ cout &lt;&lt; C;  &#x2F;&#x2F; 输出：10111<span aria-hidden="true" class="lin
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.2k</span>
+                        class="white-color">2.2k</span>
             
             
             

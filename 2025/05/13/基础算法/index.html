@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Categories, blog, technology, life">
-    <meta name="description" content="Cysheper的个人博客，分享技术的乐趣。">
+    <meta name="keywords" content="预处理, blog, technology, life">
+    <meta name="description" content="基础预处理算法：前缀和，差分，离散化">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Categories | Cysheper</title>
+    <title>预处理 | Cysheper</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <style>
@@ -404,141 +404,566 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
-    <div class="container">
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.webp')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">预处理</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
     <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                Cysheper
-                
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/ACM/">
+                                <span class="chip bg-color">ACM</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                                <span class="chip bg-color">基础知识</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%A2%84%E5%A4%84%E7%90%86/">
+                                <span class="chip bg-color">预处理</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Algorithm/" class="post-category">
+                                Algorithm
+                            </a>
+                        
+                    </div>
+                    
+                </div>
             </div>
 
-            <div class="description center-align">
+            <div class="post-info">
                 
-                <span id="subtitle"></span>
-                <script src="/libs/typed/typed.js"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [ 
-                            
-                                "雾气弥漫的清晨，并不意味着是一个阴霾的白天。",
-                            
-                                "A foggy morning does not necessarily mean a gloomy day.",
-                            
-                        ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2025-05-13
+                </div>
                 
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2025-05-15
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.2k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h2><p>预处理，即在正式处理数据之前的操作，通常目的是优化时间、空间复杂度。</p>
+<p>前置知识：</p>
+<ul>
+<li>C++基础语法</li>
+</ul>
+<p>本节目录：</p>
+<ul>
+<li><p>前缀和与差分</p>
+</li>
+<li><p>倍增</p>
+</li>
+<li><p>离散化</p>
+</li>
+</ul>
+<h2 id="前缀和与差分"><a href="#前缀和与差分" class="headerlink" title="前缀和与差分"></a>前缀和与差分</h2><h3 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h3><p>我们先看例题：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/B3612">洛谷B3612 求区间和</a></p>
+<p>简而言之，给你一个长度为$n$的正整数数组 $a_1​,a_2​,⋯,a_n​$，有$m$次询问，每次询问给出一对区间$[ l_i, r_i ]$，分别求这 $m$ 个区间的区间和。</p>
+<p>如果你不会前缀和算法，你可能会这样写……</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+
+int arr[100005]; &#x2F;&#x2F; 正整数数组
+int main() &#123;
+	int n; cin &gt;&gt; n; &#x2F;&#x2F; 输入n
+	
+	for(int i &#x3D; 1; i &lt;&#x3D; n; ++ i) cin &gt;&gt; arr[i]; &#x2F;&#x2F; 输入数据
+	
+	int m; cin &gt;&gt; m; &#x2F;&#x2F; 输入 m
+	int l, r;
+	
+	for(int i &#x3D; 1; i &lt;&#x3D; m; ++ i) &#123;
+		int ans &#x3D; 0; &#x2F;&#x2F; 存结果
+		cin &gt;&gt; l &gt;&gt; r; &#x2F;&#x2F; 输入l, r
+		for(int j &#x3D; l; j &lt;&#x3D; r; ++ j) &#x2F;&#x2F; 从l到r累加数组数据
+			ans +&#x3D; arr[j];
+		cout &lt;&lt; ans &lt;&lt; endl; &#x2F;&#x2F; 输出ans
+	&#125;
+	return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但是一提交，结果却……<br><img src="https://i.postimg.cc/RVGFP1v3/image.png"><br>TLE。 。 。<br>为什么会超时呢？我们研究一下时间复杂度。</p>
+<p>按照最坏情况，$n &#x3D; 10^5$，区间可能的最大范围是整个数组，也就是$[0, 10^5]$，内外层循环都是$n$次，所以$O(n^2)$的复杂度，循环次数为$10^{10}$，题目时间限制为$1s$，肯定会超时（只要出题人想卡你，显然这道题卡了）。（具体时间复杂度计算和运行时间，看我这篇博客：pass）</p>
+<p>我们想一想，如果询问次数过多，可能会有重叠的区间被重复计算，也就造成，同一段数，不断被求和，导致性能的浪费。有没有一种方法，可以使每一个数只被计算一次，之后只需直接使用即可呢？</p>
+<p>有的，那就是前缀和！</p>
+<p>如果我们开辟一个额外的数组，前缀和数组（prefix），用来存储，原数组前$i$项的和，就是:</p>
+<p>$prefix[k] &#x3D; \sum_{i&#x3D;1}^k arr[i] , k &#x3D; 1,2,…,n$</p>
+<p>说人话就是：$prefix[k] &#x3D; arr[1] + arr[2] + arr[3] + … + arr[k], k &#x3D; 1,2,…,n$</p>
+<p>如果原数组$arr &#x3D; [1, 2, 3, 4, 5]$<br>则：<br>$prefix[0] &#x3D; 0$<br>$prefix[1] &#x3D; arr[1] &#x3D; 1$<br>$prefix[2] &#x3D; arr[1] + arr[2] &#x3D; 3$<br>$prefix[3] &#x3D; arr[1] + arr[2] + arr[3] &#x3D; 6$<br>$prefix[4] &#x3D; arr[1] + arr[2] + arr[3] + arr[4] &#x3D; 10$<br>$prefix[5] &#x3D; arr[1] + arr[2] + arr[3] + arr[4] + arr[5]&#x3D; 15$</p>
+<p>观察可以得到：<br>$prefix[1] &#x3D; prefix[0] + arr[1]$<br>$prefix[2] &#x3D; prefix[1] + arr[2]$<br>$prefix[3] &#x3D; prefix[2] + arr[3]$<br>$prefix[4] &#x3D; prefix[3] + arr[4]$<br>$prefix[5] &#x3D; prefix[4] + arr[5]$</p>
+<p>所以对于每个$prefix[k]$，有：<br>$prefix[k] &#x3D; prefix[k - 1] + arr[k], k &#x3D; 1,2,…,n$</p>
+<p>注意到(<del>注意力惊人</del>)，对于任意的$[l, r]$区间和就是：<br>$ans &#x3D; prefix[r] - prefix[l - 1]$</p>
+<p>通俗来说：</p>
+<p>有一个数组：<br>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; (数组)<br>要求区间：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; $(l, r)$<br>已经求出的两个区间：<br>=&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; $prefix[r]$<br>=&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$prefix[l - 1]$				  	<br>答案 显然就是$prefix[r] - prefix[l - 1]$</p>
+<p>代码就很好写了：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include  &lt;bits&#x2F;stdc++.h&gt;
+using  namespace  std;
+
+int arr[100005]; &#x2F;&#x2F; 数组
+int prefix[100005]; &#x2F;&#x2F; 前缀和数组
+int main() &#123;
+    int n; cin &gt;&gt; n;  &#x2F;&#x2F; 输入n
+    
+    for(int i &#x3D; 1; i &lt;&#x3D; n; ++ i) &#123;
+        cin &gt;&gt; arr[i]; &#x2F;&#x2F; 输入数据
+        prefix[i] &#x3D; prefix[i - 1] + arr[i]; &#x2F;&#x2F;预处理前缀和数组
+    &#125;
+
+    int m; cin &gt;&gt; m;  &#x2F;&#x2F; 输入 m
+    int l, r;         
+    for(int i &#x3D; 1; i &lt;&#x3D; m; ++ i) &#123;
+        cin &gt;&gt; l &gt;&gt; r; &#x2F;&#x2F; 输入l, r
+        cout &lt;&lt; prefix[r] - prefix[l - 1] &lt;&lt; endl; &#x2F;&#x2F; 直接计算得出答案
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后就愉快的AC啦！</p>
+<p>时间复杂度$O(n)$（没有循环嵌套），空间复杂度也是$O(n)$.<br>因为$arr$数组之后不会再用到，所以可以再优化空间：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include  &lt;bits&#x2F;stdc++.h&gt;
+using  namespace  std;
+
+&#x2F;&#x2F; int arr[100005]; 直接不需要原数组
+int prefix[100005]; &#x2F;&#x2F; 前缀和数组
+int main() &#123;
+    int n; cin &gt;&gt; n;  &#x2F;&#x2F; 输入n
+	int num; &#x2F;&#x2F; 临时变量num
+    for(int i &#x3D; 1; i &lt;&#x3D; n; ++ i) &#123;
+        cin &gt;&gt; num;
+        prefix[i] &#x3D; prefix[i - 1] + num; &#x2F;&#x2F;预处理前缀和数组
+    &#125;
+
+    int m; cin &gt;&gt; m;  &#x2F;&#x2F; 输入 m
+    int l, r;         
+    for(int i &#x3D; 1; i &lt;&#x3D; m; ++ i) &#123;
+        cin &gt;&gt; l &gt;&gt; r; &#x2F;&#x2F; 输入l, r
+        cout &lt;&lt; prefix[r] - prefix[l - 1] &lt;&lt; endl; &#x2F;&#x2F; 直接计算得出答案
+    &#125;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Cysheper</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://cysheper.github.io/2025/05/13/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">https://cysheper.github.io/2025/05/13/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Cysheper</a>
+                    !
+                </span>
+            </div>
+        
     </div>
-</div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
 
 
-<script>
-    $('.bg-cover').css('background-image', 'url(/medias/banner/0.webp)');
-</script>
 
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/ACM/">
+                                    <span class="chip bg-color">ACM</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                                    <span class="chip bg-color">基础知识</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%A2%84%E5%A4%84%E7%90%86/">
+                                    <span class="chip bg-color">预处理</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
 
-    </div>
-</div>
-
-<main class="content">
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
 
     
 
-<div id="category-cloud" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-bookmark"></i>&nbsp;&nbsp;文章分类
+</div>
+
+                </div>
             </div>
-            <div class="tag-chips">
-                
-                
-                
-                <a href="/categories/Algorithm/" title="Algorithm: 5">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">Algorithm
-                        <span class="tag-length">5</span>
-                    </span>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2025/05/13/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/0.webp" class="responsive-img" alt="预处理">
+                        
+                        <span class="card-title">预处理</span>
+                    </div>
                 </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            基础预处理算法：前缀和，差分，离散化
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-05-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Algorithm/" class="post-category">
+                                    Algorithm
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
                 
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ACM/">
+                        <span class="chip bg-color">ACM</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                        <span class="chip bg-color">基础知识</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%A2%84%E5%A4%84%E7%90%86/">
+                        <span class="chip bg-color">预处理</span>
+                    </a>
+                    
+                </div>
                 
             </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/05/09/bin/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/0.webp" class="responsive-img" alt="二进制与位运算">
+                        
+                        <span class="card-title">二进制与位运算</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            二进制与位运算相关知识
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-05-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Algorithm/" class="post-category">
+                                    Algorithm
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ACM/">
+                        <span class="chip bg-color">ACM</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/">
+                        <span class="chip bg-color">二进制</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
+                        <span class="chip bg-color">位运算</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                        <span class="chip bg-color">基础知识</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
         </div>
     </div>
 </div>
 
+<!-- TOC 悬浮按钮. -->
 
-    
-    <style type="text/css">
-    #category-radar {
-        width: 100%;
-        height: 360px;
-    }
-</style>
-
-<div class="container" data-aos="fade-up">
-    <div class="card">
-        <div id="category-radar" class="card-content"></div>
-    </div>
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
 </div>
 
-<script type="text/javascript" src="/libs/echarts/echarts.min.js"></script>
-<script type="text/javascript">
-    let radarChart = echarts.init(document.getElementById('category-radar'));
 
-    
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
 
-    let option = {
-        title: {
-            left: 'center',
-            text: '文章分类雷达图',
-            textStyle: {
-                fontWeight: 500,
-                fontSize: 22
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
             }
-        },
-        tooltip: {},
-        radar: {
-            name: {
-                textStyle: {
-                    color: '#3C4858'
-                }
-            },
-            indicator: [{"name":"Algorithm","max":10}],
-            nameGap: 5,
-            center: ['50%','55%'],
-            radius: '66%'
-        },
-        series: [{
-            type: 'radar',
-            color: ['#3ecf8e'],
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data : [
-                {
-                    value : [5],
-                    name : '文章分类数量'
-                }
-            ]
-        }]
-    };
+        });
 
-    radarChart.setOption(option);
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
 </script>
 
     
 
 </main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
+
 
 
     <footer class="page-footer bg-color">
