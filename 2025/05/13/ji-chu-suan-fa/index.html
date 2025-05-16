@@ -59,8 +59,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -405,6 +404,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -477,17 +489,22 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-15
+                    2025-05-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.1k
                 </div>
                 
 
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    4 分
+                </div>
                 
 
                 
@@ -526,85 +543,83 @@
 <h2 id="前缀和与差分"><a href="#前缀和与差分" class="headerlink" title="前缀和与差分"></a>前缀和与差分</h2><h3 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h3><p>我们先看例题：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/B3612">洛谷B3612 求区间和</a></p>
 <p>简而言之，给你一个长度为$n$的正整数数组 $a_1​,a_2​,⋯,a_n​$，有$m$次询问，每次询问给出一对区间$[ l_i, r_i ]$，分别求这 $m$ 个区间的区间和。</p>
 <p>如果你不会前缀和算法，你可能会这样写……</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-int arr[100005]; &#x2F;&#x2F; 正整数数组
-int main() &#123;
-	int n; cin &gt;&gt; n; &#x2F;&#x2F; 输入n
+<span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token number">100005</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 正整数数组</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">int</span> n<span class="token punctuation">;</span> cin <span class="token operator">>></span> n<span class="token punctuation">;</span> <span class="token comment">// 输入n</span>
 	
-	for(int i &#x3D; 1; i &lt;&#x3D; n; ++ i) cin &gt;&gt; arr[i]; &#x2F;&#x2F; 输入数据
+	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span> cin <span class="token operator">>></span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 输入数据</span>
 	
-	int m; cin &gt;&gt; m; &#x2F;&#x2F; 输入 m
-	int l, r;
+	<span class="token keyword">int</span> m<span class="token punctuation">;</span> cin <span class="token operator">>></span> m<span class="token punctuation">;</span> <span class="token comment">// 输入 m</span>
+	<span class="token keyword">int</span> l<span class="token punctuation">,</span> r<span class="token punctuation">;</span>
 	
-	for(int i &#x3D; 1; i &lt;&#x3D; m; ++ i) &#123;
-		int ans &#x3D; 0; &#x2F;&#x2F; 存结果
-		cin &gt;&gt; l &gt;&gt; r; &#x2F;&#x2F; 输入l, r
-		for(int j &#x3D; l; j &lt;&#x3D; r; ++ j) &#x2F;&#x2F; 从l到r累加数组数据
-			ans +&#x3D; arr[j];
-		cout &lt;&lt; ans &lt;&lt; endl; &#x2F;&#x2F; 输出ans
-	&#125;
-	return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">int</span> ans <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 存结果</span>
+		cin <span class="token operator">>></span> l <span class="token operator">>></span> r<span class="token punctuation">;</span> <span class="token comment">// 输入l, r</span>
+		<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> l<span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> r<span class="token punctuation">;</span> <span class="token operator">++</span> j<span class="token punctuation">)</span> <span class="token comment">// 从l到r累加数组数据</span>
+			ans <span class="token operator">+=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+		cout <span class="token operator">&lt;&lt;</span> ans <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 输出ans</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>但是一提交，结果却……<br><img src="https://i.postimg.cc/RVGFP1v3/image.png"><br>TLE。 。 。<br>为什么会超时呢？我们研究一下时间复杂度。</p>
 <p>按照最坏情况，$n &#x3D; 10^5$，区间可能的最大范围是整个数组，也就是$[0, 10^5]$，内外层循环都是$n$次，所以$O(n^2)$的复杂度，循环次数为$10^{10}$，题目时间限制为$1s$，肯定会超时（只要出题人想卡你，显然这道题卡了）。（具体时间复杂度计算和运行时间，看我这篇博客：pass）</p>
 <p>我们想一想，如果询问次数过多，可能会有重叠的区间被重复计算，也就造成，同一段数，不断被求和，导致性能的浪费。有没有一种方法，可以使每一个数只被计算一次，之后只需直接使用即可呢？</p>
 <p>有的，那就是前缀和！</p>
-<p>如果我们开辟一个额外的数组，前缀和数组（prefix），用来存储，原数组前$i$项的和，就是:</p>
-<p>$prefix[k] &#x3D; \sum_{i&#x3D;1}^k arr[i] , k &#x3D; 1,2,…,n$</p>
-<p>说人话就是：$prefix[k] &#x3D; arr[1] + arr[2] + arr[3] + … + arr[k], k &#x3D; 1,2,…,n$</p>
+<p>如果我们开辟一个额外的数组，前缀和数组（prefix，当然你取什么变量都行，只是为了显而易见得知道这个数组的作用），用来存储，原数组前$i$项的和，就是:</p>
+<p>$$prefix[k] &#x3D; \sum_{i&#x3D;1}^k arr[i], (k &#x3D; 1,2,…,n)$$</p>
+<p>说人话就是：<br>$$prefix[k] &#x3D; arr[1] + arr[2] + … + arr[k], (k &#x3D; 1,2,…,n)$$</p>
 <p>如果原数组$arr &#x3D; [1, 2, 3, 4, 5]$<br>则：<br>$prefix[0] &#x3D; 0$<br>$prefix[1] &#x3D; arr[1] &#x3D; 1$<br>$prefix[2] &#x3D; arr[1] + arr[2] &#x3D; 3$<br>$prefix[3] &#x3D; arr[1] + arr[2] + arr[3] &#x3D; 6$<br>$prefix[4] &#x3D; arr[1] + arr[2] + arr[3] + arr[4] &#x3D; 10$<br>$prefix[5] &#x3D; arr[1] + arr[2] + arr[3] + arr[4] + arr[5]&#x3D; 15$</p>
 <p>观察可以得到：<br>$prefix[1] &#x3D; prefix[0] + arr[1]$<br>$prefix[2] &#x3D; prefix[1] + arr[2]$<br>$prefix[3] &#x3D; prefix[2] + arr[3]$<br>$prefix[4] &#x3D; prefix[3] + arr[4]$<br>$prefix[5] &#x3D; prefix[4] + arr[5]$</p>
-<p>所以对于每个$prefix[k]$，有：<br>$prefix[k] &#x3D; prefix[k - 1] + arr[k], k &#x3D; 1,2,…,n$</p>
-<p>注意到(<del>注意力惊人</del>)，对于任意的$[l, r]$区间和就是：<br>$ans &#x3D; prefix[r] - prefix[l - 1]$</p>
-<p>通俗来说：</p>
-<p>有一个数组：<br>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; (数组)<br>要求区间：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; $(l, r)$<br>已经求出的两个区间：<br>=&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; $prefix[r]$<br>=&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$prefix[l - 1]$				  	<br>答案 显然就是$prefix[r] - prefix[l - 1]$</p>
-<p>代码就很好写了：</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include  &lt;bits&#x2F;stdc++.h&gt;
-using  namespace  std;
+<p>预处理每项$prefix$：<br>对于每个$prefix[k]$，有递推式：<br>$$\boxed{prefix[k] &#x3D; prefix[k - 1] + arr[k], (k &#x3D; 1,2,…,n)}$$</p>
+<p>注意到(<del>注意力惊人</del>)，对于任意的$[l, r]$区间和就是：<br>$$\boxed{\sum_{i&#x3D;l}^r arr[i] &#x3D; prefix[r] - prefix[l - 1]}$$</p>
+<p>有了这两个式子，代码就很好写了：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span>  <span class="token keyword">namespace</span>  std<span class="token punctuation">;</span>
 
-int arr[100005]; &#x2F;&#x2F; 数组
-int prefix[100005]; &#x2F;&#x2F; 前缀和数组
-int main() &#123;
-    int n; cin &gt;&gt; n;  &#x2F;&#x2F; 输入n
+<span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token number">100005</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 数组</span>
+<span class="token keyword">int</span> prefix<span class="token punctuation">[</span><span class="token number">100005</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 前缀和数组</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span> cin <span class="token operator">>></span> n<span class="token punctuation">;</span>  <span class="token comment">// 输入n</span>
     
-    for(int i &#x3D; 1; i &lt;&#x3D; n; ++ i) &#123;
-        cin &gt;&gt; arr[i]; &#x2F;&#x2F; 输入数据
-        prefix[i] &#x3D; prefix[i - 1] + arr[i]; &#x2F;&#x2F;预处理前缀和数组
-    &#125;
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 因为后面要i-1，所以从1开始，避免数组越界</span>
+        cin <span class="token operator">>></span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 输入数据</span>
+        prefix<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> prefix<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 预处理前缀和数组</span>
+    <span class="token punctuation">&#125;</span>
 
-    int m; cin &gt;&gt; m;  &#x2F;&#x2F; 输入 m
-    int l, r;         
-    for(int i &#x3D; 1; i &lt;&#x3D; m; ++ i) &#123;
-        cin &gt;&gt; l &gt;&gt; r; &#x2F;&#x2F; 输入l, r
-        cout &lt;&lt; prefix[r] - prefix[l - 1] &lt;&lt; endl; &#x2F;&#x2F; 直接计算得出答案
-    &#125;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">int</span> m<span class="token punctuation">;</span> cin <span class="token operator">>></span> m<span class="token punctuation">;</span>  <span class="token comment">// 输入 m</span>
+    <span class="token keyword">int</span> l<span class="token punctuation">,</span> r<span class="token punctuation">;</span>         
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cin <span class="token operator">>></span> l <span class="token operator">>></span> r<span class="token punctuation">;</span> <span class="token comment">// 输入l, r</span>
+        cout <span class="token operator">&lt;&lt;</span> prefix<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">-</span> prefix<span class="token punctuation">[</span>l <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 直接计算得出答案</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后就愉快的AC啦！</p>
 <p>时间复杂度$O(n)$（没有循环嵌套），空间复杂度也是$O(n)$.<br>因为$arr$数组之后不会再用到，所以可以再优化空间：</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include  &lt;bits&#x2F;stdc++.h&gt;
-using  namespace  std;
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span>  <span class="token keyword">namespace</span>  std<span class="token punctuation">;</span>
 
-&#x2F;&#x2F; int arr[100005]; 直接不需要原数组
-int prefix[100005]; &#x2F;&#x2F; 前缀和数组
-int main() &#123;
-    int n; cin &gt;&gt; n;  &#x2F;&#x2F; 输入n
-	int num; &#x2F;&#x2F; 临时变量num
-    for(int i &#x3D; 1; i &lt;&#x3D; n; ++ i) &#123;
-        cin &gt;&gt; num;
-        prefix[i] &#x3D; prefix[i - 1] + num; &#x2F;&#x2F;预处理前缀和数组
-    &#125;
+<span class="token comment">// int arr[100005]; 直接不需要原数组</span>
+<span class="token keyword">int</span> prefix<span class="token punctuation">[</span><span class="token number">100005</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 前缀和数组</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span> cin <span class="token operator">>></span> n<span class="token punctuation">;</span>  <span class="token comment">// 输入n</span>
+	<span class="token keyword">int</span> num<span class="token punctuation">;</span> <span class="token comment">// 临时变量num</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cin <span class="token operator">>></span> num<span class="token punctuation">;</span>
+        prefix<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> prefix<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> num<span class="token punctuation">;</span> <span class="token comment">//预处理前缀和数组</span>
+    <span class="token punctuation">&#125;</span>
 
-    int m; cin &gt;&gt; m;  &#x2F;&#x2F; 输入 m
-    int l, r;         
-    for(int i &#x3D; 1; i &lt;&#x3D; m; ++ i) &#123;
-        cin &gt;&gt; l &gt;&gt; r; &#x2F;&#x2F; 输入l, r
-        cout &lt;&lt; prefix[r] - prefix[l - 1] &lt;&lt; endl; &#x2F;&#x2F; 直接计算得出答案
-    &#125;
-    return 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">int</span> m<span class="token punctuation">;</span> cin <span class="token operator">>></span> m<span class="token punctuation">;</span>  <span class="token comment">// 输入 m</span>
+    <span class="token keyword">int</span> l<span class="token punctuation">,</span> r<span class="token punctuation">;</span>         
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cin <span class="token operator">>></span> l <span class="token operator">>></span> r<span class="token punctuation">;</span> <span class="token comment">// 输入l, r</span>
+        cout <span class="token operator">&lt;&lt;</span> prefix<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">-</span> prefix<span class="token punctuation">[</span>l <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment">// 直接计算得出答案</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -631,7 +646,7 @@ int main() &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://cysheper.github.io/2025/05/13/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">https://cysheper.github.io/2025/05/13/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/</a>
+                    <a href="https://cysheper.github.io/2025/05/13/ji-chu-suan-fa/">https://cysheper.github.io/2025/05/13/ji-chu-suan-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -729,7 +744,7 @@ int main() &#123;
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2025/05/13/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">
+                <a href="/2025/05/13/ji-chu-suan-fa/">
                     <div class="card-image">
                         
                         <img src="/medias/featureimages/0.webp" class="responsive-img" alt="预处理">
@@ -985,7 +1000,7 @@ int main() &#123;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">2.2k</span>
+                        class="white-color">2k</span>
             
             
             

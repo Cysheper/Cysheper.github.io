@@ -59,8 +59,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -405,6 +404,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -488,10 +500,15 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    165
+                    147
                 </div>
                 
 
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    1 分
+                </div>
                 
 
                 
@@ -519,16 +536,16 @@
 <li>迭代器</li>
 </ul>
 <h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><p>vector是一个动态数组，大小可变，经常替代C中的传统数组</p>
-<h4 id="引入头文件"><a href="#引入头文件" class="headerlink" title="引入头文件"></a>引入头文件</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;vector&gt;
+<h4 id="引入头文件"><a href="#引入头文件" class="headerlink" title="引入头文件"></a>引入头文件</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
 
-&#x2F;&#x2F; 或者使用万能头文件，包含大多数头文件
-#include &lt;bits&#x2F;stdc++.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="创建vector数组"><a href="#创建vector数组" class="headerlink" title="创建vector数组"></a>创建vector数组</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">vector&lt;int&gt; v;  &#x2F;&#x2F; 创建大小为零的数组v
-vector&lt;string&gt; s(10); &#x2F;&#x2F; 创建初始大小为10的字符串数组s
+<span class="token comment">// 或者使用万能头文件，包含大多数头文件</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="创建vector数组"><a href="#创建vector数组" class="headerlink" title="创建vector数组"></a>创建vector数组</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> v<span class="token punctuation">;</span>  <span class="token comment">// 创建大小为零的数组v</span>
+vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token function">s</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建初始大小为10的字符串数组s</span>
 
-int n &#x3D; 100;
-vector&lt;bool&gt; a(n); &#x2F;&#x2F; 创建初始大小为100的布尔数组a
-vector&lt;int&gt; b(n, -1) &#x2F;&#x2F; 创建初始大小为100的数组b, 初始值都为-1
+<span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+vector<span class="token operator">&lt;</span><span class="token keyword">bool</span><span class="token operator">></span> <span class="token function">a</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建初始大小为100的布尔数组a</span>
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">b</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// 创建初始大小为100的数组b, 初始值都为-1</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
@@ -555,7 +572,7 @@ vector&lt;int&gt; b(n, -1) &#x2F;&#x2F; 创建初始大小为100的数组b, 初�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://cysheper.github.io/2025/05/04/STL/">https://cysheper.github.io/2025/05/04/STL/</a>
+                    <a href="https://cysheper.github.io/2025/05/04/stl/">https://cysheper.github.io/2025/05/04/stl/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -904,7 +921,7 @@ vector&lt;int&gt; b(n, -1) &#x2F;&#x2F; 创建初始大小为100的数组b, 初�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">2.2k</span>
+                        class="white-color">2k</span>
             
             
             
