@@ -4,10 +4,18 @@
  *
  * Ported for PrismJS by Albert Vallverdu [@byverdu]
  */
+:root {
+  --prism-variable: #ff79c6;
+  --prism-keyword: #2cd6dc;
+  --prism-string: #8be9fd;
+  --prism-comment: #6272a4;
+  --prism-function: #e4f005;
+  --prism-number: #bd93f9;
+}
 
 code[class*="language-"],
 pre[class*="language-"] {
-	color: #f8f8f2;
+	color: #6cf4ab;
 	background: none;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
@@ -54,7 +62,7 @@ pre[class*="language-"] {
 }
 
 .token.punctuation {
-	color: #f8f8f2;
+	color: #f2f6f8;
 }
 
 .namespace {
@@ -89,7 +97,7 @@ pre[class*="language-"] {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-	color: #8be9fd;
+	color: #feffff;
 }
 
 .token.atrule,
@@ -100,7 +108,7 @@ pre[class*="language-"] {
 }
 
 .token.keyword {
-	color: #8be9fd;
+	color: #ff92ff;
 }
 
 .token.regex,
@@ -155,4 +163,28 @@ pre[class*="language-"].line-numbers > code {
   display: block;
   padding-right: 0.8em;
   text-align: right;
+}
+
+.token.variable {
+  color: var(--prism-variable);
+}
+
+.token.keyword {
+  color: var(--prism-keyword);
+}
+
+.token.string {
+  color: var(--prism-string);
+}
+
+.token.comment {
+  color: var(--prism-comment);
+}
+
+.token.function {
+  color: var(--prism-function);
+}
+
+.token.number {
+  color: var(--prism-number);
 }
