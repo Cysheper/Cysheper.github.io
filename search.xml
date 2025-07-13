@@ -4,6 +4,66 @@
   
     
     <entry>
+      <title>C++基础语法（算法竞赛向）</title>
+      <link href="/2025/07/14/c-ji-chu-yu-fa/"/>
+      <url>/2025/07/14/c-ji-chu-yu-fa/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、基础模板（输出Hello-World）"><a href="#一、基础模板（输出Hello-World）" class="headerlink" title="一、基础模板（输出Hello World）"></a>一、基础模板（输出Hello World）</h2><h3 id="（1）模板代码"><a href="#（1）模板代码" class="headerlink" title="（1）模板代码"></a>（1）模板代码</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    <span class="token comment">// 以上勿删</span>    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Hello World"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>    <span class="token comment">// 以下勿删</span>    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="（2）解释"><a href="#（2）解释" class="headerlink" title="（2）解释"></a>（2）解释</h3><p>这是所有教程都会教的基础代码，我们来逐行解释。</p><h4 id="1、-include"><a href="#1、-include" class="headerlink" title="1、#include &lt;bits/stdc++.h&gt;"></a>1、<code>#include &lt;bits/stdc++.h&gt;</code></h4><p>这是C++的头文件，以<code>#include</code> 开头，<code>&lt;&gt;</code>中间的<code>bits/stdc++.h</code>是头文件的名称。这是万能头文件，包含算法竞赛所需要的绝大部分头文件。</p><p>头文件的作用是导入官方自带的函数或模板，比如<code>cout</code>输出函数，就是在<code>iostream</code>头文件中，但是我们的万能头文件已经包含了这个头文件，所以我们不需要在加上他。</p><h4 id="2、using-namespace-std"><a href="#2、using-namespace-std" class="headerlink" title="2、using namespace std;"></a>2、<code>using namespace std;</code></h4><p>使用标准命名空间。这个初学者不需要理解，加上就好。如果没有加上，那么很多函数前面要加上<code>std::</code>，比如<code>std::cout</code>。</p><h4 id="3、int-main"><a href="#3、int-main" class="headerlink" title="3、int main() {}"></a>3、<code>int main() &#123;&#125;</code></h4><p>主函数，程序的入口，项目运行且只会运行主函数中的代码。<code>int</code>是主函数的返回值类型，<code>main()</code>是主函数的标识，别打错了。<code>&#123; &#125;</code>花括号中间就是主函数的主体，需要运行的代码放在花括号内。</p><h4 id="4、-以上勿删-以下勿删"><a href="#4、-以上勿删-以下勿删" class="headerlink" title="4、//以上勿删 //以下勿删"></a>4、<code>//以上勿删</code> <code>//以下勿删</code></h4><p>注释。<code>//</code> 是注释的标识，在双斜杠之后的就是注释内容，是给人看的，程序会直接跳过，不会影响程序。加上注释可以便于人们阅读代码。这里注释内容的意思就是不要删去必要内容。</p><h4 id="5、cout-Hello-World-endl"><a href="#5、cout-Hello-World-endl" class="headerlink" title="5、cout &lt;&lt; &quot;Hello World&quot; &lt;&lt; endl;"></a>5、<code>cout &lt;&lt; &quot;Hello World&quot; &lt;&lt; endl;</code></h4><p>输出语句，用于在控制台或终端输出指定内容。<code>cout</code>是输出的标识，输出<code>Hello World</code>这个字符串，<code>endl</code>是换行的意思。注意，每个语句都一定要以<code>;</code>结尾。</p><h4 id="6、return-0"><a href="#6、return-0" class="headerlink" title="6、return 0;"></a>6、<code>return 0;</code></h4><p>函数结束语句，这里是结束主函数。返回值为 $0$，表示程序正常结束，没有遇到错误。</p><h3 id="（3）作用"><a href="#（3）作用" class="headerlink" title="（3）作用"></a>（3）作用</h3><p>所以模板代码的作用就是在终端输出一行<code>Hello World</code>，并换行。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Algorithm </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> ACM </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> 基础语法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>二分算法</title>
+      <link href="/2025/06/08/er-fen-suan-fa/"/>
+      <url>/2025/06/08/er-fen-suan-fa/</url>
+      
+        <content type="html"><![CDATA[<h1 id="二分算法"><a href="#二分算法" class="headerlink" title="二分算法"></a>二分算法</h1><p>二分算法（Binary Search）是一种高效的查找算法，适用于在有序数组中查找特定元素。它通过将搜索范围逐步缩小一半来实现快速查找。</p><h2 id="二分算法的原理"><a href="#二分算法的原理" class="headerlink" title="二分算法的原理"></a>二分算法的原理</h2><p>我们可能都玩过猜数字游戏：一个人随机写下一个数字，另一个人猜，如果他猜的太大，就和他说太大了，如果太小了，就说太小了。那么你会怎么猜呢？</p><p>比如说：$0 - 100$</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Algorithm </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 二分 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>个人算法模板概览</title>
       <link href="/2025/05/16/suan-fa-mo-ban-gai-lan/"/>
       <url>/2025/05/16/suan-fa-mo-ban-gai-lan/</url>
