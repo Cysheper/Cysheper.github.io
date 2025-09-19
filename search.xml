@@ -22,11 +22,11 @@
             
             <tag> C++ </tag>
             
+            <tag> 基础语法 </tag>
+            
             <tag> ACM </tag>
             
             <tag> 基础知识 </tag>
-            
-            <tag> 基础语法 </tag>
             
         </tags>
       
@@ -140,11 +140,11 @@
             
             <tag> ACM </tag>
             
+            <tag> 基础知识 </tag>
+            
             <tag> 二进制 </tag>
             
             <tag> 位运算 </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -202,9 +202,9 @@
             
             <tag> C++ </tag>
             
-            <tag> STL </tag>
-            
             <tag> ACM </tag>
+            
+            <tag> STL </tag>
             
             <tag> 算法 </tag>
             
