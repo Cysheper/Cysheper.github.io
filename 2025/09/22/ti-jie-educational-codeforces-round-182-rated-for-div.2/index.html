@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="二进制与位运算, blog, technology, life">
-    <meta name="description" content="二进制与位运算相关知识">
+    <meta name="keywords" content="题解-Educational Codeforces Round 182 (Rated for Div. 2), blog, technology, life">
+    <meta name="description" content="Educational Codeforces Round 182 (Rated for Div. 2) 题解">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>二进制与位运算 | Cysheper</title>
+    <title>题解-Educational Codeforces Round 182 (Rated for Div. 2) | Cysheper</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <style>
@@ -420,12 +420,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.webp')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://img.hongyoubizhi.com/picture/pages/regular/2025/03/16/15/135286381_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">二进制与位运算</h1>
+                    <h1 class="description center-align post-title">题解-Educational Codeforces Round 182 (Rated for Div. 2)</h1>
                 </div>
             </div>
         </div>
@@ -453,16 +453,12 @@
                                 <span class="chip bg-color">ACM</span>
                             </a>
                         
-                            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
-                                <span class="chip bg-color">基础知识</span>
+                            <a href="/tags/%E9%A2%98%E8%A7%A3/">
+                                <span class="chip bg-color">题解</span>
                             </a>
                         
-                            <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/">
-                                <span class="chip bg-color">二进制</span>
-                            </a>
-                        
-                            <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
-                                <span class="chip bg-color">位运算</span>
+                            <a href="/tags/Codeforces/">
+                                <span class="chip bg-color">Codeforces</span>
                             </a>
                         
                     </div>
@@ -486,28 +482,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-05-09
+                    2025-09-22
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-21
+                    2025-09-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    579
+                    584
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -530,65 +526,108 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="（一）进制转化"><a href="#（一）进制转化" class="headerlink" title="（一）进制转化"></a>（一）进制转化</h2><h3 id="（1）任意进制转化为十进制"><a href="#（1）任意进制转化为十进制" class="headerlink" title="（1）任意进制转化为十进制"></a>（1）任意进制转化为十进制</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 二进制转十进制</span>
-string num <span class="token operator">=</span> <span class="token string">"10010"</span><span class="token punctuation">;</span> <span class="token comment">// 需要转化的二进制数</span>
-<span class="token keyword">int</span> ans <span class="token operator">=</span> <span class="token function">stoi</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> <span class="token keyword">nullptr</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2就是num的进制，ans 就是答案，ans = 18 = num</span>
-
-<span class="token comment">// 十六进制转十进制</span>
-num <span class="token operator">=</span> <span class="token string">"14A"</span><span class="token punctuation">;</span>
-ans <span class="token operator">=</span> <span class="token function">stoi</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> <span class="token keyword">nullptr</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ans = 330 = num</span>
-
-<span class="token comment">// 其他进制同理</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="（2）十进制转化为任意进制（2-9进制）"><a href="#（2）十进制转化为任意进制（2-9进制）" class="headerlink" title="（2）十进制转化为任意进制（2~9进制）"></a>（2）十进制转化为任意进制（2~9进制）</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">string <span class="token function">calc</span><span class="token punctuation">(</span><span class="token keyword">int</span> num<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 将十进制数num，转化为x进制数</span>
-    string ans <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span> <span class="token comment">// 记录结果</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>     <span class="token comment">// 只要num不为0</span>
-        ans <span class="token operator">+=</span> <span class="token function">to_string</span><span class="token punctuation">(</span>num <span class="token operator">%</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 记录余数</span>
-        num <span class="token operator">/=</span> x<span class="token punctuation">;</span>              
+                <p>忘记时间了，23:19才开始写，然后直接看B题，做不出来直接溜，结果还挺简单，做了三道，本来可以上大分的（悲）</p>
+<p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2144">题目链接</a></p>
+<h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><p>直接暴力</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span> cin <span class="token operator">>></span> n<span class="token punctuation">;</span>
+    vi <span class="token function">v</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span> cin <span class="token operator">>></span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span> j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> c <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;=</span> i<span class="token punctuation">;</span> <span class="token operator">++</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                a <span class="token operator">+=</span> v<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> k <span class="token operator">&lt;=</span> j<span class="token punctuation">;</span> <span class="token operator">++</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                b <span class="token operator">+=</span> v<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                c <span class="token operator">+=</span> v<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>a <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">==</span> b <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">&amp;&amp;</span> b <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">==</span> c <span class="token operator">%</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                cout <span class="token operator">&lt;&lt;</span> i <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> 
+                <span class="token operator">&lt;&lt;</span> j <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>a <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">!=</span> b <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">&amp;&amp;</span> b <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">!=</span> c <span class="token operator">%</span> <span class="token number">3</span> 
+            <span class="token operator">&amp;&amp;</span> c <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">!=</span> a <span class="token operator">%</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                cout <span class="token operator">&lt;&lt;</span> i <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span> 
+                <span class="token operator">&lt;&lt;</span> j <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
-    <span class="token function">reverse</span><span class="token punctuation">(</span>ans<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ans<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 反转ans字符串</span>
-    <span class="token keyword">return</span> ans<span class="token punctuation">;</span>  <span class="token comment">// 返回结果字符串</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> num <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment">// 将10转化为2,8,6进制</span>
-cout <span class="token operator">&lt;&lt;</span> <span class="token function">calc</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：1010 </span>
-cout <span class="token operator">&lt;&lt;</span> <span class="token function">calc</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：12</span>
-cout <span class="token operator">&lt;&lt;</span> <span class="token function">calc</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：14</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>将 <code>num</code> 不断模 <code>x</code> 的结果放入答案， 同时 <code>num</code> 不断除 <code>x</code>, 只要 <code>num</code> 不为 <code>0</code>。结果反转就是答案。证明略。  </p>
-<h2 id="（二）位运算"><a href="#（二）位运算" class="headerlink" title="（二）位运算"></a>（二）位运算</h2><h3 id="（1）-（按位与）"><a href="#（1）-（按位与）" class="headerlink" title="（1）&amp;（按位与）"></a>（1）&amp;（按位与）</h3><h4 id="1、规则"><a href="#1、规则" class="headerlink" title="1、规则"></a>1、规则</h4><p>二进制相应位都为<code>1</code>则为<code>1</code>，否则为<code>0</code></p>
-<p><strong>例如：</strong></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token number">111010</span>  <span class="token comment">// 58</span>
-<span class="token number">100100</span>  <span class="token comment">// 36</span>
-<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>  <span class="token comment">// &amp; （按位与）</span>
-<span class="token number">100000</span>  <span class="token comment">// 32</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="2、判断奇偶"><a href="#2、判断奇偶" class="headerlink" title="2、判断奇偶"></a><strong>2、判断奇偶</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"n为奇数"</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"n为偶数"</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><code>n &amp; 1</code> 若为真， <code>n</code> 的二进制位最低位为 <code>1</code>， 就是奇数，否则为偶数</p>
-<h4 id="3、取出最后一位的-1"><a href="#3、取出最后一位的-1" class="headerlink" title="3、取出最后一位的 1"></a><strong>3、取出最后一位的 <code>1</code></strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">lowbits</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> x <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token operator">-</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 返回x最后一位1对应的数</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>$10_{10}$ 的二进制为 $1010_2$ （下表为2表示二进制数）<br>$lowbits(10_{10}) &#x3D; 10_2 &#x3D; 2_{10}$<br>所以 $lowbits(10) &#x3D; 2$</p>
-<h4 id="4、判断一个数是否为2的幂"><a href="#4、判断一个数是否为2的幂" class="headerlink" title="4、判断一个数是否为2的幂"></a><strong>4、判断一个数是否为2的幂</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> num <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>num <span class="token operator">&amp;&amp;</span> num <span class="token operator">==</span> <span class="token function">lowbits</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// num不为0 &amp;&amp; num的二进制数只有一位1 </span>
-    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"是2的幂"</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"不是2的幂"</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">// 输出：是2的幂</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>若<code>x == lowbits(x)</code>，说明<code>x</code>的最低为的<code>1</code>对应的十进制数也为<code>x</code>，说明<code>x</code>的二进制位只有一个<code>1</code>，符合2的幂的特点。<code>0</code>除外，因为<code>lowbits(0) = 0</code>，而<code>0</code>不是2的幂。</p>
-<h3 id="（2）-（按位或）"><a href="#（2）-（按位或）" class="headerlink" title="（2）| （按位或）"></a>（2）| （按位或）</h3><h4 id="1、规则-1"><a href="#1、规则-1" class="headerlink" title="1、规则"></a>1、规则</h4><p>二进制相应位只要有一个为<code>1</code>则为<code>1</code>，否则为<code>0</code></p>
-<p><strong>例如：</strong></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token number">100101</span>  <span class="token comment">// 37</span>
-<span class="token number">101000</span>  <span class="token comment">// 40</span>
-<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>  <span class="token comment">// | （按位或）</span>
-<span class="token number">101101</span>  <span class="token comment">// 45</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"0 0 \n"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="2、集合合并"><a href="#2、集合合并" class="headerlink" title="2、集合合并"></a>2、集合合并</h4><p>给定两个集合，合并这两个集合：</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> A <span class="token operator">=</span> <span class="token number">0b10010</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> B <span class="token operator">=</span> <span class="token number">0b10111</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> C <span class="token operator">=</span> A <span class="token operator">|</span> B<span class="token punctuation">;</span>
-cout <span class="token operator">&lt;&lt;</span> C<span class="token punctuation">;</span>  <span class="token comment">// 输出：10111</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><p>将排列中没出现过的数从大到小填到0的位置，再左右两边向中间缩，排好序的就缩，直到第一个未排序的地方，输出差。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span> cin <span class="token operator">>></span> n<span class="token punctuation">;</span>
+    vi <span class="token function">v</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> mp<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cin <span class="token operator">>></span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        mp<span class="token punctuation">[</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    vi nums<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> n<span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">--</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>mp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> nums<span class="token punctuation">.</span><span class="token function">pb</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">int</span> pos <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>pos <span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> l <span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">--</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> r <span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>r <span class="token operator">-</span> l <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> cout <span class="token operator">&lt;&lt;</span> <span class="token number">0</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>  cout <span class="token operator">&lt;&lt;</span> r <span class="token operator">-</span> l <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><p>dp，只有四种可能的转移</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span> cin <span class="token operator">>></span> n<span class="token punctuation">;</span>
+    vi <span class="token function">a</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">b</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span> cin <span class="token operator">>></span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span> cin <span class="token operator">>></span> b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    vi <span class="token function">dp</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">cur</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> dp<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> 
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        cur<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> cur<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span> j<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span> k<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token keyword">int</span> p <span class="token operator">=</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">?</span> a<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">:</span> b<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">int</span> pp <span class="token operator">=</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">?</span> b<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">:</span> a<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token punctuation">(</span>k <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">?</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">:</span> b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">int</span> cc <span class="token operator">=</span> <span class="token punctuation">(</span>k <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">?</span> b<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">:</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>p <span class="token operator">&lt;=</span> c <span class="token operator">&amp;&amp;</span> pp <span class="token operator">&lt;=</span> cc<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                    cur<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+=</span> dp<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span>cur<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">>=</span> MOD<span class="token punctuation">)</span> 
+	                    cur<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">-=</span> MOD<span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        dp <span class="token operator">=</span> cur<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">int</span> ans <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> ans <span class="token operator">+=</span> <span class="token number">2</span> <span class="token operator">%</span> MOD<span class="token punctuation">;</span> 
+    <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+=</span> dp<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">>=</span> MOD<span class="token punctuation">)</span> dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-=</span> MOD<span class="token punctuation">;</span>
+        ans <span class="token operator">+=</span> dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    cout <span class="token operator">&lt;&lt;</span> ans <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -615,7 +654,7 @@ cout <span class="token operator">&lt;&lt;</span> C<span class="token punctuatio
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://cysheper.gitee.io/2025/05/09/bin/">https://cysheper.gitee.io/2025/05/09/bin/</a>
+                    <a href="https://cysheper.gitee.io/2025/09/22/ti-jie-educational-codeforces-round-182-rated-for-div.2/">https://cysheper.gitee.io/2025/09/22/ti-jie-educational-codeforces-round-182-rated-for-div.2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -657,16 +696,12 @@ cout <span class="token operator">&lt;&lt;</span> C<span class="token punctuatio
                                     <span class="chip bg-color">ACM</span>
                                 </a>
                             
-                                <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
-                                    <span class="chip bg-color">基础知识</span>
+                                <a href="/tags/%E9%A2%98%E8%A7%A3/">
+                                    <span class="chip bg-color">题解</span>
                                 </a>
                             
-                                <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/">
-                                    <span class="chip bg-color">二进制</span>
-                                </a>
-                            
-                                <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
-                                    <span class="chip bg-color">位运算</span>
+                                <a href="/tags/Codeforces/">
+                                    <span class="chip bg-color">Codeforces</span>
                                 </a>
                             
                         </div>
@@ -712,28 +747,29 @@ cout <span class="token operator">&lt;&lt;</span> C<span class="token punctuatio
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2025/05/13/ji-chu-suan-fa/">
+                <a href="/2025/09/22/ti-jie-educational-codeforces-round-182-rated-for-div.2/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/0.webp" class="responsive-img" alt="预处理">
+                        <img src="https://img.hongyoubizhi.com/picture/pages/regular/2025/03/16/15/135286381_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" class="responsive-img" alt="题解-Educational Codeforces Round 182 (Rated for Div. 2)">
                         
-                        <span class="card-title">预处理</span>
+                        <span class="card-title">题解-Educational Codeforces Round 182 (Rated for Div. 2)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            基础预处理算法：前缀和，差分，离散化
+                            Educational Codeforces Round 182 (Rated for Div. 2) 题解
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-05-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-09-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -746,6 +782,7 @@ cout <span class="token operator">&lt;&lt;</span> C<span class="token punctuatio
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -753,12 +790,12 @@ cout <span class="token operator">&lt;&lt;</span> C<span class="token punctuatio
                         <span class="chip bg-color">ACM</span>
                     </a>
                     
-                    <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
-                        <span class="chip bg-color">基础知识</span>
+                    <a href="/tags/%E9%A2%98%E8%A7%A3/">
+                        <span class="chip bg-color">题解</span>
                     </a>
                     
-                    <a href="/tags/%E9%A2%84%E5%A4%84%E7%90%86/">
-                        <span class="chip bg-color">预处理</span>
+                    <a href="/tags/Codeforces/">
+                        <span class="chip bg-color">Codeforces</span>
                     </a>
                     
                 </div>
@@ -772,23 +809,23 @@ cout <span class="token operator">&lt;&lt;</span> C<span class="token punctuatio
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/05/04/search/">
+                <a href="/2025/09/22/ti-jie-codeforces-global-round-29-div.1-div.2/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/0.webp" class="responsive-img" alt="搜索">
+                        <img src="https://img.hongyoubizhi.com/picture/pages/regular/2025/03/16/12/135151473_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" class="responsive-img" alt="题解-Codeforces Global Round 29 (Div. 1 + Div. 2)">
                         
-                        <span class="card-title">搜索</span>
+                        <span class="card-title">题解-Codeforces Global Round 29 (Div. 1 + Div. 2)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            搜索算法
+                            Codeforces Global Round 29 (Div. 1 + Div. 2) 题解
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-05-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-09-22
                             </span>
                         <span class="publish-author">
                             
@@ -805,20 +842,16 @@ cout <span class="token operator">&lt;&lt;</span> C<span class="token punctuatio
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
-                    </a>
-                    
                     <a href="/tags/ACM/">
                         <span class="chip bg-color">ACM</span>
                     </a>
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/%E9%A2%98%E8%A7%A3/">
+                        <span class="chip bg-color">题解</span>
                     </a>
                     
-                    <a href="/tags/%E6%90%9C%E7%B4%A2/">
-                        <span class="chip bg-color">搜索</span>
+                    <a href="/tags/Codeforces/">
+                        <span class="chip bg-color">Codeforces</span>
                     </a>
                     
                 </div>
