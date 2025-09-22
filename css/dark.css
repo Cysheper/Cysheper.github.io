@@ -63,8 +63,8 @@ body.DarkMode td,
 body.DarkMode p,
 body.DarkMode pre,
 body.DarkMode .markmap-container svg g div,
-body.DarkMode .read .bg-cover .description {
-    color: rgba(255, 255, 255, 0.6); /*.85为透明度，可依据需求修改*/
+body.DarkMode .bg-cover .read .description {
+    color: rgba(219, 219, 219, 0.6); /*.85为透明度，可依据需求修改*/
 }
 body.DarkMode .fArticleTitle, body.DarkMode .fArticleAuthor, body.DarkMode .fArticleUpdate {
     color: rgba(255, 255, 255, 0.6) !important;
