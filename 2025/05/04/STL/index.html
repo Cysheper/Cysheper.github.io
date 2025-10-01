@@ -507,7 +507,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    7 分
                 </div>
                 
 
@@ -530,7 +530,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>STL，即 <strong>C++ Standard Template Library</strong>（标准模板库），它由三个重要部分组成：<strong>容器</strong>， <strong>算法</strong>，<strong>迭代器</strong></p>
+                <p>C++ STL，即 <strong>C++ Standard Template Library</strong>（标准模板库），它由三个重要部分组成：<strong>容器</strong>， <strong>算法</strong>，<strong>迭代器</strong></p>
 <ul>
 <li><strong>容器</strong>：<code>vector</code>、<code>deque</code>、<code>map</code>、<code>set</code> 等</li>
 <li><strong>算法</strong>：<code>sort</code>、<code>find</code>、<code>lower_bound</code> 等</li>
@@ -538,7 +538,7 @@
 </ul>
 <p>它们在算法竞赛中十分常见，建议熟练使用。</p>
 <hr>
-<h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><p>vector是一个动态数组，大小可变，经常替代C中的传统数组</p>
+<h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><p><code>vector</code>是动态数组，大小可变，经常替代C中的传统数组。</p>
 <h4 id="（1）引入头文件"><a href="#（1）引入头文件" class="headerlink" title="（1）引入头文件"></a>（1）引入头文件</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
 
 <span class="token comment">// 或者使用万能头文件，包含大多数头文件</span>
@@ -552,8 +552,7 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
 vector<span class="token operator">&lt;</span><span class="token keyword">double</span><span class="token operator">></span> <span class="token function">c</span><span class="token punctuation">(</span>n <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3.14</span><span class="token punctuation">)</span> <span class="token comment">// 创建初始大小为200的浮点数数组c, 初始值都为3.14</span>
 
 <span class="token comment">// 列表初始化</span>
-
-vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> v <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> v <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="（3）输入元素"><a href="#（3）输入元素" class="headerlink" title="（3）输入元素"></a>（3）输入元素</h4><p><strong>1、未指定长度</strong></p>
 <p>如果<code>vector</code>数组数组定义的时候，没有指定长度，则只能使用<code>push_back()</code>函数输入。</p>
@@ -675,6 +674,13 @@ a<span class="token punctuation">.</span><span class="token function">erase</spa
 a<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">// a = [1, 2, 3]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="4、resize"><a href="#4、resize" class="headerlink" title="4、resize()"></a>4、<code>resize()</code></h5><p>手动扩容，扩大<code>vector</code>的容量</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> a <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+a<span class="token punctuation">.</span><span class="token function">resize</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// a = [1, 2, 3, 0, 0]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <hr>
 <h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><p><code>string</code>是C++的字符串类型，等同于C语言的<code>char a[]</code>（字符数组），但是各方面都完爆字符数组，建议赶紧丢弃字符数组，拥抱string。</p>
