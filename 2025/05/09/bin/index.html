@@ -59,7 +59,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 8.1.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -97,17 +99,6 @@
       <i class="fas fa-tags" style="zoom: 0.6;"></i>
       
       <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a target="_blank" rel="noopener" href="https://codeforces.com" class="waves-effect waves-light">
-      
-      <i class="fas fa-trophy" style="zoom: 0.6;"></i>
-      
-      <span>ACM</span>
     </a>
     
   </li>
@@ -167,6 +158,15 @@
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://anime.cysheper.top">
+          
+          <i class="fas fa-users" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>AnimeHub</span>
+        </a>
+      </li>
       
       <li>
         <a target="_blank" rel="noopener" href="https://ai.cysheper.top">
@@ -295,17 +295,6 @@
         
         <li class="m-nav-item">
 	  
-		<a target="_blank" rel="noopener" href="https://codeforces.com" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-trophy"></i>
-			
-			ACM
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
 		<a href="/categories" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-bookmark"></i>
@@ -358,6 +347,16 @@
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://anime.cysheper.top " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-users" style="position: absolute;left:50px" ></i>
+			      
+		          <span>AnimeHub</span>
+                  </a>
+                </li>
               
                 <li>
 
@@ -520,8 +519,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Algorithm/" class="post-category">
-                                Algorithm
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -540,14 +539,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-09-22
+                    2026-01-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    579
+                    562
                 </div>
                 
 
@@ -586,15 +585,15 @@ num <span class="token operator">=</span> <span class="token string">"14A"</span
 ans <span class="token operator">=</span> <span class="token function">stoi</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> <span class="token keyword">nullptr</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ans = 330 = num</span>
 
 <span class="token comment">// 其他进制同理</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="（2）十进制转化为任意进制（2-9进制）"><a href="#（2）十进制转化为任意进制（2-9进制）" class="headerlink" title="（2）十进制转化为任意进制（2~9进制）"></a>（2）十进制转化为任意进制（2~9进制）</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">string <span class="token function">calc</span><span class="token punctuation">(</span><span class="token keyword">int</span> num<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 将十进制数num，转化为x进制数</span>
+<h3 id="（2）十进制转化为任意进制（2-9进制）"><a href="#（2）十进制转化为任意进制（2-9进制）" class="headerlink" title="（2）十进制转化为任意进制（2~9进制）"></a>（2）十进制转化为任意进制（2~9进制）</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">string <span class="token function">calc</span><span class="token punctuation">(</span><span class="token keyword">int</span> num<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 将十进制数num，转化为x进制数</span>
     string ans <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span> <span class="token comment">// 记录结果</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>     <span class="token comment">// 只要num不为0</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token punctuation">{</span>     <span class="token comment">// 只要num不为0</span>
         ans <span class="token operator">+=</span> <span class="token function">to_string</span><span class="token punctuation">(</span>num <span class="token operator">%</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 记录余数</span>
         num <span class="token operator">/=</span> x<span class="token punctuation">;</span>              
-    <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">}</span>
     <span class="token function">reverse</span><span class="token punctuation">(</span>ans<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ans<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 反转ans字符串</span>
     <span class="token keyword">return</span> ans<span class="token punctuation">;</span>  <span class="token comment">// 返回结果字符串</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> num <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment">// 将10转化为2,8,6进制</span>
 cout <span class="token operator">&lt;&lt;</span> <span class="token function">calc</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：1010 </span>
 cout <span class="token operator">&lt;&lt;</span> <span class="token function">calc</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：12</span>
@@ -606,22 +605,22 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token function">c
 <span class="token number">100100</span>  <span class="token comment">// 36</span>
 <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>  <span class="token comment">// &amp; （按位与）</span>
 <span class="token number">100000</span>  <span class="token comment">// 32</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="2、判断奇偶"><a href="#2、判断奇偶" class="headerlink" title="2、判断奇偶"></a><strong>2、判断奇偶</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<h4 id="2、判断奇偶"><a href="#2、判断奇偶" class="headerlink" title="2、判断奇偶"></a><strong>2、判断奇偶</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     cout <span class="token operator">&lt;&lt;</span> <span class="token string">"n为奇数"</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
     cout <span class="token operator">&lt;&lt;</span> <span class="token string">"n为偶数"</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>n &amp; 1</code> 若为真， <code>n</code> 的二进制位最低位为 <code>1</code>， 就是奇数，否则为偶数</p>
-<h4 id="3、取出最后一位的-1"><a href="#3、取出最后一位的-1" class="headerlink" title="3、取出最后一位的 1"></a><strong>3、取出最后一位的 <code>1</code></strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">lowbits</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<h4 id="3、取出最后一位的-1"><a href="#3、取出最后一位的-1" class="headerlink" title="3、取出最后一位的 1"></a><strong>3、取出最后一位的 <code>1</code></strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">lowbits</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> x <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token operator">-</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 返回x最后一位1对应的数</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>$10_{10}$ 的二进制为 $1010_2$ （下表为2表示二进制数）<br>$lowbits(10_{10}) &#x3D; 10_2 &#x3D; 2_{10}$<br>所以 $lowbits(10) &#x3D; 2$</p>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>$10_{10}$ 的二进制为 $1010_2$ （下表为2表示二进制数）<br>$lowbits(10_{10}) = 10_2 = 2_{10}$<br>所以 $lowbits(10) = 2$</p>
 <h4 id="4、判断一个数是否为2的幂"><a href="#4、判断一个数是否为2的幂" class="headerlink" title="4、判断一个数是否为2的幂"></a><strong>4、判断一个数是否为2的幂</strong></h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> num <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>num <span class="token operator">&amp;&amp;</span> num <span class="token operator">==</span> <span class="token function">lowbits</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// num不为0 &amp;&amp; num的二进制数只有一位1 </span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>num <span class="token operator">&amp;&amp;</span> num <span class="token operator">==</span> <span class="token function">lowbits</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// num不为0 &amp;&amp; num的二进制数只有一位1 </span>
     cout <span class="token operator">&lt;&lt;</span> <span class="token string">"是2的幂"</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
     cout <span class="token operator">&lt;&lt;</span> <span class="token string">"不是2的幂"</span>
-<span class="token punctuation">&#125;</span>
+<span class="token punctuation">}</span>
 <span class="token comment">// 输出：是2的幂</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>若<code>x == lowbits(x)</code>，说明<code>x</code>的最低为的<code>1</code>对应的十进制数也为<code>x</code>，说明<code>x</code>的二进制位只有一个<code>1</code>，符合2的幂的特点。<code>0</code>除外，因为<code>lowbits(0) = 0</code>，而<code>0</code>不是2的幂。</p>
 <h3 id="（2）-（按位或）"><a href="#（2）-（按位或）" class="headerlink" title="（2）| （按位或）"></a>（2）| （按位或）</h3><h4 id="1、规则-1"><a href="#1、规则-1" class="headerlink" title="1、规则"></a>1、规则</h4><p>二进制相应位只要有一个为<code>1</code>则为<code>1</code>，否则为<code>0</code></p>
@@ -1052,8 +1051,8 @@ cout <span class="token operator">&lt;&lt;</span> C<span class="token punctuatio
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Algorithm/" class="post-category">
-                                    Algorithm
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -1086,18 +1085,18 @@ cout <span class="token operator">&lt;&lt;</span> C<span class="token punctuatio
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/05/04/search/">
+                <a href="/2025/05/04/stl/">
                     <div class="card-image">
                         
-                        <img src="http://img.hongyoubizhi.com/picture/pages/original/2025/03/16/15/135273564_p1.jpg" class="responsive-img" alt="搜索">
+                        <img src="https://img.hongyoubizhi.com/picture/pages/regular/2025/03/16/12/135293722_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" class="responsive-img" alt="C++ STL 容器篇（更新中）">
                         
-                        <span class="card-title">搜索</span>
+                        <span class="card-title">C++ STL 容器篇（更新中）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            搜索算法
+                            C++ STL
                         
                     </div>
                     <div class="publish-info">
@@ -1108,8 +1107,8 @@ cout <span class="token operator">&lt;&lt;</span> C<span class="token punctuatio
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Algorithm/" class="post-category">
-                                    Algorithm
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -1127,12 +1126,16 @@ cout <span class="token operator">&lt;&lt;</span> C<span class="token punctuatio
                         <span class="chip bg-color">C++</span>
                     </a>
                     
+                    <a href="/tags/STL/">
+                        <span class="chip bg-color">STL</span>
+                    </a>
+                    
                     <a href="/tags/%E7%AE%97%E6%B3%95/">
                         <span class="chip bg-color">算法</span>
                     </a>
                     
-                    <a href="/tags/%E6%90%9C%E7%B4%A2/">
-                        <span class="chip bg-color">搜索</span>
+                    <a href="/tags/%E5%AE%B9%E5%99%A8/">
+                        <span class="chip bg-color">容器</span>
                     </a>
                     
                 </div>
@@ -1337,7 +1340,7 @@ cout <span class="token operator">&lt;&lt;</span> C<span class="token punctuatio
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">15.1k</span>
+                        class="white-color">14.8k</span>
             
             
             

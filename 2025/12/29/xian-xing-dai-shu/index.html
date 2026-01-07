@@ -59,7 +59,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 8.1.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -97,17 +99,6 @@
       <i class="fas fa-tags" style="zoom: 0.6;"></i>
       
       <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a target="_blank" rel="noopener" href="https://codeforces.com" class="waves-effect waves-light">
-      
-      <i class="fas fa-trophy" style="zoom: 0.6;"></i>
-      
-      <span>ACM</span>
     </a>
     
   </li>
@@ -167,6 +158,15 @@
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://anime.cysheper.top">
+          
+          <i class="fas fa-users" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>AnimeHub</span>
+        </a>
+      </li>
       
       <li>
         <a target="_blank" rel="noopener" href="https://ai.cysheper.top">
@@ -295,17 +295,6 @@
         
         <li class="m-nav-item">
 	  
-		<a target="_blank" rel="noopener" href="https://codeforces.com" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-trophy"></i>
-			
-			ACM
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
 		<a href="/categories" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-bookmark"></i>
@@ -358,6 +347,16 @@
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://anime.cysheper.top " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-users" style="position: absolute;left:50px" ></i>
+			      
+		          <span>AnimeHub</span>
+                  </a>
+                </li>
               
                 <li>
 
@@ -467,7 +466,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/uploads/mutsumi01(1).jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/mutsumi01%281%29.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -532,14 +531,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-12-30
+                    2026-01-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    814
+                    745
                 </div>
                 
 
@@ -569,39 +568,23 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <style>
-.spoiler {
-  display: inline-block;
-  background: black;
-  color: black;
-  padding: 2px 4px;
-  border-radius: 3px;
-  line-height: 1.4;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-.spoiler:hover {
-  color: white;
-}
-</style>
-
-<h1 id="行列式"><a href="#行列式" class="headerlink" title="行列式"></a>行列式</h1><h2 id="（1）行列式"><a href="#（1）行列式" class="headerlink" title="（1）行列式"></a>（1）行列式</h2><p><em>什么是行列式？</em></p>
+                <h1 id="行列式"><a href="#行列式" class="headerlink" title="行列式"></a>行列式</h1><h2 id="（1）行列式"><a href="#（1）行列式" class="headerlink" title="（1）行列式"></a>（1）行列式</h2><p><em>什么是行列式？</em></p>
 <p>$$<br>\left|<br>\matrix{<br>a &amp; b \cr<br>c &amp; d<br>}<br>\right|<br>$$</p>
 <p><em>这就是行列式！</em></p>
 <p><strong>形如上面两竖线组成的就是行列式</strong><br><strong>其行数等于列数，行列等价.</strong></p>
 <h2 id="（2）逆序数"><a href="#（2）逆序数" class="headerlink" title="（2）逆序数"></a>（2）逆序数</h2><p>将$1$ ~ $n$进行排列，枚举每对数字，如果大的在前，小的在后，这一对数就是一个逆序，这个排列逆序的总量就是逆序数.</p>
 <p>准确的说：对于排列 $p$， 令 $1 \le i &lt; j \le n$，若 $p_i &gt; p_j$，则这是一个逆序对，所有取值中逆序对的数量就是这个排列的逆序数.</p>
-<p>例如：<code>2 3 5 4 1</code><br>对于这个排列，其所有逆序对为: <code>2 1</code>、<code>3 1</code>、<code>5 4</code>、<code>5 1</code>、<code>4 1</code>，故其逆序数为 $5$， 记作$\tau(23541)&#x3D;5$.</p>
-<h2 id="（3）奇排列-偶排列"><a href="#（3）奇排列-偶排列" class="headerlink" title="（3）奇排列 &#x2F; 偶排列"></a>（3）奇排列 &#x2F; 偶排列</h2><p>奇排列：逆序数为奇数，即 $\tau(p)\mod 2 &#x3D; 1$</p>
-<p>偶排列：逆序数为偶数，即 $\tau(p)\mod 2 &#x3D; 0$</p>
-<p>例如上面的排列：$\tau(23541) &#x3D; 5 \mod 2 &#x3D; 1$，所以这是一个奇排列.</p>
+<p>例如：<code>2 3 5 4 1</code><br>对于这个排列，其所有逆序对为: <code>2 1</code>、<code>3 1</code>、<code>5 4</code>、<code>5 1</code>、<code>4 1</code>，故其逆序数为 $5$， 记作$\tau(23541)=5$.</p>
+<h2 id="（3）奇排列-偶排列"><a href="#（3）奇排列-偶排列" class="headerlink" title="（3）奇排列 / 偶排列"></a>（3）奇排列 / 偶排列</h2><p>奇排列：逆序数为奇数，即 $\tau(p)\mod 2 = 1$</p>
+<p>偶排列：逆序数为偶数，即 $\tau(p)\mod 2 = 0$</p>
+<p>例如上面的排列：$\tau(23541) = 5 \mod 2 = 1$，所以这是一个奇排列.</p>
 <h2 id="（4）行列式的计算"><a href="#（4）行列式的计算" class="headerlink" title="（4）行列式的计算"></a>（4）行列式的计算</h2><p>$n$ 阶行列式定义为：</p>
-<p>$$ \left|<br> \matrix{<br>a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \cr<br>a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \cr<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \cr<br>a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}<br>}<br>\right| &#x3D;<br>\sum (-1)^{\tau(j_1 j_2 \cdots j_n)}<br>a_{1j_1} a_{2j_2} \cdots a_{n j_n}<br>$$</p>
+<p>$$ \left|<br> \matrix{<br>a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \cr<br>a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \cr<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \cr<br>a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}<br>}<br>\right| =<br>\sum (-1)^{\tau(j_1 j_2 \cdots j_n)}<br>a_{1j_1} a_{2j_2} \cdots a_{n j_n}<br>$$</p>
 <p><em>别被它吓到了！其实很简单！</em></p>
 <p><strong>从每一行中取出一个值，且这些值不是同列，将他们相乘。</strong><br><strong>如果这个取值方法的列标号是奇排列，再加上一个负号。</strong><br><strong>把所有情况再求和，就是行列式的结果！</strong></p>
 <p><em>例如：</em><br>【例1】求下列二阶行列式</p>
 <p>$\left| \matrix{ 1 &amp; 2 \cr 4 &amp; 5 } \right|$</p>
-<p>我们使用定义法来做：<br>所有排列：<br>$1 2 &#x3D; a_{11} \times a_{22} &#x3D; 1 \times 5 &#x3D; 5，这是一个偶排列（τ(12)&#x3D;0），故为正数$<br>$2 1 &#x3D; a_{12} \times a_{21} &#x3D; 2 \times 4 &#x3D; 8 \times -1 &#x3D; -8，这是一个偶排列（τ(21)&#x3D;1），故为负数$</p>
+<p>我们使用定义法来做：<br>所有排列：<br>$1 2 = a_{11} \times a_{22} = 1 \times 5 = 5，这是一个偶排列（τ(12)=0），故为正数$<br>$2 1 = a_{12} \times a_{21} = 2 \times 4 = 8 \times -1 = -8，这是一个偶排列（τ(21)=1），故为负数$</p>
 <p>将上面所有数求和，结果为 $-3$</p>
 <p>故答案为 $-3$</p>
 <p>【例2】求下列三阶行列式。</p>
@@ -610,14 +593,14 @@
 <span class="spoiler">
 我们使用定义法来做：
 
-<p>所有排列：<br>$1 2 3 &#x3D; a_{11} \times a_{22} \times a_{33} &#x3D; 1 \times 5 \times 9 &#x3D; 45，这是一个偶排列（\tau(123) &#x3D; 0），故为正数$<br>$1 3 2 &#x3D; a_{11} \times a_{13} \times a_{12} &#x3D; 1 \times 6 \times 8 &#x3D; 48 \times -1 &#x3D; -48，这是一个奇排列（\tau(132) &#x3D; 1），故为负数$<br>$2 1 3 &#x3D; 2 \times 4 \times 9 &#x3D; 72 \times -1 &#x3D; -72$<br>$2 3 1 &#x3D; 2 \times 6 \times 7 &#x3D; 84$<br>$3 1 2 &#x3D; 3 \times 4 \times 8 &#x3D; 96$<br>$3 2 1 &#x3D; 3 \times 5 \times 7 &#x3D; 105 \times -1 &#x3D; -105$</p>
+<p>所有排列：<br>$1 2 3 = a_{11} \times a_{22} \times a_{33} = 1 \times 5 \times 9 = 45，这是一个偶排列（\tau(123) = 0），故为正数$<br>$1 3 2 = a_{11} \times a_{13} \times a_{12} = 1 \times 6 \times 8 = 48 \times -1 = -48，这是一个奇排列（\tau(132) = 1），故为负数$<br>$2 1 3 = 2 \times 4 \times 9 = 72 \times -1 = -72$<br>$2 3 1 = 2 \times 6 \times 7 = 84$<br>$3 1 2 = 3 \times 4 \times 8 = 96$<br>$3 2 1 = 3 \times 5 \times 7 = 105 \times -1 = -105$</p>
 <p>将上面所有数求和，结果为 $0$<br><del><em>居然是零诶！</em></del></p>
 </span>
 
-<h2 id="（5）二阶行列式直接计算"><a href="#（5）二阶行列式直接计算" class="headerlink" title="（5）二阶行列式直接计算"></a>（5）二阶行列式直接计算</h2><p>$$<br>\left|<br>\matrix{<br>a &amp; b \cr<br>c &amp; d<br>}<br>\right|<br>&#x3D; ad - bc<br>$$</p>
+<h2 id="（5）二阶行列式直接计算"><a href="#（5）二阶行列式直接计算" class="headerlink" title="（5）二阶行列式直接计算"></a>（5）二阶行列式直接计算</h2><p>$$<br>\left|<br>\matrix{<br>a &amp; b \cr<br>c &amp; d<br>}<br>\right|<br>= ad - bc<br>$$</p>
 <p>【例】求下列二阶行列式</p>
 <p>$\left|<br>\matrix{<br>\cos\theta &amp; \sin\theta \cr<br>-\sin\theta &amp; \cos\theta<br>}<br>\right|$</p>
-<p>$原式 &#x3D; cos^2\theta + sin^2\theta &#x3D; 1$</p>
+<p>$原式 = cos^2\theta + sin^2\theta = 1$</p>
 
                 
             </div>
@@ -1000,53 +983,35 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/12/29/xian-xing-dai-shu/">
+                <a href="/2026/01/07/welcom/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/uploads/mutsumi01(1).jpg" class="responsive-img" alt="线性代数">
+                        <img src="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/mswlm1.png" class="responsive-img" alt="本小站指引">
                         
-                        <span class="card-title">线性代数</span>
+                        <span class="card-title">本小站指引</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            线性代数基本概念、解题方法（期末速通笔记）
+                            欢迎来到本小站！
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-12-29
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-01-07
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
-                                    数学
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Cysheper
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%95%B0%E5%AD%A6/">
-                        <span class="chip bg-color">数学</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-                        <span class="chip bg-color">线性代数</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1061,7 +1026,7 @@
                 <a href="/2025/12/26/bo-ke-kai-fa-ri-zhi/">
                     <div class="card-image">
                         
-                        <img src="https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/images/131150953_p0.jpg" class="responsive-img" alt="本站开发日志">
+                        <img src="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/mutsumi1.jpg" class="responsive-img" alt="本站开发日志">
                         
                         <span class="card-title">本站开发日志</span>
                     </div>
@@ -1078,12 +1043,8 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/" class="post-category">
-                                    开发日志
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Cysheper
                             
                         </span>
                     </div>
@@ -1297,7 +1258,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">15.1k</span>
+                        class="white-color">14.8k</span>
             
             
             
