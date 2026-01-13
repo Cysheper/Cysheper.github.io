@@ -127,6 +127,17 @@
   
   <li class="hide-on-med-and-down nav-item">
     
+    <a href="/essay" class="waves-effect waves-light">
+      
+      <i class="fas fa-pen-fancy" style="zoom: 0.6;"></i>
+      
+      <span>随笔</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
     <a href="/comment" class="waves-effect waves-light">
       
       <i class="fas fa-comments" style="zoom: 0.6;"></i>
@@ -311,6 +322,17 @@
 			    <i class="fa-fw fas fa-archive"></i>
 			
 			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/essay" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-pen-fancy"></i>
+			
+			随笔
 		</a>
           
         </li>
@@ -880,7 +902,7 @@
 <style>
     /* 留言发送区样式 */
     .message-send-area {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #62B6FF 0%, #3a85ff 100%);
         padding: 25px;
         border-radius: 15px;
         margin-bottom: 30px;
@@ -1080,7 +1102,7 @@
     }
 
     .send-btn {
-        background: linear-gradient(to right, #FF4351 0%, #ff7680 100%);
+        background: linear-gradient(to right, #ff4b4b 0%, #ff7a7a 100%);
         border: none;
         padding: 0 30px;
         height: 42px;
@@ -1104,13 +1126,8 @@
     }
 
     .send-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(255, 67, 81, 0.4);
-        background: linear-gradient(to right, #ff5060 0%, #ff8690 100%);
-    }
-
-    .send-btn:active {
-        transform: translateY(0);
+        background: linear-gradient(to right, #ff5c5c 0%, #ff8a8a 100%);
+        box-shadow: 0 8px 20px rgba(255, 75, 75, 0.4);
     }
 
     .send-btn:disabled {
@@ -1126,7 +1143,7 @@
         align-items: center;
         margin-bottom: 20px;
         padding: 15px 20px;
-        background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+        background: linear-gradient(to right, #62B6FF 0%, #62B6FF 100%);
         border-radius: 10px;
         animation: slideInLeft 0.6s ease-out;
     }
@@ -1186,39 +1203,14 @@
         padding: 20px;
         margin-bottom: 15px;
         border-radius: 12px;
-        border-left: 4px solid;
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
+        transition: none;
         animation: fadeInUp 0.5s ease-out;
     }
 
     .message-item:hover {
-        transform: translateX(5px);
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
-    }
-
-    .message-item:nth-child(6n+1) {
-        border-left-color: #4facfe;
-    }
-
-    .message-item:nth-child(6n+2) {
-        border-left-color: #667eea;
-    }
-
-    .message-item:nth-child(6n+3) {
-        border-left-color: #f093fb;
-    }
-
-    .message-item:nth-child(6n+4) {
-        border-left-color: #4facfe;
-    }
-
-    .message-item:nth-child(6n+5) {
-        border-left-color: #43e97b;
-    }
-
-    .message-item:nth-child(6n+6) {
-        border-left-color: #fa709a;
+        transform: none;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
     }
 
     .message-header {

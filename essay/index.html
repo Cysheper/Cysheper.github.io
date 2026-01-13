@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="归档: 2025/9, blog, technology, life">
+    <meta name="keywords" content="essay, blog, technology, life">
     <meta name="description" content="Cysheper的个人博客，分享技术的乐趣。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>归档: 2025/9 | Cysheper</title>
+    <title>essay | Cysheper</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <style>
@@ -471,7 +471,139 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
+    <style type="text/css">
+    /* don't remove. */
+    .about-cover {
+        height: 45vh;
+    }
+    .header {
+        text-align: center;
+        font-size: 2rem;
+    }
+    .tag-title {
+        margin-bottom: 10px;
+        color: #3C4858;
+        font-size: 1.75rem;
+        font-weight: 400;
+    }
+
+    /* 随笔列表样式 */
+    .essay-content {
+        padding: 10px 0;
+    }
+
+    .essay-item {
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+    }
+
+    .essay-time {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #888;
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+
+    .essay-time i {
+        color: #667eea;
+    }
+
+    .essay-body {
+        color: #333;
+        line-height: 1.8;
+        font-size: 15px;
+    }
+
+    /* Markdown 渲染样式 */
+    .essay-body h1, .essay-body h2, .essay-body h3, 
+    .essay-body h4, .essay-body h5, .essay-body h6 {
+        margin: 15px 0 10px;
+        color: #3C4858;
+    }
+
+    .essay-body p {
+        margin: 10px 0;
+    }
+
+    .essay-body code {
+        background: rgba(102, 126, 234, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: 'Consolas', monospace;
+        color: #667eea;
+    }
+
+    .essay-body pre {
+        background: #2d2d2d;
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+    }
+
+    .essay-body pre code {
+        background: none;
+        color: #f8f8f2;
+        padding: 0;
+    }
+
+    .essay-body blockquote {
+        border-left: 4px solid #667eea;
+        margin: 15px 0;
+        padding: 10px 20px;
+        background: rgba(102, 126, 234, 0.05);
+        color: #666;
+    }
+
+    .essay-body a {
+        color: #667eea;
+        text-decoration: none;
+    }
+
+    .essay-body a:hover {
+        text-decoration: underline;
+    }
+
+    .essay-body ul, .essay-body ol {
+        padding-left: 25px;
+        margin: 10px 0;
+    }
+
+    .essay-body img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin: 10px 0;
+    }
+
+    /* 加载状态 */
+    .essay-loading {
+        text-align: center;
+        padding: 40px;
+        color: #999;
+    }
+
+    .essay-loading i {
+        font-size: 32px;
+    }
+
+    .essay-empty {
+        text-align: center;
+        padding: 60px 20px;
+        color: #999;
+    }
+
+    .essay-empty i {
+        font-size: 64px;
+        color: #ddd;
+        margin-bottom: 20px;
+        display: block;
+    }
+</style>
+
+<div class="bg-cover pd-header about-cover">
     <div class="container">
     <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
@@ -519,484 +651,132 @@
 
 <main class="content">
 
-    
-    <div class="container archive-calendar">
-    <div class="card">
-        <div id="post-calendar" class="card-content"></div>
+    <div id="aboutme" class="container about-container">
+        <div class="card">
+            <div class="card-content">
+                <div class="tag-title center-align">
+                    <i class="fas fa-pen-fancy"></i>&nbsp;&nbsp;随笔
+                </div>
+                <div class="essay-content" id="essayContent">
+                    <div class="essay-loading">
+                        <i class="fas fa-spinner"></i>
+                        <p>加载中...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
-<script type="text/javascript" src="/libs/echarts/echarts.min.js"></script>
-<script type="text/javascript">
-    let myChart = echarts.init(document.getElementById('post-calendar'));
-
-    
-
-    let option = {
-        title: {
-            top: 0,
-            text: '文章日历',
-            left: 'center',
-            textStyle: {
-                color: '#3C4858'
-            }
-        },
-        tooltip: {
-            padding: 10,
-            backgroundColor: '#555',
-            borderColor: '#777',
-            borderWidth: 1,
-            formatter: function (obj) {
-                var value = obj.value;
-                return '<div style="font-size: 14px;">' + value[0] + '：' + value[1] + '</div>';
-            }
-        },
-        visualMap: {
-            show: true,
-            showLabel: true,
-            categories: [0, 1, 2, 3, 4],
-            calculable: true,
-            inRange: {
-                symbol: 'rect',
-                color: ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127']
-            },
-            itemWidth: 12,
-            itemHeight: 12,
-            orient: 'horizontal',
-            left: 'center',
-            bottom: 0
-        },
-        calendar: [{
-            left: 'center',
-            range: ["2025-01-13", "2026-01-13"],
-            cellSize: [13, 13],
-            splitLine: {
-                show: false
-            },
-            itemStyle: {
-                color: '#196127',
-                borderColor: '#fff',
-                borderWidth: 2
-            },
-            yearLabel: {
-                show: false
-            },
-            monthLabel: {
-                nameMap: 'cn',
-                fontSize: 11
-            },
-            dayLabel: {
-                formatter: '{start}  1st',
-                nameMap: 'cn',
-                fontSize: 11
-            }
-        }],
-        series: [{
-            type: 'heatmap',
-            coordinateSystem: 'calendar',
-            calendarIndex: 0,
-            data: [["2025-01-13", 0], ["2025-01-14", 0], ["2025-01-15", 0], ["2025-01-16", 0], ["2025-01-17", 0], ["2025-01-18", 0], ["2025-01-19", 0], ["2025-01-20", 0], ["2025-01-21", 0], ["2025-01-22", 0], ["2025-01-23", 0], ["2025-01-24", 0], ["2025-01-25", 0], ["2025-01-26", 0], ["2025-01-27", 0], ["2025-01-28", 0], ["2025-01-29", 0], ["2025-01-30", 0], ["2025-01-31", 0], ["2025-02-01", 0], ["2025-02-02", 0], ["2025-02-03", 0], ["2025-02-04", 0], ["2025-02-05", 0], ["2025-02-06", 0], ["2025-02-07", 0], ["2025-02-08", 0], ["2025-02-09", 0], ["2025-02-10", 0], ["2025-02-11", 0], ["2025-02-12", 0], ["2025-02-13", 0], ["2025-02-14", 0], ["2025-02-15", 0], ["2025-02-16", 0], ["2025-02-17", 0], ["2025-02-18", 0], ["2025-02-19", 0], ["2025-02-20", 0], ["2025-02-21", 0], ["2025-02-22", 0], ["2025-02-23", 0], ["2025-02-24", 0], ["2025-02-25", 0], ["2025-02-26", 0], ["2025-02-27", 0], ["2025-02-28", 0], ["2025-03-01", 0], ["2025-03-02", 0], ["2025-03-03", 0], ["2025-03-04", 0], ["2025-03-05", 0], ["2025-03-06", 0], ["2025-03-07", 0], ["2025-03-08", 0], ["2025-03-09", 0], ["2025-03-10", 0], ["2025-03-11", 0], ["2025-03-12", 0], ["2025-03-13", 0], ["2025-03-14", 0], ["2025-03-15", 0], ["2025-03-16", 0], ["2025-03-17", 0], ["2025-03-18", 0], ["2025-03-19", 0], ["2025-03-20", 0], ["2025-03-21", 0], ["2025-03-22", 0], ["2025-03-23", 0], ["2025-03-24", 0], ["2025-03-25", 0], ["2025-03-26", 0], ["2025-03-27", 0], ["2025-03-28", 0], ["2025-03-29", 0], ["2025-03-30", 0], ["2025-03-31", 0], ["2025-04-01", 0], ["2025-04-02", 0], ["2025-04-03", 0], ["2025-04-04", 0], ["2025-04-05", 0], ["2025-04-06", 0], ["2025-04-07", 0], ["2025-04-08", 0], ["2025-04-09", 0], ["2025-04-10", 0], ["2025-04-11", 0], ["2025-04-12", 0], ["2025-04-13", 0], ["2025-04-14", 0], ["2025-04-15", 0], ["2025-04-16", 0], ["2025-04-17", 0], ["2025-04-18", 0], ["2025-04-19", 0], ["2025-04-20", 0], ["2025-04-21", 0], ["2025-04-22", 0], ["2025-04-23", 0], ["2025-04-24", 0], ["2025-04-25", 0], ["2025-04-26", 0], ["2025-04-27", 0], ["2025-04-28", 0], ["2025-04-29", 0], ["2025-04-30", 0], ["2025-05-01", 0], ["2025-05-02", 0], ["2025-05-03", 0], ["2025-05-04", 3], ["2025-05-05", 0], ["2025-05-06", 0], ["2025-05-07", 0], ["2025-05-08", 0], ["2025-05-09", 1], ["2025-05-10", 0], ["2025-05-11", 0], ["2025-05-12", 0], ["2025-05-13", 1], ["2025-05-14", 0], ["2025-05-15", 0], ["2025-05-16", 1], ["2025-05-17", 0], ["2025-05-18", 0], ["2025-05-19", 0], ["2025-05-20", 0], ["2025-05-21", 0], ["2025-05-22", 0], ["2025-05-23", 0], ["2025-05-24", 0], ["2025-05-25", 0], ["2025-05-26", 0], ["2025-05-27", 0], ["2025-05-28", 0], ["2025-05-29", 0], ["2025-05-30", 0], ["2025-05-31", 0], ["2025-06-01", 0], ["2025-06-02", 0], ["2025-06-03", 0], ["2025-06-04", 0], ["2025-06-05", 0], ["2025-06-06", 0], ["2025-06-07", 0], ["2025-06-08", 1], ["2025-06-09", 0], ["2025-06-10", 0], ["2025-06-11", 0], ["2025-06-12", 0], ["2025-06-13", 0], ["2025-06-14", 0], ["2025-06-15", 0], ["2025-06-16", 0], ["2025-06-17", 0], ["2025-06-18", 0], ["2025-06-19", 0], ["2025-06-20", 0], ["2025-06-21", 0], ["2025-06-22", 0], ["2025-06-23", 0], ["2025-06-24", 0], ["2025-06-25", 0], ["2025-06-26", 0], ["2025-06-27", 0], ["2025-06-28", 0], ["2025-06-29", 0], ["2025-06-30", 0], ["2025-07-01", 0], ["2025-07-02", 0], ["2025-07-03", 0], ["2025-07-04", 0], ["2025-07-05", 0], ["2025-07-06", 0], ["2025-07-07", 0], ["2025-07-08", 0], ["2025-07-09", 0], ["2025-07-10", 0], ["2025-07-11", 0], ["2025-07-12", 0], ["2025-07-13", 0], ["2025-07-14", 0], ["2025-07-15", 0], ["2025-07-16", 0], ["2025-07-17", 0], ["2025-07-18", 0], ["2025-07-19", 0], ["2025-07-20", 0], ["2025-07-21", 0], ["2025-07-22", 0], ["2025-07-23", 0], ["2025-07-24", 0], ["2025-07-25", 0], ["2025-07-26", 0], ["2025-07-27", 0], ["2025-07-28", 0], ["2025-07-29", 0], ["2025-07-30", 0], ["2025-07-31", 0], ["2025-08-01", 0], ["2025-08-02", 0], ["2025-08-03", 0], ["2025-08-04", 0], ["2025-08-05", 0], ["2025-08-06", 0], ["2025-08-07", 0], ["2025-08-08", 0], ["2025-08-09", 0], ["2025-08-10", 0], ["2025-08-11", 0], ["2025-08-12", 0], ["2025-08-13", 0], ["2025-08-14", 0], ["2025-08-15", 0], ["2025-08-16", 0], ["2025-08-17", 0], ["2025-08-18", 0], ["2025-08-19", 0], ["2025-08-20", 0], ["2025-08-21", 0], ["2025-08-22", 0], ["2025-08-23", 0], ["2025-08-24", 0], ["2025-08-25", 0], ["2025-08-26", 0], ["2025-08-27", 0], ["2025-08-28", 0], ["2025-08-29", 0], ["2025-08-30", 0], ["2025-08-31", 0], ["2025-09-01", 0], ["2025-09-02", 0], ["2025-09-03", 0], ["2025-09-04", 0], ["2025-09-05", 0], ["2025-09-06", 0], ["2025-09-07", 0], ["2025-09-08", 0], ["2025-09-09", 0], ["2025-09-10", 0], ["2025-09-11", 0], ["2025-09-12", 0], ["2025-09-13", 0], ["2025-09-14", 0], ["2025-09-15", 0], ["2025-09-16", 0], ["2025-09-17", 0], ["2025-09-18", 0], ["2025-09-19", 0], ["2025-09-20", 0], ["2025-09-21", 0], ["2025-09-22", 4], ["2025-09-23", 0], ["2025-09-24", 0], ["2025-09-25", 0], ["2025-09-26", 1], ["2025-09-27", 0], ["2025-09-28", 0], ["2025-09-29", 1], ["2025-09-30", 0], ["2025-10-01", 1], ["2025-10-02", 0], ["2025-10-03", 0], ["2025-10-04", 0], ["2025-10-05", 0], ["2025-10-06", 0], ["2025-10-07", 0], ["2025-10-08", 0], ["2025-10-09", 0], ["2025-10-10", 0], ["2025-10-11", 0], ["2025-10-12", 0], ["2025-10-13", 0], ["2025-10-14", 0], ["2025-10-15", 0], ["2025-10-16", 0], ["2025-10-17", 0], ["2025-10-18", 0], ["2025-10-19", 0], ["2025-10-20", 0], ["2025-10-21", 0], ["2025-10-22", 0], ["2025-10-23", 0], ["2025-10-24", 0], ["2025-10-25", 0], ["2025-10-26", 0], ["2025-10-27", 0], ["2025-10-28", 0], ["2025-10-29", 0], ["2025-10-30", 0], ["2025-10-31", 0], ["2025-11-01", 0], ["2025-11-02", 0], ["2025-11-03", 0], ["2025-11-04", 0], ["2025-11-05", 0], ["2025-11-06", 0], ["2025-11-07", 0], ["2025-11-08", 0], ["2025-11-09", 0], ["2025-11-10", 0], ["2025-11-11", 0], ["2025-11-12", 0], ["2025-11-13", 0], ["2025-11-14", 0], ["2025-11-15", 0], ["2025-11-16", 0], ["2025-11-17", 0], ["2025-11-18", 0], ["2025-11-19", 0], ["2025-11-20", 0], ["2025-11-21", 0], ["2025-11-22", 0], ["2025-11-23", 0], ["2025-11-24", 0], ["2025-11-25", 0], ["2025-11-26", 0], ["2025-11-27", 0], ["2025-11-28", 0], ["2025-11-29", 0], ["2025-11-30", 0], ["2025-12-01", 0], ["2025-12-02", 0], ["2025-12-03", 0], ["2025-12-04", 0], ["2025-12-05", 0], ["2025-12-06", 0], ["2025-12-07", 0], ["2025-12-08", 0], ["2025-12-09", 0], ["2025-12-10", 0], ["2025-12-11", 0], ["2025-12-12", 0], ["2025-12-13", 0], ["2025-12-14", 0], ["2025-12-15", 0], ["2025-12-16", 0], ["2025-12-17", 0], ["2025-12-18", 0], ["2025-12-19", 0], ["2025-12-20", 0], ["2025-12-21", 0], ["2025-12-22", 0], ["2025-12-23", 0], ["2025-12-24", 0], ["2025-12-25", 0], ["2025-12-26", 1], ["2025-12-27", 0], ["2025-12-28", 0], ["2025-12-29", 1], ["2025-12-30", 0], ["2025-12-31", 0], ["2026-01-01", 0], ["2026-01-02", 0], ["2026-01-03", 0], ["2026-01-04", 0], ["2026-01-05", 0], ["2026-01-06", 0], ["2026-01-07", 1], ["2026-01-08", 0], ["2026-01-09", 0], ["2026-01-10", 0], ["2026-01-11", 0], ["2026-01-12", 0], ["2026-01-13", 0]]
-        }]
-
-    };
-
-    myChart.setOption(option);
-</script>
-
-    
-
-    
-
-    <div id="cd-timeline" class="container">
-        
-        <div class="cd-timeline-block">
-
-            
-            
-            
-            <div class="cd-timeline-img year" data-aos="zoom-in-up">
-                <a href="/archives/2025">2025</a>
-            </div>
-            
-
-            
-            
-            
-            <div class="cd-timeline-img month" data-aos="zoom-in-up">
-                <a href="/archives/2025/09">09</a>
-            </div>
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>29</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2025/09/29/xiao-zu-xun-lian-ji-hua/">
-                            <div class="card-image">
-                                
-                                <img src="https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/mutsumi01.jpg" class="responsive-img" alt="小组训练计划 week01">
-                                
-                                <span class="card-title">小组训练计划 week01</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    小组计划（1）
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2025-09-29
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/ACM/"><span class="chip bg-color">ACM</span></a>
-                            
-                            <a href="/tags/%E8%AE%A1%E5%88%92/"><span class="chip bg-color">计划</span></a>
-                            
-                            <a href="/tags/%E5%B0%8F%E7%BB%84/"><span class="chip bg-color">小组</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>26</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2025/09/26/codeforces-round-1054-div.3/">
-                            <div class="card-image">
-                                
-                                <img src="http://img.hongyoubizhi.com/picture/pages/original/2023/10/25/00/113027659_p0.png" class="responsive-img" alt="题解-Codeforces Round 1054 (Div. 3)">
-                                
-                                <span class="card-title">题解-Codeforces Round 1054 (Div. 3)</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    Codeforces Round 1054 (Div. 3)
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2025-09-26
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/Codeforces/"><span class="chip bg-color">Codeforces</span></a>
-                            
-                            <a href="/tags/%E9%A2%98%E8%A7%A3/"><span class="chip bg-color">题解</span></a>
-                            
-                            <a href="/tags/ACM/"><span class="chip bg-color">ACM</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>22</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2025/09/22/codeforces-global-round-29-div.1-div.2/">
-                            <div class="card-image">
-                                
-                                <img src="https://img.hongyoubizhi.com/picture/pages/regular/2025/03/16/12/135151473_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" class="responsive-img" alt="题解-Codeforces Global Round 29 (Div. 1 + Div. 2)">
-                                
-                                <span class="card-title">题解-Codeforces Global Round 29 (Div. 1 + Div. 2)</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    Codeforces Global Round 29 题解
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2025-09-22
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/Codeforces/"><span class="chip bg-color">Codeforces</span></a>
-                            
-                            <a href="/tags/%E9%A2%98%E8%A7%A3/"><span class="chip bg-color">题解</span></a>
-                            
-                            <a href="/tags/ACM/"><span class="chip bg-color">ACM</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>22</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2025/09/22/codeforces-round-1050-div.4/">
-                            <div class="card-image">
-                                
-                                <img src="https://img.hongyoubizhi.com/picture/pages/original/2025/03/16/12/134233797_p0.png" class="responsive-img" alt="题解-Codeforces Round 1050 (Div. 4)">
-                                
-                                <span class="card-title">题解-Codeforces Round 1050 (Div. 4)</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    Codeforces Round 1050 (Div. 4) 题解
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2025-09-22
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/Codeforces/"><span class="chip bg-color">Codeforces</span></a>
-                            
-                            <a href="/tags/%E9%A2%98%E8%A7%A3/"><span class="chip bg-color">题解</span></a>
-                            
-                            <a href="/tags/ACM/"><span class="chip bg-color">ACM</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>22</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2025/09/22/codeforces-round-1051-div.2/">
-                            <div class="card-image">
-                                
-                                <img src="http://img.hongyoubizhi.com/picture/pages/original/2025/03/16/12/135267381_p0.jpg" class="responsive-img" alt="题解-Codeforces Round 1051 (Div. 2)">
-                                
-                                <span class="card-title">题解-Codeforces Round 1051 (Div. 2)</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    Codeforces Round 1051 (Div. 2)题解
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2025-09-22
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/Codeforces/"><span class="chip bg-color">Codeforces</span></a>
-                            
-                            <a href="/tags/%E9%A2%98%E8%A7%A3/"><span class="chip bg-color">题解</span></a>
-                            
-                            <a href="/tags/ACM/"><span class="chip bg-color">ACM</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>22</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2025/09/22/educational-codeforces-round-182-rated-for-div.2/">
-                            <div class="card-image">
-                                
-                                <img src="https://img.hongyoubizhi.com/picture/pages/regular/2025/03/16/15/134248444_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" class="responsive-img" alt="题解-Educational Codeforces Round 182 (Div. 2)">
-                                
-                                <span class="card-title">题解-Educational Codeforces Round 182 (Div. 2)</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    Educational Codeforces Round 182 (Div. 2) 题解
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2025-09-22
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/Codeforces/"><span class="chip bg-color">Codeforces</span></a>
-                            
-                            <a href="/tags/%E9%A2%98%E8%A7%A3/"><span class="chip bg-color">题解</span></a>
-                            
-                            <a href="/tags/ACM/"><span class="chip bg-color">ACM</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-    </div>
-
 </main>
 
+<!-- 引入 marked.js 用于 Markdown 渲染 -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
+<script>
+    // ==================== API 配置 ====================
+    // TODO: 替换为实际的后端 API 地址
+    const ESSAY_API = {
+        GET_ESSAYS: 'http://localhost:8000/get_essays'
+    };
 
+    /*
+     * API 数据格式说明:
+     * 
+     * GET /get_essays
+     * 返回数据格式:
+     * {
+     *     "code": 200,
+     *     "message": "success",
+     *     "data": [
+     *         {
+     *             "time": "2026-01-07 10:30:00",    // 发布时间
+     *             "content": "# 标题\n这是**Markdown**内容"  // 支持Markdown的内容
+     *         },
+     *         ...
+     *     ]
+     * }
+     */
+
+    $(document).ready(function() {
+        loadEssays();
+    });
+
+    // 加载随笔列表
+    function loadEssays() {
+        $.ajax({
+            url: ESSAY_API.GET_ESSAYS,
+            method: 'GET',
+            success: function(response) {
+                console.log('API响应:', response);
+                if (response.code === 200 && response.data && response.data.length > 0) {
+                    renderEssays(response.data);
+                } else {
+                    showEmpty('暂无随笔内容');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('加载随笔失败:', error);
+                showEmpty('加载失败，请稍后重试');
+            }
+        });
+    }
+
+    // 渲染随笔列表
+    function renderEssays(essays) {
+        let html = '';
+        
+        // 按时间倒序排列
+        essays.sort((a, b) => new Date(b.time) - new Date(a.time));
+        
+        essays.forEach((essay, index) => {
+            const formattedTime = formatTime(essay.time);
+            const renderedContent = marked.parse(essay.content || '');
+            
+            html += `
+                <div class="essay-item" style="animation-delay: ${index * 0.1}s">
+                    <div class="essay-time">
+                        <i class="far fa-clock"></i>
+                        <span>${formattedTime}</span>
+                    </div>
+                    <div class="essay-body">${renderedContent}</div>
+                </div>
+            `;
+        });
+        
+        $('#essayContent').html(html);
+    }
+
+    // 显示空状态
+    function showEmpty(message) {
+        $('#essayContent').html(`
+            <div class="essay-empty">
+                <i class="far fa-file-alt"></i>
+                <p>${message}</p>
+            </div>
+        `);
+    }
+
+    // 格式化时间
+    function formatTime(timeStr) {
+        if (!timeStr) return '';
+        
+        const normalizedTimeStr = timeStr.replace(' ', 'T');
+        const date = new Date(normalizedTimeStr);
+        
+        if (isNaN(date.getTime())) {
+            return timeStr;
+        }
+        
+        const now = new Date();
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        
+        return `${year}-${month}-${day} ${hours}:${minutes}`;
+        
+    }
+</script>
 
     <footer class="page-footer bg-color">
     
