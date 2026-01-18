@@ -22,7 +22,7 @@
     
     <style>
         body{
-            background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+            background-image: url(https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/background.jpg);
             background-repeat:no-repeat;
             background-size: 100% 100%;
             background-attachment:fixed;
@@ -530,108 +530,498 @@
             <div class="card-content">
                 <div class="music-player">
                     
-                        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
+                    <!-- APlayer CSS -->
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+                    
+                    <style>
+                        /* ========== 美化版 APlayer 样式 ========== */
+                        
+                        /* 播放器容器 - 毛玻璃效果 */
+                        .aplayer {
+                            background: rgba(255, 255, 255, 1) !important;
+                            backdrop-filter: blur(20px);
+                            -webkit-backdrop-filter: blur(20px);
+                            border-radius: 16px !important;
+                            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+                            border: 1px solid rgba(255, 255, 255, 0.3);
+                        }
 
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        font-size: 15px;
-        color: #42b983;
-    }
+                        .aplayer * {
+                            border: none !important;
+                            outline: none !important;
+                        }
+                        /* 封面图片 - 旋转动画 - 放大 */
+                        .aplayer .aplayer-pic {
+                            border-radius: 12px !important;
+                            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+                            transition: all 0.3s ease;
+                            height: 160px !important;
+                            width: 130px !important;
+                        }
 
-    
-</style>
-<div class="music-player">
-    
-        <div class="title center-align">
-            <i class="fa fa-music"></i>&nbsp;&nbsp;听听音乐
-        </div>
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="tencent"
-                   type="playlist"
-                   id="1776127550"
-                   fixed='false'
-                   autoplay='true'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   listMaxHeight='525px'
-                   list-folded='false'
-        >
-        </meting-js>
-    </div>
-</div>
+                        .aplayer .aplayer-playing .aplayer-pic {
+                            animation: rotate-cover 12s linear infinite;
+                            border-radius: 50% !important;
+                        }
 
+                        @keyframes rotate-cover {
+                            from { transform: rotate(0deg); }
+                            to { transform: rotate(360deg); }
+                        }
 
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+                        /* 封面悬浮效果 */
+                        .aplayer .aplayer-pic:hover {
+                            transform: scale(1.03);
+                        }
 
+                        /* 播放按钮美化 */
+                        .aplayer .aplayer-pic .aplayer-play {
+                            transition: all 0.3s ease;
+                        }
 
+                        .aplayer .aplayer-pic .aplayer-play .aplayer-icon-play,
+                        .aplayer .aplayer-pic .aplayer-play .aplayer-icon-pause {
+                            fill: #ff6b9d !important;
+                        }
 
-                        <style>
+                        /* 歌曲信息区域 */
+                        .aplayer .aplayer-info .aplayer-music .aplayer-title {
+                            font-size: 15px !important;
+                            font-weight: 600 !important;
+                            color: #333 !important;
+                            margin-left: 18px;
+                        }
+
+                        .aplayer .aplayer-info .aplayer-music .aplayer-author {
+                            font-size: 13px !important;
+                            color: #888888 !important;
+                        }
+
+                        /* 进度条 - 渐变色 - 右移 */
+                        .aplayer .aplayer-bar-wrap {
+                            margin-left: 20px !important;
+                            margin-right: 15px !important;
+                        }
+
+                        .aplayer .aplayer-bar-wrap .aplayer-bar .aplayer-loaded {
+                            background: rgba(255, 107, 157, 0.3) !important;
+                        }
+
+                        .aplayer .aplayer-bar-wrap .aplayer-bar .aplayer-played {
+                            background: linear-gradient(90deg, #ff6b9d, #c44fff, #6b5bff) !important;
+                        }
+
+                        .aplayer .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb {
+                            background: #ffffff !important;
+                            /* border: 2px solid #ff6b9d !important; */
+                            box-shadow: 0 2px 8px rgba(255, 107, 157, 0.4);
+                        }
+
+                        /* 控制按钮美化 */
+                        .aplayer .aplayer-info .aplayer-controller .aplayer-icon {
+                            transition: all 0.2s ease;
+                        }
+
+                        .aplayer .aplayer-info .aplayer-controller .aplayer-icon:hover {
+                            transform: scale(1.1);
+                        }
+
+                        .aplayer .aplayer-info .aplayer-controller .aplayer-icon:hover path {
+                            fill: #ff6b9d !important;
+                        }
+
+                        /* 时间显示 */
+                        .aplayer .aplayer-info .aplayer-controller .aplayer-time {
+                            color: #666 !important;
+                        }
+
+                        /* 歌词区域 - 双语版 */
+                        .aplayer .aplayer-lrc {
+                            background: linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(255,255,255,0.6));
+                            height: 110px !important;
+                            text-align: center;
+                            border: none !important;
+                            border-top: none !important;
+                            border-bottom: none !important;
+                            padding: 0px 0 !important;
+                        }
+                        
+                        .aplayer .aplayer-lrc:before,
+                        .aplayer .aplayer-lrc:after {
+                            display: none !important;
+                        }
+                        
+                        .aplayer .aplayer-lrc p {
+                            font-size: 16px !important;
+                            font-weight: 500 !important;
+                            line-height: 18px !important;
+                            color: #999 !important;
+                            transition: all 0.3s ease;
+                        }
+
+                        /* 当前播放的歌词（英文）和下一行（中文）都高亮 */
+                        .aplayer .aplayer-lrc p.aplayer-lrc-current {
+                            font-size: 20px !important;
+                            color: #ff6b9d !important;
+                            font-weight: 700 !important;
+                            text-shadow: 0 2px 10px rgba(255, 107, 157, 0.3);
+                            margin: 0px 0 !important;
+                        }
+
+                        /* 当前歌词的下一行（翻译）也高亮 */
+                        .aplayer .aplayer-lrc p.aplayer-lrc-current + p {
+                            font-size: 18px !important;
+                            color: #ff6b9d !important;
+                            font-weight: 600 !important;
+                            text-shadow: 0 2px 10px rgba(255, 107, 157, 0.3);
+                            margin: 15px 0 !important;
+                        }
+
+                        /* 播放列表美化 - 移除所有边框 */
+                        .aplayer .aplayer-list {
+                            border: none !important;
+                            border-top: none !important;
+                            margin-top: 90px !important;
+                            padding-top: 0px !important;
+                        }
+
+                        .aplayer-list {
+                            height: 700px !important;
+                            padding: 0 !important;
+                            padding-left: 0px !important;
+                            border: none !important;
+                        }
+
+                        .aplayer .aplayer-list ol {
+                            border: none !important;
+                            margin-top: 0 !important;
+                            padding-top: 0 !important;
+                        }
+
+                        .aplayer .aplayer-list ol li {
+                            transition: all 0.2s ease;
+                            border-top: none !important;
+                        }
+
+                        .aplayer .aplayer-list ol li:first-child {
+                            border-top: none !important;
+                            padding-top: 0px !important;
+                        }
+
+                        .aplayer .aplayer-list ol li:hover {
+                            background: rgba(255, 107, 157, 0.08) !important;
+                        }
+
+                        .aplayer .aplayer-list ol li.aplayer-list-light {
+                            background: rgba(255, 107, 157, 0.12) !important;
+                        }
+
+                        .aplayer .aplayer-list ol li .aplayer-list-cur {
+                            background: linear-gradient(90deg, #ff6b9d, #c44fff) !important;
+                        }
+
+                        /* 音量条美化 */
+                        .aplayer .aplayer-volume-wrap .aplayer-volume-bar-wrap .aplayer-volume-bar .aplayer-volume {
+                            background: linear-gradient(180deg, #ff6b9d, #c44fff) !important;
+                        }
+
+                        /* 气泡动画样式 - 彩色版 */
                         .bubbles > .particle {
-                            /*初始透明度为0*/
                             opacity: 0;
                             position: absolute;
-                            /*初始颜色为荧光色，透明度为0.7*/
-                            background-color: rgba(128,255,0,0.7);
-                            /*使用bubbles动画，持续时间18秒，缓慢进入，无限循环*/
                             animation: bubbles 18s ease-in infinite;
                             border-radius: 100%;
                         }
-                        /*css keyframes 动画*/
+
+                        .bubbles > .particle:nth-child(odd) {
+                            background: linear-gradient(135deg, rgba(43, 250, 129, 0.6), rgba(91, 255, 118, 0.6));
+                        }
+
+                        .bubbles > .particle:nth-child(even) {
+                            background: linear-gradient(135deg, rgba(120, 255, 152, 0.6), rgba(61, 240, 25, 0.6));
+                        }
+                        
                         @keyframes bubbles {
                             0% {
                                 opacity: 0;
                             }
                             5% {
-                                opacity: 1;
-                                transform: translate(0, -20%);
+                                opacity: 0.8;
+                                transform: translate(0, -20%) scale(1);
                             }
-                            /*这里-8000%表示是气泡的8000%*/
                             100% {
                                 opacity: 0;
-                                transform: translate(0, -8000%);
+                                transform: translate(0, -8000%) scale(0.5);
                             }
                         }
-                        </style>
-                        <!-- 这里让元素宽度100%（和页面等宽） -->
-                        <div style="width: 100%; height: 100%; position: relative; bottom: 0px;" class="particletext bubbles">
 
+                        /* 标题美化 */
+                        .music-player .title {
+                            font-size: 24px;
+                            font-weight: 600;
+                            color: #333;
+                            margin-bottom: 25px;
+                            background: linear-gradient(90deg, #ff6b9d, #c44fff, #6b5bff);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            background-clip: text;
+                        }
 
+                        .music-player .title i {
+                            background: linear-gradient(90deg, #ff6b9d, #c44fff);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            background-clip: text;
+                        }
 
+                        /* 响应式 */
+                        @media (max-width: 600px) {
+                            .aplayer .aplayer-lrc p {
+                                font-size: 14px !important;
+                                line-height: 26px !important;
+                            }
+                            .aplayer .aplayer-lrc p.aplayer-lrc-current {
+                                font-size: 17px !important;
+                            }
+                        }
+                    </style>
+
+                    <!-- 播放器标题 -->
+                    <div class="title center-align">
+                        <i class="fa fa-music"></i>&nbsp;&nbsp; 听听音乐
+                    </div>
+
+                    <!-- 播放器容器 -->
+                    <div class="row">
+                        <div class="col l8 offset-l2 m10 offset-m1 s12">
+                            <div id="aplayer"></div>
                         </div>
-                        <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-                        <script>
-                          function bubbles() {
-                             $.each($(".particletext.bubbles"), function(){
-                                var bubblecount = ($(this).width()/50)*10;
-                                for(var i = 0; i <= bubblecount; i++) {
-                                   var size = ($.rnd(40,80)/10);
-                                   //这里的animation-delay很重要，关系到你的特效是否看上去是连续无断层的，上一步中css是18秒，所以这一步中延迟时间就设置成$.rnd(0,180)/10)
-                                   $(this).append('<span class="particle" style="top:' + $.rnd(20,80) + '%; left:' + $.rnd(0,95) + '%;width:' + size + 'px; height:' + size + 'px;animation-delay: ' + ($.rnd(0,180)/10) + 's;"></span>');
-                                }
-                             });
-                          }
-                          jQuery.rnd = function(m,n) {
-                              m = parseInt(m);
-                              n = parseInt(n);
-                              return Math.floor( Math.random() * (n - m + 1) ) + m;
-                          }
-                          bubbles();
-                        </script>
-                        
+                    </div>
+
+                    <!-- 气泡动画容器 -->
+                    <div style="width: 100%; height: 100%; position: relative; bottom: 0px;" class="particletext bubbles"></div>
+
+                    <!-- jQuery -->
+                    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
                     
+                    <!-- APlayer JS -->
+                    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+
+                    <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        
+                        // ========================================
+                        // 在这里配置你的音乐列表 (使用URL链接)
+                        // ========================================
+                        const musicList = [
+                            {
+                                name: 'I Really Want to Stay at Your House',                    // 歌曲名
+                                artist: 'Cyberpunk',                    // 歌手
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/I-Really-Want-to-Stay-at-Your-House.mp3',       // 音频文件URL
+                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s3s4/2/2168934385.jpg',    // 封面图片URL
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/I+Really+Want+to+Stay+at+Your+House.lrc'         // 歌词文件URL (可选)
+                            },
+                            {
+                                name: '空の箱',
+                                artist: 'トゲナシトゲアリ (TOGENASHI TOGEARI)',
+                                url: 'https://er-sycdn.kuwo.cn/83f2de4e612ed08bb6af59da9a08ed6f/696cdf8f/resource/30106/trackmedia/M500004E9egv2ctHh1.mp3?bitrate$128&format$mp3&source$&user$C_APK_guanwang_12609069939969033731&loginUid$',
+                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s18/59/1556210166.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/空の箱+(井芹仁菜、河原木桃香).lrc'
+                            },
+                            {
+                                name: 'Let You Down',
+                                artist: 'Dawid Podsiadlo',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/Let-You-Down.mp3',
+                                cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s98/80/1553420858.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/Let+You+Down.lrc'
+                            },
+                            {
+                                name: '星と僕らと（星星与我们）',
+                                artist: '目黒将司 / tofubeats (河合佑亮)',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/星と僕らと.mp3',
+                                cover: 'https://img4.kuwo.cn/star/albumcover/500/79/59/3855816407.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/星と僕らと.lrc'
+                            },
+                            {
+                                name: 'One more time, One more chance',
+                                artist: '山崎将义 (山崎まさよし)',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/One-more-time,One-more-chance.mp3',
+                                cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s75/72/2070663177.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/One more time, One more chance.lrc'
+                            },
+                            {
+                                name: 'カナタハルカ（遥远的彼方）',
+                                artist: 'RADWIMPS (ラッドウィンプス)',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/カナタハルカ.mp3',
+                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s4s32/55/259860577.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/カナタハルカ.lrc'
+                            },
+                            {
+                                name: 'カトラリー（餐具）',
+                                artist: '5時、ナイトコードで',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/カトラリー (1).mp3',
+                                cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s89/83/3836177557.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/カトラリー.lrc'
+                            },
+                            {
+                                name: '春日影',
+                                artist: 'MyGO!!!!!',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/春日影.mp3',
+                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s3s89/13/3955596740.png',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/春日影+(MyGO!!!!!+ver.).lrc'
+                            },
+                            {
+                                name: 'モニタリング（视奸）',
+                                artist: '重音テト',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/モニタリング(1).mp3',
+                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s72/63/504752135.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/モニタリング+(feat.+重音テト)+(COVER版).lrc'
+                            },
+                            {
+                                name: 'ファタール - Fatal',
+                                artist: 'GEMN / 中島健人 (なかじま けんと) / キタニタツヤ',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/ファタール - Fatal.mp3',
+                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s4s35/74/1748027782.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/ファタール.lrc'
+                            },
+                            {
+                                name: 'KiLLKiSS',
+                                artist: 'Ave Mujica',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/KiLLKiSS.mp3',
+                                cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s90/61/3872273944.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/KiLLKiSS.lrc'
+                            },
+                            {
+                                name: '雑踏、僕らの街（熙熙攘攘我们的城市）',
+                                artist: 'トゲナシトゲアリ (TOGENASHI TOGEARI)',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/雑踏、僕らの街.mp3',
+                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s30/83/1984603852.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/雑踏、僕らの街.lrc'
+                            },
+                            {
+                                name: '僕が死のうと思ったのは（曾经我也想过一了百了）',
+                                artist: 'amazarashi (アマザラシ)',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/僕が死のうと思ったのは.mp3',
+                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s90/84/3601908163.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/僕が死のうと思ったのは.lrc'
+                            },
+                            {
+                                name: 'us',
+                                artist: 'risou (ちんまりP)',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/us.mp3',
+                                cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s81/9/2660967983.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/us.lrc'
+                            },
+                            {
+                                name: 'One Last Kiss',
+                                artist: '宇多田ヒカル (Hikaru Utada)',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/One-Last-Kiss.mp3',
+                                cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s40/0/1404850806.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/One+Last+Kiss.lrc'
+                            },
+                            {
+                                name: '遠い空へ',
+                                artist: '市川淳 (JUN ICHIKAWA)',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/-遠い空へ-.mp3',
+                                cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s80/64/2406447638.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/-遠い空へ-.lrc'
+                            },
+                            {
+                                name: 'Take Me Hand',
+                                artist: 'DAISHI DANCE (ダイシ・ダンス) / Cécile Corbel',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/Take-Me-Hand.mp3',
+                                cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s52/46/1549652837.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/Take+Me+Hand.lrc'
+                            },
+                            {
+                                name: '勇者',
+                                artist: 'YOASOBI (ヨアソビ)',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/勇者.mp3',
+                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s3s87/98/1835706150.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/勇者.lrc'
+                            },
+                            {
+                                name: 'スパークル（火花）',
+                                artist: 'RADWIMPS (ラッドウィンプス)',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/スパークル.mp3',
+                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s4s50/90/2227912404.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/スパークル.lrc'
+                            },
+                            {
+                                name: '影色舞',
+                                artist: 'MyGO!!!!!',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/影色舞.mp3',
+                                cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s86/81/971004456.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/影色舞.lrc'
+                            },
+                            {
+                                name: 'secret base～君がくれたもの～',
+                                artist: '茅野愛衣 (かやの あい) / 戸松遥 (とまつ はるか) / 早見沙織 (はやみ さおり)',
+                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/secret base～君がくれたもの～.mp3',
+                                cover: 'https://img2.kuwo.cn/star/albumcover/500/80/51/2305689830.jpg',
+                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/secret+base+～君がくれたもの～+(10+years+.lrc'
+                            }
+                
+                    
+                            // 继续添加更多歌曲...
+                            // {
+                            //     name: '新歌曲',
+                            //     artist: '新歌手',
+                            //     url: 'https://your-url.com/song.mp3',
+                            //     cover: 'https://your-url.com/cover.jpg',
+                            //     lrc: 'https://your-url.com/lyrics.lrc'
+                            // }
+                        ];
+                        // ========================================
+
+                        // 初始化 APlayer
+                        const ap = new APlayer({
+                            container: document.getElementById('aplayer'),
+                            fixed: false,           // 不使用吸底模式
+                            autoplay: false,        // 不自动播放
+                            theme: '#ff6b9d',       // 主题色 (粉紫渐变主色)
+                            loop: 'all',            // 循环模式: 'all' | 'one' | 'none'
+                            order: 'random',        // 播放顺序: 'list'(顺序) | 'random'(随机)
+                            preload: 'auto',        // 预加载: 'auto' | 'metadata' | 'none'
+                            volume: 0.7,            // 默认音量 0-1
+                            listFolded: false,      // 列表默认不折叠
+                            listMaxHeight: 350,     // 列表最大高度
+                            lrcType: 3,             // 歌词类型: 1 表示直接嵌入歌词字符串
+                            audio: musicList        // 音乐列表
+                        });
+
+                        // 播放时添加旋转class
+                        ap.on('play', function() {
+                            document.querySelector('.aplayer').classList.add('aplayer-playing');
+                            console.log('开始播放: ' + ap.list.audios[ap.list.index].name);
+                        });
+
+                        ap.on('pause', function() {
+                            document.querySelector('.aplayer').classList.remove('aplayer-playing');
+                        });
+
+                    });
+
+                    // 气泡动画函数
+                    function bubbles() {
+                        $.each($(".particletext.bubbles"), function(){
+                            var bubblecount = ($(this).width()/50)*10;
+                            for(var i = 0; i <= bubblecount; i++) {
+                                var size = ($.rnd(40,80)/10);
+                                $(this).append('<span class="particle" style="top:' + $.rnd(20,80) + '%; left:' + $.rnd(0,95) + '%;width:' + size + 'px; height:' + size + 'px;animation-delay: ' + ($.rnd(0,180)/10) + 's;"></span>');
+                            }
+                        });
+                    }
+                    
+                    jQuery.rnd = function(m,n) {
+                        m = parseInt(m);
+                        n = parseInt(n);
+                        return Math.floor( Math.random() * (n - m + 1) ) + m;
+                    }
+                    
+                    bubbles();
+                    </script>
+
                 </div>
             </div>
         </div>
@@ -639,60 +1029,6 @@
 </main>
 
     <footer class="page-footer bg-color">
-    
-        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
-    
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="503838841"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="/libs/aplayer/Meting.min.js"></script>
-
     
 
     <div class="container row center-align"

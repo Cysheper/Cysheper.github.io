@@ -22,7 +22,7 @@
     
     <style>
         body{
-            background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+            background-image: url(https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/background.jpg);
             background-repeat:no-repeat;
             background-size: 100% 100%;
             background-attachment:fixed;
@@ -676,19 +676,13 @@
     /*
      * API 数据格式说明:
      * 
-     * GET /get_essays
-     * 返回数据格式:
-     * {
-     *     "code": 200,
-     *     "message": "success",
-     *     "data": [
-     *         {
-     *             "time": "2026-01-07 10:30:00",    // 发布时间
-     *             "content": "# 标题\n这是**Markdown**内容"  // 支持Markdown的内容
-     *         },
-     *         ...
-     *     ]
-     * }
+     * data = [
+     *   {
+     *       "is_show": true       // 是否显示该随笔，true 显示，false 不显示
+     *       "time": "2023-10-01 12:00:00",   // 随笔时间，格式为 "YYYY-MM-DD HH:MM:SS"
+     *       "content": "随笔内容，支持 Markdown 格式",               
+     *   }
+     * ]
      */
 
     $(document).ready(function() {
@@ -697,8 +691,12 @@
 
     // 加载随笔列表
     function loadEssays() {
+        if ('false' !== 'true') {
+            showEmpty('随笔功能未启用');
+            return;
+        }
         
-        
+        // renderEssays(JSON.parse(data));
     }
 
     // 渲染随笔列表
@@ -709,6 +707,10 @@
         essays.sort((a, b) => new Date(b.time) - new Date(a.time));
         
         essays.forEach((essay, index) => {
+            const is_show = essay.is_show;
+            if (is_show === false || is_show === 'false') {
+                return;
+            }
             const formattedTime = formatTime(essay.time);
             const renderedContent = marked.parse(essay.content || '');
             
@@ -760,60 +762,6 @@
 </script>
 
     <footer class="page-footer bg-color">
-    
-        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
-    
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="503838841"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="/libs/aplayer/Meting.min.js"></script>
-
     
 
     <div class="container row center-align"
