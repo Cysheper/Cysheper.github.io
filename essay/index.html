@@ -673,11 +673,6 @@
 
 <script>
     // ==================== API 配置 ====================
-    // TODO: 替换为实际的后端 API 地址
-    const ESSAY_API = {
-        GET_ESSAYS: 'http://localhost:8000/get_essays'
-    };
-
     /*
      * API 数据格式说明:
      * 
@@ -702,22 +697,8 @@
 
     // 加载随笔列表
     function loadEssays() {
-        $.ajax({
-            url: ESSAY_API.GET_ESSAYS,
-            method: 'GET',
-            success: function(response) {
-                console.log('API响应:', response);
-                if (response.code === 200 && response.data && response.data.length > 0) {
-                    renderEssays(response.data);
-                } else {
-                    showEmpty('暂无随笔内容');
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('加载随笔失败:', error);
-                showEmpty('加载失败，请稍后重试');
-            }
-        });
+        
+        
     }
 
     // 渲染随笔列表
