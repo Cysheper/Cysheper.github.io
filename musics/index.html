@@ -643,7 +643,6 @@
                             border: none !important;
                             border-top: none !important;
                             border-bottom: none !important;
-                            padding: 0px 0 !important;
                         }
                         
                         .aplayer .aplayer-lrc:before,
@@ -653,10 +652,11 @@
                         
                         .aplayer .aplayer-lrc p {
                             font-size: 16px !important;
-                            font-weight: 500 !important;
+                            font-weight: 500px !important;
                             line-height: 18px !important;
                             color: #999 !important;
                             transition: all 0.3s ease;
+                            margin-top: 0px !important;
                         }
 
                         /* 当前播放的歌词（英文）和下一行（中文）都高亮 */
@@ -674,7 +674,38 @@
                             color: #ff6b9d !important;
                             font-weight: 600 !important;
                             text-shadow: 0 2px 10px rgba(255, 107, 157, 0.3);
-                            margin: 15px 0 !important;
+                            margin: 12px 0 !important;
+                        }
+
+                        /* 小屏适配：根据屏幕宽度缩小歌词字号，保持默认桌面字号不变 */
+                        @media (max-width: 768px) {
+                            .aplayer .aplayer-lrc p {
+                                font-size: 15px !important;
+                                line-height: 17px !important;
+                            }
+
+                            .aplayer .aplayer-lrc p.aplayer-lrc-current {
+                                font-size: 18px !important;
+                            }
+
+                            .aplayer .aplayer-lrc p.aplayer-lrc-current + p {
+                                font-size: 16px !important;
+                            }
+                        }
+
+                        @media (max-width: 480px) {
+                            .aplayer .aplayer-lrc p {
+                                font-size: 14px !important;
+                                line-height: 16px !important;
+                            }
+
+                            .aplayer .aplayer-lrc p.aplayer-lrc-current {
+                                font-size: 16px !important;
+                            }
+
+                            .aplayer .aplayer-lrc p.aplayer-lrc-current + p {
+                                font-size: 15px !important;
+                            }
                         }
 
                         /* 播放列表美化 - 移除所有边框 */
@@ -813,154 +844,158 @@
                         // ========================================
                         // 在这里配置你的音乐列表 (使用URL链接)
                         // ========================================
-                        const musicList = [
-                            {
-                                name: 'I Really Want to Stay at Your House',                    // 歌曲名
-                                artist: 'Cyberpunk',                    // 歌手
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/I-Really-Want-to-Stay-at-Your-House.mp3',       // 音频文件URL
-                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s3s4/2/2168934385.jpg',    // 封面图片URL
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/I+Really+Want+to+Stay+at+Your+House.lrc'         // 歌词文件URL (可选)
-                            },
-                            {
-                                name: '空の箱',
-                                artist: 'トゲナシトゲアリ (TOGENASHI TOGEARI)',
-                                url: 'https://er-sycdn.kuwo.cn/83f2de4e612ed08bb6af59da9a08ed6f/696cdf8f/resource/30106/trackmedia/M500004E9egv2ctHh1.mp3?bitrate$128&format$mp3&source$&user$C_APK_guanwang_12609069939969033731&loginUid$',
-                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s18/59/1556210166.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/空の箱+(井芹仁菜、河原木桃香).lrc'
-                            },
-                            {
-                                name: 'Let You Down',
-                                artist: 'Dawid Podsiadlo',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/Let-You-Down.mp3',
-                                cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s98/80/1553420858.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/Let+You+Down.lrc'
-                            },
-                            {
-                                name: '星と僕らと（星星与我们）',
-                                artist: '目黒将司 / tofubeats (河合佑亮)',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/星と僕らと.mp3',
-                                cover: 'https://img4.kuwo.cn/star/albumcover/500/79/59/3855816407.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/星と僕らと.lrc'
-                            },
-                            {
-                                name: 'One more time, One more chance',
-                                artist: '山崎将义 (山崎まさよし)',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/One-more-time,One-more-chance.mp3',
-                                cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s75/72/2070663177.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/One more time, One more chance.lrc'
-                            },
-                            {
-                                name: 'カナタハルカ（遥远的彼方）',
-                                artist: 'RADWIMPS (ラッドウィンプス)',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/カナタハルカ.mp3',
-                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s4s32/55/259860577.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/カナタハルカ.lrc'
-                            },
-                            {
-                                name: 'カトラリー（餐具）',
-                                artist: '5時、ナイトコードで',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/カトラリー (1).mp3',
-                                cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s89/83/3836177557.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/カトラリー.lrc'
-                            },
-                            {
-                                name: '春日影',
-                                artist: 'MyGO!!!!!',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/春日影.mp3',
-                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s3s89/13/3955596740.png',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/春日影+(MyGO!!!!!+ver.).lrc'
-                            },
-                            {
-                                name: 'モニタリング（视奸）',
-                                artist: '重音テト',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/モニタリング(1).mp3',
-                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s72/63/504752135.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/モニタリング+(feat.+重音テト)+(COVER版).lrc'
-                            },
-                            {
-                                name: 'ファタール - Fatal',
-                                artist: 'GEMN / 中島健人 (なかじま けんと) / キタニタツヤ',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/ファタール - Fatal.mp3',
-                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s4s35/74/1748027782.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/ファタール.lrc'
-                            },
-                            {
-                                name: 'KiLLKiSS',
-                                artist: 'Ave Mujica',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/KiLLKiSS.mp3',
-                                cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s90/61/3872273944.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/KiLLKiSS.lrc'
-                            },
-                            {
-                                name: '雑踏、僕らの街（熙熙攘攘我们的城市）',
-                                artist: 'トゲナシトゲアリ (TOGENASHI TOGEARI)',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/雑踏、僕らの街.mp3',
-                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s30/83/1984603852.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/雑踏、僕らの街.lrc'
-                            },
-                            {
-                                name: '僕が死のうと思ったのは（曾经我也想过一了百了）',
-                                artist: 'amazarashi (アマザラシ)',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/僕が死のうと思ったのは.mp3',
-                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s90/84/3601908163.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/僕が死のうと思ったのは.lrc'
-                            },
-                            {
-                                name: 'us',
-                                artist: 'risou (ちんまりP)',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/us.mp3',
-                                cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s81/9/2660967983.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/us.lrc'
-                            },
-                            {
-                                name: 'One Last Kiss',
-                                artist: '宇多田ヒカル (Hikaru Utada)',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/One-Last-Kiss.mp3',
-                                cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s40/0/1404850806.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/One+Last+Kiss.lrc'
-                            },
-                            {
-                                name: '遠い空へ',
-                                artist: '市川淳 (JUN ICHIKAWA)',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/-遠い空へ-.mp3',
-                                cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s80/64/2406447638.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/-遠い空へ-.lrc'
-                            },
-                            {
-                                name: 'Take Me Hand',
-                                artist: 'DAISHI DANCE (ダイシ・ダンス) / Cécile Corbel',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/Take-Me-Hand.mp3',
-                                cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s52/46/1549652837.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/Take+Me+Hand.lrc'
-                            },
-                            {
-                                name: '勇者',
-                                artist: 'YOASOBI (ヨアソビ)',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/勇者.mp3',
-                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s3s87/98/1835706150.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/勇者.lrc'
-                            },
-                            {
-                                name: 'スパークル（火花）',
-                                artist: 'RADWIMPS (ラッドウィンプス)',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/スパークル.mp3',
-                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s4s50/90/2227912404.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/スパークル.lrc'
-                            },
-                            {
-                                name: '影色舞',
-                                artist: 'MyGO!!!!!',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/影色舞.mp3',
-                                cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s86/81/971004456.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/影色舞.lrc'
-                            },
-                            {
-                                name: 'secret base～君がくれたもの～',
-                                artist: '茅野愛衣 (かやの あい) / 戸松遥 (とまつ はるか) / 早見沙織 (はやみ さおり)',
-                                url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/secret base～君がくれたもの～.mp3',
-                                cover: 'https://img2.kuwo.cn/star/albumcover/500/80/51/2305689830.jpg',
-                                lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/secret+base+～君がくれたもの～+(10+years+.lrc'
-                            }
+                        if(site && site.data && site.data.musicList) {
+                            const musicList = site.data.musicList;
+                        } else {
+                            console.error("音乐列表数据未找到，请确保 source/_data/musicList.json 存在且格式正确。");
+                        }
+                            // {
+                            //     name: 'I Really Want to Stay at Your House',                    // 歌曲名
+                            //     artist: 'Cyberpunk',                    // 歌手
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/I-Really-Want-to-Stay-at-Your-House.mp3',       // 音频文件URL
+                            //     cover: 'https://img4.kuwo.cn/star/albumcover/500/s3s4/2/2168934385.jpg',    // 封面图片URL
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/I+Really+Want+to+Stay+at+Your+House.lrc'         // 歌词文件URL (可选)
+                            // },
+                            // {
+                            //     name: '空の箱',
+                            //     artist: 'トゲナシトゲアリ (TOGENASHI TOGEARI)',
+                            //     url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/空の箱-トゲナシトゲアリ.flac',
+                            //     cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s18/59/1556210166.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/空の箱+(井芹仁菜、河原木桃香).lrc'
+                            // },
+                            // {
+                            //     name: 'Let You Down',
+                            //     artist: 'Dawid Podsiadlo',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/Let-You-Down.mp3',
+                            //     cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s98/80/1553420858.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/Let+You+Down.lrc'
+                            // },
+                            // {
+                            //     name: '星と僕らと（星星与我们）',
+                            //     artist: '目黒将司 / tofubeats (河合佑亮)',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/星と僕らと.mp3',
+                            //     cover: 'https://img4.kuwo.cn/star/albumcover/500/79/59/3855816407.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/星と僕らと.lrc'
+                            // },
+                            // {
+                            //     name: 'One more time, One more chance',
+                            //     artist: '山崎将义 (山崎まさよし)',
+                            //     url: 'http://t93yo47j7.hd-bkt.clouddn.com/One%20more%20time%2COne%20more%20chance-%E5%B1%B1%E5%B4%8E%E3%81%BE%E3%81%95%E3%82%88%E3%81%97.flac',
+                            //     cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s75/72/2070663177.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/One more time, One more chance.lrc'
+                            // },
+                            // {
+                            //     name: 'カナタハルカ（遥远的彼方）',
+                            //     artist: 'RADWIMPS (ラッドウィンプス)',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/カナタハルカ.mp3',
+                            //     cover: 'https://img3.kuwo.cn/star/albumcover/500/s4s32/55/259860577.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/カナタハルカ.lrc'
+                            // },
+                            // {
+                            //     name: 'カトラリー（餐具）',
+                            //     artist: '5時、ナイトコードで',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/カトラリー (1).mp3',
+                            //     cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s89/83/3836177557.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/カトラリー.lrc'
+                            // },
+                            // {
+                            //     name: '春日影',
+                            //     artist: 'MyGO!!!!!',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/春日影.mp3',
+                            //     cover: 'https://img3.kuwo.cn/star/albumcover/500/s3s89/13/3955596740.png',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/春日影+(MyGO!!!!!+ver.).lrc'
+                            // },
+                            // {
+                            //     name: 'モニタリング（视奸）',
+                            //     artist: '重音テト',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/モニタリング(1).mp3',
+                            //     cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s72/63/504752135.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/モニタリング+(feat.+重音テト)+(COVER版).lrc'
+                            // },
+                            // {
+                            //     name: 'ファタール - Fatal',
+                            //     artist: 'GEMN / 中島健人 (なかじま けんと) / キタニタツヤ',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/ファタール - Fatal.mp3',
+                            //     cover: 'https://img3.kuwo.cn/star/albumcover/500/s4s35/74/1748027782.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/ファタール.lrc'
+                            // },
+                            // {
+                            //     name: 'KiLLKiSS',
+                            //     artist: 'Ave Mujica',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/KiLLKiSS.mp3',
+                            //     cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s90/61/3872273944.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/KiLLKiSS.lrc'
+                            // },
+                            // {
+                            //     name: '雑踏、僕らの街（熙熙攘攘我们的城市）',
+                            //     artist: 'トゲナシトゲアリ (TOGENASHI TOGEARI)',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/雑踏、僕らの街.mp3',
+                            //     cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s30/83/1984603852.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/雑踏、僕らの街.lrc'
+                            // },
+                            // {
+                            //     name: '僕が死のうと思ったのは（曾经我也想过一了百了）',
+                            //     artist: 'amazarashi (アマザラシ)',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/僕が死のうと思ったのは.mp3',
+                            //     cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s90/84/3601908163.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/僕が死のうと思ったのは.lrc'
+                            // },
+                            // {
+                            //     name: 'us',
+                            //     artist: 'risou (ちんまりP)',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/us.mp3',
+                            //     cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s81/9/2660967983.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/us.lrc'
+                            // },
+                            // {
+                            //     name: 'One Last Kiss',
+                            //     artist: '宇多田ヒカル (Hikaru Utada)',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/One-Last-Kiss.mp3',
+                            //     cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s40/0/1404850806.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/One+Last+Kiss.lrc'
+                            // },
+                            // {
+                            //     name: '遠い空へ',
+                            //     artist: '市川淳 (JUN ICHIKAWA)',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/-遠い空へ-.mp3',
+                            //     cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s80/64/2406447638.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/-遠い空へ-.lrc'
+                            // },
+                            // {
+                            //     name: 'Take Me Hand',
+                            //     artist: 'DAISHI DANCE (ダイシ・ダンス) / Cécile Corbel',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/Take-Me-Hand.mp3',
+                            //     cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s52/46/1549652837.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/Take+Me+Hand.lrc'
+                            // },
+                            // {
+                            //     name: '勇者',
+                            //     artist: 'YOASOBI (ヨアソビ)',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/勇者.mp3',
+                            //     cover: 'https://img3.kuwo.cn/star/albumcover/500/s3s87/98/1835706150.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/勇者.lrc'
+                            // },
+                            // {
+                            //     name: 'スパークル（火花）',
+                            //     artist: 'RADWIMPS (ラッドウィンプス)',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/スパークル.mp3',
+                            //     cover: 'https://img3.kuwo.cn/star/albumcover/500/s4s50/90/2227912404.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/スパークル.lrc'
+                            // },
+                            // {
+                            //     name: '影色舞',
+                            //     artist: 'MyGO!!!!!',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/影色舞.mp3',
+                            //     cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s86/81/971004456.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/影色舞.lrc'
+                            // },
+                            // {
+                            //     name: 'secret base～君がくれたもの～',
+                            //     artist: '茅野愛衣 (かやの あい) / 戸松遥 (とまつ はるか) / 早見沙織 (はやみ さおり)',
+                            //     url: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/music/secret base～君がくれたもの～.mp3',
+                            //     cover: 'https://img2.kuwo.cn/star/albumcover/500/80/51/2305689830.jpg',
+                            //     lrc: 'https://cdn.jsdelivr.net/gh/Cysheper/MyImages@main/data/LCRS/secret+base+～君がくれたもの～+(10+years+.lrc'
+                            // }
                 
                     
                             // 继续添加更多歌曲...
@@ -971,7 +1006,7 @@
                             //     cover: 'https://your-url.com/cover.jpg',
                             //     lrc: 'https://your-url.com/lyrics.lrc'
                             // }
-                        ];
+                        
                         // ========================================
 
                         // 初始化 APlayer
