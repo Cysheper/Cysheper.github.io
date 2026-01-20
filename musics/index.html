@@ -843,184 +843,185 @@
                     <!-- APlayer JS -->
                     <script src="/libs/aplayer/APlayer.min.js"></script>
 
+                    
                     <script>
                     document.addEventListener('DOMContentLoaded', async function() {
                         
                         // ========================================
                         // 在这里配置你的音乐列表 (使用URL链接)
                         // ========================================
-                        const musicListUrl = 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/MusicLists/musicList.json';
-
-                        const musicList =  [
-                            {
-                                name: 'I Really Want to Stay at Your House',                   
-                                artist: 'Cyberpunk',                   
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/I%20Really%20Want%20to%20Stay%20at%20Your%20House-Cyberpunk.mp3',
-                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s3s4/2/2168934385.jpg',    
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/I%2BReally%2BWant%2Bto%2BStay%2Bat%2BYour%2BHouse.lrc'       
-                            },
-                            {
-                                name: '空の箱',
-                                artist: 'トゲナシトゲアリ (TOGENASHI TOGEARI)',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E7%A9%BA%E3%81%AE%E7%AE%B1-%E3%83%88%E3%82%B2%E3%83%8A%E3%82%B7%E3%83%88%E3%82%B2%E3%82%A2%E3%83%AA.mp3',
-                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s18/59/1556210166.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E7%A9%BA%E3%81%AE%E7%AE%B1%2B%28%E4%BA%95%E8%8A%B9%E4%BB%81%E8%8F%9C%E3%80%81%E6%B2%B3%E5%8E%9F%E6%9C%A8%E6%A1%83%E9%A6%99%29.lrc'
-                            },
-                            {
-                                name: 'Let You Down',
-                                artist: 'Dawid Podsiadlo',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Let%20You%20Down-Dawid%20Podsiadlo.mp3',
-                                cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s98/80/1553420858.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Let%2BYou%2BDown.lrc'
-                            },
-                            {
-                                name: '星と僕らと（星星与我们）',
-                                artist: '目黒将司 / tofubeats (河合佑亮)',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E6%98%9F%E3%81%A8%E5%83%95%E3%82%89%E3%81%A8-%E7%9B%AE%E9%BB%92%E5%B0%86%E5%8F%B8%26Tofubeats.mp3',
-                                cover: 'https://img4.kuwo.cn/star/albumcover/500/79/59/3855816407.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E6%98%9F%E3%81%A8%E5%83%95%E3%82%89%E3%81%A8.lrc'
-                            },
-                            {
-                                name: 'One more time, One more chance',
-                                artist: '山崎将义 (山崎まさよし)',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/One%20more%20time%EF%BC%8C%20One%20more%20chance-%E5%B1%B1%E5%B4%8E%E3%81%BE%E3%81%95%E3%82%88%E3%81%97.mp3',
-                                cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s75/72/2070663177.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/One%20more%20time%2C%20One%20more%20chance.lrc'
-                            },
-                            {
-                                name: 'カナタハルカ（遥远的彼方）',
-                                artist: 'RADWIMPS (ラッドウィンプス)',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%AB%E3%83%8A%E3%82%BF%E3%83%8F%E3%83%AB%E3%82%AB-RADWIMPS.mp3',
-                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s4s32/55/259860577.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%AB%E3%83%8A%E3%82%BF%E3%83%8F%E3%83%AB%E3%82%AB.lrc'
-                            },
-                            {
-                                name: 'カトラリー（餐具）',
-                                artist: '5時、ナイトコードで',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%AB%E3%83%88%E3%83%A9%E3%83%AA%E3%83%BC-25%E6%99%82%E3%80%81%E3%83%8A%E3%82%A4%E3%83%88%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A7%E3%80%82.mp3',
-                                cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s89/83/3836177557.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%AB%E3%83%88%E3%83%A9%E3%83%AA%E3%83%BC.lrc'
-                            },
-                            {
-                                name: '春日影',
-                                artist: 'MyGO!!!!!',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E6%98%A5%E6%97%A5%E5%BD%B1-MyGO%21%21%21%21%21.mp3',
-                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s3s89/13/3955596740.png',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E6%98%A5%E6%97%A5%E5%BD%B1%2B%28MyGO%21%21%21%21%21%2Bver.%29.lrc'
-                            },
-                            {
-                                name: 'モニタリング（视奸）',
-                                artist: '重音テト',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%20%28feat.%20%E9%87%8D%E9%9F%B3%E3%83%86%E3%83%88%29%20%5BCover%5D-%E3%82%BF%E3%82%AB%E3%82%AA%E3%82%AB%E3%83%9F%E3%82%BA%E3%82%AD%26%E9%87%8D%E9%9F%B3%E3%83%86%E3%83%88.mp3',
-                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s72/63/504752135.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%2B%28feat.%2B%E9%87%8D%E9%9F%B3%E3%83%86%E3%83%88%29%2B%28COVER%E7%89%88%29.lrc'
-                            },
-                            {
-                                name: 'ファタール - Fatal',
-                                artist: 'GEMN / 中島健人 (なかじま けんと) / キタニタツヤ',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%95%E3%82%A1%E3%82%BF%E3%83%BC%E3%83%AB%20-%20Fatal-GEMN%26%E4%B8%AD%E5%B3%B6%E5%81%A5%E4%BA%BA%26%E3%82%AD%E3%82%BF%E3%83%8B%E3%82%BF%E3%83%84%E3%83%A4.mp3',
-                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s4s35/74/1748027782.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%95%E3%82%A1%E3%82%BF%E3%83%BC%E3%83%AB.lrc'
-                            },
-                            {
-                                name: 'KiLLKiSS',
-                                artist: 'Ave Mujica',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/KiLLKiSS-Ave%20Mujica.mp3',
-                                cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s90/61/3872273944.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/KiLLKiSS.lrc'
-                            },
-                            {
-                                name: '雑踏、僕らの街（熙熙攘攘我们的城市）',
-                                artist: 'トゲナシトゲアリ (TOGENASHI TOGEARI)',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E9%9B%91%E8%B8%8F%E3%80%81%E5%83%95%E3%82%89%E3%81%AE%E8%A1%97-%E3%83%88%E3%82%B2%E3%83%8A%E3%82%B7%E3%83%88%E3%82%B2%E3%82%A2%E3%83%AA.mp3',
-                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s30/83/1984603852.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E9%9B%91%E8%B8%8F%E3%80%81%E5%83%95%E3%82%89%E3%81%AE%E8%A1%97.lrc'
-                            },
-                            {
-                                name: '僕が死のうと思ったのは（曾经我也想过一了百了）',
-                                artist: 'amazarashi (アマザラシ)',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%83%95%E3%81%8C%E6%AD%BB%E3%81%AE%E3%81%86%E3%81%A8%E6%80%9D%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%AF.mp3',
-                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s90/84/3601908163.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%83%95%E3%81%8C%E6%AD%BB%E3%81%AE%E3%81%86%E3%81%A8%E6%80%9D%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%AF.lrc'
-                            },
-                            {
-                                name: 'us',
-                                artist: 'risou (ちんまりP)',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/us.mp3',
-                                cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s81/9/2660967983.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/us.lrc'
-                            },
-                            {
-                                name: 'One Last Kiss',
-                                artist: '宇多田ヒカル (Hikaru Utada)',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/One%20Last%20Kiss-%E5%AE%87%E5%A4%9A%E7%94%B0%E3%83%92%E3%82%AB%E3%83%AB.mp3',
-                                cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s40/0/1404850806.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/One%2BLast%2BKiss.lrc'
-                            },
-                            {
-                                name: '遠い空へ',
-                                artist: '市川淳 (JUN ICHIKAWA)',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/-遠い空へ-(ヨスガノソラ メインテーマ)-市川淳.mp3',
-                                cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s80/64/2406447638.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/-遠い空へ-.lrc'
-                            },
-                            {
-                                name: 'Take Me Hand',
-                                artist: 'DAISHI DANCE (ダイシ・ダンス) / Cécile Corbel',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Take%20Me%20Hand-DAISHI%20DANCE%26C%C3%A9cile%20Corbel.mp3',
-                                cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s52/46/1549652837.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Take%2BMe%2BHand.lrc'
-                            },
-                            {
-                                name: '勇者',
-                                artist: 'YOASOBI (ヨアソビ)',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%8B%87%E8%80%85-YOASOBI.mp3',
-                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s3s87/98/1835706150.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%8B%87%E8%80%85.lrc'
-                            },
-                            {
-                                name: 'スパークル（火花）',
-                                artist: 'RADWIMPS (ラッドウィンプス)',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%B9%E3%83%91%E3%83%BC%E3%82%AF%E3%83%AB.mp3',
-                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s4s50/90/2227912404.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%B9%E3%83%91%E3%83%BC%E3%82%AF%E3%83%AB.lrc'
-                            },
-                            {
-                                name: '影色舞',
-                                artist: 'MyGO!!!!!',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%BD%B1%E8%89%B2%E8%88%9E-MyGO%21%21%21%21%21.mp3',
-                                cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s86/81/971004456.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%BD%B1%E8%89%B2%E8%88%9E.lrc'
-                            },
-                            {
-                                name: 'secret base～君がくれたもの～',
-                                artist: '茅野愛衣 (かやの あい) / 戸松遥 (とまつ はるか) / 早見沙織 (はやみ さおり)',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/secret%20base%20%EF%BD%9E%E5%90%9B%E3%81%8C%E3%81%8F%E3%82%8C%E3%81%9F%E3%82%82%E3%81%AE%EF%BD%9E-%E8%8C%85%E9%87%8E%E6%84%9B%E8%A1%A3%26%E6%88%B8%E6%9D%BE%E9%81%A5%26%E6%97%A9%E8%A6%8B%E6%B2%99%E7%B9%94.mp3',
-                                cover: 'https://img2.kuwo.cn/star/albumcover/500/80/51/2305689830.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/secret%2Bbase%2B%EF%BD%9E%E5%90%9B%E3%81%8C%E3%81%8F%E3%82%8C%E3%81%9F%E3%82%82%E3%81%AE%EF%BD%9E%2B%2810%2Byears%2B.lrc'
-                            },
-                            {
-                                name: 'Right Place Right Time',
-                                artist: 'Stereophonics / Kelly Jones',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Right%20Place%20Right%20Time%20-%20Stereophonics.mp3',
-                                cover: 'https://img2.kuwo.cn/star/albumcover/500/8/21/1530693927.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Right%20Place%20Right%20Time%20-%20Stereophonics.lrc'
-                            },
-                            {
-                                name: 'ドゥーマー',
-                                artist: '東京真中',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%89%E3%82%A5%E3%83%BC%E3%83%9E%E3%83%BC-%E6%9D%B1%E4%BA%AC%E7%9C%9F%E4%B8%AD.mp3',
-                                cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s80/17/1583896558.jpg',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%89%E3%82%A5%E3%83%BC%E3%83%9E%E3%83%BC-%E6%9D%B1%E4%BA%AC%E7%9C%9F%E4%B8%AD.lrc'
-                            },
-                            {
-                                name: 'REDLINE DAY',
-                                artist: 'James Shimoji',
-                                url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/REDLINE%20DAY%20-%20James%20Shimoji.mp3',
-                                cover: 'https://img3.kuwo.cn/star/albumcover/500/s3s97/68/3767159586.png',
-                                lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/REDLINE%20DAY%20-%20James%20Shimoji.lrc'
-                            }
-                        ]
+                        const musicList = [{"name":"I Really Want to Stay at Your House","artist":"Cyberpunk","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/I%20Really%20Want%20to%20Stay%20at%20Your%20House-Cyberpunk.mp3","cover":"https://img4.kuwo.cn/star/albumcover/500/s3s4/2/2168934385.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/I%2BReally%2BWant%2Bto%2BStay%2Bat%2BYour%2BHouse.lrc"},{"name":"空の箱","artist":"トゲナシトゲアリ (TOGENASHI TOGEARI)","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E7%A9%BA%E3%81%AE%E7%AE%B1-%E3%83%88%E3%82%B2%E3%83%8A%E3%82%B7%E3%83%88%E3%82%B2%E3%82%A2%E3%83%AA.mp3","cover":"https://img4.kuwo.cn/star/albumcover/500/s4s18/59/1556210166.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E7%A9%BA%E3%81%AE%E7%AE%B1%2B%28%E4%BA%95%E8%8A%B9%E4%BB%81%E8%8F%9C%E3%80%81%E6%B2%B3%E5%8E%9F%E6%9C%A8%E6%A1%83%E9%A6%99%29.lrc"},{"name":"Let You Down","artist":"Dawid Podsiadlo","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Let%20You%20Down-Dawid%20Podsiadlo.mp3","cover":"https://img2.kuwo.cn/star/albumcover/500/s4s98/80/1553420858.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Let%2BYou%2BDown.lrc"},{"name":"星と僕らと（星星与我们）","artist":"目黒将司 / tofubeats (河合佑亮)","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E6%98%9F%E3%81%A8%E5%83%95%E3%82%89%E3%81%A8-%E7%9B%AE%E9%BB%92%E5%B0%86%E5%8F%B8%26Tofubeats.mp3","cover":"https://img4.kuwo.cn/star/albumcover/500/79/59/3855816407.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E6%98%9F%E3%81%A8%E5%83%95%E3%82%89%E3%81%A8.lrc"},{"name":"One more time, One more chance","artist":"山崎将义 (山崎まさよし)","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/One%20more%20time%EF%BC%8C%20One%20more%20chance-%E5%B1%B1%E5%B4%8E%E3%81%BE%E3%81%95%E3%82%88%E3%81%97.mp3","cover":"https://img1.kuwo.cn/star/albumcover/500/s4s75/72/2070663177.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/One%20more%20time%2C%20One%20more%20chance.lrc"},{"name":"カナタハルカ（遥远的彼方）","artist":"RADWIMPS (ラッドウィンプス)","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%AB%E3%83%8A%E3%82%BF%E3%83%8F%E3%83%AB%E3%82%AB-RADWIMPS.mp3","cover":"https://img3.kuwo.cn/star/albumcover/500/s4s32/55/259860577.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%AB%E3%83%8A%E3%82%BF%E3%83%8F%E3%83%AB%E3%82%AB.lrc"},{"name":"カトラリー（餐具）","artist":"5時、ナイトコードで","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%AB%E3%83%88%E3%83%A9%E3%83%AA%E3%83%BC-25%E6%99%82%E3%80%81%E3%83%8A%E3%82%A4%E3%83%88%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A7%E3%80%82.mp3","cover":"https://img2.kuwo.cn/star/albumcover/500/s4s89/83/3836177557.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%AB%E3%83%88%E3%83%A9%E3%83%AA%E3%83%BC.lrc"},{"name":"春日影","artist":"MyGO!!!!!","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E6%98%A5%E6%97%A5%E5%BD%B1-MyGO%21%21%21%21%21.mp3","cover":"https://img3.kuwo.cn/star/albumcover/500/s3s89/13/3955596740.png","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E6%98%A5%E6%97%A5%E5%BD%B1%2B%28MyGO%21%21%21%21%21%2Bver.%29.lrc"},{"name":"モニタリング（视奸）","artist":"重音テト","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%20%28feat.%20%E9%87%8D%E9%9F%B3%E3%83%86%E3%83%88%29%20%5BCover%5D-%E3%82%BF%E3%82%AB%E3%82%AA%E3%82%AB%E3%83%9F%E3%82%BA%E3%82%AD%26%E9%87%8D%E9%9F%B3%E3%83%86%E3%83%88.mp3","cover":"https://img4.kuwo.cn/star/albumcover/500/s4s72/63/504752135.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%2B%28feat.%2B%E9%87%8D%E9%9F%B3%E3%83%86%E3%83%88%29%2B%28COVER%E7%89%88%29.lrc"},{"name":"ファタール - Fatal","artist":"GEMN / 中島健人 (なかじま けんと) / キタニタツヤ","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%95%E3%82%A1%E3%82%BF%E3%83%BC%E3%83%AB%20-%20Fatal-GEMN%26%E4%B8%AD%E5%B3%B6%E5%81%A5%E4%BA%BA%26%E3%82%AD%E3%82%BF%E3%83%8B%E3%82%BF%E3%83%84%E3%83%A4.mp3","cover":"https://img3.kuwo.cn/star/albumcover/500/s4s35/74/1748027782.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%95%E3%82%A1%E3%82%BF%E3%83%BC%E3%83%AB.lrc"},{"name":"KiLLKiSS","artist":"Ave Mujica","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/KiLLKiSS-Ave%20Mujica.mp3","cover":"https://img1.kuwo.cn/star/albumcover/500/s4s90/61/3872273944.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/KiLLKiSS.lrc"},{"name":"雑踏、僕らの街（熙熙攘攘我们的城市）","artist":"トゲナシトゲアリ (TOGENASHI TOGEARI)","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E9%9B%91%E8%B8%8F%E3%80%81%E5%83%95%E3%82%89%E3%81%AE%E8%A1%97-%E3%83%88%E3%82%B2%E3%83%8A%E3%82%B7%E3%83%88%E3%82%B2%E3%82%A2%E3%83%AA.mp3","cover":"https://img4.kuwo.cn/star/albumcover/500/s4s30/83/1984603852.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E9%9B%91%E8%B8%8F%E3%80%81%E5%83%95%E3%82%89%E3%81%AE%E8%A1%97.lrc"},{"name":"僕が死のうと思ったのは（曾经我也想过一了百了）","artist":"amazarashi (アマザラシ)","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%83%95%E3%81%8C%E6%AD%BB%E3%81%AE%E3%81%86%E3%81%A8%E6%80%9D%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%AF.mp3","cover":"https://img4.kuwo.cn/star/albumcover/500/s4s90/84/3601908163.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%83%95%E3%81%8C%E6%AD%BB%E3%81%AE%E3%81%86%E3%81%A8%E6%80%9D%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%AF.lrc"},{"name":"us","artist":"risou (ちんまりP)","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/us.mp3","cover":"https://img2.kuwo.cn/star/albumcover/500/s4s81/9/2660967983.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/us.lrc"},{"name":"One Last Kiss","artist":"宇多田ヒカル (Hikaru Utada)","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/One%20Last%20Kiss-%E5%AE%87%E5%A4%9A%E7%94%B0%E3%83%92%E3%82%AB%E3%83%AB.mp3","cover":"https://img1.kuwo.cn/star/albumcover/500/s4s40/0/1404850806.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/One%2BLast%2BKiss.lrc"},{"name":"遠い空へ","artist":"市川淳 (JUN ICHIKAWA)","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/-遠い空へ-(ヨスガノソラ メインテーマ)-市川淳.mp3","cover":"https://img1.kuwo.cn/star/albumcover/500/s4s80/64/2406447638.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/-遠い空へ-.lrc"},{"name":"Take Me Hand","artist":"DAISHI DANCE (ダイシ・ダンス) / Cécile Corbel","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Take%20Me%20Hand-DAISHI%20DANCE%26C%C3%A9cile%20Corbel.mp3","cover":"https://img2.kuwo.cn/star/albumcover/500/s4s52/46/1549652837.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Take%2BMe%2BHand.lrc"},{"name":"勇者","artist":"YOASOBI (ヨアソビ)","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%8B%87%E8%80%85-YOASOBI.mp3","cover":"https://img3.kuwo.cn/star/albumcover/500/s3s87/98/1835706150.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%8B%87%E8%80%85.lrc"},{"name":"スパークル（火花）","artist":"RADWIMPS (ラッドウィンプス)","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%B9%E3%83%91%E3%83%BC%E3%82%AF%E3%83%AB.mp3","cover":"https://img3.kuwo.cn/star/albumcover/500/s4s50/90/2227912404.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%B9%E3%83%91%E3%83%BC%E3%82%AF%E3%83%AB.lrc"},{"name":"影色舞","artist":"MyGO!!!!!","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%BD%B1%E8%89%B2%E8%88%9E-MyGO%21%21%21%21%21.mp3","cover":"https://img2.kuwo.cn/star/albumcover/500/s4s86/81/971004456.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%BD%B1%E8%89%B2%E8%88%9E.lrc"},{"name":"secret base～君がくれたもの～","artist":"茅野愛衣 (かやの あい) / 戸松遥 (とまつ はるか) / 早見沙織 (はやみ さおり)","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/secret%20base%20%EF%BD%9E%E5%90%9B%E3%81%8C%E3%81%8F%E3%82%8C%E3%81%9F%E3%82%82%E3%81%AE%EF%BD%9E-%E8%8C%85%E9%87%8E%E6%84%9B%E8%A1%A3%26%E6%88%B8%E6%9D%BE%E9%81%A5%26%E6%97%A9%E8%A6%8B%E6%B2%99%E7%B9%94.mp3","cover":"https://img2.kuwo.cn/star/albumcover/500/80/51/2305689830.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/secret%2Bbase%2B%EF%BD%9E%E5%90%9B%E3%81%8C%E3%81%8F%E3%82%8C%E3%81%9F%E3%82%82%E3%81%AE%EF%BD%9E%2B%2810%2Byears%2B.lrc"},{"name":"Right Place Right Time","artist":"Stereophonics / Kelly Jones","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Right%20Place%20Right%20Time%20-%20Stereophonics.mp3","cover":"https://img2.kuwo.cn/star/albumcover/500/8/21/1530693927.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Right%20Place%20Right%20Time%20-%20Stereophonics.lrc"},{"name":"ドゥーマー","artist":"東京真中","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%89%E3%82%A5%E3%83%BC%E3%83%9E%E3%83%BC-%E6%9D%B1%E4%BA%AC%E7%9C%9F%E4%B8%AD.mp3","cover":"https://img4.kuwo.cn/star/albumcover/500/s4s80/17/1583896558.jpg","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%89%E3%82%A5%E3%83%BC%E3%83%9E%E3%83%BC-%E6%9D%B1%E4%BA%AC%E7%9C%9F%E4%B8%AD.lrc"},{"name":"REDLINE DAY","artist":"James Shimoji","url":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/REDLINE%20DAY%20-%20James%20Shimoji.mp3","cover":"https://img3.kuwo.cn/star/albumcover/500/s3s97/68/3767159586.png","lrc":"https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/REDLINE%20DAY%20-%20James%20Shimoji.lrc"}];
+                        // const musicList =  [
+                        //     {
+                        //         name: 'I Really Want to Stay at Your House',                   
+                        //         artist: 'Cyberpunk',                   
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/I%20Really%20Want%20to%20Stay%20at%20Your%20House-Cyberpunk.mp3',
+                        //         cover: 'https://img4.kuwo.cn/star/albumcover/500/s3s4/2/2168934385.jpg',    
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/I%2BReally%2BWant%2Bto%2BStay%2Bat%2BYour%2BHouse.lrc'       
+                        //     },
+                        //     {
+                        //         name: '空の箱',
+                        //         artist: 'トゲナシトゲアリ (TOGENASHI TOGEARI)',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E7%A9%BA%E3%81%AE%E7%AE%B1-%E3%83%88%E3%82%B2%E3%83%8A%E3%82%B7%E3%83%88%E3%82%B2%E3%82%A2%E3%83%AA.mp3',
+                        //         cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s18/59/1556210166.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E7%A9%BA%E3%81%AE%E7%AE%B1%2B%28%E4%BA%95%E8%8A%B9%E4%BB%81%E8%8F%9C%E3%80%81%E6%B2%B3%E5%8E%9F%E6%9C%A8%E6%A1%83%E9%A6%99%29.lrc'
+                        //     },
+                        //     {
+                        //         name: 'Let You Down',
+                        //         artist: 'Dawid Podsiadlo',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Let%20You%20Down-Dawid%20Podsiadlo.mp3',
+                        //         cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s98/80/1553420858.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Let%2BYou%2BDown.lrc'
+                        //     },
+                        //     {
+                        //         name: '星と僕らと（星星与我们）',
+                        //         artist: '目黒将司 / tofubeats (河合佑亮)',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E6%98%9F%E3%81%A8%E5%83%95%E3%82%89%E3%81%A8-%E7%9B%AE%E9%BB%92%E5%B0%86%E5%8F%B8%26Tofubeats.mp3',
+                        //         cover: 'https://img4.kuwo.cn/star/albumcover/500/79/59/3855816407.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E6%98%9F%E3%81%A8%E5%83%95%E3%82%89%E3%81%A8.lrc'
+                        //     },
+                        //     {
+                        //         name: 'One more time, One more chance',
+                        //         artist: '山崎将义 (山崎まさよし)',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/One%20more%20time%EF%BC%8C%20One%20more%20chance-%E5%B1%B1%E5%B4%8E%E3%81%BE%E3%81%95%E3%82%88%E3%81%97.mp3',
+                        //         cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s75/72/2070663177.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/One%20more%20time%2C%20One%20more%20chance.lrc'
+                        //     },
+                        //     {
+                        //         name: 'カナタハルカ（遥远的彼方）',
+                        //         artist: 'RADWIMPS (ラッドウィンプス)',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%AB%E3%83%8A%E3%82%BF%E3%83%8F%E3%83%AB%E3%82%AB-RADWIMPS.mp3',
+                        //         cover: 'https://img3.kuwo.cn/star/albumcover/500/s4s32/55/259860577.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%AB%E3%83%8A%E3%82%BF%E3%83%8F%E3%83%AB%E3%82%AB.lrc'
+                        //     },
+                        //     {
+                        //         name: 'カトラリー（餐具）',
+                        //         artist: '5時、ナイトコードで',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%AB%E3%83%88%E3%83%A9%E3%83%AA%E3%83%BC-25%E6%99%82%E3%80%81%E3%83%8A%E3%82%A4%E3%83%88%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A7%E3%80%82.mp3',
+                        //         cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s89/83/3836177557.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%AB%E3%83%88%E3%83%A9%E3%83%AA%E3%83%BC.lrc'
+                        //     },
+                        //     {
+                        //         name: '春日影',
+                        //         artist: 'MyGO!!!!!',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E6%98%A5%E6%97%A5%E5%BD%B1-MyGO%21%21%21%21%21.mp3',
+                        //         cover: 'https://img3.kuwo.cn/star/albumcover/500/s3s89/13/3955596740.png',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E6%98%A5%E6%97%A5%E5%BD%B1%2B%28MyGO%21%21%21%21%21%2Bver.%29.lrc'
+                        //     },
+                        //     {
+                        //         name: 'モニタリング（视奸）',
+                        //         artist: '重音テト',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%20%28feat.%20%E9%87%8D%E9%9F%B3%E3%83%86%E3%83%88%29%20%5BCover%5D-%E3%82%BF%E3%82%AB%E3%82%AA%E3%82%AB%E3%83%9F%E3%82%BA%E3%82%AD%26%E9%87%8D%E9%9F%B3%E3%83%86%E3%83%88.mp3',
+                        //         cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s72/63/504752135.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0%2B%28feat.%2B%E9%87%8D%E9%9F%B3%E3%83%86%E3%83%88%29%2B%28COVER%E7%89%88%29.lrc'
+                        //     },
+                        //     {
+                        //         name: 'ファタール - Fatal',
+                        //         artist: 'GEMN / 中島健人 (なかじま けんと) / キタニタツヤ',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%95%E3%82%A1%E3%82%BF%E3%83%BC%E3%83%AB%20-%20Fatal-GEMN%26%E4%B8%AD%E5%B3%B6%E5%81%A5%E4%BA%BA%26%E3%82%AD%E3%82%BF%E3%83%8B%E3%82%BF%E3%83%84%E3%83%A4.mp3',
+                        //         cover: 'https://img3.kuwo.cn/star/albumcover/500/s4s35/74/1748027782.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%95%E3%82%A1%E3%82%BF%E3%83%BC%E3%83%AB.lrc'
+                        //     },
+                        //     {
+                        //         name: 'KiLLKiSS',
+                        //         artist: 'Ave Mujica',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/KiLLKiSS-Ave%20Mujica.mp3',
+                        //         cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s90/61/3872273944.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/KiLLKiSS.lrc'
+                        //     },
+                        //     {
+                        //         name: '雑踏、僕らの街（熙熙攘攘我们的城市）',
+                        //         artist: 'トゲナシトゲアリ (TOGENASHI TOGEARI)',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E9%9B%91%E8%B8%8F%E3%80%81%E5%83%95%E3%82%89%E3%81%AE%E8%A1%97-%E3%83%88%E3%82%B2%E3%83%8A%E3%82%B7%E3%83%88%E3%82%B2%E3%82%A2%E3%83%AA.mp3',
+                        //         cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s30/83/1984603852.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E9%9B%91%E8%B8%8F%E3%80%81%E5%83%95%E3%82%89%E3%81%AE%E8%A1%97.lrc'
+                        //     },
+                        //     {
+                        //         name: '僕が死のうと思ったのは（曾经我也想过一了百了）',
+                        //         artist: 'amazarashi (アマザラシ)',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%83%95%E3%81%8C%E6%AD%BB%E3%81%AE%E3%81%86%E3%81%A8%E6%80%9D%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%AF.mp3',
+                        //         cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s90/84/3601908163.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%83%95%E3%81%8C%E6%AD%BB%E3%81%AE%E3%81%86%E3%81%A8%E6%80%9D%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%AF.lrc'
+                        //     },
+                        //     {
+                        //         name: 'us',
+                        //         artist: 'risou (ちんまりP)',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/us.mp3',
+                        //         cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s81/9/2660967983.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/us.lrc'
+                        //     },
+                        //     {
+                        //         name: 'One Last Kiss',
+                        //         artist: '宇多田ヒカル (Hikaru Utada)',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/One%20Last%20Kiss-%E5%AE%87%E5%A4%9A%E7%94%B0%E3%83%92%E3%82%AB%E3%83%AB.mp3',
+                        //         cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s40/0/1404850806.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/One%2BLast%2BKiss.lrc'
+                        //     },
+                        //     {
+                        //         name: '遠い空へ',
+                        //         artist: '市川淳 (JUN ICHIKAWA)',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/-遠い空へ-(ヨスガノソラ メインテーマ)-市川淳.mp3',
+                        //         cover: 'https://img1.kuwo.cn/star/albumcover/500/s4s80/64/2406447638.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/-遠い空へ-.lrc'
+                        //     },
+                        //     {
+                        //         name: 'Take Me Hand',
+                        //         artist: 'DAISHI DANCE (ダイシ・ダンス) / Cécile Corbel',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Take%20Me%20Hand-DAISHI%20DANCE%26C%C3%A9cile%20Corbel.mp3',
+                        //         cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s52/46/1549652837.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Take%2BMe%2BHand.lrc'
+                        //     },
+                        //     {
+                        //         name: '勇者',
+                        //         artist: 'YOASOBI (ヨアソビ)',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%8B%87%E8%80%85-YOASOBI.mp3',
+                        //         cover: 'https://img3.kuwo.cn/star/albumcover/500/s3s87/98/1835706150.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%8B%87%E8%80%85.lrc'
+                        //     },
+                        //     {
+                        //         name: 'スパークル（火花）',
+                        //         artist: 'RADWIMPS (ラッドウィンプス)',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%B9%E3%83%91%E3%83%BC%E3%82%AF%E3%83%AB.mp3',
+                        //         cover: 'https://img3.kuwo.cn/star/albumcover/500/s4s50/90/2227912404.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%82%B9%E3%83%91%E3%83%BC%E3%82%AF%E3%83%AB.lrc'
+                        //     },
+                        //     {
+                        //         name: '影色舞',
+                        //         artist: 'MyGO!!!!!',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%BD%B1%E8%89%B2%E8%88%9E-MyGO%21%21%21%21%21.mp3',
+                        //         cover: 'https://img2.kuwo.cn/star/albumcover/500/s4s86/81/971004456.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E5%BD%B1%E8%89%B2%E8%88%9E.lrc'
+                        //     },
+                        //     {
+                        //         name: 'secret base～君がくれたもの～',
+                        //         artist: '茅野愛衣 (かやの あい) / 戸松遥 (とまつ はるか) / 早見沙織 (はやみ さおり)',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/secret%20base%20%EF%BD%9E%E5%90%9B%E3%81%8C%E3%81%8F%E3%82%8C%E3%81%9F%E3%82%82%E3%81%AE%EF%BD%9E-%E8%8C%85%E9%87%8E%E6%84%9B%E8%A1%A3%26%E6%88%B8%E6%9D%BE%E9%81%A5%26%E6%97%A9%E8%A6%8B%E6%B2%99%E7%B9%94.mp3',
+                        //         cover: 'https://img2.kuwo.cn/star/albumcover/500/80/51/2305689830.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/secret%2Bbase%2B%EF%BD%9E%E5%90%9B%E3%81%8C%E3%81%8F%E3%82%8C%E3%81%9F%E3%82%82%E3%81%AE%EF%BD%9E%2B%2810%2Byears%2B.lrc'
+                        //     },
+                        //     {
+                        //         name: 'Right Place Right Time',
+                        //         artist: 'Stereophonics / Kelly Jones',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Right%20Place%20Right%20Time%20-%20Stereophonics.mp3',
+                        //         cover: 'https://img2.kuwo.cn/star/albumcover/500/8/21/1530693927.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/Right%20Place%20Right%20Time%20-%20Stereophonics.lrc'
+                        //     },
+                        //     {
+                        //         name: 'ドゥーマー',
+                        //         artist: '東京真中',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%89%E3%82%A5%E3%83%BC%E3%83%9E%E3%83%BC-%E6%9D%B1%E4%BA%AC%E7%9C%9F%E4%B8%AD.mp3',
+                        //         cover: 'https://img4.kuwo.cn/star/albumcover/500/s4s80/17/1583896558.jpg',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/%E3%83%89%E3%82%A5%E3%83%BC%E3%83%9E%E3%83%BC-%E6%9D%B1%E4%BA%AC%E7%9C%9F%E4%B8%AD.lrc'
+                        //     },
+                        //     {
+                        //         name: 'REDLINE DAY',
+                        //         artist: 'James Shimoji',
+                        //         url: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/REDLINE%20DAY%20-%20James%20Shimoji.mp3',
+                        //         cover: 'https://img3.kuwo.cn/star/albumcover/500/s3s97/68/3767159586.png',
+                        //         lrc: 'https://cynite.oss-cn-guangzhou.aliyuncs.com/data/Music/Music/REDLINE%20DAY%20-%20James%20Shimoji.lrc'
+                        //     }
+                        // ]
+                    
                         
                         // ========================================
 
@@ -1051,6 +1052,7 @@
                         });
 
                     });
+                    
 
                     // 气泡动画函数
                     function bubbles() {
@@ -1071,7 +1073,7 @@
                     
                     bubbles();
                     </script>
-
+                
                 </div>
             </div>
         </div>
