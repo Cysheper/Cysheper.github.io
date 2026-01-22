@@ -455,7 +455,13 @@
 
 
 <script>
-    $('.bg-cover').css('background-image', 'url(/medias/banner/0.webp)');
+    if ( true === true ) {
+        var url = "https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/%E5%86%AC.jpg";
+        $('.bg-cover').css('background-image', 'url(' + url + ')');
+    } else {
+        var bannerUrl = "/medias/banner/0.webp";
+        $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    }
 </script>
 
 
