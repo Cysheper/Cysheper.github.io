@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="movies, blog, technology, life">
+    <meta name="keywords" content="anime, blog, technology, life">
     <meta name="description" content="Cysheper的个人博客，分享技术的乐趣。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>movies | Cysheper</title>
+    <title>anime | Cysheper</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <style>
@@ -180,11 +180,20 @@
       </li>
       
       <li>
-        <a href="/movies">
+        <a href="/videos">
           
-          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-video" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Movies</span>
+          <span>Videos</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/anime">
+          
+          <i class="fab fa-bilibili" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Anime</span>
         </a>
       </li>
       
@@ -355,11 +364,21 @@
               
                 <li>
 
-                  <a href="/movies " style="margin-left:75px">
+                  <a href="/videos " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-video" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Movies</span>
+		          <span>Videos</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/anime " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-bilibili" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Anime</span>
                   </a>
                 </li>
               
@@ -414,124 +433,146 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
-    <div class="container">
-    <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                Cysheper
-                
-            </div>
+    <!-- 番剧页面样式 -->
+<link rel="stylesheet" href="/css/anime.css">
 
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="/libs/typed/typed.js"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [ 
-                            
-                                "雾气弥漫的清晨，并不意味着是一个阴霾的白天。",
-                            
-                                "A foggy morning does not necessarily mean a gloomy day.",
-                            
-                        ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
+<!-- 添加页面标识类到body，用于透明导航栏 -->
+<script>document.body.classList.add('anime-page-body');</script>
+
+<div class="anime-page">
+    <!-- 粒子背景装饰 -->
+    <div class="anime-particles" id="particles"></div>
+
+    <!-- ===== 顶部轮播图区域 ===== -->
+    <section class="anime-carousel-section">
+        <div class="anime-carousel" id="mainCarousel">
+            <div class="carousel-container" id="carouselContainer">
+                <!-- 轮播项由JS动态生成 -->
+            </div>
+            <div class="carousel-arrows">
+                <div class="carousel-arrow" onclick="prevSlide()">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="carousel-arrow" onclick="nextSlide()">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="carousel-controls" id="carouselDots">
+                <!-- 轮播点由JS动态生成 -->
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
+    <!-- ===== 主内容区域 ===== -->
+    <div class="anime-main-content">
+        <!-- 左侧导航栏 -->
+        <aside class="anime-sidebar">
+            <nav class="sidebar-nav">
+                <div class="sidebar-item active" data-panel="hot">
+                    <i class="fas fa-fire"></i>
+                    <span>热门番剧</span>
+                </div>
+                <div class="sidebar-item" data-panel="schedule">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>时间表</span>
+                </div>
+                <div class="sidebar-item" data-panel="recommend">
+                    <i class="fas fa-star"></i>
+                    <span>站长推荐</span>
+                </div>
+                <div class="sidebar-item" data-panel="comments">
+                    <i class="fas fa-message"></i>
+                    <span>评论区</span>
+                </div>
+            </nav>
+        </aside>
 
-<script>
-    if ( true === true ) {
-        var url = "https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/%E5%86%AC.jpg";
-        $('.bg-cover').css('background-image', 'url(' + url + ')');
-    } else {
-        var bannerUrl = "/medias/banner/0.webp";
-        $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
-    }
-</script>
+        <!-- 右侧内容区域 -->
+        <main class="anime-content-area">
+            <!-- ===== 热门面板 ===== -->
+            <div class="content-panel active" id="panel-hot">
+                <!-- 近期热门趋势 -->
+                <div class="section-block" id="section-trending">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-chart-line"></i>
+                            近期热门趋势
+                        </h2>
+                        <button class="view-more-btn" id="btn-trending" onclick="toggleExpand('trending')">
+                            查看更多 <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="anime-card-row expandable" id="trendingRow">
+                        <div class="skeleton skeleton-card"></div>
+                        <div class="skeleton skeleton-card"></div>
+                        <div class="skeleton skeleton-card"></div>
+                        <div class="skeleton skeleton-card"></div>
+                        <div class="skeleton skeleton-card"></div>
+                    </div>
+                </div>
 
+                <!-- 往期高分番剧 -->
+                <div class="section-block" id="section-classic">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <i class="fas fa-trophy"></i>
+                            往期高分番剧
+                        </h2>
+                        <button class="view-more-btn" id="btn-classic" onclick="toggleExpand('classic')">
+                            查看更多 <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="anime-card-row expandable" id="classicRow">
+                        <div class="skeleton skeleton-card"></div>
+                        <div class="skeleton skeleton-card"></div>
+                        <div class="skeleton skeleton-card"></div>
+                        <div class="skeleton skeleton-card"></div>
+                        <div class="skeleton skeleton-card"></div>
+                    </div>
+                </div>
+            </div>
 
-    </div>
-</div>
-<!-- 视频页面 -->
+            <!-- ===== 时间表面板 ===== -->
+            <div class="content-panel" id="panel-schedule">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-calendar-week"></i>
+                        番剧时间表
+                    </h2>
+                </div>
+                <div class="schedule-weekdays" id="weekdayTabs">
+                    <div class="weekday-btn active" data-day="1">周一</div>
+                    <div class="weekday-btn" data-day="2">周二</div>
+                    <div class="weekday-btn" data-day="3">周三</div>
+                    <div class="weekday-btn" data-day="4">周四</div>
+                    <div class="weekday-btn" data-day="5">周五</div>
+                    <div class="weekday-btn" data-day="6">周六</div>
+                    <div class="weekday-btn" data-day="7">周日</div>
+                </div>
+                <div class="schedule-anime-grid" id="scheduleGrid">
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        <span>加载中...</span>
+                    </div>
+                </div>
+            </div>
 
-<style>
-@media only screen and (max-width: 601px) {
-    .movies-w {
-        width: 90%;
-        margin: 0 auto;
-    }
-    .movies-h {
-        height: 90%;
-        padding-top: 5%;
-        padding-bottom: 5%;
-    }
-}
+            <!-- ===== 站长推荐面板 ===== -->
+            <div class="content-panel" id="panel-recommend">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-heart"></i>
+                        站长推荐
+                    </h2>
+                </div>
+                <div class="recommend-grid" id="recommendGrid">
+                </div>
+            </div>
 
-/*中等屏幕下(平板类)的样式*/
-@media only screen and (min-width: 600px) and (max-width: 992px) {
-    .movies-w {
-        width: 95%;
-        margin: 0 auto;
-    }
-    .movies-h {
-        height: 95%;
-        padding-top: 5%;
-        padding-bottom: 5%;
-    }
-}
-@media only screen and (min-width: 993px) {
-    .movies-w {
-        width: 80%;
-        margin: 0 auto;
-    }
-    .movies-h {
-        height: 80%;
-        padding-top: 5%;
-        padding-bottom: 5%;
-    }
-}
-</style>
-
-<main class="content">
-<div id="category-cloud" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-			<div>
-				<h1 style="text-align:center;">
-					📺
-					推荐视频
-				</h1>
-			<div>
-				<div  class="movies-w" style="position: relative; padding-bottom: 75%;">
-				    <iframe class="movies-h" style=" 
-				    position: absolute; 
-				        width: 100%;
-					    left: 0; 
-					    top: 0;" 
-					    src="//player.bilibili.com/player.html?aid=2915699&cid=247763459&page=1" scrolling="no" border="0" 
-					    frameborder="no" 
-					    framespacing="0" 
-					    allowfullscreen="true"> 
-				    </iframe> 
-				    
-				</div>
-			</div>
-		</div>
-        
-            <style>
+            <!-- ===== 评论区面板 ===== -->
+            <div class="content-panel" id="panel-comments">
+                
+                    <style>
     .valine-card {
         margin: 1.5rem auto;
     }
@@ -797,10 +838,492 @@
 <!--酷Q推送-->
 
 
-        
+                
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ===== 查看更多模态框 ===== -->
+    <div class="anime-modal" id="animeModal">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="section-header" style="padding: 30px 30px 0;">
+                <h2 class="section-title" id="modalTitle">
+                    <i class="fas fa-th"></i>
+                    <span>全部番剧</span>
+                </h2>
+            </div>
+            <div class="modal-grid" id="modalGrid">
+            </div>
+        </div>
     </div>
 </div>
-</main>
+
+<script>
+    var bgmApiBase = 'https://api.bgm.tv';
+    var User_Agent = "Cysheper/Cysheper.github.io";
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var quarter = [1, 4, 7, 10].find(function(q) { return month >= q; });
+
+    var recommendData = [{"subject_id":400602,"stars":5,"recommend_reason":"花海盛开，故人不再"},{"subject_id":328609,"stars":5,"recommend_reason":"一曲献给所有「孤独者」的治愈乐章"},{"subject_id":927,"stars":5,"recommend_reason":"樱花下落的速度是每秒五厘米，我要以怎样的速度才能与你相遇。"},{"subject_id":876,"stars":5,"recommend_reason":"写作CL，读作人生"},{"subject_id":10380,"stars":5,"recommend_reason":"这一切都是……"},{"subject_id":126173,"stars":5,"recommend_reason":"回到高中，顺便拯救世界"},{"subject_id":235130,"stars":5,"recommend_reason":"欢声笑语是逝去的青春，唯有回忆永存心间"},{"subject_id":120925,"stars":4.5,"recommend_reason":"乙坂有宇，欢迎回来"},{"subject_id":464376,"stars":4.5,"recommend_reason":"如果<br>我是轻小说男主角的话,<br>那个时候，<br>我会作何感想呢"},{"subject_id":74628,"stars":4,"recommend_reason":"始于伪，终于恋"}] || [];
+
+    var calendarData = null;
+    var allTrendingAnime = [];
+    var allClassicAnime = [];
+
+    var currentSlide = 0;
+    var carouselAnime = [];
+    var autoSlideInterval = null;
+
+    function initParticles() {
+        var container = document.getElementById('particles');
+        for (var i = 0; i < 30; i++) {
+            var particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            container.appendChild(particle);
+        }
+    }
+
+    async function fetchCalendar() {
+        if (calendarData) return Promise.resolve(calendarData);
+        return await fetch(bgmApiBase + '/calendar', {
+            method: 'GET',
+            headers: { "Accept": "application/json" }
+        })
+        .then(function(response) {
+            if (!response.ok) throw new Error('网络请求错误: ' + response.status);
+            return response.json();
+        })
+        .then(function(data) {
+            calendarData = data;
+            return data;
+        })
+        .catch(function(error) {
+            console.error("获取放送表失败:", error);
+            return [];
+        });
+    }
+
+    async function getAnimeDetails(subjectId) {
+        return await fetch(bgmApiBase + '/v0/subjects/' + subjectId, {
+            method: 'GET',
+            headers: { "Accept": "application/json", "User-Agent": User_Agent }
+        })
+        .then(function(response) {
+            if (!response.ok) throw new Error('获取详情失败: ' + response.status);
+            return response.json();
+        })
+        .catch(function(error) {
+            console.error("获取番剧详情失败:", error);
+            return null;
+        });
+    }
+
+    async function fetchHighScoreAnime() {
+        const data = await fetch(bgmApiBase + '/v0/search/subjects?limit=20', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                "keyword": "",
+                "sort": "rank",
+                "filter": {
+                    "type": [ 2 ],
+                    "rank": [">=1", "<=100"],
+                    "nsfw": true
+                }
+            })
+        }).then(function(response) {
+            if (!response.ok) throw new Error('网络请求错误: ' + response.status);
+            return response.json();
+        }).then(function(data) {
+            return data.data;
+        });
+        console.log(data);
+        return data;
+    }
+
+    async function getTrendingAnime(limit) {
+        limit = limit || 10;
+        return await fetchCalendar().then(function(data) {
+            var allAnime = data.reduce(function(acc, day) {
+                return acc.concat(day.items || []);
+            }, []);
+
+            // doing 的70% 减去 dropped 的20% 加上 wish 的10%，加上collect的30% 再加上评分乘以50 再加上rating.total的 70% 作为热度参考
+
+            allAnime.sort(function(a, b) {
+                var countA = (a.collection && a.collection.doing) || 0;
+                var droppedA = (a.collection && a.collection.dropped) || 0;
+                var wishA = (a.collection && a.collection.wish) || 0;
+                var ratingA = (a.rating && a.rating.score) || 0;
+                var ratingTotalA = (a.rating && a.rating.total) || 0;
+                var collectA = (a.collection && a.collection.collect) || 0;
+                var scoreA = (countA * 0.7 - droppedA * 0.2 + wishA * 0.1 + collectA * 0.3) * (ratingA * 50) + ratingTotalA * 0.7;
+
+                var countB = (b.collection && b.collection.doing) || 0;
+                var droppedB = (b.collection && b.collection.dropped) || 0;
+                var wishB = (b.collection && b.collection.wish) || 0;
+                var ratingB = (b.rating && b.rating.score) || 0;
+                var ratingTotalB = (b.rating && b.rating.total) || 0;
+                var collectB = (b.collection && b.collection.collect) || 0;
+                var scoreB = (countB * 0.7 - droppedB * 0.2 + wishB * 0.1 + collectB * 0.3) * (ratingB * 50) + ratingTotalB * 0.7;
+                return scoreB - scoreA;
+            });
+            allAnime = allAnime.filter(function(anime) {
+                var airDate = new Date(anime.air_date);
+                return airDate.getFullYear() === year && (airDate.getMonth() + 1) >= quarter;
+            });
+            allTrendingAnime = allAnime;
+            return allAnime.slice(0, limit);
+        });
+    }
+
+    async function getClassicAnime(limit) {
+        limit = limit || 6;
+        
+        var data = await fetchHighScoreAnime();
+        allClassicAnime = data;
+        return data.slice(0, limit);
+    }
+
+    function getScheduleByDay(dayId) {
+        return fetchCalendar().then(function(data) {
+            var dayData = data.find(function(d) {
+                return d.weekday && d.weekday.id === dayId;
+            });
+            return (dayData && dayData.items) || [];
+        });
+    }
+
+    function createAnimeCard(anime, showMore) {
+        if (showMore) {
+            return '<div class="anime-card anime-card-more" onclick="showAllModal(\'trending\')">' +
+                '<i class="fas fa-plus-circle"></i>' +
+                '<span>查看更多</span>' +
+            '</div>';
+        }
+
+        var imageUrl = (anime.images && (anime.images.large || anime.images.common)) || 'https://lain.bgm.tv/img/no_icon_subject.png';
+        var rating = (anime.rating && anime.rating.score) ? anime.rating.score.toFixed(1) : 'N/A';
+        var title = anime.name_cn || anime.name || '未知番剧';
+
+        return '<div class="anime-card" onclick="goToAnimeDetails(' + anime.id + ')">' +
+            '<div class="anime-card-poster">' +
+                '<img src="' + imageUrl + '" alt="' + title + '" loading="lazy">' +
+                '<div class="anime-card-overlay">' +
+                    '<div class="anime-card-play">' +
+                        '<i class="fas fa-info-circle"></i>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="anime-card-rating">★ ' + rating + '</div>' +
+            '</div>' +
+            '<div class="anime-card-title">' + title + '</div>' +
+        '</div>';
+    }
+
+    function createCarouselSlide(anime, index) {
+        var bgImage = (anime.images && (anime.images.large || anime.images.common)) || '';
+        var posterImage = (anime.images && (anime.images.large || anime.images.common)) || 'https://lain.bgm.tv/img/no_icon_subject.png';
+        var title = anime.name_cn || anime.name || '未知番剧';
+        var rating = (anime.rating && anime.rating.score) ? anime.rating.score.toFixed(1) : 'N/A';
+        var airDate = anime.air_date || '未知';
+        var summary = anime.summary || '暂无简介';
+        var eps = anime.eps || anime.total_episodes || '?';
+        var doing = (anime.collection && anime.collection.doing) || 0;
+
+        return '<div class="carousel-slide" onclick="goToAnimeDetails(' + anime.id + ')">' +
+            '<img class="carousel-bg" src="' + bgImage + '" alt="">' +
+            '<div class="carousel-content">' +
+                '<img class="carousel-poster" src="' + posterImage + '" alt="' + title + '">' +
+                '<div class="carousel-info">' +
+                    '<h2 class="carousel-title">' + title + '</h2>' +
+                    '<div class="carousel-meta">' +
+                        '<span class="carousel-rating">★ ' + rating + '</span>' +
+                        '<span><i class="fas fa-calendar"></i> ' + airDate + '</span>' +
+                        '<span><i class="fas fa-film"></i> ' + eps + '话</span>' +
+                        '<span><i class="fas fa-users"></i> ' + doing + '人在看</span>' +
+                    '</div>' +
+                    '<p class="carousel-summary">' + summary + '</p>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
+    }
+
+    function createRecommendCard(item, details) {
+        var imageUrl = (details && details.images && (details.images.large || details.images.common)) || 'https://lain.bgm.tv/img/no_icon_subject.png';
+        var title = (details && (details.name_cn || details.name)) || '未知番剧';
+        var summary = (details && details.summary) || '暂无简介';
+        var stars = item.stars || 5;
+        var reason = item.recommend_reason || '值得一看';
+
+        var starsHtml = '';
+        for (var i = 1; i <= Math.floor(stars); i++) {
+            starsHtml += '<i class="fas fa-star"></i>';
+        }
+        if (stars > Math.floor(stars)) {
+            starsHtml += '<i class="fas fa-star-half-alt"></i>';
+            for (var i = Math.floor(stars) + 2; i <= 5; i++) {
+                starsHtml += '<i class="fas fa-star empty"></i>';
+            }
+        } else {
+            for (var i = Math.floor(stars) + 1; i <= 5; i++) {
+                starsHtml += '<i class="fas fa-star empty"></i>';
+            }
+        }
+        
+
+        return '<div class="recommend-card" onclick="goToAnimeDetails(' + item.subject_id + ')">' +
+            '<div class="recommend-poster">' +
+                '<img src="' + imageUrl + '" alt="' + title + '" loading="lazy">' +
+            '</div>' +
+            '<div class="recommend-info">' +
+                '<h3 class="recommend-title">' + title + '</h3>' +
+                '<div class="recommend-stars">' + starsHtml + '</div>' +
+                '<i class="fas fa-quote-left fa-2x" style="color: #FFD166;">' +
+                '<p class="recommend-reason" style="margin-top: 10px;">' + reason + '</p></i>' +
+                '<p class="recommend-summary">' + summary + '</p>' +
+            '</div>' +
+        '</div>';
+    }
+
+    async function initCarousel(animeList) {
+        // 获取每个番剧的详细信息（包含 summary 和 eps）
+        var detailedAnimeList = await Promise.all(
+            animeList.map(function(anime) {
+                return getAnimeDetails(anime.id).then(function(details) {
+                    if (details) {
+                        // 合并详细信息
+                        return Object.assign({}, anime, {
+                            summary: details.summary || '暂无简介',
+                            eps: details.eps || details.total_episodes || '?'
+                        });
+                    }
+                    return anime;
+                });
+            })
+        );
+        
+        carouselAnime = detailedAnimeList;
+        var container = document.getElementById('carouselContainer');
+        var dotsContainer = document.getElementById('carouselDots');
+
+        var slidesHtml = '';
+        var dotsHtml = '';
+        for (var i = 0; i < detailedAnimeList.length; ++ i) {
+            slidesHtml += createCarouselSlide(detailedAnimeList[i], i);
+            dotsHtml += '<div class="carousel-dot ' + (i === 0 ? 'active' : '') + '" onclick="goToSlide(' + i + ')"></div>';
+        }
+        container.innerHTML = slidesHtml;
+        dotsContainer.innerHTML = dotsHtml;
+
+        startAutoSlide();
+    }
+
+    function goToSlide(index) {
+        currentSlide = index;
+        var container = document.getElementById('carouselContainer');
+        container.style.transform = 'translateX(-' + (index * 100) + '%)';
+        
+        var dots = document.querySelectorAll('.carousel-dot');
+        for (var i = 0; i < dots.length; i++) {
+            dots[i].classList.toggle('active', i === index);
+        }
+    }
+
+    function nextSlide() {
+        goToSlide((currentSlide + 1) % carouselAnime.length);
+    }
+
+    function prevSlide() {
+        goToSlide((currentSlide - 1 + carouselAnime.length) % carouselAnime.length);
+    }
+
+    function startAutoSlide() {
+        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function initSidebarNav() {
+        var items = document.querySelectorAll('.sidebar-item');
+        for (var i = 0; i < items.length; i++) {
+            items[i].addEventListener('click', function() {
+                var panel = this.dataset.panel;
+                
+                var allItems = document.querySelectorAll('.sidebar-item');
+                for (var j = 0; j < allItems.length; j++) {
+                    allItems[j].classList.remove('active');
+                }
+                this.classList.add('active');
+                
+                var allPanels = document.querySelectorAll('.content-panel');
+                for (var k = 0; k < allPanels.length; k++) {
+                    allPanels[k].classList.remove('active');
+                }
+                document.getElementById('panel-' + panel).classList.add('active');
+            });
+        }
+    }
+
+    function initScheduleTabs() {
+        var today = new Date().getDay();
+        var adjustedDay = today === 0 ? 7 : today;
+        
+        var btns = document.querySelectorAll('.weekday-btn');
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].classList.remove('active');
+            if (parseInt(btns[i].dataset.day) === adjustedDay) {
+                btns[i].classList.add('active');
+            }
+            btns[i].addEventListener('click', function() {
+                var allBtns = document.querySelectorAll('.weekday-btn');
+                for (var j = 0; j < allBtns.length; j++) {
+                    allBtns[j].classList.remove('active');
+                }
+                this.classList.add('active');
+                loadSchedule(parseInt(this.dataset.day));
+            });
+        }
+    }
+
+    function loadSchedule(dayId) {
+        var grid = document.getElementById('scheduleGrid');
+        grid.innerHTML = '<div class="loading-spinner"><div class="spinner"></div><span>加载中...</span></div>';
+        
+        getScheduleByDay(dayId).then(function(animeList) {
+            if (animeList.length === 0) {
+                grid.innerHTML = '<div class="loading-spinner"><span>该天暂无番剧放送</span></div>';
+                return;
+            }
+            
+            var html = '';
+            for (var i = 0; i < animeList.length; i++) {
+                html += createAnimeCard(animeList[i]);
+            }
+            grid.innerHTML = html;
+        });
+    }
+
+    function toggleExpand(type) {
+        var row = document.getElementById(type === 'trending' ? 'trendingRow' : 'classicRow');
+        var btn = document.getElementById('btn-' + type);
+        var animeList = type === 'trending' ? allTrendingAnime : allClassicAnime;
+        var isExpanded = row.classList.contains('expanded');
+        
+        if (isExpanded) {
+            // 收起：只显示6个
+            row.classList.remove('expanded');
+            btn.innerHTML = '查看更多 <i class="fas fa-chevron-down"></i>';
+            var html = '';
+            for (var i = 0; i < Math.min(6, animeList.length); i++) {
+                html += createAnimeCard(animeList[i]);
+            }
+            row.innerHTML = html;
+        } else {
+            // 展开：显示全部
+            row.classList.add('expanded');
+            btn.innerHTML = '收起 <i class="fas fa-chevron-up"></i>';
+            var html = '';
+            for (var i = 0; i < animeList.length; i++) {
+                html += createAnimeCard(animeList[i]);
+            }
+            row.innerHTML = html;
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('animeModal').classList.remove('show');
+        document.body.style.overflow = '';
+    }
+
+    function goToAnimeDetails(subjectId) {
+        window.location.href = '/animeDetails/#id=' + subjectId;
+    }
+
+    function loadRecommend() {
+        var grid = document.getElementById('recommendGrid');
+        if (!recommendData || recommendData.length === 0) {
+            grid.innerHTML = '<div class="loading-spinner"><span>暂无推荐</span></div>';
+            return;
+        }
+
+        grid.innerHTML = '<div class="loading-spinner"><div class="spinner"></div><span>加载中...</span></div>';
+        
+        var promises = [];
+        for (var i = 0; i < recommendData.length; i++) {
+            promises.push(getAnimeDetails(recommendData[i].subject_id));
+        }
+        
+        Promise.all(promises).then(function(detailsList) {
+            var html = '';
+            for (var i = 0; i < recommendData.length; i++) {
+                html += createRecommendCard(recommendData[i], detailsList[i]);
+            }
+            grid.innerHTML = html;
+        });
+    }
+
+    function initPage() {
+        initParticles();
+        initSidebarNav();
+        initScheduleTabs();
+
+
+        getTrendingAnime(7).then(function(carouselList) {
+            initCarousel(carouselList);
+        });
+
+        getTrendingAnime(6).then(function(trendingList) {
+            var html = '';
+            for (var i = 0; i < trendingList.length; i++) {
+                html += createAnimeCard(trendingList[i]);
+            }
+            document.getElementById('trendingRow').innerHTML = html;
+        });
+
+        getClassicAnime(6).then(function(classicList) {
+            var html = '';
+            for (var i = 0; i < classicList.length; i++) {
+                html += createAnimeCard(classicList[i]);
+            }
+            document.getElementById('classicRow').innerHTML = html;
+        });
+
+        var today = new Date().getDay();
+        var adjustedDay = today === 0 ? 7 : today;
+        loadSchedule(adjustedDay);
+
+        loadRecommend();
+    }
+
+    document.getElementById('animeModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
+    });
+
+    // 页面离开时移除 body 类
+    window.addEventListener('beforeunload', function() {
+        document.body.classList.remove('anime-page-body');
+    });
+
+    document.addEventListener('DOMContentLoaded', initPage);
+</script>
+
 
     <footer class="page-footer bg-color">
     

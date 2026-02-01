@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="分类: 数学, blog, technology, life">
+    <meta name="keywords" content="animeDetails, blog, technology, life">
     <meta name="description" content="Cysheper的个人博客，分享技术的乐趣。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>分类: 数学 | Cysheper</title>
+    <title>animeDetails | Cysheper</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <style>
@@ -433,164 +433,319 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
-    <div class="container">
-    <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                Cysheper
-                
-            </div>
+    <!-- 番剧详情页面 -->
+<link rel="stylesheet" href="/css/animeDetails.css">
 
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="/libs/typed/typed.js"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [ 
-                            
-                                "雾气弥漫的清晨，并不意味着是一个阴霾的白天。",
-                            
-                                "A foggy morning does not necessarily mean a gloomy day.",
-                            
-                        ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
-            </div>
+<div class="anime-details-page" id="detailsPage">
+    <!-- 返回按钮 -->
+    <a href="/anime" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        <span>返回番剧</span>
+    </a>
+
+    <!-- 加载状态 -->
+    <div class="loading-container" id="loadingState">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">正在加载番剧信息...</p>
+    </div>
+
+    <!-- 错误状态 -->
+    <div class="error-container" id="errorState" style="display: none;">
+        <i class="fas fa-exclamation-circle error-icon"></i>
+        <h2 class="error-title">加载失败</h2>
+        <p class="error-message" id="errorMessage">无法获取番剧信息</p>
+        <a href="/anime" class="action-btn primary">
+            <i class="fas fa-home"></i>
+            返回番剧页面
+        </a>
+    </div>
+
+    <!-- 主要内容 -->
+    <div id="mainContent" style="display: none;">
+        <!-- 背景横幅 -->
+        <div class="details-banner">
+            <img class="banner-bg" id="bannerBg" src="" alt="">
+            <div class="banner-overlay"></div>
         </div>
-    </div>
-</div>
 
+        <!-- 主要信息区域 -->
+        <div class="details-main">
+            <div class="details-header">
+                <!-- 海报 -->
+                <div class="details-poster">
+                    <img id="posterImg" src="" alt="">
+                    <div class="poster-badge" id="ratingBadge">0.0</div>
+                </div>
 
-<script>
-    if ( true === true ) {
-        var url = "https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/%E5%86%AC.jpg";
-        $('.bg-cover').css('background-image', 'url(' + url + ')');
-    } else {
-        var bannerUrl = "/medias/banner/0.webp";
-        $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
-    }
-</script>
+                <!-- 信息 -->
+                <div class="details-info">
+                    <h1 class="details-title" id="animeTitle">加载中...</h1>
+                    <p class="details-subtitle" id="animeSubtitle"></p>
 
-
-    </div>
-</div>
-
-<main class="content">
-
-    
-
-<div id="category-cloud" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-bookmark"></i>&nbsp;&nbsp;文章分类
-            </div>
-            <div class="tag-chips">
-                
-                
-                
-                <a href="/categories/%E9%9A%8F%E7%AC%94/" title="随笔: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">随笔
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E7%AE%97%E6%B3%95/" title="算法: 13">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F5EEF8;">算法
-                        <span class="tag-length">13</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/%E6%95%B0%E5%AD%A6/" title="数学: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #D5F5E3;">数学
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-
-    
-
-    <article id="articles" class="container articles">
-        <div class="row tags-posts">
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2025/12/29/xian-xing-dai-shu/">
-                        <div class="card-image tag-image">
-                            
-                            <img src="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/mutsumi01%281%29.jpg" class="responsive-img" alt="线性代数">
-                            
-                            <span class="card-title">线性代数</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                线性代数基本概念、解题方法（期末速通笔记）
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-12-29
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
-                                    数学
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
+                    <div class="details-meta" id="animeMeta">
                     </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%95%B0%E5%AD%A6/">
-                            <span class="chip bg-color">数学</span>
-                        </a>
-                        
-                        <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-                            <span class="chip bg-color">线性代数</span>
-                        </a>
-                        
+                    <div class="collection-stats" id="collectionStats">
                     </div>
-                    
+
+                    <div class="action-buttons">
+                        <a class="action-btn primary" id="bgmLink" href="#" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            在 Bangumi 查看
+                        </a>
+                        <button class="action-btn secondary" onclick="window.history.back()">
+                            <i class="fas fa-arrow-left"></i>
+                            返回
+                        </button>
+                    </div>
                 </div>
             </div>
-            
+
+            <div class="details-content">
+                <!-- 左侧内容 -->
+                <div class="content-left">
+                    <!-- 简介 -->
+                    <div class="content-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-book-open"></i>
+                            简介
+                        </h3>
+                        <p class="summary-text" id="summaryText">暂无简介</p>
+                    </div>
+
+                    <!-- 标签 -->
+                    <div class="content-section" id="tagsSection">
+                        <h3 class="section-title">
+                            <i class="fas fa-tags"></i>
+                            标签
+                        </h3>
+                        <div class="tag-list" id="tagList">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧内容 -->
+                <div class="content-right">
+                    <!-- 详细信息 -->
+                    <div class="content-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-info-circle"></i>
+                            详细信息
+                        </h3>
+                        <div class="info-table" id="infoTable">
+                        </div>
+                    </div>
+
+                    <!-- 评分分布 -->
+                    <div class="content-section" id="ratingSection">
+                        <h3 class="section-title">
+                            <i class="fas fa-chart-bar"></i>
+                            评分分布
+                        </h3>
+                        <div class="rating-distribution" id="ratingDistribution">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </article>
-</main>
+    </div>
+</div>
 
+<script>
+    // 添加详情页 body class，让导航栏透明
+    document.body.classList.add('anime-details-body');
+    
+    // 页面卸载时移除 class
+    window.addEventListener('beforeunload', function() {
+        document.body.classList.remove('anime-details-body');
+    });
 
+    var bgmApiBase = 'https://api.bgm.tv';
+
+    function getUrlParam(name) {
+        // 1. 尝试从查询参数获取 (?id=xxx)
+        var urlParams = new URLSearchParams(window.location.search);
+        var value = urlParams.get(name);
+        if (value) return value;
+        
+        // 2. 尝试从 hash 获取 (#id=xxx)
+        var hash = window.location.hash;
+        if (hash && hash.length > 1) {
+            var hashParams = new URLSearchParams(hash.substring(1));
+            value = hashParams.get(name);
+            if (value) return value;
+        }
+        
+        // 3. 尝试用正则从完整 URL 匹配
+        var regex = new RegExp('[?&#]' + name + '=([^&#]*)');
+        var match = window.location.href.match(regex);
+        if (match) {
+            return decodeURIComponent(match[1]);
+        }
+        
+        return null;
+    }
+
+    function showError(message) {
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'none';
+        document.getElementById('errorState').style.display = 'flex';
+        document.getElementById('errorMessage').textContent = message || '无法获取番剧信息';
+    }
+
+    function showContent() {
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('errorState').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+    }
+
+    function fetchAnimeDetails(subjectId) {
+        return fetch(bgmApiBase + '/v0/subjects/' + subjectId, {
+            method: 'GET',
+            headers: { "Accept": "application/json" }
+        })
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error('HTTP error! status: ' + response.status);
+            }
+            return response.json();
+        });
+    }
+
+    function renderAnimeDetails(anime) {
+        var defaultImg = 'https://lain.bgm.tv/img/no_icon_subject.png';
+        var imageUrl = (anime.images && (anime.images.large || anime.images.common)) || defaultImg;
+        
+        document.getElementById('bannerBg').src = imageUrl;
+        document.getElementById('posterImg').src = imageUrl;
+        
+        document.getElementById('animeTitle').textContent = anime.name_cn || anime.name || '未知番剧';
+        document.getElementById('animeSubtitle').textContent = anime.name || '';
+        
+        var score = (anime.rating && anime.rating.score) ? anime.rating.score.toFixed(1) : 'N/A';
+        document.getElementById('ratingBadge').textContent = '★ ' + score;
+        
+        document.getElementById('bgmLink').href = 'https://bgm.tv/subject/' + anime.id;
+        
+        var metaHtml = '';
+        if (anime.rating && anime.rating.score) {
+            metaHtml += '<div class="meta-tag rating"><i class="fas fa-star"></i> ' + anime.rating.score.toFixed(1) + ' 分</div>';
+        }
+        if (anime.air_date) {
+            metaHtml += '<div class="meta-tag"><i class="fas fa-calendar"></i> ' + anime.air_date + '</div>';
+        }
+        if (anime.eps || anime.total_episodes) {
+            metaHtml += '<div class="meta-tag"><i class="fas fa-film"></i> ' + (anime.eps || anime.total_episodes) + ' 话</div>';
+        }
+        if (anime.platform) {
+            metaHtml += '<div class="meta-tag"><i class="fas fa-tv"></i> ' + anime.platform + '</div>';
+        }
+        document.getElementById('animeMeta').innerHTML = metaHtml;
+        
+        var collection = anime.collection || {};
+        var statsHtml = '';
+        if (collection.wish) {
+            statsHtml += '<div class="stat-item"><span class="stat-number">' + collection.wish + '</span><span class="stat-label">想看</span></div>';
+        }
+        if (collection.doing) {
+            statsHtml += '<div class="stat-item"><span class="stat-number">' + collection.doing + '</span><span class="stat-label">在看</span></div>';
+        }
+        if (collection.collect) {
+            statsHtml += '<div class="stat-item"><span class="stat-number">' + collection.collect + '</span><span class="stat-label">看过</span></div>';
+        }
+        if (collection.on_hold) {
+            statsHtml += '<div class="stat-item"><span class="stat-number">' + collection.on_hold + '</span><span class="stat-label">搁置</span></div>';
+        }
+        if (collection.dropped) {
+            statsHtml += '<div class="stat-item"><span class="stat-number">' + collection.dropped + '</span><span class="stat-label">抛弃</span></div>';
+        }
+        document.getElementById('collectionStats').innerHTML = statsHtml || '<div class="stat-item"><span class="stat-label">暂无收藏数据</span></div>';
+        
+        document.getElementById('summaryText').textContent = anime.summary || '暂无简介';
+        
+        var tags = anime.tags || [];
+        if (tags.length > 0) {
+            var tagsHtml = '';
+            for (var i = 0; i < Math.min(tags.length, 15); i++) {
+                tagsHtml += '<span class="tag-item">' + tags[i].name + '</span>';
+            }
+            document.getElementById('tagList').innerHTML = tagsHtml;
+            document.getElementById('tagsSection').style.display = 'block';
+        } else {
+            document.getElementById('tagsSection').style.display = 'none';
+        }
+        
+        var infoHtml = '';
+        infoHtml += '<div class="info-row"><span class="info-label">类型</span><span class="info-value">' + (anime.type_text || getTypeText(anime.type) || '动画') + '</span></div>';
+        if (anime.date) {
+            infoHtml += '<div class="info-row"><span class="info-label">放送日期</span><span class="info-value">' + anime.date + '</span></div>';
+        }
+        if (anime.air_date) {
+            infoHtml += '<div class="info-row"><span class="info-label">开播日期</span><span class="info-value">' + anime.air_date + '</span></div>';
+        }
+        if (anime.eps || anime.total_episodes) {
+            infoHtml += '<div class="info-row"><span class="info-label">话数</span><span class="info-value">' + (anime.eps || anime.total_episodes) + '</span></div>';
+        }
+        if (anime.rating && anime.rating.total) {
+            infoHtml += '<div class="info-row"><span class="info-label">评分人数</span><span class="info-value">' + anime.rating.total + ' 人</span></div>';
+        }
+        if (anime.rating && anime.rating.rank) {
+            infoHtml += '<div class="info-row"><span class="info-label">排名</span><span class="info-value">#' + anime.rating.rank + '</span></div>';
+        }
+        document.getElementById('infoTable').innerHTML = infoHtml;
+        
+        if (anime.rating && anime.rating.count) {
+            var count = anime.rating.count;
+            var total = anime.rating.total || 1;
+            var ratingHtml = '';
+            for (var s = 10; s >= 1; s--) {
+                var cnt = count[s] || 0;
+                var percent = Math.round((cnt / total) * 100);
+                ratingHtml += '<div class="rating-bar">' +
+                    '<span class="rating-label">' + s + ' 分</span>' +
+                    '<div class="rating-progress"><div class="rating-fill" style="width: ' + percent + '%"></div></div>' +
+                    '<span class="rating-count">' + cnt + '</span>' +
+                '</div>';
+            }
+            document.getElementById('ratingDistribution').innerHTML = ratingHtml;
+            document.getElementById('ratingSection').style.display = 'block';
+        } else {
+            document.getElementById('ratingSection').style.display = 'none';
+        }
+    }
+
+    function getTypeText(type) {
+        var types = {
+            1: 'Book',
+            2: '动画',
+            3: '音乐',
+            4: '游戏',
+            6: '三次元'
+        };
+        return types[type] || '动画';
+    }
+
+    function initPage() {
+        var subjectId = getUrlParam('id');
+        
+        if (!subjectId) {
+            showError('未提供番剧ID');
+            return;
+        }
+        
+        fetchAnimeDetails(subjectId)
+            .then(function(anime) {
+                renderAnimeDetails(anime);
+                showContent();
+            })
+            .catch(function(error) {
+                console.error('获取番剧详情失败:', error);
+                showError('获取番剧信息失败: ' + error.message);
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', initPage);
+</script>
 
 
     <footer class="page-footer bg-color">

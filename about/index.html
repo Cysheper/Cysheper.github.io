@@ -180,11 +180,20 @@
       </li>
       
       <li>
-        <a href="/movies">
+        <a href="/videos">
           
-          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-video" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Movies</span>
+          <span>Videos</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/anime">
+          
+          <i class="fab fa-bilibili" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Anime</span>
         </a>
       </li>
       
@@ -355,11 +364,21 @@
               
                 <li>
 
-                  <a href="/movies " style="margin-left:75px">
+                  <a href="/videos " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-video" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Movies</span>
+		          <span>Videos</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/anime " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-bilibili" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Anime</span>
                   </a>
                 </li>
               
@@ -652,7 +671,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01"]
+            data: ["2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02"]
         },
         yAxis: {
             type: 'value',
@@ -662,7 +681,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,6,1,0,0,6,1,0,2,1],
+                data: [0,0,0,6,1,0,0,6,1,0,2,1,0],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -728,7 +747,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["ACM","Codeforces","题解","算法","C++","基础知识","模板","随笔","CCPC","二进制"]
+                data: ["ACM","Codeforces","题解","算法","C++","基础知识","模板","随笔","CCPC","STL"]
             }
         ],
         yAxis: [
@@ -772,186 +791,6 @@
 
 
                 
-
-                
-                
-<div class="my-skills">
-    <div class="title center-align" data-aos="zoom-in-up">
-        <i class="fas fa-wrench"></i>&nbsp;&nbsp;我的技能
-    </div>
-    <div class="row">
-        
-        
-        
-        <div class="col s12 m6 l6" data-aos="fade-up">
-            <div class="skillbar">
-                <div class="skillbar-title"
-                     style="background: linear-gradient(to right, #FF0066 0%, #FF00CC 100%); width: 60%">
-                    <span>C++</span>
-                </div>
-                <div class="skill-bar-percent">60%</div>
-            </div>
-        </div>
-        
-        
-        <div class="col s12 m6 l6" data-aos="fade-up">
-            <div class="skillbar">
-                <div class="skillbar-title"
-                     style="background: linear-gradient(to right, #9900FF 0%, #CC66FF 100%); width: 60%">
-                    <span>Python</span>
-                </div>
-                <div class="skill-bar-percent">60%</div>
-            </div>
-        </div>
-        
-        
-        <div class="col s12 m6 l6" data-aos="fade-up">
-            <div class="skillbar">
-                <div class="skillbar-title"
-                     style="background: linear-gradient(to right, #FFEB3B 0%, #FFF176 100%); width: 75%">
-                    <span>程序设计</span>
-                </div>
-                <div class="skill-bar-percent">75%</div>
-            </div>
-        </div>
-        
-        
-    </div>
-
-    
-
-    
-    <div class="other-skills chip-container" data-aos="zoom-in-up">
-        <div class="sub-title center-align"><i class="fa fa-book"></i>&nbsp;&nbsp;其他技能</div>
-        <div class="tag-chips center-align">
-            
-            
-            <a href="/tags/%E9%9A%8F%E7%AC%94/">
-                <span class="chip center-align waves-effect waves-light chip-default">随笔</span>
-            </a>
-            
-            
-            
-            <a href="/tags/CCPC/">
-                <span class="chip center-align waves-effect waves-light chip-default">CCPC</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Codeforces/">
-                <span class="chip center-align waves-effect waves-light chip-default">Codeforces</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E9%A2%98%E8%A7%A3/">
-                <span class="chip center-align waves-effect waves-light chip-default">题解</span>
-            </a>
-            
-            
-            
-            <a href="/tags/ACM/">
-                <span class="chip center-align waves-effect waves-light chip-default">ACM</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/">
-                <span class="chip center-align waves-effect waves-light chip-default">二进制</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
-                <span class="chip center-align waves-effect waves-light chip-default">位运算</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
-                <span class="chip center-align waves-effect waves-light chip-default">基础知识</span>
-            </a>
-            
-            
-            
-            
-            
-            <a href="/tags/STL/">
-                <span class="chip center-align waves-effect waves-light chip-default">STL</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                <span class="chip center-align waves-effect waves-light chip-default">算法</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E5%AE%B9%E5%99%A8/">
-                <span class="chip center-align waves-effect waves-light chip-default">容器</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E4%BA%8C%E5%88%86/">
-                <span class="chip center-align waves-effect waves-light chip-default">二分</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E6%A8%A1%E6%9D%BF/">
-                <span class="chip center-align waves-effect waves-light chip-default">模板</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/">
-                <span class="chip center-align waves-effect waves-light chip-default">开发日志</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E6%90%9C%E7%B4%A2/">
-                <span class="chip center-align waves-effect waves-light chip-default">搜索</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E9%A2%84%E5%A4%84%E7%90%86/">
-                <span class="chip center-align waves-effect waves-light chip-default">预处理</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E8%AE%A1%E5%88%92/">
-                <span class="chip center-align waves-effect waves-light chip-default">计划</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E5%B0%8F%E7%BB%84/">
-                <span class="chip center-align waves-effect waves-light chip-default">小组</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E6%95%B0%E5%AD%A6/">
-                <span class="chip center-align waves-effect waves-light chip-default">数学</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-                <span class="chip center-align waves-effect waves-light chip-default">线性代数</span>
-            </a>
-            
-            
-        </div>
-    </div>
-    
-
-</div>
 
                 
 
