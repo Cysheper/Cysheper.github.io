@@ -648,12 +648,16 @@ body.anime-page-body footer.page-footer {
 }
 
 .recommend-stars { margin-bottom: 15px; }
-.recommend-stars i { color: #ffd166; font-size: 1rem; margin-right: 3px; }
+.recommend-stars i { 
+    color: #ffd166 !important; 
+    font-size: 1rem; 
+    margin-right: 3px; 
+}
 .recommend-stars i.empty { color: rgba(255, 255, 255, 0.2); }
 
 .recommend-reason {
     font-size: 1.4rem;
-    color: #ff6b9d;
+    color: #ff6b9d !important;
     font-style: italic;
     margin: 0 0 15px;
     line-height: 1.3;
