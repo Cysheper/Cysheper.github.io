@@ -1162,8 +1162,50 @@ cout <span class="token operator">&lt;&lt;</span> a <span class="token operator"
     });
 </script>
 
-<!--酷Q推送-->
+<script>
 
+    // 点击发送评论按钮时触发
+
+
+    var pushLink = "http://8.138.38.167:3000/send_private_msg"
+    var siteName = "Cysheper's Blog";
+    var valineButton=document.getElementsByClassName("vsubmit vbtn")[0];
+    var title = siteName + "上又有新评论啦~!\n";
+  
+    function send_valine() {
+      //获取元素信息
+      var pagename = document.title;
+      var pageurl = document.URL;
+      var pushtime = new Date();
+      var vnick = document.getElementsByClassName("vnick vinput")[0].value;
+      var vmail = document.getElementsByClassName("vmail vinput")[0].value;
+      var vlink = document.getElementsByClassName("vlink vinput")[0].value;
+      var veditor = document.getElementsByClassName("veditor vinput")[0].value;
+      content =
+        title +
+        "昵称：" + vnick +
+        "\n邮箱：" + vmail +
+        "\n网站地址：" + vlink +
+        "\n文章标题：" + pagename +
+        "\n评论内容：" + veditor +
+        "\n文章链接：" + pageurl +
+        "\n评论时间" + pushtime.toLocaleString() + "\n";
+
+      data = {
+          "user_id": "3403699116",
+          "message": content
+      }
+
+      var httpRequest = new XMLHttpRequest(); //第一步：创建需要的对象
+      httpRequest.open("POST", pushLink, true); //第二步：打开连接
+      httpRequest.setRequestHeader(
+        "Authorization", "Bearer wb(ree8$3QyD.$tt"
+      ); //设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+      httpRequest.send(JSON.stringify(data)); //发送请求 
+    }
+  
+    valineButton.addEventListener("click", send_valine);
+</script>
 
     
 
@@ -1242,18 +1284,18 @@ cout <span class="token operator">&lt;&lt;</span> a <span class="token operator"
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/05/04/first/">
+                <a href="/2025/05/04/search/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/1.webp" class="responsive-img" alt="C++基础模板">
+                        <img src="http://img.hongyoubizhi.com/picture/pages/original/2025/03/16/15/135273564_p1.jpg" class="responsive-img" alt="搜索">
                         
-                        <span class="card-title">C++基础模板</span>
+                        <span class="card-title">搜索</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            C++基础模板
+                            搜索算法
                         
                     </div>
                     <div class="publish-info">
@@ -1275,6 +1317,10 @@ cout <span class="token operator">&lt;&lt;</span> a <span class="token operator"
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/ACM/">
+                        <span class="chip bg-color">ACM</span>
+                    </a>
+                    
                     <a href="/tags/C/">
                         <span class="chip bg-color">C++</span>
                     </a>
@@ -1283,8 +1329,8 @@ cout <span class="token operator">&lt;&lt;</span> a <span class="token operator"
                         <span class="chip bg-color">算法</span>
                     </a>
                     
-                    <a href="/tags/%E6%A8%A1%E6%9D%BF/">
-                        <span class="chip bg-color">模板</span>
+                    <a href="/tags/%E6%90%9C%E7%B4%A2/">
+                        <span class="chip bg-color">搜索</span>
                     </a>
                     
                 </div>

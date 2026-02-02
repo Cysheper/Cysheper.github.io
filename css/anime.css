@@ -593,6 +593,10 @@ body.anime-page-body footer.page-footer {
 /* ========================================
    站长推荐
    ======================================== */
+
+
+/* 
+*/
 .recommend-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -669,7 +673,7 @@ body.anime-page-body footer.page-footer {
     line-height: 1.7;
     margin: 0;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+
     -webkit-box-orient: vertical;
     overflow: hidden;
 }

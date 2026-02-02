@@ -1100,8 +1100,50 @@
     });
 </script>
 
-<!--酷Q推送-->
+<script>
 
+    // 点击发送评论按钮时触发
+
+
+    var pushLink = "http://8.138.38.167:3000/send_private_msg"
+    var siteName = "Cysheper's Blog";
+    var valineButton=document.getElementsByClassName("vsubmit vbtn")[0];
+    var title = siteName + "上又有新评论啦~!\n";
+  
+    function send_valine() {
+      //获取元素信息
+      var pagename = document.title;
+      var pageurl = document.URL;
+      var pushtime = new Date();
+      var vnick = document.getElementsByClassName("vnick vinput")[0].value;
+      var vmail = document.getElementsByClassName("vmail vinput")[0].value;
+      var vlink = document.getElementsByClassName("vlink vinput")[0].value;
+      var veditor = document.getElementsByClassName("veditor vinput")[0].value;
+      content =
+        title +
+        "昵称：" + vnick +
+        "\n邮箱：" + vmail +
+        "\n网站地址：" + vlink +
+        "\n文章标题：" + pagename +
+        "\n评论内容：" + veditor +
+        "\n文章链接：" + pageurl +
+        "\n评论时间" + pushtime.toLocaleString() + "\n";
+
+      data = {
+          "user_id": "3403699116",
+          "message": content
+      }
+
+      var httpRequest = new XMLHttpRequest(); //第一步：创建需要的对象
+      httpRequest.open("POST", pushLink, true); //第二步：打开连接
+      httpRequest.setRequestHeader(
+        "Authorization", "Bearer wb(ree8$3QyD.$tt"
+      ); //设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+      httpRequest.send(JSON.stringify(data)); //发送请求 
+    }
+  
+    valineButton.addEventListener("click", send_valine);
+</script>
 
     
 
@@ -1176,18 +1218,18 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/09/22/codeforces-global-round-29-div.1-div.2/">
+                <a href="/2025/09/22/codeforces-round-1050-div.4/">
                     <div class="card-image">
                         
-                        <img src="https://img.hongyoubizhi.com/picture/pages/regular/2025/03/16/12/135151473_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" class="responsive-img" alt="题解-Codeforces Global Round 29 (Div. 1 + Div. 2)">
+                        <img src="https://img.hongyoubizhi.com/picture/pages/original/2025/03/16/12/134233797_p0.png" class="responsive-img" alt="题解-Codeforces Round 1050 (Div. 4)">
                         
-                        <span class="card-title">题解-Codeforces Global Round 29 (Div. 1 + Div. 2)</span>
+                        <span class="card-title">题解-Codeforces Round 1050 (Div. 4)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Codeforces Global Round 29 题解
+                            Codeforces Round 1050 (Div. 4) 题解
                         
                     </div>
                     <div class="publish-info">
