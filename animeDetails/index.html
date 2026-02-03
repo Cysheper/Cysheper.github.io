@@ -201,40 +201,6 @@
     
   </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" class="waves-effect waves-light">
-
-      
-      <i class="fas fa-external-link-alt" style="zoom: 0.6;"></i>
-      
-      <span>其他站点</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a target="_blank" rel="noopener" href="https://anime.cysheper.top">
-          
-          <i class="fas fa-users" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>AnimeHub</span>
-        </a>
-      </li>
-      
-      <li>
-        <a target="_blank" rel="noopener" href="https://ai.cysheper.top">
-          
-          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>AI平台</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -386,41 +352,6 @@
           
         </li>
         
-        <li class="m-nav-item">
-	  
-		<a href="javascript:;">
-			
-				<i class="fa-fw fas fa-external-link-alt"></i>
-			
-			其他站点
-			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-		</a>
-            <ul  style="background:  ;" >
-              
-                <li>
-
-                  <a target="_blank" rel="noopener" href="https://anime.cysheper.top " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-users" style="position: absolute;left:50px" ></i>
-			      
-		          <span>AnimeHub</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a target="_blank" rel="noopener" href="https://ai.cysheper.top " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
-			      
-		          <span>AI平台</span>
-                  </a>
-                </li>
-              
-            </ul>
-          
-        </li>
-        
         
     </ul>
 </div>
@@ -506,11 +437,24 @@
                 <div class="content-left">
                     <!-- 简介 -->
                     <div class="content-section">
-                        <h3 class="section-title">
-                            <i class="fas fa-book-open"></i>
-                            简介
-                        </h3>
-                        <p class="summary-text" id="summaryText">暂无简介</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h3 class="section-title" style="margin-bottom: 0;">
+                                <i class="fas fa-book-open"></i>
+                                简介
+                            </h3>
+                            <button id="translateBtn" class="action-btn secondary" style="padding: 4px 10px; font-size: 0.8rem; height: auto; min-height: 0; line-height: 1.5; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                                <i class="fas fa-language"></i> 翻译
+                            </button>
+                        </div>
+                        <p class="summary-text" id="summaryText" style="margin-top: 15px;">暂无简介</p>
+                        
+                        <!-- 翻译结果 -->
+                        <div id="translationContainer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed rgba(255,255,255,0.2);">
+                            <div style="font-size: 0.85rem; color: #aaa; margin-bottom: 8px;">
+                                <i class="fas fa-robot"></i> AI 翻译结果：
+                            </div>
+                            <p class="summary-text" id="translationText" style="color: #ddd; line-height: 1.6;"></p>
+                        </div>
                     </div>
 
                     <!-- 标签 -->
@@ -520,6 +464,15 @@
                             标签
                         </h3>
                         <div class="tag-list" id="tagList"></div>
+                    </div>
+
+                    <!-- 观看链接 -->
+                    <div class="content-section" id="watchLinksSection">
+                        <h3 class="section-title">
+                            <i class="fas fa-link"></i>
+                            观看链接
+                        </h3>
+                        <div class="watch-links" id="watchLinks"></div>
                     </div>
                 </div>
 
@@ -558,6 +511,63 @@
     window.addEventListener('beforeunload', function() {
         document.body.classList.remove('anime-details-body');
     });
+
+    // LLM 翻译配置 (OpenAI SDK 兼容)
+    var llmConfig = {
+        baseUrl: "https://api.siliconflow.cn/v1",
+        apiKeys: "sk-jqnjvuewkvrdshpwhijfelxenvtlitmkdjcivmsumuzrelge,sk-jbshkzejbklhfawsrzxvujiorfudscgaqqskeuebcemejtdp,sk-wanbjqcdeoobmoybwqzdmwqzlngorwbtbusvgvlmzhyqltgb,sk-ilygpzgxqzxwokbdyfyxdsfigoqddzoqxpikqpvfmfwlpghj,sk-gukgkdkwmwmdwqevgeqyjxulozwbtpibygozaazhbsvuktsl".split(",").map(function(key) { return key.trim(); }),     
+        model: "Qwen/Qwen2.5-7B-Instruct"              
+    };
+
+    // 翻译缓存 (使用 localStorage 持久化)
+    var translationCache = (function() {
+        var CACHE_KEY = 'anime_translation_cache';
+        var CACHE_EXPIRE_DAYS = 1; // 缓存1天
+        
+        function getCache() {
+            try {
+                var data = localStorage.getItem(CACHE_KEY);
+                return data ? JSON.parse(data) : {};
+            } catch (e) {
+                return {};
+            }
+        }
+        
+        function saveCache(cache) {
+            try {
+                localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+            } catch (e) {
+                console.warn('Failed to save translation cache:', e);
+            }
+        }
+        
+        return {
+            get: function(text) {
+                var cache = getCache();
+                var hash = btoa(encodeURIComponent(text)).substring(0, 50); // 简单hash
+                var item = cache[hash];
+                if (item) {
+                    // 检查是否过期
+                    if (Date.now() - item.timestamp < CACHE_EXPIRE_DAYS * 24 * 60 * 60 * 1000) {
+                        return item.translation;
+                    }
+                    // 过期则删除
+                    delete cache[hash];
+                    saveCache(cache);
+                }
+                return null;
+            },
+            set: function(text, translation) {
+                var cache = getCache();
+                var hash = btoa(encodeURIComponent(text)).substring(0, 50);
+                cache[hash] = {
+                    translation: translation,
+                    timestamp: Date.now()
+                };
+                saveCache(cache);
+            }
+        };
+    })();
 
     var bgmApiBase = 'https://api.bgm.tv';
 
@@ -674,6 +684,31 @@
             document.getElementById('tagsSection').style.display = 'none';
         }
         
+        // 生成观看链接
+        var searchName = anime.name_cn || anime.name;
+        if (searchName) {
+            var linksHtml = '';
+            // Bilibili - 搜索
+             linksHtml += '<a href="https://search.bilibili.com/bangumi?keyword=' + encodeURIComponent(searchName) + '" target="_blank" class="watch-link-item">' +
+                '<i class="fab fa-bilibili"></i> Bilibili' +
+                '</a>';
+            
+            // Mutean - 搜索
+            linksHtml += '<a href="https://www.mutean.com/vodsearch/-------------.html?wd=' + encodeURIComponent(searchName) + '" target="_blank" class="watch-link-item">' +
+                '<i class="fas fa-film"></i> Mutean' +
+                '</a>';
+
+            // baidu Search - 泛搜
+            linksHtml += '<a href="https://www.baidu.com/s?wd=' + encodeURIComponent(searchName + ' 在线观看') + '" target="_blank" class="watch-link-item">' +
+                '<i class="fa-solid fa-magnifying-glass"></i> 百度搜索' +
+                '</a>';
+
+            document.getElementById('watchLinks').innerHTML = linksHtml;
+            document.getElementById('watchLinksSection').style.display = 'block';
+        } else {
+             document.getElementById('watchLinksSection').style.display = 'none';
+        }
+        
         var infoHtml = '';
         infoHtml += '<div class="info-row"><span class="info-label">类型</span><span class="info-value">' + (anime.type_text || getTypeText(anime.type) || '动画') + '</span></div>';
         if (anime.date) {
@@ -740,7 +775,112 @@
         return types[type] || '动画';
     }
 
+    // 翻译功能实现
+    async function translateSummary() {
+        var summary = document.getElementById('summaryText').textContent;
+        // 如果内容为空或为默认值，不翻译
+        if (!summary || summary.trim() === '暂无简介' || summary.trim() === '') {
+            alert('暂无简介可供翻译');
+            return;
+        }
+
+        var btn = document.getElementById('translateBtn');
+        var container = document.getElementById('translationContainer');
+        var resultText = document.getElementById('translationText');
+
+        // 如果已经显示了翻译结果，点击按钮则切换显示/隐藏
+        if (resultText.textContent && resultText.textContent !== '正在翻译...' && !resultText.textContent.startsWith('翻译失败')) {
+            if (container.style.display === 'none') {
+                container.style.display = 'block';
+                btn.innerHTML = '<i class="fas fa-language"></i> 收起翻译';
+            } else {
+                container.style.display = 'none';
+                btn.innerHTML = '<i class="fas fa-language"></i> 显示翻译';
+            }
+            return;
+        }
+
+        // 检查缓存
+        var cachedTranslation = translationCache.get(summary);
+        if (cachedTranslation) {
+            console.log('Using cached translation');
+            container.style.display = 'block';
+            resultText.textContent = cachedTranslation;
+            btn.innerHTML = '<i class="fas fa-language"></i> 收起翻译';
+            return;
+        }
+
+        // 开始翻译
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 翻译中...';
+        container.style.display = 'block';
+        resultText.textContent = '正在翻译...';
+
+        try {
+            // 构造符合 OpenAI API 格式的请求
+            var requestBody = {
+                model: llmConfig.model,
+                messages: [
+                    { 
+                        role: "system", 
+                        content: "你是一个专业的番剧简介翻译助手。请将以下文本翻译成流畅、自然的简体中文。直接输出翻译结果，不要包含任何额外的解释或说明。" 
+                    },
+                    { 
+                        role: "user", 
+                        content: summary 
+                    }
+                ],
+                temperature: 0.7
+            };
+            var randomIndex = Math.floor(Math.random() * llmConfig.apiKeys.length);
+            console.log("Using API Key Index: " + randomIndex);
+            llmConfig.apiKey = llmConfig.apiKeys[randomIndex];
+
+            var response = await fetch(llmConfig.baseUrl.replace(/\/+$/, '') + '/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + llmConfig.apiKey
+                },
+                body: JSON.stringify(requestBody),
+                timeout: 8000 // 8秒超时
+            });
+
+            if (!response.ok) {
+                var errorData = await response.json().catch(function() { return {}; });
+                throw new Error('API Error ' + response.status + ': ' + (errorData.error ? errorData.error.message : response.statusText));
+            }
+
+            var data = await response.json();
+            
+            if (data.choices && data.choices.length > 0 && data.choices[0].message) {
+                var translatedContent = data.choices[0].message.content.trim();
+                resultText.textContent = translatedContent;
+                btn.innerHTML = '<i class="fas fa-language"></i> 收起翻译';
+                
+                // 保存到缓存
+                translationCache.set(summary, translatedContent);
+                console.log('Translation cached');
+            } else {
+                throw new Error('Invalid API response format');
+            }
+
+        } catch (error) {
+            console.error('Translation failed:', error);
+            resultText.textContent = '翻译失败: ' + error.message + '。请检查控制台了解详情，或检查 API设置。';
+            btn.innerHTML = '<i class="fas fa-redo"></i> 重试翻译';
+        } finally {
+            btn.disabled = false;
+        }
+    }
+
     function initPage() {
+        // 绑定翻译按钮事件
+        var translateBtn = document.getElementById('translateBtn');
+        if (translateBtn) {
+            translateBtn.addEventListener('click', translateSummary);
+        }
+
         var subjectId = getUrlParam('id');
         
         if (!subjectId) {

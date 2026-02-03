@@ -534,3 +534,56 @@ body.anime-details-body footer.page-footer {
     color: rgba(255, 255, 255, 0.6);
     margin-bottom: 20px;
 }
+
+/* 标签列表 */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag-item {
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.2s ease;
+}
+
+.tag-item:hover {
+    background: var(--detail-secondary);
+    color: white;
+}
+
+/* 观看链接 */
+.watch-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.watch-link-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.watch-link-item:hover {
+    background: rgba(255, 107, 157, 0.2);
+    border-color: var(--detail-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.watch-link-item i {
+    color: var(--detail-primary);
+}
