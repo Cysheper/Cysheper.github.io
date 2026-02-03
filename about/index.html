@@ -102,10 +102,18 @@
             title = "访问了番剧详情页，名称: " + decodeURIComponent(animeName);
             sendMessage(title);
             console.log('访问了番剧详情页，名称: ' + decodeURIComponent(animeName));
-        } else {
-            sendMessage("访问了页面：" + title);
-            console.log('访问了页面，标题: ' + title);
+        } 
+        if (title === "musics") {
+            title = "访问了音乐页面";
+            sendMessage(title);
+            console.log('访问了音乐页面');
         }
+        if (title === "anime") {
+            title = "访问了番剧页面";
+            sendMessage(title);
+            console.log('访问了番剧页面');
+        }
+        
     </script>
 
 
@@ -715,7 +723,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["ACM","Codeforces","题解","算法","C++","模板","基础知识","随笔","CCPC","STL"]
+                data: ["ACM","Codeforces","题解","算法","C++","基础知识","模板","随笔","CCPC","二进制"]
             }
         ],
         yAxis: [
