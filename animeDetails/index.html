@@ -160,6 +160,17 @@
   
   <li class="hide-on-med-and-down nav-item">
     
+    <a href="/anime" class="waves-effect waves-light">
+      
+      <i class="fab fa-bilibili" style="zoom: 0.6;"></i>
+      
+      <span>Anime</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
     <a href="" class="waves-effect waves-light">
 
       
@@ -185,15 +196,6 @@
           <i class="fas fa-video" style="margin-top: -20px; zoom: 0.6;"></i>
           
           <span>Videos</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/anime">
-          
-          <i class="fab fa-bilibili" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>Anime</span>
         </a>
       </li>
       
@@ -309,6 +311,17 @@
         
         <li class="m-nav-item">
 	  
+		<a href="/anime" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-bilibili"></i>
+			
+			Anime
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
 		<a href="javascript:;">
 			
 				<i class="fa-fw fas fa-list"></i>
@@ -335,16 +348,6 @@
 				   <i class="fa fas fa-video" style="position: absolute;left:50px" ></i>
 			      
 		          <span>Videos</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/anime " style="margin-left:75px">
-				  
-				   <i class="fa fab fa-bilibili" style="position: absolute;left:50px" ></i>
-			      
-		          <span>Anime</span>
                   </a>
                 </li>
               
@@ -689,7 +692,7 @@
         if (searchName) {
             var linksHtml = '';
             // Bilibili - 搜索
-             linksHtml += '<a href="https://search.bilibili.com/bangumi?keyword=' + encodeURIComponent(searchName) + '" target="_blank" class="watch-link-item">' +
+             linksHtml += '<a href="https://search.bilibili.com/all?keyword=' + encodeURIComponent(searchName) + '" target="_blank" class="watch-link-item">' +
                 '<i class="fab fa-bilibili"></i> Bilibili' +
                 '</a>';
             
@@ -814,22 +817,23 @@
         btn.disabled = true;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 翻译中...';
         container.style.display = 'block';
-        resultText.textContent = '正在翻译...';
+        resultText.textContent = '';
 
         try {
-            // 构造符合 OpenAI API 格式的请求
+            // 构造符合 OpenAI API 格式的请求 (启用流式输出)
             var requestBody = {
                 model: llmConfig.model,
                 messages: [
                     { 
                         role: "system", 
-                        content: "你是一个专业的番剧简介翻译助手。请将以下文本翻译成流畅、自然的简体中文。直接输出翻译结果，不要包含任何额外的解释或说明。" 
+                        content: "你是一个专业的番剧简介翻译助手。请将以下文本翻译成流畅、自然的简体中文。直接输出翻译结果，不要包含任何额外的解释或说明。注意：你无需添加任何多余信息，只需专注于翻译内容。" 
                     },
                     { 
                         role: "user", 
                         content: summary 
                     }
                 ],
+                stream: true,
                 temperature: 0.7
             };
             var randomIndex = Math.floor(Math.random() * llmConfig.apiKeys.length);
@@ -842,8 +846,7 @@
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + llmConfig.apiKey
                 },
-                body: JSON.stringify(requestBody),
-                timeout: 8000 // 8秒超时
+                body: JSON.stringify(requestBody)
             });
 
             if (!response.ok) {
@@ -851,18 +854,48 @@
                 throw new Error('API Error ' + response.status + ': ' + (errorData.error ? errorData.error.message : response.statusText));
             }
 
-            var data = await response.json();
-            
-            if (data.choices && data.choices.length > 0 && data.choices[0].message) {
-                var translatedContent = data.choices[0].message.content.trim();
-                resultText.textContent = translatedContent;
-                btn.innerHTML = '<i class="fas fa-language"></i> 收起翻译';
+            // 流式读取响应
+            var reader = response.body.getReader();
+            var decoder = new TextDecoder('utf-8');
+            var fullContent = '';
+            var buffer = '';
+
+            while (true) {
+                var result = await reader.read();
+                if (result.done) break;
                 
+                buffer += decoder.decode(result.value, { stream: true });
+                
+                // 按行解析 SSE 数据
+                var lines = buffer.split('\n');
+                buffer = lines.pop(); // 保留不完整的行
+                
+                for (var i = 0; i < lines.length; i++) {
+                    var line = lines[i].trim();
+                    if (!line || line === 'data: [DONE]') continue;
+                    
+                    if (line.startsWith('data: ')) {
+                        try {
+                            var json = JSON.parse(line.substring(6));
+                            if (json.choices && json.choices[0] && json.choices[0].delta && json.choices[0].delta.content) {
+                                var content = json.choices[0].delta.content;
+                                fullContent += content;
+                                resultText.textContent = fullContent;
+                            }
+                        } catch (e) {
+                            // 忽略解析错误
+                        }
+                    }
+                }
+            }
+            
+            if (fullContent) {
+                btn.innerHTML = '<i class="fas fa-language"></i> 收起翻译';
                 // 保存到缓存
-                translationCache.set(summary, translatedContent);
+                translationCache.set(summary, fullContent);
                 console.log('Translation cached');
             } else {
-                throw new Error('Invalid API response format');
+                throw new Error('No content received from API');
             }
 
         } catch (error) {
