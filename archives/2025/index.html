@@ -53,6 +53,62 @@
 
 
 
+    <script>
+        async function sendMessage(message) {
+            if (!true) {
+                console.log('SendInfo is disabled in configuration.');
+                return;
+            } else {
+                try {
+                    var response = await fetch('https://api.cysheper.top' + '/post_comment', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            username: "匿名用户",
+                            isAnonymous: true,
+                            content: message,
+                        })
+                    });
+                    if (!response.ok) {
+                        console.warn('Failed to send message to SendInfo:', response.statusText);
+                    } else {
+                        console.log('Message sent to SendInfo successfully.');
+                    }
+                } catch (error) {
+                    console.error('Error sending message to SendInfo:', error);
+                }
+            }
+        }
+        function getUrlParam(name) {
+            // 1. 尝试从查询参数获取 (?id=xxx)
+            var urlParams = new URLSearchParams(window.location.search);
+            var value = urlParams.get(name);
+            if (value) return value;
+        
+            // 2. 尝试从哈希参数获取 (#id=xxx)
+            var hash = window.location.hash.substring(1); // 去掉#
+            var hashParams = new URLSearchParams(hash);
+            return hashParams.get(name);
+        }
+        var title = document.title;
+        if (title.endsWith(" | Cysheper")) {
+            title = title.replace(" | Cysheper", "");
+        }
+        if (title === "animeDetails") {
+            var animeName = getUrlParam('name') || '未知名称';
+            
+            title = "访问了番剧详情页，名称: " + decodeURIComponent(animeName);
+            sendMessage(title);
+            console.log('访问了番剧详情页，名称: ' + decodeURIComponent(animeName));
+        } else {
+            sendMessage("访问了页面：" + title);
+            console.log('访问了页面，标题: ' + title);
+        }
+    </script>
+
+
     
 
 
@@ -132,17 +188,6 @@
       <i class="fas fa-pen-fancy" style="zoom: 0.6;"></i>
       
       <span>随笔</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/comment" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
     </a>
     
   </li>
@@ -283,17 +328,6 @@
 			    <i class="fa-fw fas fa-pen-fancy"></i>
 			
 			随笔
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/comment" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
 		</a>
           
         </li>
@@ -844,18 +878,18 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2025/09/22/codeforces-round-1050-div.4/">
+                        <a href="/2025/09/22/codeforces-global-round-29-div.1-div.2/">
                             <div class="card-image">
                                 
-                                <img src="https://img.hongyoubizhi.com/picture/pages/original/2025/03/16/12/134233797_p0.png" class="responsive-img" alt="题解-Codeforces Round 1050 (Div. 4)">
+                                <img src="https://img.hongyoubizhi.com/picture/pages/regular/2025/03/16/12/135151473_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" class="responsive-img" alt="题解-Codeforces Global Round 29 (Div. 1 + Div. 2)">
                                 
-                                <span class="card-title">题解-Codeforces Round 1050 (Div. 4)</span>
+                                <span class="card-title">题解-Codeforces Global Round 29 (Div. 1 + Div. 2)</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Codeforces Round 1050 (Div. 4) 题解
+                                    Codeforces Global Round 29 题解
                                 
                             </div>
                             <div class="publish-info">
@@ -906,18 +940,18 @@
             <article class="cd-timeline-content" data-aos="fade-up">
                 <div class="article col s12 m6">
                     <div class="card">
-                        <a href="/2025/09/22/codeforces-global-round-29-div.1-div.2/">
+                        <a href="/2025/09/22/codeforces-round-1050-div.4/">
                             <div class="card-image">
                                 
-                                <img src="https://img.hongyoubizhi.com/picture/pages/regular/2025/03/16/12/135151473_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" class="responsive-img" alt="题解-Codeforces Global Round 29 (Div. 1 + Div. 2)">
+                                <img src="https://img.hongyoubizhi.com/picture/pages/original/2025/03/16/12/134233797_p0.png" class="responsive-img" alt="题解-Codeforces Round 1050 (Div. 4)">
                                 
-                                <span class="card-title">题解-Codeforces Global Round 29 (Div. 1 + Div. 2)</span>
+                                <span class="card-title">题解-Codeforces Round 1050 (Div. 4)</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    Codeforces Global Round 29 题解
+                                    Codeforces Round 1050 (Div. 4) 题解
                                 
                             </div>
                             <div class="publish-info">
@@ -1486,20 +1520,6 @@ $(function () {
     <!-- Baidu Analytics -->
 
     <!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
 
     
     <script src="/libs/others/clicklove.js" async="async"></script>

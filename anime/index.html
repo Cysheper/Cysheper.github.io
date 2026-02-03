@@ -53,6 +53,62 @@
 
 
 
+    <script>
+        async function sendMessage(message) {
+            if (!true) {
+                console.log('SendInfo is disabled in configuration.');
+                return;
+            } else {
+                try {
+                    var response = await fetch('https://api.cysheper.top' + '/post_comment', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            username: "匿名用户",
+                            isAnonymous: true,
+                            content: message,
+                        })
+                    });
+                    if (!response.ok) {
+                        console.warn('Failed to send message to SendInfo:', response.statusText);
+                    } else {
+                        console.log('Message sent to SendInfo successfully.');
+                    }
+                } catch (error) {
+                    console.error('Error sending message to SendInfo:', error);
+                }
+            }
+        }
+        function getUrlParam(name) {
+            // 1. 尝试从查询参数获取 (?id=xxx)
+            var urlParams = new URLSearchParams(window.location.search);
+            var value = urlParams.get(name);
+            if (value) return value;
+        
+            // 2. 尝试从哈希参数获取 (#id=xxx)
+            var hash = window.location.hash.substring(1); // 去掉#
+            var hashParams = new URLSearchParams(hash);
+            return hashParams.get(name);
+        }
+        var title = document.title;
+        if (title.endsWith(" | Cysheper")) {
+            title = title.replace(" | Cysheper", "");
+        }
+        if (title === "animeDetails") {
+            var animeName = getUrlParam('name') || '未知名称';
+            
+            title = "访问了番剧详情页，名称: " + decodeURIComponent(animeName);
+            sendMessage(title);
+            console.log('访问了番剧详情页，名称: ' + decodeURIComponent(animeName));
+        } else {
+            sendMessage("访问了页面：" + title);
+            console.log('访问了页面，标题: ' + title);
+        }
+    </script>
+
+
     
 
 
@@ -132,17 +188,6 @@
       <i class="fas fa-pen-fancy" style="zoom: 0.6;"></i>
       
       <span>随笔</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/comment" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
     </a>
     
   </li>
@@ -289,17 +334,6 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/comment" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
 		<a href="/about" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-user-circle"></i>
@@ -410,7 +444,7 @@
                     <i class="fas fa-calendar-alt"></i>
                     <span>时间表</span>
                 </div>
-                <div class="sidebar-item" data-panel="recommend">
+                <div class="sidebar-item" data-panel="recommend" onclick="sendMessage('访问了站长推荐')">
                     <i class="fas fa-star"></i>
                     <span>站长推荐</span>
                 </div>
@@ -1006,7 +1040,7 @@
         var rating = (anime.rating && anime.rating.score) ? anime.rating.score.toFixed(1) : 'N/A';
         var title = anime.name_cn || anime.name || '未知番剧';
 
-        return '<div class="anime-card" onclick="goToAnimeDetails(' + anime.id + ')">' +
+        return '<div class="anime-card" onclick="goToAnimeDetails(' + anime.id + ', \'' + encodeURIComponent(title) + '\')">' +
             '<div class="anime-card-poster">' +
                 '<img src="' + imageUrl + '" alt="' + title + '" loading="lazy">' +
                 '<div class="anime-card-overlay">' +
@@ -1030,7 +1064,7 @@
         var eps = anime.eps || anime.total_episodes || '?';
         var doing = (anime.collection && anime.collection.doing) || 0;
 
-        return '<div class="carousel-slide" onclick="goToAnimeDetails(' + anime.id + ')">' +
+        return '<div class="carousel-slide" onclick="goToAnimeDetails(' + anime.id + ', \'' + encodeURIComponent(title) + '\')">' +
             '<img class="carousel-bg" src="' + bgImage + '" alt="">' +
             '<div class="carousel-content">' +
                 '<img class="carousel-poster" src="' + posterImage + '" alt="' + title + '">' +
@@ -1076,11 +1110,11 @@
         recommend_reason += " —— " + recommend_person;
         
         return '<div class="recommend-card">' +
-            '<div class="recommend-poster" onclick="goToAnimeDetails(' + item.subject_id + ')">' +
+            '<div class="recommend-poster" onclick="goToAnimeDetails(' + item.subject_id + ', \'' + encodeURIComponent(title) + '\')">' +
                 '<img src="' + imageUrl + '" alt="' + title + '" loading="lazy">' +
             '</div>' +
             '<div class="recommend-info">' +
-                '<h3 class="recommend-title" onclick="goToAnimeDetails(' + item.subject_id + ')">' + title + '</h3>' +
+                '<h3 class="recommend-title" onclick="goToAnimeDetails(' + item.subject_id + ', \'' + encodeURIComponent(title) + '\')">' + title + '</h3>' +
                 '<div class="recommend-stars">' + starsHtml + '</div>' +
                 '<i class="fas fa-quote-left fa-2x" style="color: #FFD166;">' +
                 '<p class="recommend-reason" style="margin-top: 10px;">' + reasonTitle + '</p></i>' +
@@ -1229,8 +1263,8 @@
         document.body.style.overflow = '';
     }
 
-    function goToAnimeDetails(subjectId) {
-        window.location.href = '/animeDetails/#id=' + subjectId;
+    function goToAnimeDetails(subjectId, name) {
+        window.location.href = '/animeDetails/?id=' + subjectId + '&name=' + encodeURIComponent(name);
     }
 
     function loadRecommend() {
@@ -1254,6 +1288,33 @@
             }
             grid.innerHTML = html;
         });
+    }
+    async function sendMessage(message) {
+        if (!true) {
+            console.log('SendInfo is disabled in configuration.');
+            return;
+        } else {
+            try {
+                var response = await fetch('https://api.cysheper.top' + '/post_comment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: "匿名用户",
+                        isAnonymous: true,
+                        content: message,
+                    })
+                });
+                if (!response.ok) {
+                    console.warn('Failed to send message to SendInfo:', response.statusText);
+                } else {
+                    console.log('Message sent to SendInfo successfully.');
+                }
+            } catch (error) {
+                console.error('Error sending message to SendInfo:', error);
+            }
+        }
     }
 
     function initPage() {
@@ -1619,20 +1680,6 @@ $(function () {
     <!-- Baidu Analytics -->
 
     <!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
 
     
     <script src="/libs/others/clicklove.js" async="async"></script>

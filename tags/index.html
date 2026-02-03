@@ -53,6 +53,62 @@
 
 
 
+    <script>
+        async function sendMessage(message) {
+            if (!true) {
+                console.log('SendInfo is disabled in configuration.');
+                return;
+            } else {
+                try {
+                    var response = await fetch('https://api.cysheper.top' + '/post_comment', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            username: "匿名用户",
+                            isAnonymous: true,
+                            content: message,
+                        })
+                    });
+                    if (!response.ok) {
+                        console.warn('Failed to send message to SendInfo:', response.statusText);
+                    } else {
+                        console.log('Message sent to SendInfo successfully.');
+                    }
+                } catch (error) {
+                    console.error('Error sending message to SendInfo:', error);
+                }
+            }
+        }
+        function getUrlParam(name) {
+            // 1. 尝试从查询参数获取 (?id=xxx)
+            var urlParams = new URLSearchParams(window.location.search);
+            var value = urlParams.get(name);
+            if (value) return value;
+        
+            // 2. 尝试从哈希参数获取 (#id=xxx)
+            var hash = window.location.hash.substring(1); // 去掉#
+            var hashParams = new URLSearchParams(hash);
+            return hashParams.get(name);
+        }
+        var title = document.title;
+        if (title.endsWith(" | Cysheper")) {
+            title = title.replace(" | Cysheper", "");
+        }
+        if (title === "animeDetails") {
+            var animeName = getUrlParam('name') || '未知名称';
+            
+            title = "访问了番剧详情页，名称: " + decodeURIComponent(animeName);
+            sendMessage(title);
+            console.log('访问了番剧详情页，名称: ' + decodeURIComponent(animeName));
+        } else {
+            sendMessage("访问了页面：" + title);
+            console.log('访问了页面，标题: ' + title);
+        }
+    </script>
+
+
     
 
 
@@ -132,17 +188,6 @@
       <i class="fas fa-pen-fancy" style="zoom: 0.6;"></i>
       
       <span>随笔</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/comment" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
     </a>
     
   </li>
@@ -283,17 +328,6 @@
 			    <i class="fa-fw fas fa-pen-fancy"></i>
 			
 			随笔
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/comment" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
 		</a>
           
         </li>
@@ -477,37 +511,10 @@
                 </a>
                 
                 
-                <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/" title="二进制: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="二进制" style="background-color: #F8F9F9;">二进制
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="位运算: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="位运算" style="background-color: #82E0AA;">位运算
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="基础知识: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="基础知识" style="background-color: #D7BDE2;">基础知识
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/C/" title="C++: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="C++" style="background-color: #A3E4D7;">C++
+                            data-tagname="C++" style="background-color: #F8F9F9;">C++
                         <span class="tag-length">4</span>
                     </span>
                 </a>
@@ -516,7 +523,7 @@
                 <a href="/tags/STL/" title="STL: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="STL" style="background-color: #85C1E9;">STL
+                            data-tagname="STL" style="background-color: #82E0AA;">STL
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -525,7 +532,7 @@
                 <a href="/tags/%E7%AE%97%E6%B3%95/" title="算法: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="算法" style="background-color: #F8C471;">算法
+                            data-tagname="算法" style="background-color: #D7BDE2;">算法
                         <span class="tag-length">5</span>
                     </span>
                 </a>
@@ -534,7 +541,7 @@
                 <a href="/tags/%E5%AE%B9%E5%99%A8/" title="容器: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="容器" style="background-color: #F9E79F;">容器
+                            data-tagname="容器" style="background-color: #A3E4D7;">容器
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -544,6 +551,33 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="模板" style="background-color: #85C1E9;">模板
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/" title="二进制: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="二进制" style="background-color: #F8C471;">二进制
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="位运算: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="位运算" style="background-color: #F9E79F;">位运算
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="基础知识: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="基础知识" style="background-color: #D5F5E3;">基础知识
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -562,15 +596,6 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="二分" style="background-color: #F5EEF8;">二分
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E9%A2%84%E5%A4%84%E7%90%86/" title="预处理: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="预处理" style="background-color: #F9EBEA;">预处理
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -598,6 +623,15 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="小组" style="background-color: #D7BDE2;">小组
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E9%A2%84%E5%A4%84%E7%90%86/" title="预处理: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="预处理" style="background-color: #F9EBEA;">预处理
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -644,7 +678,7 @@
 <script type="text/javascript">
     
 
-    $('#tag-wordcloud').jQCloud([{"text":"随笔","weight":1,"link":"/tags/随笔/"},{"text":"CCPC","weight":1,"link":"/tags/CCPC/"},{"text":"Codeforces","weight":5,"link":"/tags/Codeforces/"},{"text":"题解","weight":5,"link":"/tags/题解/"},{"text":"ACM","weight":11,"link":"/tags/ACM/"},{"text":"二进制","weight":1,"link":"/tags/二进制/"},{"text":"位运算","weight":1,"link":"/tags/位运算/"},{"text":"基础知识","weight":2,"link":"/tags/基础知识/"},{"text":"C++","weight":4,"link":"/tags/C/"},{"text":"STL","weight":1,"link":"/tags/STL/"},{"text":"算法","weight":5,"link":"/tags/算法/"},{"text":"容器","weight":1,"link":"/tags/容器/"},{"text":"模板","weight":2,"link":"/tags/模板/"},{"text":"搜索","weight":1,"link":"/tags/搜索/"},{"text":"二分","weight":1,"link":"/tags/二分/"},{"text":"预处理","weight":1,"link":"/tags/预处理/"},{"text":"开发日志","weight":1,"link":"/tags/开发日志/"},{"text":"计划","weight":1,"link":"/tags/计划/"},{"text":"小组","weight":1,"link":"/tags/小组/"},{"text":"数学","weight":1,"link":"/tags/数学/"},{"text":"线性代数","weight":1,"link":"/tags/线性代数/"}], {
+    $('#tag-wordcloud').jQCloud([{"text":"随笔","weight":1,"link":"/tags/随笔/"},{"text":"CCPC","weight":1,"link":"/tags/CCPC/"},{"text":"Codeforces","weight":5,"link":"/tags/Codeforces/"},{"text":"题解","weight":5,"link":"/tags/题解/"},{"text":"ACM","weight":11,"link":"/tags/ACM/"},{"text":"C++","weight":4,"link":"/tags/C/"},{"text":"STL","weight":1,"link":"/tags/STL/"},{"text":"算法","weight":5,"link":"/tags/算法/"},{"text":"容器","weight":1,"link":"/tags/容器/"},{"text":"模板","weight":2,"link":"/tags/模板/"},{"text":"二进制","weight":1,"link":"/tags/二进制/"},{"text":"位运算","weight":1,"link":"/tags/位运算/"},{"text":"基础知识","weight":2,"link":"/tags/基础知识/"},{"text":"搜索","weight":1,"link":"/tags/搜索/"},{"text":"二分","weight":1,"link":"/tags/二分/"},{"text":"开发日志","weight":1,"link":"/tags/开发日志/"},{"text":"计划","weight":1,"link":"/tags/计划/"},{"text":"小组","weight":1,"link":"/tags/小组/"},{"text":"预处理","weight":1,"link":"/tags/预处理/"},{"text":"数学","weight":1,"link":"/tags/数学/"},{"text":"线性代数","weight":1,"link":"/tags/线性代数/"}], {
         autoResize: true
     });
 </script>
@@ -965,20 +999,6 @@ $(function () {
     <!-- Baidu Analytics -->
 
     <!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
 
     
     <script src="/libs/others/clicklove.js" async="async"></script>
