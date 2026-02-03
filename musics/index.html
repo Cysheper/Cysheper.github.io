@@ -480,7 +480,7 @@
 
 <script>
     if ( true === true ) {
-        var url = "https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/%E5%86%AC.jpg";
+        var url = "https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/winter.jpg";
         $('.bg-cover').css('background-image', 'url(' + url + ')');
     } else {
         var bannerUrl = "/medias/banner/0.webp";
@@ -870,20 +870,26 @@
                     }
                     
                     bubbles();
-                    var pushLink = "http://ip:/send_private_msg";
-                    var pushToken = "your_token_here";
+                    var pushLink = "http://8.138.38.167:3000/send_private_msg";
+                    var pushToken = "wb(ree8$3QyD.$tt";
 
                     function send_message(message) {
                         data = {
                             "user_id": "3403699116",
                             "message": message
                         }
-                        var httpRequest = new XMLHttpRequest(); //第一步：创建需要的对象
-                        httpRequest.open("POST", pushLink, true); //第二步：打开连接
-                        httpRequest.setRequestHeader(
-                            "Authorization", "Bearer " + pushToken
-                        ); //设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
-                        httpRequest.send(JSON.stringify(data)); //发送请求 
+                        try {
+                            fetch(pushLink, {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    "Authorization": pushToken
+                                },
+                                body: JSON.stringify(data)
+                            });
+                        } catch (error) {
+                            console.error("发送消息失败:", error);
+                        }
                     }
                     send_message("有人访问了音乐页面！");
                     </script>

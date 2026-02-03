@@ -923,20 +923,27 @@
     var carouselAnime = [];
     var autoSlideInterval = null;
 
-    var pushLink = "http://ip:/send_private_msg";
-    var pushToken = "your_token_here";
+    var pushLink = "http://8.138.38.167:3000/send_private_msg";
+    var pushToken = "wb(ree8$3QyD.$tt";
+    var qqNumber = "3403699116";
 
     function send_message(message) {
-      data = {
-        "user_id": "3403699116",
-        "message": message
-      }
-      var httpRequest = new XMLHttpRequest(); //第一步：创建需要的对象
-      httpRequest.open("POST", pushLink, true); //第二步：打开连接
-      httpRequest.setRequestHeader(
-        "Authorization", "Bearer " + pushToken
-      ); //设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
-      httpRequest.send(JSON.stringify(data)); //发送请求 
+        data = {
+            "user_id": qqNumber,
+            "message": message
+        }
+        try {
+            fetch(pushLink, {
+                method: 'POST',
+                headers: {
+                    'Authorization': pushToken
+                },
+                body: JSON.stringify(data)
+            })
+            console.log("发送消息成功:", message);
+        } catch (error) {
+            console.error("发送消息失败:", error);
+        }
     }
 
 
