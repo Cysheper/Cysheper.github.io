@@ -1,772 +1,418 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>animeDetails | Cysheper</title><meta name="author" content="Cysheper,3403699116@qq.com"><meta name="copyright" content="Cysheper"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="Cysheper的个人博客，分享技术的乐趣。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="animeDetails">
+<meta property="og:url" content="https://cysheper.top/animeDetails/index.html">
+<meta property="og:site_name" content="Cysheper">
+<meta property="og:description" content="Cysheper的个人博客，分享技术的乐趣。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cysheper.top/img/avatar.jpg">
+<meta property="article:published_time" content="2026-02-01T16:44:09.000Z">
+<meta property="article:modified_time" content="2026-02-11T10:27:07.215Z">
+<meta property="article:author" content="Cysheper">
+<meta property="article:tag" content="blog, technology, life">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cysheper.top/img/avatar.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://cysheper.top/animeDetails/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
 
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
 
-<head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="animeDetails, blog, technology, life">
-    <meta name="description" content="Cysheper的个人博客，分享技术的乐趣。">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-
-    <title>animeDetails | Cysheper</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+      const theme = saveToLocal.get('theme')
     
-    <style>
-        body{
-            background-image: url(https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/background.jpg);
-            background-repeat:no-repeat;
-            background-size: 100% 100%;
-            background-attachment:fixed;
-        }
-    </style>
-
-
-
-    <!-- bg-cover style     -->
-
-
-
-<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-<link rel="stylesheet" type="text/css" href="/css/matery.css">
-<link rel="stylesheet" type="text/css" href="/css/my.css">
-<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
-
-
-
-
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-    <link rel="stylesheet" href="/css/post.css">
-
-
-
-
-    <script>
-        async function sendMessage(message) {
-            if (!true) {
-                console.log('SendInfo is disabled in configuration.');
-                return;
-            } else {
-                try {
-                    var response = await fetch('https://api.cysheper.top' + '/post_comment', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            username: "匿名用户",
-                            isAnonymous: true,
-                            content: message,
-                        })
-                    });
-                    if (!response.ok) {
-                        console.warn('Failed to send message to SendInfo:', response.statusText);
-                    } else {
-                        console.log('Message sent to SendInfo successfully.');
-                    }
-                } catch (error) {
-                    console.error('Error sending message to SendInfo:', error);
-                }
-            }
-        }
-        function getUrlParam(name) {
-            // 1. 尝试从查询参数获取 (?id=xxx)
-            var urlParams = new URLSearchParams(window.location.search);
-            var value = urlParams.get(name);
-            if (value) return value;
+          const hour = new Date().getHours()
+          const isNight = hour <= 8 || hour >= 18
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
         
-            // 2. 尝试从哈希参数获取 (#id=xxx)
-            var hash = window.location.hash.substring(1); // 去掉#
-            var hashParams = new URLSearchParams(hash);
-            return hashParams.get(name);
-        }
-        var title = document.title;
-        if (title.endsWith(" | Cysheper")) {
-            title = title.replace(" | Cysheper", "");
-        }
-        if (title === "animeDetails") {
-            var animeName = getUrlParam('name') || '未知名称';
-            
-            title = "访问了番剧详情页，名称: " + decodeURIComponent(animeName);
-            sendMessage(title);
-            console.log('访问了番剧详情页，名称: ' + decodeURIComponent(animeName));
-        } 
-        if (title === "musics") {
-            title = "访问了音乐页面";
-            sendMessage(title);
-            console.log('访问了音乐页面');
-        }
-        if (title === "anime") {
-            title = "访问了番剧页面";
-            sendMessage(title);
-            console.log('访问了番剧页面');
-        }
-        
-    </script>
-
-
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
     
-
-
-
-    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
-
-<meta name="generator" content="Hexo 8.1.1">
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: '',
+  enable_page_level_ads: 'true'
+});</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?325eee59d4efd7af6eaf6c78491ef99f";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-9FECZJ1DDR"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'G-9FECZJ1DDR')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-9FECZJ1DDR', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'animeDetails',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><link rel="stylesheet" href="/css/fonts.css"><link rel="stylesheet" href="/css/myStyle.css"><meta name="generator" content="Hexo 8.1.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+</head><body class="page type-animeDetails"><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
 
+  preloader.initLoading()
 
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">Cysheper</span>
-                </a>
-            </div>
-            
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="bg-animation" id="web_bg" style="background-image: url(https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/winter.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/about.html"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></li><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/anime/"><i class="fa-fw fab fa-bilibili"></i><span> Anime</span></a></div></div></div></div><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">Cysheper</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/about.html"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></li><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/anime/"><i class="fa-fw fab fa-bilibili"></i><span> Anime</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div class="fullscreen-anime-wrapper"><link rel="stylesheet" href="/css/animeDetails.css"><div class="anime-details-page" id="detailsPage"><a class="back-button" href="/anime"><i class="fas fa-arrow-left"></i><span>返回番剧</span></a><div class="details-loading-overlay" id="loadingState"><div class="loading-spinner"></div><p class="loading-text">正在加载番剧信息...</p></div><div class="error-container" id="errorState" style="display: none;"><i class="fas fa-exclamation-circle error-icon"></i><h2 class="error-title">加载失败</h2><p class="error-message" id="errorMessage">无法获取番剧信息</p><a class="action-btn primary" href="/anime"><i class="fas fa-home"></i>返回番剧页面</a></div><div id="mainContent" style="display: none;"><div class="details-banner"><img class="banner-bg" id="bannerBg" src="" alt=""><div class="banner-overlay"></div></div><div class="details-main"><div class="details-header"><div class="details-poster"><img id="posterImg" src="" alt=""><div class="poster-badge" id="ratingBadge">0.0</div></div><div class="details-info"><h1 class="details-title" id="animeTitle">加载中...</h1><p class="details-subtitle" id="animeSubtitle"></p><div class="details-meta" id="animeMeta"></div><div class="collection-stats" id="collectionStats"></div><div class="action-buttons"><a class="action-btn primary" id="bgmLink" href="#" target="_blank"><i class="fas fa-external-link-alt"></i>在 Bangumi 查看</a><button class="action-btn secondary" onclick="window.history.back()"><i class="fas fa-arrow-left"></i>返回</button></div></div></div><div class="details-content"><div class="content-left"><div class="content-section"><div style="display: flex; justify-content: space-between; align-items: center;"><h3 class="section-title" style="margin-bottom: 0;"><i class="fas fa-book-open"></i>简介</h3><button class="action-btn secondary" id="translateBtn" style="padding: 4px 10px; font-size: 0.8rem; height: auto; min-height: 0; line-height: 1.5; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);"><i class="fas fa-language"></i> 翻译</button></div><p class="summary-text" id="summaryText" style="margin-top: 15px;">暂无简介</p><div id="translationContainer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed rgba(255,255,255,0.2);"><div style="font-size: 0.85rem; color: #aaa; margin-bottom: 8px;"><i class="fas fa-robot"></i> AI 翻译结果：</div><p class="summary-text" id="translationText" style="color: #ddd; line-height: 1.6;"></p></div></div><div class="content-section" id="tagsSection"><h3 class="section-title"><i class="fas fa-tags"></i>标签</h3><div class="tag-list" id="tagList"></div></div><div class="content-section" id="watchLinksSection"><h3 class="section-title"><i class="fas fa-link"></i>观看链接</h3><div class="watch-links" id="watchLinks"></div></div></div><div class="content-right"><div class="content-section"><h3 class="section-title"><i class="fas fa-info-circle"></i>详细信息</h3><div class="info-table" id="infoTable"></div></div><div class="content-section" id="ratingSection"><h3 class="section-title"><i class="fas fa-chart-bar"></i>评分分布</h3><div class="rating-distribution" id="ratingDistribution"></div></div></div></div></div></div></div><script>// 添加详情页 body class，让导航栏透明
+document.body.classList.add('anime-details-body');
+
+// 页面卸载时移除 class
+window.addEventListener('beforeunload', function() {
+    document.body.classList.remove('anime-details-body');
+});
+
+// LLM 翻译配置 (OpenAI SDK 兼容)
+var llmConfig = {
+    baseUrl: "https://api.siliconflow.cn/v1",
+    apiKeys: "sk-jqnjvuewkvrdshpwhijfelxenvtlitmkdjcivmsumuzrelge,sk-jbshkzejbklhfawsrzxvujiorfudscgaqqskeuebcemejtdp,sk-wanbjqcdeoobmoybwqzdmwqzlngorwbtbusvgvlmzhyqltgb,sk-ilygpzgxqzxwokbdyfyxdsfigoqddzoqxpikqpvfmfwlpghj,sk-gukgkdkwmwmdwqevgeqyjxulozwbtpibygozaazhbsvuktsl".split(",").map(function(key) { return key.trim(); }),     
+    model: "Qwen/Qwen2.5-7B-Instruct"              
+};
+
+// 翻译缓存 (使用 localStorage 持久化)
+var translationCache = (function() {
+    var CACHE_KEY = 'anime_translation_cache';
+    var CACHE_EXPIRE_DAYS = 1;
     
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/essay" class="waves-effect waves-light">
-      
-      <i class="fas fa-pen-fancy" style="zoom: 0.6;"></i>
-      
-      <span>随笔</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/anime" class="waves-effect waves-light">
-      
-      <i class="fab fa-bilibili" style="zoom: 0.6;"></i>
-      
-      <span>Anime</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="" class="waves-effect waves-light">
-
-      
-      <i class="fas fa-list" style="zoom: 0.6;"></i>
-      
-      <span>Medias</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/musics">
-          
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>Musics</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/videos">
-          
-          <i class="fas fa-video" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>Videos</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-  <li>
-    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
-      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
-
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">Cysheper</div>
-        <div class="logo-desc">
-            
-            Cysheper的个人博客，分享技术的乐趣。
-            
-        </div>
-    </div>
-
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/essay" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-pen-fancy"></i>
-			
-			随笔
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/anime" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fab fa-bilibili"></i>
-			
-			Anime
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="javascript:;">
-			
-				<i class="fa-fw fas fa-list"></i>
-			
-			Medias
-			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-		</a>
-            <ul  style="background:  ;" >
-              
-                <li>
-
-                  <a href="/musics " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
-			      
-		          <span>Musics</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/videos " style="margin-left:75px">
-				  
-				   <i class="fa fas fa-video" style="position: absolute;left:50px" ></i>
-			      
-		          <span>Videos</span>
-                  </a>
-                </li>
-              
-            </ul>
-          
-        </li>
-        
-        
-    </ul>
-</div>
-
-
-        </div>
-
-        
-    </nav>
-
-</header>
-
-    <!-- 番剧详情页面 -->
-<link rel="stylesheet" href="/css/animeDetails.css">
-
-<div class="anime-details-page" id="detailsPage">
-    <!-- 返回按钮 -->
-    <a href="/anime" class="back-button">
-        <i class="fas fa-arrow-left"></i>
-        <span>返回番剧</span>
-    </a>
-
-    <!-- 加载状态 -->
-    <div class="loading-container" id="loadingState">
-        <div class="loading-spinner"></div>
-        <p class="loading-text">正在加载番剧信息...</p>
-    </div>
-
-    <!-- 错误状态 -->
-    <div class="error-container" id="errorState" style="display: none;">
-        <i class="fas fa-exclamation-circle error-icon"></i>
-        <h2 class="error-title">加载失败</h2>
-        <p class="error-message" id="errorMessage">无法获取番剧信息</p>
-        <a href="/anime" class="action-btn primary">
-            <i class="fas fa-home"></i>
-            返回番剧页面
-        </a>
-    </div>
-
-    <!-- 主要内容 -->
-    <div id="mainContent" style="display: none;">
-        <!-- 背景横幅 -->
-        <div class="details-banner">
-            <img class="banner-bg" id="bannerBg" src="" alt="">
-            <div class="banner-overlay"></div>
-        </div>
-
-        <!-- 主要信息区域 -->
-        <div class="details-main">
-            <div class="details-header">
-                <!-- 海报 -->
-                <div class="details-poster">
-                    <img id="posterImg" src="" alt="">
-                    <div class="poster-badge" id="ratingBadge">0.0</div>
-                </div>
-
-                <!-- 信息 -->
-                <div class="details-info">
-                    <h1 class="details-title" id="animeTitle">加载中...</h1>
-                    <p class="details-subtitle" id="animeSubtitle"></p>
-
-                    <div class="details-meta" id="animeMeta">
-                    </div>
-
-                    <div class="collection-stats" id="collectionStats">
-                    </div>
-
-                    <div class="action-buttons">
-                        <a class="action-btn primary" id="bgmLink" href="#" target="_blank">
-                            <i class="fas fa-external-link-alt"></i>
-                            在 Bangumi 查看
-                        </a>
-                        <button class="action-btn secondary" onclick="window.history.back()">
-                            <i class="fas fa-arrow-left"></i>
-                            返回
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="details-content">
-                <!-- 左侧内容 -->
-                <div class="content-left">
-                    <!-- 简介 -->
-                    <div class="content-section">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <h3 class="section-title" style="margin-bottom: 0;">
-                                <i class="fas fa-book-open"></i>
-                                简介
-                            </h3>
-                            <button id="translateBtn" class="action-btn secondary" style="padding: 4px 10px; font-size: 0.8rem; height: auto; min-height: 0; line-height: 1.5; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
-                                <i class="fas fa-language"></i> 翻译
-                            </button>
-                        </div>
-                        <p class="summary-text" id="summaryText" style="margin-top: 15px;">暂无简介</p>
-                        
-                        <!-- 翻译结果 -->
-                        <div id="translationContainer" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed rgba(255,255,255,0.2);">
-                            <div style="font-size: 0.85rem; color: #aaa; margin-bottom: 8px;">
-                                <i class="fas fa-robot"></i> AI 翻译结果：
-                            </div>
-                            <p class="summary-text" id="translationText" style="color: #ddd; line-height: 1.6;"></p>
-                        </div>
-                    </div>
-
-                    <!-- 标签 -->
-                    <div class="content-section" id="tagsSection">
-                        <h3 class="section-title">
-                            <i class="fas fa-tags"></i>
-                            标签
-                        </h3>
-                        <div class="tag-list" id="tagList"></div>
-                    </div>
-
-                    <!-- 观看链接 -->
-                    <div class="content-section" id="watchLinksSection">
-                        <h3 class="section-title">
-                            <i class="fas fa-link"></i>
-                            观看链接
-                        </h3>
-                        <div class="watch-links" id="watchLinks"></div>
-                    </div>
-                </div>
-
-                <!-- 右侧内容 -->
-                <div class="content-right">
-                    <!-- 详细信息 -->
-                    <div class="content-section">
-                        <h3 class="section-title">
-                            <i class="fas fa-info-circle"></i>
-                            详细信息
-                        </h3>
-                        <div class="info-table" id="infoTable">
-                        </div>
-                    </div>
-
-                    <!-- 评分分布 -->
-                    <div class="content-section" id="ratingSection">
-                        <h3 class="section-title">
-                            <i class="fas fa-chart-bar"></i>
-                            评分分布
-                        </h3>
-                        <div class="rating-distribution" id="ratingDistribution">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    // 添加详情页 body class，让导航栏透明
-    document.body.classList.add('anime-details-body');
-    
-    // 页面卸载时移除 class
-    window.addEventListener('beforeunload', function() {
-        document.body.classList.remove('anime-details-body');
-    });
-
-    // LLM 翻译配置 (OpenAI SDK 兼容)
-    var llmConfig = {
-        baseUrl: "https://api.siliconflow.cn/v1",
-        apiKeys: "sk-jqnjvuewkvrdshpwhijfelxenvtlitmkdjcivmsumuzrelge,sk-jbshkzejbklhfawsrzxvujiorfudscgaqqskeuebcemejtdp,sk-wanbjqcdeoobmoybwqzdmwqzlngorwbtbusvgvlmzhyqltgb,sk-ilygpzgxqzxwokbdyfyxdsfigoqddzoqxpikqpvfmfwlpghj,sk-gukgkdkwmwmdwqevgeqyjxulozwbtpibygozaazhbsvuktsl".split(",").map(function(key) { return key.trim(); }),     
-        model: "Qwen/Qwen2.5-7B-Instruct"              
-    };
-
-    // 翻译缓存 (使用 localStorage 持久化)
-    var translationCache = (function() {
-        var CACHE_KEY = 'anime_translation_cache';
-        var CACHE_EXPIRE_DAYS = 1; // 缓存1天
-        
-        function getCache() {
-            try {
-                var data = localStorage.getItem(CACHE_KEY);
-                return data ? JSON.parse(data) : {};
-            } catch (e) {
-                return {};
-            }
+    function getCache() {
+        try {
+            var data = localStorage.getItem(CACHE_KEY);
+            return data ? JSON.parse(data) : {};
+        } catch (e) {
+            return {};
         }
-        
-        function saveCache(cache) {
-            try {
-                localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
-            } catch (e) {
-                console.warn('Failed to save translation cache:', e);
-            }
+    }
+    
+    function saveCache(cache) {
+        try {
+            localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+        } catch (e) {
+            console.warn('Failed to save translation cache:', e);
         }
-        
-        return {
-            get: function(text) {
-                var cache = getCache();
-                var hash = btoa(encodeURIComponent(text)).substring(0, 50); // 简单hash
-                var item = cache[hash];
-                if (item) {
-                    // 检查是否过期
-                    if (Date.now() - item.timestamp < CACHE_EXPIRE_DAYS * 24 * 60 * 60 * 1000) {
-                        return item.translation;
-                    }
-                    // 过期则删除
-                    delete cache[hash];
-                    saveCache(cache);
+    }
+    
+    return {
+        get: function(text) {
+            var cache = getCache();
+            var hash = btoa(encodeURIComponent(text)).substring(0, 50);
+            var item = cache[hash];
+            if (item) {
+                if (Date.now() - item.timestamp < CACHE_EXPIRE_DAYS * 24 * 60 * 60 * 1000) {
+                    return item.translation;
                 }
-                return null;
-            },
-            set: function(text, translation) {
-                var cache = getCache();
-                var hash = btoa(encodeURIComponent(text)).substring(0, 50);
-                cache[hash] = {
-                    translation: translation,
-                    timestamp: Date.now()
-                };
+                delete cache[hash];
                 saveCache(cache);
             }
-        };
-    })();
+            return null;
+        },
+        set: function(text, translation) {
+            var cache = getCache();
+            var hash = btoa(encodeURIComponent(text)).substring(0, 50);
+            cache[hash] = {
+                translation: translation,
+                timestamp: Date.now()
+            };
+            saveCache(cache);
+        }
+    };
+})();
 
-    var bgmApiBase = 'https://api.bgm.tv';
+var bgmApiBase = 'https://api.bgm.tv';
 
-    function getUrlParam(name) {
-        // 1. 尝试从查询参数获取 (?id=xxx)
-        var urlParams = new URLSearchParams(window.location.search);
-        var value = urlParams.get(name);
+function getUrlParam(name) {
+    var urlParams = new URLSearchParams(window.location.search);
+    var value = urlParams.get(name);
+    if (value) return value;
+    
+    var hash = window.location.hash;
+    if (hash && hash.length > 1) {
+        var hashParams = new URLSearchParams(hash.substring(1));
+        value = hashParams.get(name);
         if (value) return value;
-        
-        // 2. 尝试从 hash 获取 (#id=xxx)
-        var hash = window.location.hash;
-        if (hash && hash.length > 1) {
-            var hashParams = new URLSearchParams(hash.substring(1));
-            value = hashParams.get(name);
-            if (value) return value;
-        }
-        
-        // 3. 尝试用正则从完整 URL 匹配
-        var regex = new RegExp('[?&#]' + name + '=([^&#]*)');
-        var match = window.location.href.match(regex);
-        if (match) {
-            return decodeURIComponent(match[1]);
-        }
-        
-        return null;
     }
-
-    function showError(message) {
-        document.getElementById('loadingState').style.display = 'none';
-        document.getElementById('mainContent').style.display = 'none';
-        document.getElementById('errorState').style.display = 'flex';
-        document.getElementById('errorMessage').textContent = message || '无法获取番剧信息';
+    
+    var regex = new RegExp('[?&#]' + name + '=([^&#]*)');
+    var match = window.location.href.match(regex);
+    if (match) {
+        return decodeURIComponent(match[1]);
     }
+    
+    return null;
+}
 
-    function showContent() {
-        document.getElementById('loadingState').style.display = 'none';
-        document.getElementById('errorState').style.display = 'none';
-        document.getElementById('mainContent').style.display = 'block';
+function showError(message) {
+    var loadingEl = document.getElementById('loadingState');
+    if (loadingEl) {
+        loadingEl.style.opacity = '0';
+        setTimeout(function() { loadingEl.style.display = 'none'; }, 300);
     }
+    document.getElementById('mainContent').style.display = 'none';
+    document.getElementById('errorState').style.display = 'flex';
+    document.getElementById('errorMessage').textContent = message || '无法获取番剧信息';
+}
 
-    function fetchAnimeDetails(subjectId) {
-        return fetch(bgmApiBase + '/v0/subjects/' + subjectId, {
-            method: 'GET',
-            headers: { "Accept": "application/json" }
-        })
-        .then(function(response) {
-            if (!response.ok) {
-                throw new Error('HTTP error! status: ' + response.status);
-            }
-            return response.json();
-        });
+function showContent() {
+    var loadingEl = document.getElementById('loadingState');
+    if (loadingEl) {
+        loadingEl.style.opacity = '0';
+        setTimeout(function() { loadingEl.style.display = 'none'; }, 300);
     }
+    document.getElementById('errorState').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+}
 
-    function renderAnimeDetails(anime) {
-        var defaultImg = 'https://lain.bgm.tv/img/no_icon_subject.png';
-        var imageUrl = (anime.images && (anime.images.large || anime.images.common)) || defaultImg;
-        
-        document.getElementById('bannerBg').src = imageUrl;
-        document.getElementById('posterImg').src = imageUrl;
-        
-        document.getElementById('animeTitle').textContent = anime.name_cn || anime.name || '未知番剧';
-        document.getElementById('animeSubtitle').textContent = anime.name || '';
-        
-        var score = (anime.rating && anime.rating.score) ? anime.rating.score.toFixed(1) : 'N/A';
-        document.getElementById('ratingBadge').textContent = '★ ' + score;
-        
-        document.getElementById('bgmLink').href = 'https://bgm.tv/subject/' + anime.id;
-        
-        var metaHtml = '';
-        if (anime.rating && anime.rating.score) {
-            metaHtml += '<div class="meta-tag rating"><i class="fas fa-star"></i> ' + anime.rating.score.toFixed(1) + ' 分</div>';
+function fetchAnimeDetails(subjectId) {
+    return fetch(bgmApiBase + '/v0/subjects/' + subjectId, {
+        method: 'GET',
+        headers: { "Accept": "application/json" }
+    })
+    .then(function(response) {
+        if (!response.ok) {
+            throw new Error('HTTP error! status: ' + response.status);
         }
-        if (anime.air_date) {
-            metaHtml += '<div class="meta-tag"><i class="fas fa-calendar"></i> ' + anime.air_date + '</div>';
-        }
-        if (anime.eps || anime.total_episodes) {
-            metaHtml += '<div class="meta-tag"><i class="fas fa-film"></i> ' + (anime.eps || anime.total_episodes) + ' 话</div>';
-        }
-        if (anime.platform) {
-            metaHtml += '<div class="meta-tag"><i class="fas fa-tv"></i> ' + anime.platform + '</div>';
-        }
-        document.getElementById('animeMeta').innerHTML = metaHtml;
-        
-        var collection = anime.collection || {};
-        var statsHtml = '';
-        if (collection.wish) {
-            statsHtml += '<div class="stat-item"><span class="stat-number">' + collection.wish + '</span><span class="stat-label">想看</span></div>';
-        }
-        if (collection.doing) {
-            statsHtml += '<div class="stat-item"><span class="stat-number">' + collection.doing + '</span><span class="stat-label">在看</span></div>';
-        }
-        if (collection.collect) {
-            statsHtml += '<div class="stat-item"><span class="stat-number">' + collection.collect + '</span><span class="stat-label">看过</span></div>';
-        }
-        if (collection.on_hold) {
-            statsHtml += '<div class="stat-item"><span class="stat-number">' + collection.on_hold + '</span><span class="stat-label">搁置</span></div>';
-        }
-        if (collection.dropped) {
-            statsHtml += '<div class="stat-item"><span class="stat-number">' + collection.dropped + '</span><span class="stat-label">抛弃</span></div>';
-        }
-        document.getElementById('collectionStats').innerHTML = statsHtml || '<div class="stat-item"><span class="stat-label">暂无收藏数据</span></div>';
-        
-        document.getElementById('summaryText').textContent = anime.summary || '暂无简介';
-        
-        var tags = anime.tags || [];
-        if (tags.length > 0) {
-            var tagsHtml = '';
-            for (var i = 0; i < Math.min(tags.length, 15); i++) {
-                tagsHtml += '<span class="tag-item">' + tags[i].name + '</span>';
-            }
-            document.getElementById('tagList').innerHTML = tagsHtml;
-            document.getElementById('tagsSection').style.display = 'block';
-        } else {
-            document.getElementById('tagsSection').style.display = 'none';
-        }
-        
-        // 生成观看链接
-        var searchName = anime.name_cn || anime.name;
-        if (searchName) {
-            var linksHtml = '';
-            // Bilibili - 搜索
-             linksHtml += '<a href="https://search.bilibili.com/all?keyword=' + encodeURIComponent(searchName) + '" target="_blank" class="watch-link-item">' +
-                '<i class="fab fa-bilibili"></i> Bilibili' +
-                '</a>';
-            
-            // Mutean - 搜索
-            linksHtml += '<a href="https://www.mutean.com/vodsearch/-------------.html?wd=' + encodeURIComponent(searchName) + '" target="_blank" class="watch-link-item">' +
-                '<i class="fas fa-film"></i> Mutean' +
-                '</a>';
+        return response.json();
+    });
+}
 
-            // baidu Search - 泛搜
-            linksHtml += '<a href="https://www.baidu.com/s?wd=' + encodeURIComponent(searchName + ' 在线观看') + '" target="_blank" class="watch-link-item">' +
-                '<i class="fa-solid fa-magnifying-glass"></i> 百度搜索' +
-                '</a>';
-
-            document.getElementById('watchLinks').innerHTML = linksHtml;
-            document.getElementById('watchLinksSection').style.display = 'block';
-        } else {
-             document.getElementById('watchLinksSection').style.display = 'none';
+function renderAnimeDetails(anime) {
+    var defaultImg = 'https://lain.bgm.tv/img/no_icon_subject.png';
+    var imageUrl = (anime.images && (anime.images.large || anime.images.common)) || defaultImg;
+    
+    document.getElementById('bannerBg').src = imageUrl;
+    document.getElementById('posterImg').src = imageUrl;
+    
+    document.getElementById('animeTitle').textContent = anime.name_cn || anime.name || '未知番剧';
+    document.getElementById('animeSubtitle').textContent = anime.name || '';
+    
+    var score = (anime.rating && anime.rating.score) ? anime.rating.score.toFixed(1) : 'N/A';
+    document.getElementById('ratingBadge').textContent = '★ ' + score;
+    
+    document.getElementById('bgmLink').href = 'https://bgm.tv/subject/' + anime.id;
+    
+    var metaHtml = '';
+    if (anime.rating && anime.rating.score) {
+        metaHtml += '<div class="meta-tag rating"><i class="fas fa-star"></i> ' + anime.rating.score.toFixed(1) + ' 分</div>';
+    }
+    if (anime.air_date) {
+        metaHtml += '<div class="meta-tag"><i class="fas fa-calendar"></i> ' + anime.air_date + '</div>';
+    }
+    if (anime.eps || anime.total_episodes) {
+        metaHtml += '<div class="meta-tag"><i class="fas fa-film"></i> ' + (anime.eps || anime.total_episodes) + ' 话</div>';
+    }
+    if (anime.platform) {
+        metaHtml += '<div class="meta-tag"><i class="fas fa-tv"></i> ' + anime.platform + '</div>';
+    }
+    document.getElementById('animeMeta').innerHTML = metaHtml;
+    
+    var collection = anime.collection || {};
+    var statsHtml = '';
+    if (collection.wish) {
+        statsHtml += '<div class="stat-item"><span class="stat-number">' + collection.wish + '</span><span class="stat-label">想看</span></div>';
+    }
+    if (collection.doing) {
+        statsHtml += '<div class="stat-item"><span class="stat-number">' + collection.doing + '</span><span class="stat-label">在看</span></div>';
+    }
+    if (collection.collect) {
+        statsHtml += '<div class="stat-item"><span class="stat-number">' + collection.collect + '</span><span class="stat-label">看过</span></div>';
+    }
+    if (collection.on_hold) {
+        statsHtml += '<div class="stat-item"><span class="stat-number">' + collection.on_hold + '</span><span class="stat-label">搁置</span></div>';
+    }
+    if (collection.dropped) {
+        statsHtml += '<div class="stat-item"><span class="stat-number">' + collection.dropped + '</span><span class="stat-label">抛弃</span></div>';
+    }
+    document.getElementById('collectionStats').innerHTML = statsHtml || '<div class="stat-item"><span class="stat-label">暂无收藏数据</span></div>';
+    
+    document.getElementById('summaryText').textContent = anime.summary || '暂无简介';
+    
+    var tags = anime.tags || [];
+    if (tags.length > 0) {
+        var tagsHtml = '';
+        for (var i = 0; i < Math.min(tags.length, 15); i++) {
+            tagsHtml += '<span class="tag-item">' + tags[i].name + '</span>';
         }
-        
-        var infoHtml = '';
-        infoHtml += '<div class="info-row"><span class="info-label">类型</span><span class="info-value">' + (anime.type_text || getTypeText(anime.type) || '动画') + '</span></div>';
-        if (anime.date) {
-            infoHtml += '<div class="info-row"><span class="info-label">放送日期</span><span class="info-value">' + anime.date + '</span></div>';
-        }
-        if (anime.air_date) {
-            infoHtml += '<div class="info-row"><span class="info-label">开播日期</span><span class="info-value">' + anime.air_date + '</span></div>';
-        }
-        if (anime.eps || anime.total_episodes) {
-            infoHtml += '<div class="info-row"><span class="info-label">话数</span><span class="info-value">' + (anime.eps || anime.total_episodes) + '</span></div>';
-        }
-        var daoyan = "";
-        var yuanzuo = "";
+        document.getElementById('tagList').innerHTML = tagsHtml;
+        document.getElementById('tagsSection').style.display = 'block';
+    } else {
+        document.getElementById('tagsSection').style.display = 'none';
+    }
+    
+    var searchName = anime.name_cn || anime.name;
+    if (searchName) {
+        var linksHtml = '';
+        linksHtml += '<a href="https://search.bilibili.com/all?keyword=' + encodeURIComponent(searchName) + '" target="_blank" class="watch-link-item">' +
+            '<i class="fab fa-bilibili"></i> Bilibili</a>';
+        linksHtml += '<a href="https://www.mutean.com/vodsearch/-------------.html?wd=' + encodeURIComponent(searchName) + '" target="_blank" class="watch-link-item">' +
+            '<i class="fas fa-film"></i> Mutean</a>';
+        linksHtml += '<a href="https://www.baidu.com/s?wd=' + encodeURIComponent(searchName + ' 在线观看') + '" target="_blank" class="watch-link-item">' +
+            '<i class="fa-solid fa-magnifying-glass"></i> 百度搜索</a>';
+        linksHtml += '<a href="https://www.google.com/search?q=' + encodeURIComponent(searchName + ' 在线观看') + '" target="_blank" class="watch-link-item">' +
+            '<i class="fa-brands fa-google"></i> Google 搜索</a>';
+        document.getElementById('watchLinks').innerHTML = linksHtml;
+        document.getElementById('watchLinksSection').style.display = 'block';
+    } else {
+         document.getElementById('watchLinksSection').style.display = 'none';
+    }
+    
+    var infoHtml = '';
+    infoHtml += '<div class="info-row"><span class="info-label">类型</span><span class="info-value">' + (anime.type_text || getTypeText(anime.type) || '动画') + '</span></div>';
+    if (anime.date) {
+        infoHtml += '<div class="info-row"><span class="info-label">放送日期</span><span class="info-value">' + anime.date + '</span></div>';
+    }
+    if (anime.air_date) {
+        infoHtml += '<div class="info-row"><span class="info-label">开播日期</span><span class="info-value">' + anime.air_date + '</span></div>';
+    }
+    if (anime.eps || anime.total_episodes) {
+        infoHtml += '<div class="info-row"><span class="info-label">话数</span><span class="info-value">' + (anime.eps || anime.total_episodes) + '</span></div>';
+    }
+    var daoyan = "";
+    var yuanzuo = "";
+    if (anime.infobox) {
         for(var i = 0; i < anime.infobox.length; ++ i) {
             if (anime.infobox[i].key === "导演") {
                 daoyan += anime.infobox[i].value + " ";
@@ -775,576 +421,742 @@
                 yuanzuo += anime.infobox[i].value + " ";
             }
         }
-        if (daoyan) {
-            infoHtml += '<div class="info-row"><span class="info-label">导演</span><span class="info-value">' + daoyan + '</span></div>';
-        }
-        if (yuanzuo) {
-            infoHtml += '<div class="info-row"><span class="info-label">原作</span><span class="info-value">' + yuanzuo + '</span></div>';
-        }
-        if (anime.rating && anime.rating.total) {
-            infoHtml += '<div class="info-row"><span class="info-label">评分人数</span><span class="info-value">' + anime.rating.total + ' 人</span></div>';
-        }
-        if (anime.rating && anime.rating.rank) {
-            infoHtml += '<div class="info-row"><span class="info-label">排名</span><span class="info-value">#' + anime.rating.rank + '</span></div>';
-        }
-        document.getElementById('infoTable').innerHTML = infoHtml;
-        
-        if (anime.rating && anime.rating.count) {
-            var count = anime.rating.count;
-            var total = anime.rating.total || 1;
-            var ratingHtml = '';
-            for (var s = 10; s >= 1; s--) {
-                var cnt = count[s] || 0;
-                var percent = Math.round((cnt / total) * 100);
-                ratingHtml += '<div class="rating-bar">' +
-                    '<span class="rating-label">' + s + ' 分</span>' +
-                    '<div class="rating-progress"><div class="rating-fill" style="width: ' + percent + '%"></div></div>' +
-                    '<span class="rating-count">' + cnt + '</span>' +
-                '</div>';
-            }
-            document.getElementById('ratingDistribution').innerHTML = ratingHtml;
-            document.getElementById('ratingSection').style.display = 'block';
-        } else {
-            document.getElementById('ratingSection').style.display = 'none';
-        }
     }
-
-    function getTypeText(type) {
-        var types = {
-            1: 'Book',
-            2: '动画',
-            3: '音乐',
-            4: '游戏',
-            6: '三次元'
-        };
-        return types[type] || '动画';
+    if (daoyan) {
+        infoHtml += '<div class="info-row"><span class="info-label">导演</span><span class="info-value">' + daoyan + '</span></div>';
     }
-
-    // 翻译功能实现
-    async function translateSummary() {
-        var summary = document.getElementById('summaryText').textContent;
-        // 如果内容为空或为默认值，不翻译
-        if (!summary || summary.trim() === '暂无简介' || summary.trim() === '') {
-            alert('暂无简介可供翻译');
-            return;
-        }
-
-        var btn = document.getElementById('translateBtn');
-        var container = document.getElementById('translationContainer');
-        var resultText = document.getElementById('translationText');
-
-        // 如果已经显示了翻译结果，点击按钮则切换显示/隐藏
-        if (resultText.textContent && resultText.textContent !== '正在翻译...' && !resultText.textContent.startsWith('翻译失败')) {
-            if (container.style.display === 'none') {
-                container.style.display = 'block';
-                btn.innerHTML = '<i class="fas fa-language"></i> 收起翻译';
-            } else {
-                container.style.display = 'none';
-                btn.innerHTML = '<i class="fas fa-language"></i> 显示翻译';
-            }
-            return;
-        }
-
-        // 检查缓存
-        var cachedTranslation = translationCache.get(summary);
-        if (cachedTranslation) {
-            console.log('Using cached translation');
-            container.style.display = 'block';
-            resultText.textContent = cachedTranslation;
-            btn.innerHTML = '<i class="fas fa-language"></i> 收起翻译';
-            return;
-        }
-
-        // 开始翻译
-        btn.disabled = true;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 翻译中...';
-        container.style.display = 'block';
-        resultText.textContent = '';
-
-        try {
-            // 构造符合 OpenAI API 格式的请求 (启用流式输出)
-            var requestBody = {
-                model: llmConfig.model,
-                messages: [
-                    { 
-                        role: "system", 
-                        content: "你是一个专业的番剧简介翻译助手。请将以下文本翻译成流畅、自然的简体中文。直接输出翻译结果，不要包含任何额外的解释或说明。注意：你无需添加任何多余信息，只需专注于翻译内容。" 
-                    },
-                    { 
-                        role: "user", 
-                        content: summary 
-                    }
-                ],
-                stream: true,
-                temperature: 0.7
-            };
-            var randomIndex = Math.floor(Math.random() * llmConfig.apiKeys.length);
-            console.log("Using API Key Index: " + randomIndex);
-            llmConfig.apiKey = llmConfig.apiKeys[randomIndex];
-
-            var response = await fetch(llmConfig.baseUrl.replace(/\/+$/, '') + '/chat/completions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + llmConfig.apiKey
-                },
-                body: JSON.stringify(requestBody)
-            });
-
-            if (!response.ok) {
-                var errorData = await response.json().catch(function() { return {}; });
-                throw new Error('API Error ' + response.status + ': ' + (errorData.error ? errorData.error.message : response.statusText));
-            }
-
-            // 流式读取响应
-            var reader = response.body.getReader();
-            var decoder = new TextDecoder('utf-8');
-            var fullContent = '';
-            var buffer = '';
-
-            while (true) {
-                var result = await reader.read();
-                if (result.done) break;
-                
-                buffer += decoder.decode(result.value, { stream: true });
-                
-                // 按行解析 SSE 数据
-                var lines = buffer.split('\n');
-                buffer = lines.pop(); // 保留不完整的行
-                
-                for (var i = 0; i < lines.length; i++) {
-                    var line = lines[i].trim();
-                    if (!line || line === 'data: [DONE]') continue;
-                    
-                    if (line.startsWith('data: ')) {
-                        try {
-                            var json = JSON.parse(line.substring(6));
-                            if (json.choices && json.choices[0] && json.choices[0].delta && json.choices[0].delta.content) {
-                                var content = json.choices[0].delta.content;
-                                fullContent += content;
-                                resultText.textContent = fullContent;
-                            }
-                        } catch (e) {
-                            // 忽略解析错误
-                        }
-                    }
-                }
-            }
-            
-            if (fullContent) {
-                btn.innerHTML = '<i class="fas fa-language"></i> 收起翻译';
-                // 保存到缓存
-                translationCache.set(summary, fullContent);
-                console.log('Translation cached');
-            } else {
-                throw new Error('No content received from API');
-            }
-
-        } catch (error) {
-            console.error('Translation failed:', error);
-            resultText.textContent = '翻译失败: ' + error.message + '。请检查控制台了解详情，或检查 API设置。';
-            btn.innerHTML = '<i class="fas fa-redo"></i> 重试翻译';
-        } finally {
-            btn.disabled = false;
-        }
+    if (yuanzuo) {
+        infoHtml += '<div class="info-row"><span class="info-label">原作</span><span class="info-value">' + yuanzuo + '</span></div>';
     }
-
-    async function sendMessage(message) {
-        if (!true) {
-            console.log('SendInfo is disabled in configuration.');
-            return;
-        } else {
-            try {
-                var response = await fetch('https://api.cysheper.top' + '/post_comment', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        username: "匿名用户",
-                        isAnonymous: true,
-                        content: message,
-                    })
-                });
-                if (!response.ok) {
-                    console.warn('Failed to send message to SendInfo:', response.statusText);
-                } else {
-                    console.log('Message sent to SendInfo successfully.');
-                }
-            } catch (error) {
-                console.error('Error sending message to SendInfo:', error);
-            }
-        }
+    if (anime.rating && anime.rating.total) {
+        infoHtml += '<div class="info-row"><span class="info-label">评分人数</span><span class="info-value">' + anime.rating.total + ' 人</span></div>';
     }
-
-    function initPage() {
-        // 绑定翻译按钮事件
-        var translateBtn = document.getElementById('translateBtn');
-        if (translateBtn) {
-            translateBtn.addEventListener('click', translateSummary);
-        }
-
-        var subjectId = getUrlParam('id');
-        
-        if (!subjectId) {
-            showError('未提供番剧ID');
-            return;
-        }
-        
-        fetchAnimeDetails(subjectId)
-            .then(function(anime) {
-                renderAnimeDetails(anime);
-                showContent();
-                // 更新页面标题
-                var animeName = anime.name_cn || anime.name || '番剧详情';
-                document.title = animeName + ' | Cysheper';
-                console.log('页面标题已更新为: ' + document.title);
-            })
-            .catch(function(error) {
-                console.error('获取番剧详情失败:', error);
-                showError('获取番剧信息失败: ' + error.message);
-            });
+    if (anime.rating && anime.rating.rank) {
+        infoHtml += '<div class="info-row"><span class="info-label">排名</span><span class="info-value">#' + anime.rating.rank + '</span></div>';
     }
-
-    document.addEventListener('DOMContentLoaded', initPage);
-</script>
-
-
-    <footer class="page-footer bg-color">
+    document.getElementById('infoTable').innerHTML = infoHtml;
     
+    if (anime.rating && anime.rating.count) {
+        var count = anime.rating.count;
+        var total = anime.rating.total || 1;
+        var ratingHtml = '';
+        for (var s = 10; s >= 1; s--) {
+            var cnt = count[s] || 0;
+            var percent = Math.round((cnt / total) * 100);
+            ratingHtml += '<div class="rating-bar">' +
+                '<span class="rating-label">' + s + ' 分</span>' +
+                '<div class="rating-progress"><div class="rating-fill" style="width: ' + percent + '%"></div></div>' +
+                '<span class="rating-count">' + cnt + '</span>' +
+            '</div>';
+        }
+        document.getElementById('ratingDistribution').innerHTML = ratingHtml;
+        document.getElementById('ratingSection').style.display = 'block';
+    } else {
+        document.getElementById('ratingSection').style.display = 'none';
+    }
+}
 
-    <div class="container row center-align"
-         style="margin-bottom: 15px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2025-2026</span>
-            
-            <a href="/about" target="_blank">Cysheper</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            
-                <span id="translate">|&nbsp;繁/简：</span><a id="translateLink" href="javascript:translatePage();">繁</a>
-            
-            <br>
-            
-                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">14.8k</span>
-            
-            
-            
-                
-            
-            
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
-            
-            <br>
-
-            <!-- 运行天数提醒. -->
-            
-                <span id="sitetime"> Loading ...</span>
-                <script>
-                    var calcSiteTime = function () {
-                        var seconds = 1000;
-                        var minutes = seconds * 60;
-                        var hours = minutes * 60;
-                        var days = hours * 24;
-                        var years = days * 365;
-                        var today = new Date();
-                        var startYear = "2025";
-                        var startMonth = "5";
-                        var startDate = "3";
-                        var startHour = "22";
-                        var startMinute = "46";
-                        var startSecond = "6";
-                        var todayYear = today.getFullYear();
-                        var todayMonth = today.getMonth() + 1;
-                        var todayDate = today.getDate();
-                        var todayHour = today.getHours();
-                        var todayMinute = today.getMinutes();
-                        var todaySecond = today.getSeconds();
-                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                        var diff = t2 - t1;
-                        var diffYears = Math.floor(diff / years);
-                        var diffDays = Math.floor((diff / days) - diffYears * 365);
-
-                        // 区分是否有年份.
-                        var language = 'zh-CN';
-                        if (startYear === String(todayYear)) {
-                            document.getElementById("year").innerHTML = todayYear;
-                            var daysTip = 'This site has been running for ' + diffDays + ' days';
-                            if (language === 'zh-CN') {
-                                daysTip = '本站已运行 ' + diffDays + ' 天';
-                            } else if (language === 'zh-HK') {
-                                daysTip = '本站已運行 ' + diffDays + ' 天';
-                            }
-                            document.getElementById("sitetime").innerHTML = daysTip;
-                        } else {
-                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
-                                + diffDays + ' days';
-                            if (language === 'zh-CN') {
-                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
-                            } else if (language === 'zh-HK') {
-                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
-                            }
-                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
-                        }
-                    }
-
-                    calcSiteTime();
-                </script>
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/Cysheper" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:3403699116@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3403699116" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3403699116" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-</div>
-    </div>
-</footer>
-
-<div class="progress-bar"></div>
-
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script type="text/javascript">
-$(function () {
-    var searchFunc = function (path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: "xml",
-            success: function (xmlResponse) {
-                // get the contents from search data
-                var datas = $("entry", xmlResponse).map(function () {
-                    return {
-                        title: $("title", this).text(),
-                        content: $("content", this).text(),
-                        url: $("url", this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function () {
-                    var str = '<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = "";
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function (data) {
-                        var isMatch = true;
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                        var data_url = data.url;
-                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if (data_title !== '' && data_content !== '') {
-                            keywords.forEach(function (keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if (index_title < 0 && index_content < 0) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                            var content = data.content.trim().replace(/<[^>]+>/g, "");
-                            if (first_occur >= 0) {
-                                // cut out 100 characters
-                                var start = first_occur - 20;
-                                var end = first_occur + 80;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 100;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
-
-                                str += "<p class=\"search-result\">" + match_content + "...</p>"
-                            }
-                            str += "</li>";
-                        }
-                    });
-                    str += "</ul>";
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
+function getTypeText(type) {
+    var types = {
+        1: 'Book',
+        2: '动画',
+        3: '音乐',
+        4: '游戏',
+        6: '三次元'
     };
+    return types[type] || '动画';
+}
 
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 白天和黑夜主题 -->
-<div class="stars-con">
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>  
-</div>
-
-<script>
-    function switchNightMode() {
-        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
-        setTimeout(function () {
-            $('body').hasClass('DarkMode') 
-            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
-            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
-            
-            setTimeout(function () {
-            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
-                $(this).remove()
-            })
-            }, 2e3)
-        })
+async function translateSummary() {
+    var summary = document.getElementById('summaryText').textContent;
+    if (!summary || summary.trim() === '暂无简介' || summary.trim() === '') {
+        alert('暂无简介可供翻译');
+        return;
     }
-</script>
 
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
+    var btn = document.getElementById('translateBtn');
+    var container = document.getElementById('translationContainer');
+    var resultText = document.getElementById('translationText');
 
+    if (resultText.textContent && resultText.textContent !== '正在翻译...' && !resultText.textContent.startsWith('翻译失败')) {
+        if (container.style.display === 'none') {
+            container.style.display = 'block';
+            btn.innerHTML = '<i class="fas fa-language"></i> 收起翻译';
+        } else {
+            container.style.display = 'none';
+            btn.innerHTML = '<i class="fas fa-language"></i> 显示翻译';
+        }
+        return;
+    }
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
+    var cachedTranslation = translationCache.get(summary);
+    if (cachedTranslation) {
+        console.log('Using cached translation');
+        container.style.display = 'block';
+        resultText.textContent = cachedTranslation;
+        btn.innerHTML = '<i class="fas fa-language"></i> 收起翻译';
+        return;
+    }
 
-    
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 翻译中...';
+    container.style.display = 'block';
+    resultText.textContent = '';
 
-    
-        <script type="text/javascript" src="/js/tw_cn.js"></script>
-        <script type="text/javascript">
-          var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
-          var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
-          var cookieDomain = "https://cysheper.github.io"; //Cookie地址, 一定要设定, 通常为你的网址
-          var msgToTraditionalChinese = "繁"; //此处可以更改为你想要显示的文字
-          var msgToSimplifiedChinese = "简"; //同上，但两处均不建议更改
-          var translateButtonId = "translateLink"; //默认互换id
-          translateInitilization();
-        </script>
-    
-    
-    
+    try {
+        var requestBody = {
+            model: llmConfig.model,
+            messages: [
+                { 
+                    role: "system", 
+                    content: "你是一个专业的番剧简介翻译助手。请将以下文本翻译成流畅、自然的简体中文。直接输出翻译结果，不要包含任何额外的解释或说明。" 
+                },
+                { 
+                    role: "user", 
+                    content: summary 
+                }
+            ],
+            stream: true,
+            temperature: 0.7
+        };
+        var randomIndex = Math.floor(Math.random() * llmConfig.apiKeys.length);
+        llmConfig.apiKey = llmConfig.apiKeys[randomIndex];
 
-    <!-- 雪花特效 -->
-     
-        <script type="text/javascript">
-            // 只在桌面版网页启用特效
-            var windowWidth = $(window).width();
-            if (windowWidth > 768) {
-                document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
+        var response = await fetch(llmConfig.baseUrl.replace(/\/+$/, '') + '/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + llmConfig.apiKey
+            },
+            body: JSON.stringify(requestBody)
+        });
+
+        if (!response.ok) {
+            var errorData = await response.json().catch(function() { return {}; });
+            throw new Error('API Error ' + response.status + ': ' + (errorData.error ? errorData.error.message : response.statusText));
+        }
+
+        var reader = response.body.getReader();
+        var decoder = new TextDecoder('utf-8');
+        var fullContent = '';
+        var buffer = '';
+
+        while (true) {
+            var result = await reader.read();
+            if (result.done) break;
+            
+            buffer += decoder.decode(result.value, { stream: true });
+            
+            var lines = buffer.split('\n');
+            buffer = lines.pop();
+            
+            for (var i = 0; i < lines.length; i++) {
+                var line = lines[i].trim();
+                if (!line || line === 'data: [DONE]') continue;
+                
+                if (line.startsWith('data: ')) {
+                    try {
+                        var json = JSON.parse(line.substring(6));
+                        if (json.choices && json.choices[0] && json.choices[0].delta && json.choices[0].delta.content) {
+                            var content = json.choices[0].delta.content;
+                            fullContent += content;
+                            resultText.textContent = fullContent;
+                        }
+                    } catch (e) {}
+                }
             }
-        </script>
-    
+        }
+        
+        if (fullContent) {
+            btn.innerHTML = '<i class="fas fa-language"></i> 收起翻译';
+            translationCache.set(summary, fullContent);
+        } else {
+            throw new Error('No content received from API');
+        }
 
-    <!-- 鼠标星星特效 -->
-    
+    } catch (error) {
+        console.error('Translation failed:', error);
+        resultText.textContent = '翻译失败: ' + error.message;
+        btn.innerHTML = '<i class="fas fa-redo"></i> 重试翻译';
+    } finally {
+        btn.disabled = false;
+    }
+}
 
-    
+function initPage() {
+    var translateBtn = document.getElementById('translateBtn');
+    if (translateBtn) {
+        translateBtn.addEventListener('click', translateSummary);
+    }
 
-    <!-- Baidu Analytics -->
+    var subjectId = getUrlParam('id');
+    
+    if (!subjectId) {
+        showError('未提供番剧ID');
+        return;
+    }
+    
+    fetchAnimeDetails(subjectId)
+        .then(function(anime) {
+            renderAnimeDetails(anime);
+            showContent();
+            var animeName = anime.name_cn || anime.name || '番剧详情';
+            document.title = animeName + ' | Cysheper';
+        })
+        .catch(function(error) {
+            console.error('获取番剧详情失败:', error);
+            showError('获取番剧信息失败: ' + error.message);
+        });
+}
 
-    <!-- Baidu Push -->
+document.addEventListener('DOMContentLoaded', initPage);</script></div><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Cysheper</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="/js/tw_cn.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
 
-    
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
 
-    
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
 
-    <!--腾讯兔小巢-->
-    
-    
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
 
-    
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
 
-    
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
 
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
 
-</body>
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
 
-</html>
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.outerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+    setTimeout(() => URL.revokeObjectURL(url), 30000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        if (typeof svg === 'string') {
+          openSvgInNewTab({ source: svg, initViewBox })
+          return
+        }
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+
+    // Avoid binding multiple times on themeChange/pjax
+    if (wrap.__mermaidGestureBound) return
+    wrap.__mermaidGestureBound = true
+
+    // Helper: map client (viewport) coordinate -> viewBox coordinate
+    const clientToViewBox = (clientX, clientY) => {
+      const rect = svg.getBoundingClientRect()
+      const vb = wrap.__mermaidCurViewBox || getSvgViewBox(svg)
+      const x = vb[0] + (clientX - rect.left) * (vb[2] / rect.width)
+      const y = vb[1] + (clientY - rect.top) * (vb[3] / rect.height)
+      return { x, y, rect, vb }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      startCenter: null
+    }
+
+    const clampVb = vb => {
+      const init = wrap.__mermaidInitViewBox || vb
+      const minW = init[2] * 0.1
+      const maxW = init[2] * 10
+      const minH = init[3] * 0.1
+      const maxH = init[3] * 10
+      vb[2] = clamp(vb[2], minW, maxW)
+      vb[3] = clamp(vb[3], minH, maxH)
+      return vb
+    }
+
+    const setCurVb = vb => {
+      vb = clampVb(vb)
+      wrap.__mermaidCurViewBox = vb
+      setSvgViewBox(svg, vb)
+    }
+
+    const onPointerDown = e => {
+      // Allow only primary button for mouse
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      if (state.pointers.size === 1) {
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        state.startCenter = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 }
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      // Pan with 1 pointer
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = [...state.pointers.values()][0]
+        const prev = { x: e.clientX - e.movementX, y: e.clientY - e.movementY }
+        // movementX/Y unreliable on touch, compute from stored last position
+        const last = wrap.__mermaidLastSinglePointer || p
+        const dxClient = p.x - last.x
+        const dyClient = p.y - last.y
+        wrap.__mermaidLastSinglePointer = p
+
+        const { rect } = clientToViewBox(p.x, p.y)
+        const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        const dx = dxClient * (vb[2] / rect.width)
+        const dy = dyClient * (vb[3] / rect.height)
+        setCurVb([vb[0] - dx, vb[1] - dy, vb[2], vb[3]])
+        return
+      }
+
+      // Pinch zoom with 2 pointers
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist // dist bigger => zoom in (viewBox smaller)
+
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const centerClient = { x: cx, y: cy }
+
+        const pxy = clientToViewBox(centerClient.x, centerClient.y)
+        const cpx = pxy.x
+        const cpy = pxy.y
+
+        const vb = zoomAtPoint(state.startVb, factor, cpx, cpy)
+        setCurVb(vb)
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+        state.startCenter = null
+        wrap.__mermaidLastSinglePointer = null
+      } else if (state.pointers.size === 1) {
+        // reset single pointer baseline to avoid jump
+        wrap.__mermaidLastSinglePointer = [...state.pointers.values()][0]
+      }
+    }
+
+    // Wheel zoom (mouse/trackpad)
+    const onWheel = e => {
+      // ctrlKey on mac trackpad pinch; we treat both as zoom
+      e.preventDefault()
+      const delta = e.deltaY
+      const zoomFactor = delta > 0 ? 1.1 : 0.9
+      const { x, y } = clientToViewBox(e.clientX, e.clientY)
+      const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      setCurVb(zoomAtPoint(vb, zoomFactor, x, y))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (!init) return
+      wrap.__mermaidCurViewBox = init.slice()
+      setSvgViewBox(svg, init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown)
+    svg.addEventListener('pointermove', onPointerMove)
+    svg.addEventListener('pointerup', onPointerUpOrCancel)
+    svg.addEventListener('pointercancel', onPointerUpOrCancel)
+    svg.addEventListener('wheel', onWheel, { passive: false })
+    svg.addEventListener('dblclick', onDblClick)
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+
+      // Clear old render (themeChange/pjax will rerun)
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      item.__mermaidGestureBound = false
+
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script>window.newestComments = {
+  changeContent: content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<code>.*?<\/code>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g, "") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0, 150) + '...'
+    }
+    return content
+  },
+
+  generateHtml: (array, ele) => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class="aside-list-item">'
+
+        if (true && array[i].avatar) {
+          const imgAttr = 'src'
+          const lazyloadNative = ''
+          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}" ${lazyloadNative}></a>`
+        }
+
+        result += `<div class="content">
+        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
+        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '暂无评论'
+    }
+
+    ele.innerHTML = result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh(ele)
+  },
+
+  newestCommentInit: (name, getComment) => {
+    const $dom = document.querySelector('#card-newest-comments .aside-list')
+    if ($dom) {
+      const data = btf.saveToLocal.get(name)
+      if (data) {
+        newestComments.generateHtml(JSON.parse(data), $dom)
+      } else {
+        getComment($dom)
+      }
+    }
+  },
+
+  run: (name, getComment) => {
+    newestComments.newestCommentInit(name, getComment)
+    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
+  }
+}</script><script>window.addEventListener('load', () => {
+  const keyName = 'twikoo-newest-comments'
+  const { changeContent, generateHtml, run } = window.newestComments
+
+  const getComment = ele => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://cysheper.netlify.app/.netlify/functions/twikoo',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(res => {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        btf.saveToLocal.set(keyName, JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray, ele)
+      }).catch(err => {
+        console.error(err)
+        ele.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      btf.getScript('https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  run(keyName, getComment)
+})</script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/foot.js"></script><canvas id="snow"></canvas><script defer src="/js/others/snow.js"></script><script src="https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.0/dist/autoload.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: true,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      false
+        ? pjax.loadUrl('/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="查找文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>

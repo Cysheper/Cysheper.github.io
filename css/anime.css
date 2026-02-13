@@ -1,39 +1,190 @@
 /* ========================================
-   番剧页面样式 - Anime Page Styles
+   番剧页面样式 - Anime Page Styles (Butterfly)
    ======================================== */
+
+/* ========================================
+   强制全屏布局 - 隐藏所有 butterfly 主题元素
+   ======================================== */
+body.type-anime,
+body.type-animeDetails {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    background: #16213e !important; /* 使用单一颜色 */
+}
+
+/* 隐藏 butterfly 主题的背景、侧边栏等，但保留导航栏和 footer */
+body.type-anime #web_bg,
+body.type-anime #sidebar,
+body.type-anime #rightside,
+body.type-anime #page-header,
+body.type-animeDetails #web_bg,
+body.type-animeDetails #sidebar,
+body.type-animeDetails #rightside,
+body.type-animeDetails #page-header {
+    display: none !important;
+}
+
+/* 确保 footer 显示并设置与页面一致的背景色 */
+body.type-anime #footer,
+body.type-animeDetails #footer {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    margin-top: 0 !important; /* 移除上边距，消除间隙 */
+    background: #16213e !important; /* 使用单一颜色 */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding-top: 40px; /* 添加内边距而不是外边距 */
+}
+
+/* footer 内部元素文字颜色 */
+body.type-anime #footer *,
+body.type-animeDetails #footer * {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* footer 链接样式 */
+body.type-anime #footer a,
+body.type-animeDetails #footer a {
+    color: rgba(255, 255, 255, 0.9) !important;
+    transition: color 0.3s ease;
+}
+
+body.type-anime #footer a:hover,
+body.type-animeDetails #footer a:hover {
+    color: #ff6b9d !important;
+}
+
+/* 全屏内容容器 */
+.fullscreen-anime-wrapper {
+    width: 100vw;
+    min-height: auto; /* 改为 auto，让内容自然撑开 */
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/* 确保导航栏显示 - 纯透明效果 */
+body.type-anime #nav,
+body.type-animeDetails #nav {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    height: 60px !important;
+    align-items: center !important;
+    padding: 0 40px !important;
+}
+
+body.type-anime #nav #blog-info,
+body.type-animeDetails #nav #blog-info {
+    display: flex;
+    align-items: center;
+}
+
+body.type-anime #nav .nav-site-title,
+body.type-animeDetails #nav .nav-site-title {
+    display: flex;
+    align-items: center;
+    color: #fff !important;
+    text-decoration: none;
+}
+
+body.type-anime #nav .site-icon,
+body.type-animeDetails #nav .site-icon {
+    height: 35px;
+    margin-right: 10px;
+}
+
+body.type-anime #nav .site-name,
+body.type-animeDetails #nav .site-name {
+    color: #fff !important;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+body.type-anime #nav #menus,
+body.type-animeDetails #nav #menus {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+body.type-anime #nav .menus_items,
+body.type-animeDetails #nav .menus_items {
+    display: flex;
+    align-items: center;
+}
+
+body.type-anime #nav .menus_item a,
+body.type-anime #nav .menus_item span,
+body.type-animeDetails #nav .menus_item a,
+body.type-animeDetails #nav .menus_item span {
+    color: #fff !important;
+}
+
+body.type-anime #nav .menus_item a:hover,
+body.type-animeDetails #nav .menus_item a:hover {
+    color: #ff6b9d !important;
+}
+
+body.type-anime #nav #search-button .search,
+body.type-animeDetails #nav #search-button .search {
+    color: #fff !important;
+}
+
+body.type-anime #nav #toggle-menu,
+body.type-animeDetails #nav #toggle-menu {
+    color: #fff !important;
+}
 
 .anime-page {
     min-height: 100vh;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
-    padding-top: 0;
+    background: #16213e; /* 使用单一颜色 */
+    padding-top: 0; /* 内容从顶部开始，透过半透明导航栏显示 */
     position: relative;
     overflow-x: hidden;
-    margin-top: -64px; /* 向上延伸覆盖导航栏 */
 }
 
-/* 让导航栏在番剧页面透明 */
-body.anime-page-body nav .bg-color,
-body.anime-page-body nav,
-body.anime-page-body nav.nav-transparent {
-    background: transparent !important;
-    box-shadow: none !important;
-}
-
-/* 让 footer 始终在底部 */
-body.anime-page-body {
+/* ========================================
+   全屏加载状态
+   ======================================== */
+.anime-loading-overlay {
+    position: fixed;
+    top: 0; /* 从页面顶部开始 */
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #16213e; /* 使用单一颜色 */
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    z-index: 998; /* 低于导航栏 */
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    gap: 20px;
+    transition: opacity 0.3s ease;
 }
 
-body.anime-page-body .content {
-    flex: 1;
-}
-
-/* 详情页 footer 样式 */
-body.anime-page-body footer.page-footer {
-    background: linear-gradient(135deg, #16213e 0%, #0f0f23 100%);
-    flex-shrink: 0;
+.anime-loading-overlay .spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 107, 157, 0.2);
+    border-top-color: #ff6b9d;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
 }
 
 /* 粒子背景 */
@@ -76,7 +227,7 @@ body.anime-page-body footer.page-footer {
 }
 
 /* ========================================
-   顶部轮播图区域 - 延伸到页面顶部
+   顶部轮播图区域 - 延伸到页面顶部（透过半透明导航栏显示）
    ======================================== */
 .anime-carousel-section {
     position: relative;
@@ -88,7 +239,7 @@ body.anime-page-body footer.page-footer {
 .anime-carousel {
     position: relative;
     width: 100%;
-    height: 500px; /* 增加高度以覆盖导航栏区域 */
+    height: 560px; /* 500px + 60px导航栏高度 */
     overflow: hidden;
 }
 
@@ -162,7 +313,7 @@ body.anime-page-body footer.page-footer {
     bottom: 0;
     display: flex;
     align-items: center;
-    padding: 80px 80px 40px; /* 顶部增加内边距，避开导航栏 */
+    padding: 80px 80px 40px;
     z-index: 2;
     gap: 50px;
 }
@@ -593,10 +744,6 @@ body.anime-page-body footer.page-footer {
 /* ========================================
    站长推荐
    ======================================== */
-
-
-/* 
-*/
 .recommend-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -633,7 +780,6 @@ body.anime-page-body footer.page-footer {
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    
 }
 
 .recommend-info {
@@ -673,7 +819,6 @@ body.anime-page-body footer.page-footer {
     line-height: 1.7;
     margin: 0;
     display: -webkit-box;
-
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
