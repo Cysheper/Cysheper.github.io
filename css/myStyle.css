@@ -15,7 +15,7 @@
   background: var(--trans-light);
   border-radius: 20px;
   border: var(--border-style);
-  height: 370px;
+  height: 390px;
 }
 #recent-posts .post-bg {
   height: 220px !important;
