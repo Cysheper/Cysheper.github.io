@@ -7,8 +7,9 @@
   font-display: swap;
   src: url('/fonts/LXGWWenKaiMono-Medium.ttf') format("truetype");  
 }
+
 @font-face {
-  font-family: 'Consolas';
+  font-family: 'consola';
   font-display: swap;
   src: url('/fonts/consolas.ttf') format("truetype");  
 }

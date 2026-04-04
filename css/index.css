@@ -2077,7 +2077,7 @@ pre[class*='language-'] .token.punctuation {
 .container pre,
 .container code {
   font-size: 1rem;
-  font-family: Consolas, LXGWWenKaiMono-Medium !important;
+  font-family: consola !important;
   border-radius: 6px;
 }
 .container code {
