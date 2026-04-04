@@ -161,3 +161,10 @@ div#aside-content .card-widget.card-info {
   pointer-events: none;
   z-index: -1;
 }
+
+/* 针对所有代码块禁用连字 */
+pre[class*="language-"], 
+code[class*="language-"] {
+    font-variant-ligatures: none !important;
+    font-feature-settings: "liga" 0, "calt" 0 !important; /* 强制关闭 OpenType 连字特性 */
+}

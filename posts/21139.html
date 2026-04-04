@@ -74,7 +74,7 @@
         document.head.appendChild(link)
       }),
       addGlobalFn: (key, fn, name = false, parent = window) => {
-        if (!true && key.startsWith('pjax')) return
+        if (!false && key.startsWith('pjax')) return
         const globalFn = parent.globalFn || {}
         globalFn[key] = globalFn[key] || {}
         globalFn[key][name || Object.keys(globalFn[key]).length] = fn
@@ -212,7 +212,7 @@ btf.addGlobalFn('pjaxComplete', () => {
     setTimeout(preloader.endLoading, 7000)
   }
 
-  if (true) {
+  if (false) {
     btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
     btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
   }
@@ -244,9 +244,10 @@ btf.addGlobalFn('pjaxComplete', () => {
   document.addEventListener('pjax:complete', setMonthBg)
   document.addEventListener('DOMContentLoaded', setMonthBg)
 })()
-</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/about.html"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></li><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/anime/"><i class="fa-fw fab fa-bilibili"></i><span> Anime</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">Cysheper</span></a><a class="nav-page-title" href="/"><span class="site-name">题解-Codeforces Global Round 29 (Div. 1 + Div. 2)</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/about.html"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></li><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/anime/"><i class="fa-fw fab fa-bilibili"></i><span> Anime</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">题解-Codeforces Global Round 29 (Div. 1 + Div. 2)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-21T16:00:00.000Z" title="发表于 2025-09-22 00:00:00">2025-09-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-12T17:22:25.173Z" title="更新于 2026-02-13 01:22:25">2026-02-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">728</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/21139.html#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>C题WA麻了，还是得先找好情况再敲啊。</p>
+</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/about.html"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></li><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/anime/"><i class="fa-fw fab fa-bilibili"></i><span> Anime</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">Cysheper</span></a><a class="nav-page-title" href="/"><span class="site-name">题解-Codeforces Global Round 29 (Div. 1 + Div. 2)</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/about.html"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></li><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/anime/"><i class="fa-fw fab fa-bilibili"></i><span> Anime</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">题解-Codeforces Global Round 29 (Div. 1 + Div. 2)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-21T16:00:00.000Z" title="发表于 2025-09-22 00:00:00">2025-09-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-12T17:22:25.173Z" title="更新于 2026-02-13 01:22:25">2026-02-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">732</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/21139.html#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>C题WA麻了，还是得先找好情况再敲啊。</p>
 <p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/2147">题目链接</a></p>
-<h2 id="A"><a href="#A" class="headerlink" title="A"></a>A</h2><p>分类讨论，答案显而易见，只有-1，2，3三种情况。</p>
+<h2 id="a"><a class="markdownIt-Anchor" href="#a"></a> A</h2>
+<p>分类讨论，答案显而易见，只有-1，2，3三种情况。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">int</span> x<span class="token punctuation">,</span> y<span class="token punctuation">;</span> cin <span class="token operator">&gt;&gt;</span> x <span class="token operator">&gt;&gt;</span> y<span class="token punctuation">;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>x <span class="token operator">&lt;</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -256,23 +257,25 @@ btf.addGlobalFn('pjaxComplete', () => {
             cout <span class="token operator">&lt;&lt;</span> <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
             <span class="token keyword">if</span><span class="token punctuation">(</span>x <span class="token operator">&gt;=</span> y <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">&amp;&amp;</span> y <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">)</span> 
-	            cout <span class="token operator">&lt;&lt;</span> <span class="token number">3</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+                cout <span class="token operator">&lt;&lt;</span> <span class="token number">3</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
             <span class="token keyword">else</span> cout <span class="token operator">&lt;&lt;</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span> 
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><p>推式子，例如<br>$x = 6$ :</p>
-<p><code>6 4 2 5 2 4 6 3 5 1 3 1</code><br>$x = 7$ :<br><code>6 4 2 7 2 4 6 5 3 1 7 3 5 1</code></p>
+<h2 id="b"><a class="markdownIt-Anchor" href="#b"></a> B</h2>
+<p>推式子，例如<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">x = 6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span> :</p>
+<p><code>6 4 2 5 2 4 6 3 5 1 3 1</code><br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">x = 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span> :<br>
+<code>6 4 2 7 2 4 6 5 3 1 7 3 5 1</code></p>
 <p>所以：</p>
 <pre class="line-numbers language-none"><code class="language-none">if(x 是奇数) {
-	[x - 1, x - 3, ..., 2, x, ..., x - 3, x - 1, 
-	x - 2, x - 4, ..., 1, x, x - 4, x - 2, 1]
+    [x - 1, x - 3, ..., 2, x, ..., x - 3, x - 1, 
+    x - 2, x - 4, ..., 1, x, x - 4, x - 2, 1]
 } else {
-	[x, x - 2, ..., 2, x - 1, ..., x - 3, x - 5,
-	..., 1]
+    [x, x - 2, ..., 2, x - 1, ..., x - 3, x - 5,
+    ..., 1]
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">int</span> x<span class="token punctuation">;</span> cin <span class="token operator">&gt;&gt;</span> x<span class="token punctuation">;</span>
     vi <span class="token function">v</span><span class="token punctuation">(</span>x <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -294,7 +297,7 @@ btf.addGlobalFn('pjaxComplete', () => {
         v<span class="token punctuation">[</span>idx<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
         v<span class="token punctuation">[</span><span class="token number">2</span> <span class="token operator">*</span> x<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
         <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> x <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token operator">++</span> i<span class="token punctuation">)</span> 
-	        cout <span class="token operator">&lt;&lt;</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" \n"</span><span class="token punctuation">[</span>i <span class="token operator">==</span> x <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            cout <span class="token operator">&lt;&lt;</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" \n"</span><span class="token punctuation">[</span>i <span class="token operator">==</span> x <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
         <span class="token keyword">int</span> idx <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
         <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> x<span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">-=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -319,12 +322,14 @@ btf.addGlobalFn('pjaxComplete', () => {
         <span class="token punctuation">}</span> 
     <span class="token punctuation">}</span> 
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><p>最难蚌的一集， WA * 7</p>
+<h2 id="c"><a class="markdownIt-Anchor" href="#c"></a> C</h2>
+<p>最难蚌的一集， WA * 7</p>
 <p>把字符串分成若干段，每段之间没有关联，一段中最多只有1个连续的<code>1</code>, 每段独立计算。再把每段通过那一个<code>1</code>分成若干小份，统计每小份的最大长度和数量，如果当前段的小份的最大长度是<code>1</code>（即全是<code>1</code>），且数量为奇数个，则当前段无解。统计所有段的解的情况，如果首个字符为<code>0</code>, 则将第一个解的情况改为有解，末尾同理。判断整个是否全是有解，有一个段无解，即为<code>NO</code>, 全有解即为<code>YES</code>.</p>
-<p>例如：<br><code>010101101001</code></p>
+<p>例如：<br>
+<code>010101101001</code></p>
 <p>我们分成两段：<code>01010</code> <code>0100</code></p>
-<p>第一段每小份的长度：<code>1 1 1</code> ，最大长度是<code>1</code>, 且为奇数个。<code>ans.push_back(0)</code><br>第二段每小份的长度：<code>1 2</code> ，最大长度是2 。<code>ans.push_back(1)</code></p>
+<p>第一段每小份的长度：<code>1 1 1</code> ，最大长度是<code>1</code>, 且为奇数个。<code>ans.push_back(0)</code><br>
+第二段每小份的长度：<code>1 2</code> ，最大长度是2 。<code>ans.push_back(1)</code></p>
 <p>因为<code>s[0] = '0'</code>， 所以<code>ans[0] = 1</code></p>
 <p>因为<code>ans</code>全为1， 故输出<code>YES</code>.</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -362,82 +367,20 @@ btf.addGlobalFn('pjaxComplete', () => {
     <span class="token punctuation">}</span>
     YES<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://cysheper.top">Cysheper</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://cysheper.top/posts/21139.html">https://cysheper.top/posts/21139.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://cysheper.top" target="_blank">Cysheper</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Codeforces/">Codeforces</a><a class="post-meta__tags" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a><a class="post-meta__tags" href="/tags/ACM/">ACM</a></div><div class="post-share"><div class="social-share" data-image="https://img.hongyoubizhi.com/picture/pages/regular/2025/03/16/12/135151473_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/41708.html" title="题解-Codeforces Round 1051 (Div. 2)"><img class="cover" src="http://img.hongyoubizhi.com/picture/pages/original/2025/03/16/12/135267381_p0.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">题解-Codeforces Round 1051 (Div. 2)</div></div><div class="info-2"><div class="info-item-1">Codeforces Round 1051 (Div. 2)题解</div></div></div></a><a class="pagination-related" href="/posts/46429.html" title="二分算法"><img class="cover" src="https://img.hongyoubizhi.com/picture/pages/regular/2025/03/16/14/135323271_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">二分算法</div></div><div class="info-2"><div class="info-item-1">二分算法</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/1366.html" title="题解-Educational Codeforces Round 182 (Div. 2)"><img class="cover" src="https://img.hongyoubizhi.com/picture/pages/regular/2025/03/16/15/134248444_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-09-22</div><div class="info-item-2">题解-Educational Codeforces Round 182 (Div. 2)</div></div><div class="info-2"><div class="info-item-1">Educational Codeforces Round 182 (Div. 2) 题解</div></div></div></a><a class="pagination-related" href="/posts/8957.html" title="题解-Codeforces Round 1054 (Div. 3)"><img class="cover" src="http://img.hongyoubizhi.com/picture/pages/original/2023/10/25/00/113027659_p0.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-09-26</div><div class="info-item-2">题解-Codeforces Round 1054 (Div. 3)</div></div><div class="info-2"><div class="info-item-1">Codeforces Round 1054 (Div. 3)</div></div></div></a><a class="pagination-related" href="/posts/51134.html" title="题解-Codeforces Round 1050 (Div. 4)"><img class="cover" src="https://img.hongyoubizhi.com/picture/pages/original/2025/03/16/12/134233797_p0.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-09-22</div><div class="info-item-2">题解-Codeforces Round 1050 (Div. 4)</div></div><div class="info-2"><div class="info-item-1">Codeforces Round 1050 (Div. 4) 题解</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Cysheper</div><div class="author-info-description">今天干点什么好呢...</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Cysheper" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:3403699116@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=3403699116" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #12b7f5;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#a"><span class="toc-number">1.</span> <span class="toc-text"> A</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#b"><span class="toc-number">2.</span> <span class="toc-text"> B</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c"><span class="toc-number">3.</span> <span class="toc-text"> C</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/9023.html" title="欧拉定理"><img src="https://img.hongyoubizhi.com/picture/pages/regular/2021/07/18/08/43/83821289_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="欧拉定理"/></a><div class="content"><a class="title" href="/posts/9023.html" title="欧拉定理">欧拉定理</a><time datetime="2026-04-03T04:59:12.391Z" title="发表于 2026-04-03 12:59:12">2026-04-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/35711.html" title="OpenLani"><img src="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/Gemini_Generated_Image_tpzqc4tpzqc4tpzq.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OpenLani"/></a><div class="content"><a class="title" href="/posts/35711.html" title="OpenLani">OpenLani</a><time datetime="2026-04-02T11:14:00.000Z" title="发表于 2026-04-02 19:14:00">2026-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/about.html" title="关于我"><img src="/./img/M31.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于我"/></a><div class="content"><a class="title" href="/posts/about.html" title="关于我">关于我</a><time datetime="2026-02-13T16:02:24.000Z" title="发表于 2026-02-14 00:02:24">2026-02-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/28245.html" title="线性代数"><img src="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/mutsumi01%281%29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="线性代数"/></a><div class="content"><a class="title" href="/posts/28245.html" title="线性代数">线性代数</a><time datetime="2025-12-28T16:00:00.000Z" title="发表于 2025-12-29 00:00:00">2025-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7789.html" title="本站开发日志"><img src="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/mutsumi1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="本站开发日志"/></a><div class="content"><a class="title" href="/posts/7789.html" title="本站开发日志">本站开发日志</a><time datetime="2025-12-25T16:00:00.000Z" title="发表于 2025-12-26 00:00:00">2025-12-26</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Cysheper</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="/js/tw_cn.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
 
-
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://cysheper.top">Cysheper</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://cysheper.top/posts/21139.html">https://cysheper.top/posts/21139.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://cysheper.top" target="_blank">Cysheper</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Codeforces/">Codeforces</a><a class="post-meta__tags" href="/tags/%E9%A2%98%E8%A7%A3/">题解</a><a class="post-meta__tags" href="/tags/ACM/">ACM</a></div><div class="post-share"><div class="social-share" data-image="https://img.hongyoubizhi.com/picture/pages/regular/2025/03/16/12/135151473_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/41708.html" title="题解-Codeforces Round 1051 (Div. 2)"><img class="cover" src="http://img.hongyoubizhi.com/picture/pages/original/2025/03/16/12/135267381_p0.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">题解-Codeforces Round 1051 (Div. 2)</div></div><div class="info-2"><div class="info-item-1">Codeforces Round 1051 (Div. 2)题解</div></div></div></a><a class="pagination-related" href="/posts/51134.html" title="题解-Codeforces Round 1050 (Div. 4)"><img class="cover" src="https://img.hongyoubizhi.com/picture/pages/original/2025/03/16/12/134233797_p0.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">题解-Codeforces Round 1050 (Div. 4)</div></div><div class="info-2"><div class="info-item-1">Codeforces Round 1050 (Div. 4) 题解</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/1366.html" title="题解-Educational Codeforces Round 182 (Div. 2)"><img class="cover" src="https://img.hongyoubizhi.com/picture/pages/regular/2025/03/16/15/134248444_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-09-22</div><div class="info-item-2">题解-Educational Codeforces Round 182 (Div. 2)</div></div><div class="info-2"><div class="info-item-1">Educational Codeforces Round 182 (Div. 2) 题解</div></div></div></a><a class="pagination-related" href="/posts/51134.html" title="题解-Codeforces Round 1050 (Div. 4)"><img class="cover" src="https://img.hongyoubizhi.com/picture/pages/original/2025/03/16/12/134233797_p0.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-09-22</div><div class="info-item-2">题解-Codeforces Round 1050 (Div. 4)</div></div><div class="info-2"><div class="info-item-1">Codeforces Round 1050 (Div. 4) 题解</div></div></div></a><a class="pagination-related" href="/posts/8957.html" title="题解-Codeforces Round 1054 (Div. 3)"><img class="cover" src="http://img.hongyoubizhi.com/picture/pages/original/2023/10/25/00/113027659_p0.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-09-26</div><div class="info-item-2">题解-Codeforces Round 1054 (Div. 3)</div></div><div class="info-2"><div class="info-item-1">Codeforces Round 1054 (Div. 3)</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Cysheper</div><div class="author-info-description">今天干点什么好呢...</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Cysheper" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:3403699116@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=3403699116" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #12b7f5;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#A"><span class="toc-number">1.</span> <span class="toc-text">A</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#B"><span class="toc-number">2.</span> <span class="toc-text">B</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C"><span class="toc-number">3.</span> <span class="toc-text">C</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/9023.html" title="欧拉定理"><img src="https://img.hongyoubizhi.com/picture/pages/regular/2021/07/18/08/43/83821289_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="欧拉定理"/></a><div class="content"><a class="title" href="/posts/9023.html" title="欧拉定理">欧拉定理</a><time datetime="2026-04-03T04:59:12.391Z" title="发表于 2026-04-03 12:59:12">2026-04-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/35711.html" title="OpenLani"><img src="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/Gemini_Generated_Image_tpzqc4tpzqc4tpzq.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OpenLani"/></a><div class="content"><a class="title" href="/posts/35711.html" title="OpenLani">OpenLani</a><time datetime="2026-04-02T11:14:00.000Z" title="发表于 2026-04-02 19:14:00">2026-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/about.html" title="关于我"><img src="/./img/M31.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于我"/></a><div class="content"><a class="title" href="/posts/about.html" title="关于我">关于我</a><time datetime="2026-02-13T16:02:24.000Z" title="发表于 2026-02-14 00:02:24">2026-02-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/28245.html" title="线性代数"><img src="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/mutsumi01%281%29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="线性代数"/></a><div class="content"><a class="title" href="/posts/28245.html" title="线性代数">线性代数</a><time datetime="2025-12-28T16:00:00.000Z" title="发表于 2025-12-29 00:00:00">2025-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7789.html" title="本站开发日志"><img src="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/mutsumi1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="本站开发日志"/></a><div class="content"><a class="title" href="/posts/7789.html" title="本站开发日志">本站开发日志</a><time datetime="2025-12-25T16:00:00.000Z" title="发表于 2025-12-26 00:00:00">2025-12-26</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Cysheper</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="/js/tw_cn.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
-  const loadMathjax = () => {
-    if (!window.MathJax) {
-      window.MathJax = {
-        loader: {
-          load: [
-            // Four font extension packages (optional)
-            //- '[tex]/bbm',
-            //- '[tex]/bboldx',
-            //- '[tex]/dsfont',
-            '[tex]/mhchem'
-          ],
-          paths: {
-            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
-
-            //- // Four font extension packages (optional)
-            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
-            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
-            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
-            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
-          }
-        },
-        output: {
-          font: 'mathjax-newcm',
-        },
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          tags: 'none',
-          packages: {
-            '[+]': [
-              'mhchem'
-            ]
-          }
-        },
-        chtml: {
-          scale: 1.1
-        },
-        options: {
-          enableMenu: true,
-          menuOptions: {
-            settings: {
-              enrich: false  // Turn off Braille and voice narration text automatic generation
-            }
-          },
-          renderActions: {
-            findScript: [10, doc => {
-              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
-                const display = !!node.type.match(/; *mode=display/)
-                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
-                const text = document.createTextNode('')
-                node.parentNode.replaceChild(text, node)
-                math.start = {node: text, delim: '', n: 0}
-                math.end = {node: text, delim: '', n: 0}
-                doc.math.push(math)
-              }
-            }, '']
-          }
-        }
-      }
-
-      const script = document.createElement('script')
-      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.0/tex-mml-chtml.min.js'
-      script.id = 'MathJax-script'
-      script.async = true
-      document.head.appendChild(script)
-    } else {
-      MathJax.startup.document.state(0)
-      MathJax.texReset()
-      MathJax.typesetPromise()
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/copy-tex.min.js')
     }
   }
 
-  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
-  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+  showKatex()
 })()</script><script>(() => {
   const parseViewBox = viewBox => {
     if (!viewBox) return null
@@ -818,159 +761,8 @@ btf.addGlobalFn('pjaxComplete', () => {
   } else {
     window.loadOtherComment = loadTwikoo
   }
-})()</script></div><script>window.newestComments = {
-  changeContent: content => {
-    if (content === '') return content
-
-    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
-    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
-    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
-    content = content.replace(/<code>.*?<\/code>/gi, '[代码]') // replace code
-    content = content.replace(/<[^>]+>/g, "") // remove html tag
-
-    if (content.length > 150) {
-      content = content.substring(0, 150) + '...'
-    }
-    return content
-  },
-
-  generateHtml: (array, ele) => {
-    let result = ''
-
-    if (array.length) {
-      for (let i = 0; i < array.length; i++) {
-        result += '<div class="aside-list-item">'
-
-        if (true && array[i].avatar) {
-          const imgAttr = 'src'
-          const lazyloadNative = ''
-          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}" ${lazyloadNative}></a>`
-        }
-
-        result += `<div class="content">
-        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
-        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
-        </div></div>`
-      }
-    } else {
-      result += '暂无评论'
-    }
-
-    ele.innerHTML = result
-    window.lazyLoadInstance && window.lazyLoadInstance.update()
-    window.pjax && window.pjax.refresh(ele)
-  },
-
-  newestCommentInit: (name, getComment) => {
-    const $dom = document.querySelector('#card-newest-comments .aside-list')
-    if ($dom) {
-      const data = btf.saveToLocal.get(name)
-      if (data) {
-        newestComments.generateHtml(JSON.parse(data), $dom)
-      } else {
-        getComment($dom)
-      }
-    }
-  },
-
-  run: (name, getComment) => {
-    newestComments.newestCommentInit(name, getComment)
-    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
-  }
-}</script><script>window.addEventListener('load', () => {
-  const keyName = 'twikoo-newest-comments'
-  const { changeContent, generateHtml, run } = window.newestComments
-
-  const getComment = ele => {
-    const runTwikoo = () => {
-      twikoo.getRecentComments({
-        envId: 'https://cysheper.netlify.app/.netlify/functions/twikoo',
-        region: '',
-        pageSize: 6,
-        includeReply: true
-      }).then(res => {
-        const twikooArray = res.map(e => {
-          return {
-            'content': changeContent(e.comment),
-            'avatar': e.avatar,
-            'nick': e.nick,
-            'url': e.url + '#' + e.id,
-            'date': new Date(e.created).toISOString()
-          }
-        })
-
-        btf.saveToLocal.set(keyName, JSON.stringify(twikooArray), 10/(60*24))
-        generateHtml(twikooArray, ele)
-      }).catch(err => {
-        console.error(err)
-        ele.textContent= "无法获取评论，请确认相关配置是否正确"
-      })
-    }
-
-    if (typeof twikoo === 'object') {
-      runTwikoo()
-    } else {
-      btf.getScript('https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.all.min.js').then(runTwikoo)
-    }
-  }
-
-  run(keyName, getComment)
-})</script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/foot.js"></script><canvas id="snow"></canvas><script defer src="/js/others/sakura.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+})()</script></div><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/foot.js"></script><script src="/js/custom.js"></script><script>window.__timedInjectRules__ = [{"start":[{"month":3},{"day":10}],"end":[{"month":3},{"day":15}],"script":"/js/others/sakura-small.js"},{"start":[{"month":3},{"day":16}],"end":[{"month":3},{"day":20}],"script":"/js/others/sakura-half.js"},{"start":[{"month":3},{"day":21}],"end":[{"month":3},{"day":25}],"script":"/js/others/sakura-reduce.js"},{"start":[{"month":3},{"day":26}],"end":[{"month":4},{"day":5}],"script":"/js/others/sakura.js"},{"start":[{"month":4},{"day":6}],"end":[{"month":4},{"day":10}],"script":"/js/others/sakura-reduce.js"},{"start":[{"month":4},{"day":11}],"end":[{"month":4},{"day":15}],"script":"/js/others/sakura-half.js"},{"start":[{"month":4},{"day":16}],"end":[{"month":4},{"day":20}],"script":"/js/others/sakura-small.js"},{"start":[{"month":12},{"day":15}],"end":[{"month":2},{"day":15}],"script":"/js/others/snow.js"}]</script><script src="/js/timed-inject.js" data-pjax></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
 POWERMODE.shake = false;
 POWERMODE.mobile = false;
 document.body.addEventListener('input', POWERMODE);
-</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
-  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
-
-  window.pjax = new Pjax({
-    elements: 'a:not([target="_blank"])',
-    selectors: pjaxSelectors,
-    cacheBust: false,
-    analytics: true,
-    scrollRestoration: false
-  })
-
-  const triggerPjaxFn = (val) => {
-    if (!val) return
-    Object.values(val).forEach(fn => {
-      try {
-        fn()
-      } catch (err) {
-        console.debug('Pjax callback failed:', err)
-      }
-    })
-  }
-
-  document.addEventListener('pjax:send', () => {
-    // removeEventListener
-    btf.removeGlobalFnEvent('pjaxSendOnce')
-    btf.removeGlobalFnEvent('themeChange')
-
-    // reset readmode
-    const $bodyClassList = document.body.classList
-    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
-
-    triggerPjaxFn(window.globalFn.pjaxSend)
-  })
-
-  document.addEventListener('pjax:complete', () => {
-    btf.removeGlobalFnEvent('pjaxCompleteOnce')
-    document.querySelectorAll('script[data-pjax]').forEach(item => {
-      const newScript = document.createElement('script')
-      const content = item.text || item.textContent || item.innerHTML || ""
-      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-      newScript.appendChild(document.createTextNode(content))
-      item.parentNode.replaceChild(newScript, item)
-    })
-
-    triggerPjaxFn(window.globalFn.pjaxComplete)
-  })
-
-  document.addEventListener('pjax:error', e => {
-    if (e.request.status === 404) {
-      false
-        ? pjax.loadUrl('/404.html')
-        : window.location.href = e.request.responseURL
-    }
-  })
-})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="查找文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="查找文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>

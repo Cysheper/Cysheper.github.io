@@ -73,7 +73,7 @@
         document.head.appendChild(link)
       }),
       addGlobalFn: (key, fn, name = false, parent = window) => {
-        if (!true && key.startsWith('pjax')) return
+        if (!false && key.startsWith('pjax')) return
         const globalFn = parent.globalFn || {}
         globalFn[key] = globalFn[key] || {}
         globalFn[key][name || Object.keys(globalFn[key]).length] = fn
@@ -211,7 +211,7 @@ btf.addGlobalFn('pjaxComplete', () => {
     setTimeout(preloader.endLoading, 7000)
   }
 
-  if (true) {
+  if (false) {
     btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
     btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
   }
@@ -246,118 +246,106 @@ btf.addGlobalFn('pjaxComplete', () => {
 </script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/about.html"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></li><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/anime/"><i class="fa-fw fab fa-bilibili"></i><span> Anime</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">Cysheper</span></a><a class="nav-page-title" href="/"><span class="site-name">OpenLani</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/about.html"><i class="fa-fw fas fa-user"></i><span> 关于我</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></li><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/anime/"><i class="fa-fw fab fa-bilibili"></i><span> Anime</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">OpenLani</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-02T11:14:00.000Z" title="发表于 2026-04-02 19:14:00">2026-04-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-02T11:24:04.804Z" title="更新于 2026-04-02 19:24:04">2026-04-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/AI/">AI</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/35711.html#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><blockquote>
 <p>说明：Agent开发中，敬请期待</p>
 </blockquote>
-<h1 id="OpenLani-简介"><a href="#OpenLani-简介" class="headerlink" title="OpenLani 简介"></a>OpenLani 简介</h1><p>OpenLani，是一个AI Agent（智能体）应用，集成：系统核心（Core）、工具调用（Tool Using）、记忆系统（Memory System）、任务系统（Task System）、多渠道输入输出（Multi-channel IO）、人格系统（Personality System）、插件系统（Plugin System）、页面展示（WebUI），轻量级Agent应用。</p>
-<p>其中，Harness：<br>系统核心：核心推理与逻辑增强 (Reasoning &amp; Planning)、可观测性与日志模块 (Observability)、安全与治理模块 (Guardrails &amp; Sandbox)；</p>
+<h1 id="openlani-简介"><a class="markdownIt-Anchor" href="#openlani-简介"></a> OpenLani 简介</h1>
+<p>OpenLani，是一个AI Agent（智能体）应用，集成：系统核心（Core）、工具调用（Tool Using）、记忆系统（Memory System）、任务系统（Task System）、多渠道输入输出（Multi-channel IO）、人格系统（Personality System）、插件系统（Plugin System）、页面展示（WebUI），轻量级Agent应用。</p>
+<p>其中，Harness：<br>
+系统核心：核心推理与逻辑增强 (Reasoning &amp; Planning)、可观测性与日志模块 (Observability)、安全与治理模块 (Guardrails &amp; Sandbox)；</p>
 <p>工具调用：Function Calling、MCP、Web Searching；</p>
 <p>记忆系统：长期记忆存储、短期记忆存储、语义检索和向量库、记忆压缩；</p>
-<p>任务系统：Agent.md、Heartbeat、Cron Job；</p>
+<p>任务系统：<a target="_blank" rel="noopener" href="http://Agent.md">Agent.md</a>、Heartbeat、Cron Job；</p>
 <p>多渠道IO：输入方式（社交媒体（QQ、微信）、WebUI），输出方式（TTS、社交媒体、邮件等）；</p>
-<p>人格系统：SOUL.md；</p>
+<p>人格系统：<a target="_blank" rel="noopener" href="http://SOUL.md">SOUL.md</a>；</p>
 <p>插件系统：方便扩展，基础包括：SKILLs；</p>
 <p>WebUI：提供完整的用户操作界面。</p>
-<h1 id="一、系统核心-（Core）"><a href="#一、系统核心-（Core）" class="headerlink" title="一、系统核心 （Core）"></a>一、系统核心 （Core）</h1><h2 id="1、核心推理与逻辑增强-Reasoning-Planning"><a href="#1、核心推理与逻辑增强-Reasoning-Planning" class="headerlink" title="1、核心推理与逻辑增强 (Reasoning &amp; Planning)"></a>1、核心推理与逻辑增强 (Reasoning &amp; Planning)</h2><h3 id="（1）计划"><a href="#（1）计划" class="headerlink" title="（1）计划"></a>（1）计划</h3><p>任务开始前要求Agent设定计划，保存在Plan.md中，按计划顺序交给Agent执行，并实时更新进度，以防任务中断导致重新制作。</p>
-<h3 id="（2）手动推理"><a href="#（2）手动推理" class="headerlink" title="（2）手动推理"></a>（2）手动推理</h3><p>得到Agent的结果后，将问题和结果再次发送给Agent，要求其评估答案的理想程度（挑刺），如果答案不理想，将获取不好的地方，再次发送给AI要求其修改。默认重复三次，可提前。</p>
-<h2 id="2、可观测性与日志模块-Observability"><a href="#2、可观测性与日志模块-Observability" class="headerlink" title="2、可观测性与日志模块 (Observability)"></a>2、可观测性与日志模块 (Observability)</h2><h3 id="（1）日志系统"><a href="#（1）日志系统" class="headerlink" title="（1）日志系统"></a>（1）日志系统</h3><p>在控制台和WebUI输出项目详细自执行的流程和报错，方便Debug。</p>
-<h3 id="（2）数据收集、可视化"><a href="#（2）数据收集、可视化" class="headerlink" title="（2）数据收集、可视化"></a>（2）数据收集、可视化</h3><p>记录每一次 LLM 的输入输出、Token 消耗、耗时以及工具调用的状态。实时统计 API 调用产生的费用，这对于长期运行的 Heartbeat 任务尤为重要。当 Agent 在社交媒体（如微信/QQ）中“装死”或逻辑死循环时，后台能及时告警。</p>
-<h2 id="3、安全与治理模块-Guardrails-Sandbox"><a href="#3、安全与治理模块-Guardrails-Sandbox" class="headerlink" title="3、安全与治理模块 (Guardrails &amp; Sandbox)"></a>3、安全与治理模块 (Guardrails &amp; Sandbox)</h2><h3 id="（1）代码沙箱-Execution-Sandbox"><a href="#（1）代码沙箱-Execution-Sandbox" class="headerlink" title="（1）代码沙箱 (Execution Sandbox)"></a>（1）代码沙箱 (Execution Sandbox)</h3><p>如果 SKILLs 包含执行 Python 代码或 Shell 命令的功能，必须在 Docker 或隔离环境中运行，防止误删文件或系统被入侵。</p>
-<h3 id="（2）内容审查-Content-Filtering"><a href="#（2）内容审查-Content-Filtering" class="headerlink" title="（2）内容审查 (Content Filtering)"></a>（2）内容审查 (Content Filtering)</h3><p>在输出到社交媒体渠道前，增加一道敏感词或合规性过滤，避免 Agent 输出违规内容导致封号。</p>
-<h3 id="（3）硬性安全熔断"><a href="#（3）硬性安全熔断" class="headerlink" title="（3）硬性安全熔断"></a>（3）硬性安全熔断</h3><p>在当日Token消耗到一个值后自行熔断，不再回答。确保不被恶意入侵、错误指令后将钱包消耗殆尽。</p>
-<h1 id="二、工具调用（Tool-Using）"><a href="#二、工具调用（Tool-Using）" class="headerlink" title="二、工具调用（Tool Using）"></a>二、工具调用（Tool Using）</h1><h2 id="1、函数调用（Function-Calling）、Web-Searching"><a href="#1、函数调用（Function-Calling）、Web-Searching" class="headerlink" title="1、函数调用（Function Calling）、Web Searching"></a>1、函数调用（Function Calling）、Web Searching</h2><p>编写函数，放入Agent.md，函数包含Web Searching</p>
-<h2 id="2、MCP"><a href="#2、MCP" class="headerlink" title="2、MCP"></a>2、MCP</h2><p>略</p>
-<h1 id="三、记忆系统（Memory-System）"><a href="#三、记忆系统（Memory-System）" class="headerlink" title="三、记忆系统（Memory System）"></a>三、记忆系统（Memory System）</h1><h2 id="1、短期记忆（Short-Term-Memory）"><a href="#1、短期记忆（Short-Term-Memory）" class="headerlink" title="1、短期记忆（Short Term Memory）"></a>1、短期记忆（Short Term Memory）</h2><p>（1）短期记忆存放在Memory.json中，长度超过8条记录时，压缩最后4条记录为一句概述，将概述放在SUMMARY.md中。</p>
+<h1 id="一-系统核心-core"><a class="markdownIt-Anchor" href="#一-系统核心-core"></a> 一、系统核心 （Core）</h1>
+<h2 id="1-核心推理与逻辑增强-reasoning-planning"><a class="markdownIt-Anchor" href="#1-核心推理与逻辑增强-reasoning-planning"></a> 1、核心推理与逻辑增强 (Reasoning &amp; Planning)</h2>
+<h3 id="1计划"><a class="markdownIt-Anchor" href="#1计划"></a> （1）计划</h3>
+<p>任务开始前要求Agent设定计划，保存在Plan.md中，按计划顺序交给Agent执行，并实时更新进度，以防任务中断导致重新制作。</p>
+<h3 id="2手动推理"><a class="markdownIt-Anchor" href="#2手动推理"></a> （2）手动推理</h3>
+<p>得到Agent的结果后，将问题和结果再次发送给Agent，要求其评估答案的理想程度（挑刺），如果答案不理想，将获取不好的地方，再次发送给AI要求其修改。默认重复三次，可提前。</p>
+<h2 id="2-可观测性与日志模块-observability"><a class="markdownIt-Anchor" href="#2-可观测性与日志模块-observability"></a> 2、可观测性与日志模块 (Observability)</h2>
+<h3 id="1日志系统"><a class="markdownIt-Anchor" href="#1日志系统"></a> （1）日志系统</h3>
+<p>在控制台和WebUI输出项目详细自执行的流程和报错，方便Debug。</p>
+<h3 id="2数据收集-可视化"><a class="markdownIt-Anchor" href="#2数据收集-可视化"></a> （2）数据收集、可视化</h3>
+<p>记录每一次 LLM 的输入输出、Token 消耗、耗时以及工具调用的状态。实时统计 API 调用产生的费用，这对于长期运行的 Heartbeat 任务尤为重要。当 Agent 在社交媒体（如微信/QQ）中“装死”或逻辑死循环时，后台能及时告警。</p>
+<h2 id="3-安全与治理模块-guardrails-sandbox"><a class="markdownIt-Anchor" href="#3-安全与治理模块-guardrails-sandbox"></a> 3、安全与治理模块 (Guardrails &amp; Sandbox)</h2>
+<h3 id="1代码沙箱-execution-sandbox"><a class="markdownIt-Anchor" href="#1代码沙箱-execution-sandbox"></a> （1）代码沙箱 (Execution Sandbox)</h3>
+<p>如果 SKILLs 包含执行 Python 代码或 Shell 命令的功能，必须在 Docker 或隔离环境中运行，防止误删文件或系统被入侵。</p>
+<h3 id="2内容审查-content-filtering"><a class="markdownIt-Anchor" href="#2内容审查-content-filtering"></a> （2）内容审查 (Content Filtering)</h3>
+<p>在输出到社交媒体渠道前，增加一道敏感词或合规性过滤，避免 Agent 输出违规内容导致封号。</p>
+<h3 id="3硬性安全熔断"><a class="markdownIt-Anchor" href="#3硬性安全熔断"></a> （3）硬性安全熔断</h3>
+<p>在当日Token消耗到一个值后自行熔断，不再回答。确保不被恶意入侵、错误指令后将钱包消耗殆尽。</p>
+<h1 id="二-工具调用tool-using"><a class="markdownIt-Anchor" href="#二-工具调用tool-using"></a> 二、工具调用（Tool Using）</h1>
+<h2 id="1-函数调用function-calling-web-searching"><a class="markdownIt-Anchor" href="#1-函数调用function-calling-web-searching"></a> 1、函数调用（Function Calling）、Web Searching</h2>
+<p>编写函数，<a target="_blank" rel="noopener" href="http://xn--Agent-ep5hq99i.md">放入Agent.md</a>，函数包含Web Searching</p>
+<h2 id="2-mcp"><a class="markdownIt-Anchor" href="#2-mcp"></a> 2、MCP</h2>
+<p>略</p>
+<h1 id="三-记忆系统memory-system"><a class="markdownIt-Anchor" href="#三-记忆系统memory-system"></a> 三、记忆系统（Memory System）</h1>
+<h2 id="1-短期记忆short-term-memory"><a class="markdownIt-Anchor" href="#1-短期记忆short-term-memory"></a> 1、短期记忆（Short Term Memory）</h2>
+<p>（1）短期记忆存放在Memory.json中，长度超过8条记录时，压缩最后4条记录为一句概述，将概述放在SUMMARY.md中。</p>
 <p>（2）SUMMARY.md中长度超过12条时，将末尾4条放入放入日记系统和向量库。</p>
 <p>（3）每次询问都包含Memory.json和SUMMARY.md的全部信息，总的上下文不会超过20条。</p>
-<h2 id="2、长期记忆（Long-Term-Memory）"><a href="#2、长期记忆（Long-Term-Memory）" class="headerlink" title="2、长期记忆（Long Term Memory）"></a>2、长期记忆（Long Term Memory）</h2><h3 id="（1）IDENTITY-md"><a href="#（1）IDENTITY-md" class="headerlink" title="（1）IDENTITY.md"></a>（1）IDENTITY.md</h3><p>存储关于Agent自身的记忆，可自行修改，添加</p>
-<h3 id="（2）USER-md"><a href="#（2）USER-md" class="headerlink" title="（2）USER.md"></a>（2）USER.md</h3><p>存储关于用户的信息，按ID检索，按需查找修改</p>
-<h3 id="（3）-MASTER-md"><a href="#（3）-MASTER-md" class="headerlink" title="（3） MASTER.md"></a>（3） MASTER.md</h3><p>存储关于主人的信息，Agent需绝对服从这位的一切命令</p>
-<h3 id="（3）-Fact-md"><a href="#（3）-Fact-md" class="headerlink" title="（3） Fact.md"></a>（3） Fact.md</h3><p>当对话中出现事实依据时，将信息存储到Fact.md，这是短期内不会改变的客观事实，只有需要查找事实依据时，才获取当前文件。</p>
-<h3 id="（4）向量库和语义检索"><a href="#（4）向量库和语义检索" class="headerlink" title="（4）向量库和语义检索"></a>（4）向量库和语义检索</h3><p>向量库存放一切长期记忆，按需进行语义检索和关键词匹配，各获取2条信息，以2+2的方式返回给Agent（Mem0）</p>
-<h3 id="（5）日记系统"><a href="#（5）日记系统" class="headerlink" title="（5）日记系统"></a>（5）日记系统</h3><p>信息数据存放入向量库之前，会保存在当天的md文档中，命名格式为“YYYY-MM-DD.md”，给人类阅读为主，通常不检索。头部元数据可以摘要一天做的事情。</p>
-<h1 id="四、任务系统（Task-System）"><a href="#四、任务系统（Task-System）" class="headerlink" title="四、任务系统（Task System）"></a>四、任务系统（Task System）</h1><h2 id="1、Heartbeat（心跳机制）"><a href="#1、Heartbeat（心跳机制）" class="headerlink" title="1、Heartbeat（心跳机制）"></a>1、Heartbeat（心跳机制）</h2><p>每间隔固定时间要求AI查询Agent.md，要求Agent看看有什么需要完成的事情，如果有可以按照任务完成，没有可以自行决定做些什么。（可关闭）</p>
-<h2 id="2、Cron-Job（定时任务）"><a href="#2、Cron-Job（定时任务）" class="headerlink" title="2、Cron Job（定时任务）"></a>2、Cron Job（定时任务）</h2><p>Agent操作的一个闹钟，可以设定几分钟或者几小时后，戳Agent一下，看看设定定时闹钟所需要的等待是否完成。</p>
-<h1 id="五、多渠道IO（Multi-channel-IO）"><a href="#五、多渠道IO（Multi-channel-IO）" class="headerlink" title="五、多渠道IO（Multi-channel IO）"></a>五、多渠道IO（Multi-channel IO）</h1><h2 id="1、社交媒体"><a href="#1、社交媒体" class="headerlink" title="1、社交媒体"></a>1、社交媒体</h2><p>略</p>
-<h2 id="2、STT、TTS"><a href="#2、STT、TTS" class="headerlink" title="2、STT、TTS"></a>2、STT、TTS</h2><p>输入语音，通过语音转文字，发送给Agent，将AI的回复，通过TTS，转化为语音，输出。</p>
-<h2 id="3、图片"><a href="#3、图片" class="headerlink" title="3、图片"></a>3、图片</h2><p>使用多模态模型，提取图片信息，发送给Agent；绘制图片也交给多模态模型</p>
-<h1 id="六、人格系统"><a href="#六、人格系统" class="headerlink" title="六、人格系统"></a>六、人格系统</h1><h2 id="SOUL-md"><a href="#SOUL-md" class="headerlink" title="SOUL.md"></a>SOUL.md</h2><p>这是Agent的人格，Agent不可修改，不可违背</p>
-<h1 id="七、插件系统（Plugin-System）"><a href="#七、插件系统（Plugin-System）" class="headerlink" title="七、插件系统（Plugin System）"></a>七、插件系统（Plugin System）</h1><p>插件系统是方便后续扩展，而增加的后门，后续如要添加插件，可快速添加。默认的插件有：</p>
-<h2 id="SKILL"><a href="#SKILL" class="headerlink" title="SKILL"></a>SKILL</h2><p>好的SKILL可以时任务的完成度提高好几个档次，所以SKILL在完成复杂任务时十分重要。</p>
-<h1 id="八、WebUI"><a href="#八、WebUI" class="headerlink" title="八、WebUI"></a>八、WebUI</h1><p>提供完整的用户操作界面。</p>
-<h1 id="九、系统提示词（System-Prompt）的构成"><a href="#九、系统提示词（System-Prompt）的构成" class="headerlink" title="九、系统提示词（System Prompt）的构成"></a>九、系统提示词（System Prompt）的构成</h1><p>1、SOUL.md<br>2、Agent.md<br>3、SKILL List<br>4、Tool List<br>5、Memory.json和SUMMARY.md</p>
-<h1 id="十、任务完成流程"><a href="#十、任务完成流程" class="headerlink" title="十、任务完成流程"></a>十、任务完成流程</h1><p>1、Agent通过<strong>多渠道IO</strong>获取命令<br>2、Agent整合<strong>System Prompt + User Prompt + 如有需要撰写Plan.md</strong>给AI<br>3、撰写完<strong>Plan.md</strong>后，依次进行完成<br>4、对于每一个任务，进入循环，每次将任务给AI，对于AI的回复，如需调用工具，将工具调用的结果返回给AI，如此循环，知道AI明确任务已完成或受挫，返回指定的停止标识。<br>5、最后将结果通过<strong>多渠道IO</strong>返回，具体渠道由AI给出，如未给出，默认按原输入路径返回。<br>6、异步多线程存入记忆。</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://cysheper.top">Cysheper</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://cysheper.top/posts/35711.html">https://cysheper.top/posts/35711.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://cysheper.top" target="_blank">Cysheper</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/">AI</a><a class="post-meta__tags" href="/tags/Agent/">Agent</a></div><div class="post-share"><div class="social-share" data-image="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/Gemini_Generated_Image_tpzqc4tpzqc4tpzq.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/9023.html" title="欧拉定理"><img class="cover" src="https://img.hongyoubizhi.com/picture/pages/regular/2021/07/18/08/43/83821289_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">欧拉定理</div></div><div class="info-2"><div class="info-item-1">剩余系、欧拉定理、扩展欧拉定理</div></div></div></a><a class="pagination-related" href="/posts/about.html" title="关于我"><img class="cover" src="/./img/M31.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">关于我</div></div><div class="info-2"><div class="info-item-1">关于我</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Cysheper</div><div class="author-info-description">今天干点什么好呢...</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Cysheper" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:3403699116@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=3403699116" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #12b7f5;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OpenLani-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">OpenLani 简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%B3%BB%E7%BB%9F%E6%A0%B8%E5%BF%83-%EF%BC%88Core%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">一、系统核心 （Core）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%A0%B8%E5%BF%83%E6%8E%A8%E7%90%86%E4%B8%8E%E9%80%BB%E8%BE%91%E5%A2%9E%E5%BC%BA-Reasoning-Planning"><span class="toc-number">2.1.</span> <span class="toc-text">1、核心推理与逻辑增强 (Reasoning &amp; Planning)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E8%AE%A1%E5%88%92"><span class="toc-number">2.1.1.</span> <span class="toc-text">（1）计划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E6%89%8B%E5%8A%A8%E6%8E%A8%E7%90%86"><span class="toc-number">2.1.2.</span> <span class="toc-text">（2）手动推理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7%E4%B8%8E%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97-Observability"><span class="toc-number">2.2.</span> <span class="toc-text">2、可观测性与日志模块 (Observability)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.2.1.</span> <span class="toc-text">（1）日志系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86%E3%80%81%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">2.2.2.</span> <span class="toc-text">（2）数据收集、可视化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%AE%89%E5%85%A8%E4%B8%8E%E6%B2%BB%E7%90%86%E6%A8%A1%E5%9D%97-Guardrails-Sandbox"><span class="toc-number">2.3.</span> <span class="toc-text">3、安全与治理模块 (Guardrails &amp; Sandbox)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E4%BB%A3%E7%A0%81%E6%B2%99%E7%AE%B1-Execution-Sandbox"><span class="toc-number">2.3.1.</span> <span class="toc-text">（1）代码沙箱 (Execution Sandbox)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E5%86%85%E5%AE%B9%E5%AE%A1%E6%9F%A5-Content-Filtering"><span class="toc-number">2.3.2.</span> <span class="toc-text">（2）内容审查 (Content Filtering)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E7%A1%AC%E6%80%A7%E5%AE%89%E5%85%A8%E7%86%94%E6%96%AD"><span class="toc-number">2.3.3.</span> <span class="toc-text">（3）硬性安全熔断</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8%EF%BC%88Tool-Using%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">二、工具调用（Tool Using）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%EF%BC%88Function-Calling%EF%BC%89%E3%80%81Web-Searching"><span class="toc-number">3.1.</span> <span class="toc-text">1、函数调用（Function Calling）、Web Searching</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81MCP"><span class="toc-number">3.2.</span> <span class="toc-text">2、MCP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F%EF%BC%88Memory-System%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">三、记忆系统（Memory System）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86%EF%BC%88Short-Term-Memory%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">1、短期记忆（Short Term Memory）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E9%95%BF%E6%9C%9F%E8%AE%B0%E5%BF%86%EF%BC%88Long-Term-Memory%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">2、长期记忆（Long Term Memory）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89IDENTITY-md"><span class="toc-number">4.2.1.</span> <span class="toc-text">（1）IDENTITY.md</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89USER-md"><span class="toc-number">4.2.2.</span> <span class="toc-text">（2）USER.md</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89-MASTER-md"><span class="toc-number">4.2.3.</span> <span class="toc-text">（3） MASTER.md</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89-Fact-md"><span class="toc-number">4.2.4.</span> <span class="toc-text">（3） Fact.md</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%884%EF%BC%89%E5%90%91%E9%87%8F%E5%BA%93%E5%92%8C%E8%AF%AD%E4%B9%89%E6%A3%80%E7%B4%A2"><span class="toc-number">4.2.5.</span> <span class="toc-text">（4）向量库和语义检索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%885%EF%BC%89%E6%97%A5%E8%AE%B0%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.2.6.</span> <span class="toc-text">（5）日记系统</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F%EF%BC%88Task-System%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">四、任务系统（Task System）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81Heartbeat%EF%BC%88%E5%BF%83%E8%B7%B3%E6%9C%BA%E5%88%B6%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">1、Heartbeat（心跳机制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81Cron-Job%EF%BC%88%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">2、Cron Job（定时任务）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%A4%9A%E6%B8%A0%E9%81%93IO%EF%BC%88Multi-channel-IO%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">五、多渠道IO（Multi-channel IO）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93"><span class="toc-number">6.1.</span> <span class="toc-text">1、社交媒体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81STT%E3%80%81TTS"><span class="toc-number">6.2.</span> <span class="toc-text">2、STT、TTS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%9B%BE%E7%89%87"><span class="toc-number">6.3.</span> <span class="toc-text">3、图片</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E4%BA%BA%E6%A0%BC%E7%B3%BB%E7%BB%9F"><span class="toc-number">7.</span> <span class="toc-text">六、人格系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SOUL-md"><span class="toc-number">7.1.</span> <span class="toc-text">SOUL.md</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F%EF%BC%88Plugin-System%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">七、插件系统（Plugin System）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SKILL"><span class="toc-number">8.1.</span> <span class="toc-text">SKILL</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81WebUI"><span class="toc-number">9.</span> <span class="toc-text">八、WebUI</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E7%B3%BB%E7%BB%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%EF%BC%88System-Prompt%EF%BC%89%E7%9A%84%E6%9E%84%E6%88%90"><span class="toc-number">10.</span> <span class="toc-text">九、系统提示词（System Prompt）的构成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E4%BB%BB%E5%8A%A1%E5%AE%8C%E6%88%90%E6%B5%81%E7%A8%8B"><span class="toc-number">11.</span> <span class="toc-text">十、任务完成流程</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/9023.html" title="欧拉定理"><img src="https://img.hongyoubizhi.com/picture/pages/regular/2021/07/18/08/43/83821289_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="欧拉定理"/></a><div class="content"><a class="title" href="/posts/9023.html" title="欧拉定理">欧拉定理</a><time datetime="2026-04-03T04:59:12.391Z" title="发表于 2026-04-03 12:59:12">2026-04-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/35711.html" title="OpenLani"><img src="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/Gemini_Generated_Image_tpzqc4tpzqc4tpzq.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OpenLani"/></a><div class="content"><a class="title" href="/posts/35711.html" title="OpenLani">OpenLani</a><time datetime="2026-04-02T11:14:00.000Z" title="发表于 2026-04-02 19:14:00">2026-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/about.html" title="关于我"><img src="/./img/M31.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于我"/></a><div class="content"><a class="title" href="/posts/about.html" title="关于我">关于我</a><time datetime="2026-02-13T16:02:24.000Z" title="发表于 2026-02-14 00:02:24">2026-02-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/28245.html" title="线性代数"><img src="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/mutsumi01%281%29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="线性代数"/></a><div class="content"><a class="title" href="/posts/28245.html" title="线性代数">线性代数</a><time datetime="2025-12-28T16:00:00.000Z" title="发表于 2025-12-29 00:00:00">2025-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7789.html" title="本站开发日志"><img src="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/mutsumi1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="本站开发日志"/></a><div class="content"><a class="title" href="/posts/7789.html" title="本站开发日志">本站开发日志</a><time datetime="2025-12-25T16:00:00.000Z" title="发表于 2025-12-26 00:00:00">2025-12-26</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Cysheper</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="/js/tw_cn.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
-  const loadMathjax = () => {
-    if (!window.MathJax) {
-      window.MathJax = {
-        loader: {
-          load: [
-            // Four font extension packages (optional)
-            //- '[tex]/bbm',
-            //- '[tex]/bboldx',
-            //- '[tex]/dsfont',
-            '[tex]/mhchem'
-          ],
-          paths: {
-            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+<h2 id="2-长期记忆long-term-memory"><a class="markdownIt-Anchor" href="#2-长期记忆long-term-memory"></a> 2、长期记忆（Long Term Memory）</h2>
+<h3 id="1identitymd"><a class="markdownIt-Anchor" href="#1identitymd"></a> （1）<a target="_blank" rel="noopener" href="http://IDENTITY.md">IDENTITY.md</a></h3>
+<p>存储关于Agent自身的记忆，可自行修改，添加</p>
+<h3 id="2usermd"><a class="markdownIt-Anchor" href="#2usermd"></a> （2）<a target="_blank" rel="noopener" href="http://USER.md">USER.md</a></h3>
+<p>存储关于用户的信息，按ID检索，按需查找修改</p>
+<h3 id="3-mastermd"><a class="markdownIt-Anchor" href="#3-mastermd"></a> （3） <a target="_blank" rel="noopener" href="http://MASTER.md">MASTER.md</a></h3>
+<p>存储关于主人的信息，Agent需绝对服从这位的一切命令</p>
+<h3 id="3-factmd"><a class="markdownIt-Anchor" href="#3-factmd"></a> （3） <a target="_blank" rel="noopener" href="http://Fact.md">Fact.md</a></h3>
+<p>当对话中出现事实依据时，<a target="_blank" rel="noopener" href="http://xn--Fact-966f84bo4ezw1aynbvxx.md">将信息存储到Fact.md</a>，这是短期内不会改变的客观事实，只有需要查找事实依据时，才获取当前文件。</p>
+<h3 id="4向量库和语义检索"><a class="markdownIt-Anchor" href="#4向量库和语义检索"></a> （4）向量库和语义检索</h3>
+<p>向量库存放一切长期记忆，按需进行语义检索和关键词匹配，各获取2条信息，以2+2的方式返回给Agent（Mem0）</p>
+<h3 id="5日记系统"><a class="markdownIt-Anchor" href="#5日记系统"></a> （5）日记系统</h3>
+<p>信息数据存放入向量库之前，会保存在当天的md文档中，命名格式为“<a target="_blank" rel="noopener" href="http://YYYY-MM-DD.md">YYYY-MM-DD.md</a>”，给人类阅读为主，通常不检索。头部元数据可以摘要一天做的事情。</p>
+<h1 id="四-任务系统task-system"><a class="markdownIt-Anchor" href="#四-任务系统task-system"></a> 四、任务系统（Task System）</h1>
+<h2 id="1-heartbeat心跳机制"><a class="markdownIt-Anchor" href="#1-heartbeat心跳机制"></a> 1、Heartbeat（心跳机制）</h2>
+<p><a target="_blank" rel="noopener" href="http://xn--AIAgent-eu8lx75az6zw1en5n2nb142ueqhj45bda09z.md">每间隔固定时间要求AI查询Agent.md</a>，要求Agent看看有什么需要完成的事情，如果有可以按照任务完成，没有可以自行决定做些什么。（可关闭）</p>
+<h2 id="2-cron-job定时任务"><a class="markdownIt-Anchor" href="#2-cron-job定时任务"></a> 2、Cron Job（定时任务）</h2>
+<p>Agent操作的一个闹钟，可以设定几分钟或者几小时后，戳Agent一下，看看设定定时闹钟所需要的等待是否完成。</p>
+<h1 id="五-多渠道iomulti-channel-io"><a class="markdownIt-Anchor" href="#五-多渠道iomulti-channel-io"></a> 五、多渠道IO（Multi-channel IO）</h1>
+<h2 id="1-社交媒体"><a class="markdownIt-Anchor" href="#1-社交媒体"></a> 1、社交媒体</h2>
+<p>略</p>
+<h2 id="2-stt-tts"><a class="markdownIt-Anchor" href="#2-stt-tts"></a> 2、STT、TTS</h2>
+<p>输入语音，通过语音转文字，发送给Agent，将AI的回复，通过TTS，转化为语音，输出。</p>
+<h2 id="3-图片"><a class="markdownIt-Anchor" href="#3-图片"></a> 3、图片</h2>
+<p>使用多模态模型，提取图片信息，发送给Agent；绘制图片也交给多模态模型</p>
+<h1 id="六-人格系统"><a class="markdownIt-Anchor" href="#六-人格系统"></a> 六、人格系统</h1>
+<h2 id="soulmd"><a class="markdownIt-Anchor" href="#soulmd"></a> <a target="_blank" rel="noopener" href="http://SOUL.md">SOUL.md</a></h2>
+<p>这是Agent的人格，Agent不可修改，不可违背</p>
+<h1 id="七-插件系统plugin-system"><a class="markdownIt-Anchor" href="#七-插件系统plugin-system"></a> 七、插件系统（Plugin System）</h1>
+<p>插件系统是方便后续扩展，而增加的后门，后续如要添加插件，可快速添加。默认的插件有：</p>
+<h2 id="skill"><a class="markdownIt-Anchor" href="#skill"></a> SKILL</h2>
+<p>好的SKILL可以时任务的完成度提高好几个档次，所以SKILL在完成复杂任务时十分重要。</p>
+<h1 id="八-webui"><a class="markdownIt-Anchor" href="#八-webui"></a> 八、WebUI</h1>
+<p>提供完整的用户操作界面。</p>
+<h1 id="九-系统提示词system-prompt的构成"><a class="markdownIt-Anchor" href="#九-系统提示词system-prompt的构成"></a> 九、系统提示词（System Prompt）的构成</h1>
+<p>1、<a target="_blank" rel="noopener" href="http://SOUL.md">SOUL.md</a><br>
+2、<a target="_blank" rel="noopener" href="http://Agent.md">Agent.md</a><br>
+3、SKILL List<br>
+4、Tool List<br>
+5、<a target="_blank" rel="noopener" href="http://Memory.xn--jsonSUMMARY-b14s.md">Memory.json和SUMMARY.md</a></p>
+<h1 id="十-任务完成流程"><a class="markdownIt-Anchor" href="#十-任务完成流程"></a> 十、任务完成流程</h1>
+<p>1、Agent通过<strong>多渠道IO</strong>获取命令<br>
+2、Agent整合<strong>System Prompt + User Prompt + <a target="_blank" rel="noopener" href="http://xn--Plan-4z8f123bo6smjebn8geh2a.md">如有需要撰写Plan.md</a></strong>给AI<br>
+3、撰写完<strong><a target="_blank" rel="noopener" href="http://Plan.md">Plan.md</a></strong>后，依次进行完成<br>
+4、对于每一个任务，进入循环，每次将任务给AI，对于AI的回复，如需调用工具，将工具调用的结果返回给AI，如此循环，知道AI明确任务已完成或受挫，返回指定的停止标识。<br>
+5、最后将结果通过<strong>多渠道IO</strong>返回，具体渠道由AI给出，如未给出，默认按原输入路径返回。<br>
+6、异步多线程存入记忆。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://cysheper.top">Cysheper</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://cysheper.top/posts/35711.html">https://cysheper.top/posts/35711.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://cysheper.top" target="_blank">Cysheper</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/">AI</a><a class="post-meta__tags" href="/tags/Agent/">Agent</a></div><div class="post-share"><div class="social-share" data-image="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/Gemini_Generated_Image_tpzqc4tpzqc4tpzq.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/9023.html" title="欧拉定理"><img class="cover" src="https://img.hongyoubizhi.com/picture/pages/regular/2021/07/18/08/43/83821289_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">欧拉定理</div></div><div class="info-2"><div class="info-item-1">剩余系、欧拉定理、扩展欧拉定理</div></div></div></a><a class="pagination-related" href="/posts/about.html" title="关于我"><img class="cover" src="/./img/M31.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">关于我</div></div><div class="info-2"><div class="info-item-1">关于我</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Cysheper</div><div class="author-info-description">今天干点什么好呢...</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Cysheper" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:3403699116@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=3403699116" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #12b7f5;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#openlani-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text"> OpenLani 简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80-%E7%B3%BB%E7%BB%9F%E6%A0%B8%E5%BF%83-core"><span class="toc-number">2.</span> <span class="toc-text"> 一、系统核心 （Core）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A0%B8%E5%BF%83%E6%8E%A8%E7%90%86%E4%B8%8E%E9%80%BB%E8%BE%91%E5%A2%9E%E5%BC%BA-reasoning-planning"><span class="toc-number">2.1.</span> <span class="toc-text"> 1、核心推理与逻辑增强 (Reasoning &amp; Planning)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E8%AE%A1%E5%88%92"><span class="toc-number">2.1.1.</span> <span class="toc-text"> （1）计划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E6%89%8B%E5%8A%A8%E6%8E%A8%E7%90%86"><span class="toc-number">2.1.2.</span> <span class="toc-text"> （2）手动推理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7%E4%B8%8E%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97-observability"><span class="toc-number">2.2.</span> <span class="toc-text"> 2、可观测性与日志模块 (Observability)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.2.1.</span> <span class="toc-text"> （1）日志系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86-%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">2.2.2.</span> <span class="toc-text"> （2）数据收集、可视化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%89%E5%85%A8%E4%B8%8E%E6%B2%BB%E7%90%86%E6%A8%A1%E5%9D%97-guardrails-sandbox"><span class="toc-number">2.3.</span> <span class="toc-text"> 3、安全与治理模块 (Guardrails &amp; Sandbox)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E4%BB%A3%E7%A0%81%E6%B2%99%E7%AE%B1-execution-sandbox"><span class="toc-number">2.3.1.</span> <span class="toc-text"> （1）代码沙箱 (Execution Sandbox)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E5%86%85%E5%AE%B9%E5%AE%A1%E6%9F%A5-content-filtering"><span class="toc-number">2.3.2.</span> <span class="toc-text"> （2）内容审查 (Content Filtering)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E7%A1%AC%E6%80%A7%E5%AE%89%E5%85%A8%E7%86%94%E6%96%AD"><span class="toc-number">2.3.3.</span> <span class="toc-text"> （3）硬性安全熔断</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C-%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8tool-using"><span class="toc-number">3.</span> <span class="toc-text"> 二、工具调用（Tool Using）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8function-calling-web-searching"><span class="toc-number">3.1.</span> <span class="toc-text"> 1、函数调用（Function Calling）、Web Searching</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-mcp"><span class="toc-number">3.2.</span> <span class="toc-text"> 2、MCP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89-%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9Fmemory-system"><span class="toc-number">4.</span> <span class="toc-text"> 三、记忆系统（Memory System）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86short-term-memory"><span class="toc-number">4.1.</span> <span class="toc-text"> 1、短期记忆（Short Term Memory）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%95%BF%E6%9C%9F%E8%AE%B0%E5%BF%86long-term-memory"><span class="toc-number">4.2.</span> <span class="toc-text"> 2、长期记忆（Long Term Memory）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1identitymd"><span class="toc-number">4.2.1.</span> <span class="toc-text"> （1）IDENTITY.md</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2usermd"><span class="toc-number">4.2.2.</span> <span class="toc-text"> （2）USER.md</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mastermd"><span class="toc-number">4.2.3.</span> <span class="toc-text"> （3） MASTER.md</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-factmd"><span class="toc-number">4.2.4.</span> <span class="toc-text"> （3） Fact.md</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E5%90%91%E9%87%8F%E5%BA%93%E5%92%8C%E8%AF%AD%E4%B9%89%E6%A3%80%E7%B4%A2"><span class="toc-number">4.2.5.</span> <span class="toc-text"> （4）向量库和语义检索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E6%97%A5%E8%AE%B0%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.2.6.</span> <span class="toc-text"> （5）日记系统</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B-%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9Ftask-system"><span class="toc-number">5.</span> <span class="toc-text"> 四、任务系统（Task System）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-heartbeat%E5%BF%83%E8%B7%B3%E6%9C%BA%E5%88%B6"><span class="toc-number">5.1.</span> <span class="toc-text"> 1、Heartbeat（心跳机制）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-cron-job%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="toc-number">5.2.</span> <span class="toc-text"> 2、Cron Job（定时任务）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94-%E5%A4%9A%E6%B8%A0%E9%81%93iomulti-channel-io"><span class="toc-number">6.</span> <span class="toc-text"> 五、多渠道IO（Multi-channel IO）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93"><span class="toc-number">6.1.</span> <span class="toc-text"> 1、社交媒体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-stt-tts"><span class="toc-number">6.2.</span> <span class="toc-text"> 2、STT、TTS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%9B%BE%E7%89%87"><span class="toc-number">6.3.</span> <span class="toc-text"> 3、图片</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD-%E4%BA%BA%E6%A0%BC%E7%B3%BB%E7%BB%9F"><span class="toc-number">7.</span> <span class="toc-text"> 六、人格系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#soulmd"><span class="toc-number">7.1.</span> <span class="toc-text"> SOUL.md</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83-%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9Fplugin-system"><span class="toc-number">8.</span> <span class="toc-text"> 七、插件系统（Plugin System）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#skill"><span class="toc-number">8.1.</span> <span class="toc-text"> SKILL</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB-webui"><span class="toc-number">9.</span> <span class="toc-text"> 八、WebUI</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%9D-%E7%B3%BB%E7%BB%9F%E6%8F%90%E7%A4%BA%E8%AF%8Dsystem-prompt%E7%9A%84%E6%9E%84%E6%88%90"><span class="toc-number">10.</span> <span class="toc-text"> 九、系统提示词（System Prompt）的构成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81-%E4%BB%BB%E5%8A%A1%E5%AE%8C%E6%88%90%E6%B5%81%E7%A8%8B"><span class="toc-number">11.</span> <span class="toc-text"> 十、任务完成流程</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/9023.html" title="欧拉定理"><img src="https://img.hongyoubizhi.com/picture/pages/regular/2021/07/18/08/43/83821289_p0_master1200.jpg?x-oss-process=image/resize,m_fill,w_1000" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="欧拉定理"/></a><div class="content"><a class="title" href="/posts/9023.html" title="欧拉定理">欧拉定理</a><time datetime="2026-04-03T04:59:12.391Z" title="发表于 2026-04-03 12:59:12">2026-04-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/35711.html" title="OpenLani"><img src="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/Gemini_Generated_Image_tpzqc4tpzqc4tpzq.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OpenLani"/></a><div class="content"><a class="title" href="/posts/35711.html" title="OpenLani">OpenLani</a><time datetime="2026-04-02T11:14:00.000Z" title="发表于 2026-04-02 19:14:00">2026-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/about.html" title="关于我"><img src="/./img/M31.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于我"/></a><div class="content"><a class="title" href="/posts/about.html" title="关于我">关于我</a><time datetime="2026-02-13T16:02:24.000Z" title="发表于 2026-02-14 00:02:24">2026-02-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/28245.html" title="线性代数"><img src="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/mutsumi01%281%29.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="线性代数"/></a><div class="content"><a class="title" href="/posts/28245.html" title="线性代数">线性代数</a><time datetime="2025-12-28T16:00:00.000Z" title="发表于 2025-12-29 00:00:00">2025-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7789.html" title="本站开发日志"><img src="https://cynite.oss-cn-guangzhou.aliyuncs.com/uploads/mutsumi1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="本站开发日志"/></a><div class="content"><a class="title" href="/posts/7789.html" title="本站开发日志">本站开发日志</a><time datetime="2025-12-25T16:00:00.000Z" title="发表于 2025-12-26 00:00:00">2025-12-26</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Cysheper</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="/js/tw_cn.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
 
-            //- // Four font extension packages (optional)
-            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
-            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
-            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
-            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
-          }
-        },
-        output: {
-          font: 'mathjax-newcm',
-        },
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          tags: 'none',
-          packages: {
-            '[+]': [
-              'mhchem'
-            ]
-          }
-        },
-        chtml: {
-          scale: 1.1
-        },
-        options: {
-          enableMenu: true,
-          menuOptions: {
-            settings: {
-              enrich: false  // Turn off Braille and voice narration text automatic generation
-            }
-          },
-          renderActions: {
-            findScript: [10, doc => {
-              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
-                const display = !!node.type.match(/; *mode=display/)
-                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
-                const text = document.createTextNode('')
-                node.parentNode.replaceChild(text, node)
-                math.start = {node: text, delim: '', n: 0}
-                math.end = {node: text, delim: '', n: 0}
-                doc.math.push(math)
-              }
-            }, '']
-          }
-        }
-      }
-
-      const script = document.createElement('script')
-      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.0/tex-mml-chtml.min.js'
-      script.id = 'MathJax-script'
-      script.async = true
-      document.head.appendChild(script)
-    } else {
-      MathJax.startup.document.state(0)
-      MathJax.texReset()
-      MathJax.typesetPromise()
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/copy-tex.min.js')
     }
   }
 
-  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
-  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+  showKatex()
 })()</script><script>(() => {
   const parseViewBox = viewBox => {
     if (!viewBox) return null
@@ -738,159 +726,8 @@ btf.addGlobalFn('pjaxComplete', () => {
   } else {
     window.loadOtherComment = loadTwikoo
   }
-})()</script></div><script>window.newestComments = {
-  changeContent: content => {
-    if (content === '') return content
-
-    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
-    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
-    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
-    content = content.replace(/<code>.*?<\/code>/gi, '[代码]') // replace code
-    content = content.replace(/<[^>]+>/g, "") // remove html tag
-
-    if (content.length > 150) {
-      content = content.substring(0, 150) + '...'
-    }
-    return content
-  },
-
-  generateHtml: (array, ele) => {
-    let result = ''
-
-    if (array.length) {
-      for (let i = 0; i < array.length; i++) {
-        result += '<div class="aside-list-item">'
-
-        if (true && array[i].avatar) {
-          const imgAttr = 'src'
-          const lazyloadNative = ''
-          result += `<a href="${array[i].url}" class="thumbnail"><img ${imgAttr}="${array[i].avatar}" alt="${array[i].nick}" ${lazyloadNative}></a>`
-        }
-
-        result += `<div class="content">
-        <a class="comment" href="${array[i].url}" title="${array[i].content}">${array[i].content}</a>
-        <div class="name"><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
-        </div></div>`
-      }
-    } else {
-      result += '暂无评论'
-    }
-
-    ele.innerHTML = result
-    window.lazyLoadInstance && window.lazyLoadInstance.update()
-    window.pjax && window.pjax.refresh(ele)
-  },
-
-  newestCommentInit: (name, getComment) => {
-    const $dom = document.querySelector('#card-newest-comments .aside-list')
-    if ($dom) {
-      const data = btf.saveToLocal.get(name)
-      if (data) {
-        newestComments.generateHtml(JSON.parse(data), $dom)
-      } else {
-        getComment($dom)
-      }
-    }
-  },
-
-  run: (name, getComment) => {
-    newestComments.newestCommentInit(name, getComment)
-    btf.addGlobalFn('pjaxComplete', () => newestComments.newestCommentInit(name, getComment), name)
-  }
-}</script><script>window.addEventListener('load', () => {
-  const keyName = 'twikoo-newest-comments'
-  const { changeContent, generateHtml, run } = window.newestComments
-
-  const getComment = ele => {
-    const runTwikoo = () => {
-      twikoo.getRecentComments({
-        envId: 'https://cysheper.netlify.app/.netlify/functions/twikoo',
-        region: '',
-        pageSize: 6,
-        includeReply: true
-      }).then(res => {
-        const twikooArray = res.map(e => {
-          return {
-            'content': changeContent(e.comment),
-            'avatar': e.avatar,
-            'nick': e.nick,
-            'url': e.url + '#' + e.id,
-            'date': new Date(e.created).toISOString()
-          }
-        })
-
-        btf.saveToLocal.set(keyName, JSON.stringify(twikooArray), 10/(60*24))
-        generateHtml(twikooArray, ele)
-      }).catch(err => {
-        console.error(err)
-        ele.textContent= "无法获取评论，请确认相关配置是否正确"
-      })
-    }
-
-    if (typeof twikoo === 'object') {
-      runTwikoo()
-    } else {
-      btf.getScript('https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.all.min.js').then(runTwikoo)
-    }
-  }
-
-  run(keyName, getComment)
-})</script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/foot.js"></script><canvas id="snow"></canvas><script defer src="/js/others/sakura.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+})()</script></div><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/foot.js"></script><script src="/js/custom.js"></script><script>window.__timedInjectRules__ = [{"start":[{"month":3},{"day":10}],"end":[{"month":3},{"day":15}],"script":"/js/others/sakura-small.js"},{"start":[{"month":3},{"day":16}],"end":[{"month":3},{"day":20}],"script":"/js/others/sakura-half.js"},{"start":[{"month":3},{"day":21}],"end":[{"month":3},{"day":25}],"script":"/js/others/sakura-reduce.js"},{"start":[{"month":3},{"day":26}],"end":[{"month":4},{"day":5}],"script":"/js/others/sakura.js"},{"start":[{"month":4},{"day":6}],"end":[{"month":4},{"day":10}],"script":"/js/others/sakura-reduce.js"},{"start":[{"month":4},{"day":11}],"end":[{"month":4},{"day":15}],"script":"/js/others/sakura-half.js"},{"start":[{"month":4},{"day":16}],"end":[{"month":4},{"day":20}],"script":"/js/others/sakura-small.js"},{"start":[{"month":12},{"day":15}],"end":[{"month":2},{"day":15}],"script":"/js/others/snow.js"}]</script><script src="/js/timed-inject.js" data-pjax></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
 POWERMODE.shake = false;
 POWERMODE.mobile = false;
 document.body.addEventListener('input', POWERMODE);
-</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
-  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
-
-  window.pjax = new Pjax({
-    elements: 'a:not([target="_blank"])',
-    selectors: pjaxSelectors,
-    cacheBust: false,
-    analytics: true,
-    scrollRestoration: false
-  })
-
-  const triggerPjaxFn = (val) => {
-    if (!val) return
-    Object.values(val).forEach(fn => {
-      try {
-        fn()
-      } catch (err) {
-        console.debug('Pjax callback failed:', err)
-      }
-    })
-  }
-
-  document.addEventListener('pjax:send', () => {
-    // removeEventListener
-    btf.removeGlobalFnEvent('pjaxSendOnce')
-    btf.removeGlobalFnEvent('themeChange')
-
-    // reset readmode
-    const $bodyClassList = document.body.classList
-    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
-
-    triggerPjaxFn(window.globalFn.pjaxSend)
-  })
-
-  document.addEventListener('pjax:complete', () => {
-    btf.removeGlobalFnEvent('pjaxCompleteOnce')
-    document.querySelectorAll('script[data-pjax]').forEach(item => {
-      const newScript = document.createElement('script')
-      const content = item.text || item.textContent || item.innerHTML || ""
-      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-      newScript.appendChild(document.createTextNode(content))
-      item.parentNode.replaceChild(newScript, item)
-    })
-
-    triggerPjaxFn(window.globalFn.pjaxComplete)
-  })
-
-  document.addEventListener('pjax:error', e => {
-    if (e.request.status === 404) {
-      false
-        ? pjax.loadUrl('/404.html')
-        : window.location.href = e.request.responseURL
-    }
-  })
-})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="查找文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="查找文章..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>

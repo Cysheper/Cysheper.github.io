@@ -2077,7 +2077,7 @@ pre[class*='language-'] .token.punctuation {
 .container pre,
 .container code {
   font-size: 1rem;
-  font-family: Consolas, 'Courier New', monospace !important;
+  font-family: JetBrains Mono !important;
   border-radius: 6px;
 }
 .container code {
@@ -5463,6 +5463,56 @@ pre[class*='language-'] .token.punctuation {
   -o-transform: translate(0, -50%);
   -ms-transform: translate(0, -50%);
   transform: translate(0, -50%);
+}
+.fontawesomeIcon,
+.custom-hr:before,
+.container.post-content h1:before,
+.container.post-content h2:before,
+.container.post-content h3:before,
+.container.post-content h4:before,
+.container.post-content h5:before,
+.container.post-content h6:before,
+.container.post-content hr:before,
+#post .post-copyright:before,
+#post #post-outdate-notice:before,
+.toggle > .toggle-button::before,
+.note:not(.no-icon)::before,
+.search-dialog hr:before {
+  display: inline-block;
+  font-weight: 600;
+  font-family: 'Font Awesome 7 Free', 'Font Awesome 6 Free';
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+.custom-hr,
+.container.post-content hr,
+.search-dialog hr {
+  position: relative;
+  margin: 40px auto;
+  border: 2px dashed var(--hr-border);
+  width: calc(100% - 4px);
+}
+.custom-hr:hover:before,
+.container.post-content hr:hover:before,
+.search-dialog hr:hover:before {
+  left: calc(95% - 20px);
+}
+.custom-hr:before,
+.container.post-content hr:before,
+.search-dialog hr:before {
+  position: absolute;
+  top: -10px;
+  left: 5%;
+  z-index: 1;
+  color: var(--hr-before-color);
+  content: '\f0c4';
+  font-size: 20px;
+  line-height: 1;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 .container {
   word-wrap: break-word;
