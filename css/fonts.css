@@ -10,5 +10,5 @@
 @font-face {
   font-family: 'Consolas';
   font-display: swap;
-  src: url('/fonts/Consolas.ttf') format("truetype");  
+  src: url('/fonts/consolas.ttf') format("truetype");  
 }
